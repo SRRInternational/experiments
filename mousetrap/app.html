@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mousetrap</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+      integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script src="./lib/mousetrap.js"></script>
+    <script src="./lib/jquery.js"></script>
+    <style>
+      div {
+        margin: 25vh;
+      }
+      h2 {
+        display: inline;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="text">
+      <h1 tabindex="0" aria-label="Mouse Trap sample app">
+        Mouse Trap sample app
+      </h1>
+      <h2 tabindex="0" aria-label="Mouse Trap key" class="key"></h2>
+      :
+      <h2 tabindex="0" aria-label="Mouse Trap keyCode" class="keyCode"></h2>
+    </div>
+    <script>
+      $("html").keydown(function (e) {
+        _.forEach(
+          [e.key, `ctrl+${e.key}`, `shift+${e.key}`, `alt+${e.key}`],
+          (keyCode) => {
+            Mousetrap.bindGlobal(keyCode, function (e) {
+              e.preventDefault();
+              $("div h2.key").html(e.key);
+              $("div h2.keyCode").html(e.keyCode);
+            });
+          }
+        );
+      });
+/*    Mousetrap.unbind('a');
+      Mousetrap.addKeycodes({
+          144: 'numlock'
+      });
+ */
+    </script>
+  </body>
+</html>

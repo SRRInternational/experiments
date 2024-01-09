@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../lib/jquery.js"></script>
+    <style>
+      p {
+        margin: 8px;
+        font-size: 16px;
+      }
+      .selected {
+        font-weight: bold;
+        color: blue;
+      }
+      .highlight {
+        background: yellow;
+      }
+    </style>
+  </head>
+
+  <body>
+    <p>
+      Hello
+      <input id="inputfield" type="text" placeholder="Enter your name" onchange="helloUser()" />
+    </p>
+    <p class="username"></p>
+    <script>
+      function helloUser() {
+        $(".username")
+          .html("Goodbye, " + $("#inputfield").val())
+          .addClass("selected");
+      }
+    </script>
+  </body>
+</html>

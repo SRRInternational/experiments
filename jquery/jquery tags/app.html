@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./selectize/css/selectize.css">
+    <script src="./jquery.js"></script>
+    <script src="./jquery-ui.min.js"></script>
+    <script src="./selectize/js/selectize.js"></script>
+  </head>
+  <body>
+    <input id="input-tags" type="text">
+    <script>
+      $("#input-tags").selectize({
+        delimiter: ",",
+        persist: false,
+        create: function (input) {
+          return {
+            value: input,
+            text: input,
+          };
+        },
+      });
+    </script>
+  </body>
+</html>

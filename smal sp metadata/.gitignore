@@ -1,0 +1,17 @@
+# Logs
+logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# dotenv environment variables file
+.env
+.env.test
+
+
+# Ignore certs
+cert/*
+
+# Ignore project files WebStorm
+.idea/*

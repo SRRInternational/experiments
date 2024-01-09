@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Tabs - Simple manipulation</title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #dialog label, #dialog input { display:block; }
+  #dialog label { margin-top: 0.5em; }
+  #dialog input, #dialog textarea { width: 95%; }
+  #tabs { margin-top: 1em; }
+  #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+  #add_tab { cursor: pointer; }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    var tabTitle = $( "#tab_title" ),
+      tabContent = $( "#tab_content" ),
+      tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
+      tabCounter = 2;
+ 
+    var tabs = $( "#tabs" ).tabs();
+ 
+    // Modal dialog init: custom buttons and a "close" callback resetting the form inside
+    var dialog = $( "#dialog" ).dialog({
+      autoOpen: false,
+      modal: true,
+      buttons: {
+        Add: function() {
+          addTab();
+          $( this ).dialog( "close" );
+        },
+        Cancel: function() {
+          $( this ).dialog( "close" );
+        }
+      },
+      close: function() {
+        form[ 0 ].reset();
+      }
+    });
+ 
+    // AddTab form: calls addTab function on submit and closes the dialog
+    var form = dialog.find( "form" ).on( "submit", function( event ) {
+      addTab();
+      dialog.dialog( "close" );
+      event.preventDefault();
+    });
+ 
+    // Actual addTab function: adds new tab using the input from the form above
+    function addTab() {
+      var label = tabTitle.val() || "Tab " + tabCounter,
+        id = "tabs-" + tabCounter,
+        li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
+        tabContentHtml = tabContent.val() || "Tab " + tabCounter + " content.";
+ 
+      tabs.find( ".ui-tabs-nav" ).append( li );
+      tabs.append( "<div id='" + id + "'><p>" + tabContentHtml + "</p></div>" );
+      tabs.tabs( "refresh" );
+      tabCounter++;
+    }
+ 
+    // AddTab button: just opens the dialog
+    $( "#add_tab" )
+      .button()
+      .on( "click", function() {
+        dialog.dialog( "open" );
+      });
+ 
+    // Close icon: removing the tab on click
+    tabs.on( "click", "span.ui-icon-close", function() {
+      var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+      $( "#" + panelId ).remove();
+      tabs.tabs( "refresh" );
+    });
+ 
+    tabs.on( "keyup", function( event ) {
+      if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
+        var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
+        $( "#" + panelId ).remove();
+        tabs.tabs( "refresh" );
+      }
+    });
+  } );
+  </script>
+</head>
+<body>
+ 
+  <div id="dialog" style="display:none;" title="ADD A PROJECT">
+    <label for="tabs">Project name:</label><input id="tab_title" type="text">
+</div>
+<div id="task-dialog" style="display:none;" title="ADD A TASK">
+    <label for="tabs">Task name:</label><input id="taskname" type="text">
+</div>
+ 
+<button id="add_tab">Add Tab</button>
+ 
+<div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Nunc tincidunt</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
+  </ul>
+  <div id="tabs-1">
+    <p>Proin elit arcu, rutrum commodo, vehicula tempus, commodo a, risus. Curabitur nec arcu. Donec sollicitudin mi sit amet mauris. Nam elementum quam ullamcorper ante. Etiam aliquet massa et lorem. Mauris dapibus lacus auctor risus. Aenean tempor ullamcorper leo. Vivamus sed magna quis ligula eleifend adipiscing. Duis orci. Aliquam sodales tortor vitae ipsum. Aliquam nulla. Duis aliquam molestie erat. Ut et mauris vel pede varius sollicitudin. Sed ut dolor nec orci tincidunt interdum. Phasellus ipsum. Nunc tristique tempus lectus.</p>
+  </div>
+
+</head>
+<body>
+  #TOOLTIP
+  <script>
+    $(document).ready( function(){
+       $("#age1").tooltip();
+      $("#age2").tooltip();
+      $("#age3").tooltip({
+      hide: {
+        effect: "explode",
+        delay: 250
+      }
+    });
+    }) ; 
+    </script>
+<p><input id="age1" title="We ask for your age only for statistical purposes."></p>
+<p id="age2" title="We ask for your age only for statistical purposes.">something</p>
+<p id="age3" title="We ask for your age only for statistical purposes.">animation</p>
+
+ 
+ 
+#draggable
+<style>
+  #draggable { width: 150px; height: 50px; padding: 0.5em; border-style: dotted; }
+  </style>  <script>
+  $(document).ready( function() {
+    $( "#draggable" ).draggable();
+  } );
+  </script> 
+<div id="draggable">
+  <p>Drag me around</p>
+</div>
+ 
+#rezisable 
+<style>
+  #draggableq { width: 150px; height: 50px; padding: 0.5em; border-style: dotted; }
+  </style><script>
+  $(document).ready( function() {
+    $( "#draggableq" ).resizable();
+  } );
+  </script> 
+<div id="draggableq">
+  <p>rezise around</p>
+</div>
+
+#sortable
+<script>
+  $(document).ready( function() {
+    $( "#sortable" ).sortable();
+  } );
+  </script>  <style>
+  #sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+  #sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; width: 100px;}
+  </style>
+<ul id="sortable">
+  <li class="ui-state-default">Item 1</li>
+  <li class="ui-state-default">Item 2</li>
+  <li class="ui-state-default">Item 3</li>
+</ul>
+
+#autocomplete suggesstion box
+<script>
+  $(document).ready( function() {
+    var availableTags = [      "ActionScript",      "AppleScript",      "Asp",      "BASIC",
+      "C",      "C++",      "Clojure",      "COBOL",      "ColdFusion",      "Erlang",      "Fortran",
+      "Groovy",      "Haskell",      "Java",      "JavaScript",      "Lisp",      "Perl",      "PHP", 
+      "Python",      "Ruby",      "Scala",      "Scheme"    ];
+    $( "#tags" ).autocomplete({
+      source: availableTags
+    });
+  } );
+  </script> <br>
+  <input id="tags"> 
+  <br>
+#dialog
+<script>
+$(document).ready( function() {    
+    $("#dialogbtn").on("click",function(){
+      $( "#dialog" ).dialog();
+      $("#dialog").removeAttr("hidden");
+    });
+  } );
+  </script> <br>
+  <button class="btn" id="dialogbtn">Click Here</button> 
+<div id="dialog" title="Basic dialog"  hidden="hidden">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the &apos;x&apos; icon.</p>
+</div> 
+<br>
+#bar
+<script>
+  $(document).ready( function() {
+    $( "#progressbar" ).progressbar({
+      value: 40
+    });
+  } );
+  </script>
+<div id="progressbar" style="width:150px;"></div>
+<br>
+#slider
+<script>
+  $(document).ready(function(){
+    $("#slider").slider();
+  });
+  </script>
+<div id="slider"  style="width:150px;"></div>
+<br>
+#tabs
+<script>
+  $(document).ready( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
+ 
+<div id="tabs"   style="width:150px;"> 
+  <ul>
+    <li><a href="#tabs-1">1</a></li>
+    <li><a href="#tabs-2">2</a></li>
+    <li><a href="#tabs-3">3</a></li>
+  </ul>
+  <div id="tabs-1">abc</div>
+  <div id="tabs-2">def</div>
+  <div id="tabs-3">ijk</div>
+</div>
+<br>
+#accordion  <script>
+  $(document).ready( function() {
+    $( "#accordion" ).accordion();
+  } );
+  </script>
+<div id="accordion" style="width: 300px;">
+  <h3>1</h3>
+  <div>    <p>    abc    </p>  </div>
+  <h3>2</h3>
+  <div>    <p>    def    </p>  </div>
+>>>>>>> ea335e8155c4b31fe7ccc8ef5c33431dfb4771ad
+</div>
+ 
+ 
+</body>
+</html

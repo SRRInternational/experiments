@@ -1,0 +1,57 @@
+<samlp:Response xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+    ID="pfx0dc5b79c-6eb5-e9a5-a61e-5b40a617baf7" Version="2.0" IssueInstant="2022-09-09T08:02:36Z"
+    Destination="Saml-SSO" InResponseTo="_fc9a810a8a33696b88f7">
+    <saml:Issuer>https://app.onelogin.com/saml/metadata/a6f098dc-26d7-410d-9f9b-bc14401d4f46</saml:Issuer>
+    <ds:Signature xmlns:ds="http://www.w3.org/2000/09/xmldsig#">
+        <ds:SignedInfo>
+            <ds:CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+            <ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1" />
+            <ds:Reference URI="#pfx0dc5b79c-6eb5-e9a5-a61e-5b40a617baf7">
+                <ds:Transforms>
+                    <ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" />
+                    <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" />
+                </ds:Transforms>
+                <ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+                <ds:DigestValue>l19tJlGkrcGfVI+rhId7jBWQd5o=</ds:DigestValue>
+            </ds:Reference>
+        </ds:SignedInfo>
+        <ds:SignatureValue>
+            isS6hkNFgsjuirTSfjhdKEmRTXI+o3YMCFhjABsxvpNHVL7zipRJ2O02vVmveKDJTUvgbSr1W07Ef5VuYx6IewfVGVpcgjYk0Gj7r3I8DE0o3AJX+HlBN+aQR9IMl1kNG5IiRW6hz8xjZ75XvzHluVwneTi12xF7v6f3Q6/YASDTX14MKgHCmRDocOx+eWV+s7cF1bbyxEaujsR8TjGmLJ4LNEDt32CzMRWJ5aAY2sbMvJiA1spyckl8ZfVNfMwvD+H407AuyVgqBm5m9DLk/jiGfzMtkYsvutwjESJzOH3SIdK5owYyKC1sZtPEnIPTopM/70hFNQZI6wLtGmXIag==
+        </ds:SignatureValue>
+        <ds:KeyInfo>
+            <ds:X509Data>
+                <ds:X509Certificate>
+                    MIIDzzCCAregAwIBAgIUUdYQtbEsVC3e+JgcbY3nGPjklwYwDQYJKoZIhvcNAQEFBQAwQTEMMAoGA1UECgwDU3JyMRUwEwYDVQQLDAxPbmVMb2dpbiBJZFAxGjAYBgNVBAMMEU9uZUxvZ2luIEFjY291bnQgMB4XDTIyMDgyMzEwMDEyMloXDTI3MDgyMzEwMDEyMlowQTEMMAoGA1UECgwDU3JyMRUwEwYDVQQLDAxPbmVMb2dpbiBJZFAxGjAYBgNVBAMMEU9uZUxvZ2luIEFjY291bnQgMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvz6PWf135MF6a5PmuNDxW+eBmXVz3N63QSiqfEpQD6cV6BCb3f6e9JJAT5PWv4o76LekXaIHb5Xw8WjKkaUmGFn+VQ6DVg8OstxquNu4/IZQY727LxVjLtQrqftbazGjA4UU6Zthb1hknRSWTeNVQdgraIim0Dpszje0V+UR04lQlpUyDDvPKjHjymJL4RLqsi/5WivbpCgJwnwH3pRBqR1JdU32AjKXno4XBf0Ww0AQFKHKZRcmw7KtGAS/j9aFVjEKuyKg7BGX+krUTiJN3JJFHXjRr2MgHE0fcyRIoRnMrRdmpgulCl+Ry9hHskWtiwmtC9Foori5cAcoXR8RpwIDAQABo4G+MIG7MAwGA1UdEwEB/wQCMAAwHQYDVR0OBBYEFKlJNYT0OagjMY6j8+EgLJX8fE/9MHwGA1UdIwR1MHOAFKlJNYT0OagjMY6j8+EgLJX8fE/9oUWkQzBBMQwwCgYDVQQKDANTcnIxFTATBgNVBAsMDE9uZUxvZ2luIElkUDEaMBgGA1UEAwwRT25lTG9naW4gQWNjb3VudCCCFFHWELWxLFQt3viYHG2N5xj45JcGMA4GA1UdDwEB/wQEAwIHgDANBgkqhkiG9w0BAQUFAAOCAQEAH9dKQI2GGruQ1RIj1+75NdEWZc/QikAC+XinKGURWeV79cXkxOC7+ff9UK4CjYKqfcKyTxkudhyEFDSsBloJYpure/l+cSrGiwNNT+dY4WE0KHLOIR7kRcP5r9ckRzxfQJXDdOkEp8n12nGgkWAzLP0bN/2rTbBe6e6R2KXAeP+vgjHmgIQBOkYR7XeocSrBO0ng0q7IW775mcQAqvI12lc4/bpxpeizGOxjdYnr/l4MZ6cJqnbSlPLsuRWAoHX6V5cWu2KHcXB6X1yWZDt/Wdz+AgTHcWsFYimh2oUcAZZb/bQiWVybnIGzGf0vJ4xxxqXIa9OXryRYOrQH5CyyjA==
+                </ds:X509Certificate>
+            </ds:X509Data>
+        </ds:KeyInfo>
+    </ds:Signature>
+    <samlp:Status>
+        <samlp:StatusCode Value="urn:oasis:names:tc:SAML:2.0:status:Success" />
+    </samlp:Status>
+    <saml:Assertion xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="2.0"
+        ID="Ad86d189a8df8049cfd5cefffaabb1d1814e2c0b4" IssueInstant="2022-09-09T08:02:36Z">
+        <saml:Issuer>https://app.onelogin.com/saml/metadata/a6f098dc-26d7-410d-9f9b-bc14401d4f46</saml:Issuer>
+        <saml:Subject>
+            <saml:NameID Format="urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress">harsh.jain@srrintl.com
+            </saml:NameID>
+            <saml:SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer">
+                <saml:SubjectConfirmationData NotOnOrAfter="2022-09-09T08:05:36Z" Recipient="Saml-SSO"
+                    InResponseTo="_fc9a810a8a33696b88f7" />
+            </saml:SubjectConfirmation>
+        </saml:Subject>
+        <saml:Conditions NotBefore="2022-09-09T07:59:36Z" NotOnOrAfter="2022-09-09T08:05:36Z">
+            <saml:AudienceRestriction>
+                <saml:Audience />
+            </saml:AudienceRestriction>
+        </saml:Conditions>
+        <saml:AuthnStatement AuthnInstant="2022-09-09T08:02:35Z" SessionNotOnOrAfter="2022-09-10T08:02:36Z"
+            SessionIndex="_57328c71-2ecd-41e9-a719-afc72330ad2d">
+            <saml:AuthnContext>
+                <saml:AuthnContextClassRef>urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport
+                </saml:AuthnContextClassRef>
+            </saml:AuthnContext>
+        </saml:AuthnStatement>
+    </saml:Assertion>
+</samlp:Response>
