@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.6/css/selectize.default.css"
+        integrity="sha512-ulwWiKOIcIcwLkFYTKhH4Vr7AGDrpgQigjgD5LF8gP2nNsQPBBPtaOeFejAEVvEhTQY0e9c3TTUWgI7SJUo55A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.6/js/standalone/selectize.min.js"
+        integrity="sha512-pgmLgtHvorzxpKra2mmibwH/RDAVMlOuqU98ZjnyZrOZxgAR8hwL8A02hQFWEK25V40/9yPYb/Zc+kyWMplgaA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        $(document).ready(function () {
+            $('#c1_user').selectize({
+        maxItems: null,//limit for user to select at a time
+        create: false, //allow user to add custom tags
+      });
+        });
+    </script>
+    <style>
+        body {
+            background: blanchedalmond;
+        }
+
+        .exampleSearch {
+            width: 250px;
+            margin: 50px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <select id="c1_user" class="form-control" name="user" placeholder="users">
+        <option>meharsh2001@gmail.com</option>
+        <option>harsh.jain@srrintl.com</option>
+        <option>Userc</option>
+        <option>Userd</option>
+    </select>
+</body>
+
+</html>

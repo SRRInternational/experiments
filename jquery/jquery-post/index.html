@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  </head>
+  <body>
+    <div id="resultContainer">Hello <a id="result"></a>!</div>
+    <input type="text" name="fullname" placeholder="Enter Your Name"/>
+    <input type="submit" value="submit" id="fullNameForm"/>
+
+    <script>
+      $("#resultContainer").hide();
+      $("#fullNameForm").on("click", function (event) {
+        $.post("/user", { fullname: $("input[name='fullname']").val() })
+          .fail(function (data) {
+            $("#resultContainer").show();
+            $("#result").empty().append("failed with response " + JSON.parse(data.responseText).fullname);
+          })
+          .done(function (data) {
+            $("#resultContainer").show();
+            $("#result").empty().append(data.fullname);
+          });
+      });
+    </script>
+  </body>
+</html>

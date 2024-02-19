@@ -1,0 +1,102 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+    <script type="text/javascript"
+        src="https://rawgithub.com/powmedia/backbone-forms/master/distribution/backbone-forms.js"></script>
+    <script type="text/javascript"
+        src="https://rawgithub.com/powmedia/backbone-forms/master/distribution/editors/list.js"></script>
+    <script type="text/javascript"
+        src="https://rawgit.com/powmedia/backbone-forms/master/distribution/adapters/backbone.bootstrap-modal.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://rawgit.com/powmedia/backbone-forms/master/distribution/templates/bootstrap3.js"></script>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <style>
+        .right {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+	 
+<div class="example">
+  <button id="b1">A basic message</button>
+  <button id="b2">A title with a text under</button>
+  <button id="b3">A success message!</button>
+  <button id="b4">A warning message, with a function attached to the "Confirm"-button...</button>
+  <button id="b5">... and by passing a parameter, you can execute something else for "Cancel".</button>
+  <button id="b6">A message with a custom icon</button>
+</div>
+<script>
+    document.getElementById('b1').onclick = function(){
+	swal("Here's a message!");
+};
+
+document.getElementById('b2').onclick = function(){
+	swal("Here's a message!", "It's pretty, isn't it?")
+};
+
+document.getElementById('b3').onclick = function(){
+	swal("Good job!", "You clicked the button!", "success");
+};
+
+document.getElementById('b4').onclick = function(){
+	swal({
+		title: "Are you sure?",
+		text: "You will not be able to recover this imaginary file!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: '#DD6B55',
+		confirmButtonText: 'Yes, delete it!',
+		closeOnConfirm: false,
+		//closeOnCancel: false
+	},
+	function(){
+		swal("Deleted!", "Your imaginary file has been deleted!", "success");
+	});
+};
+
+document.getElementById('b5').onclick = function(){
+	swal({
+		title: "Are you sure?",
+		text: "You will not be able to recover this imaginary file!",
+		type: "warning",
+		showCancelButton: true,
+		confirmButtonColor: '#DD6B55',
+		confirmButtonText: 'Yes, delete it!',
+		cancelButtonText: "No, cancel plx!",
+		closeOnConfirm: false,
+		closeOnCancel: false
+	},
+	function(isConfirm){
+    if (isConfirm){
+      swal("Deleted!", "Your imaginary file has been deleted!", "success");
+    } else {
+      swal("Cancelled", "Your imaginary file is safe :)", "error");
+    }
+	});
+};
+
+document.getElementById('b6').onclick = function(){
+	swal({
+		title: "Sweet!",
+		text: "Here's a custom image.",
+		imageUrl: 'https://i.imgur.com/4NZ6uLY.jpg'
+	});
+};
+    </script>
+</body>
+</html>

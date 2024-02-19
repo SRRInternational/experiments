@@ -1,0 +1,246 @@
+<html>
+
+<head>
+
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.1/jquery.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.3/backbone-min.js"></script>
+    <script type="text/javascript"
+        src="https://rawgithub.com/powmedia/backbone-forms/master/distribution/backbone-forms.js"></script>
+    <script type="text/javascript"
+        src="https://rawgithub.com/powmedia/backbone-forms/master/distribution/editors/list.js"></script>
+    <script type="text/javascript"
+        src="https://rawgit.com/powmedia/backbone-forms/master/distribution/adapters/backbone.bootstrap-modal.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+        src="https://rawgit.com/powmedia/backbone-forms/master/distribution/templates/bootstrap3.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.6/css/selectize.default.css"
+        integrity="sha512-ulwWiKOIcIcwLkFYTKhH4Vr7AGDrpgQigjgD5LF8gP2nNsQPBBPtaOeFejAEVvEhTQY0e9c3TTUWgI7SJUo55A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.6/js/standalone/selectize.min.js"
+        integrity="sha512-pgmLgtHvorzxpKra2mmibwH/RDAVMlOuqU98ZjnyZrOZxgAR8hwL8A02hQFWEK25V40/9yPYb/Zc+kyWMplgaA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"
+        integrity="sha512-RNLkV3d+aLtfcpEyFG8jRbnWHxUqVZozacROI4J2F1sTaDqo1dPQYs01OMi1t1w9Y2FdbSCDSQ2ZVdAC8bzgAg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <style>
+        .right {
+            text-align: right;
+        }
+
+        body {
+            background: blanchedalmond;
+        }
+
+        .selectize-dropdown-content {
+            max-height: 500px;
+        }
+
+        .exampleSearch {
+            width: 250px;
+            margin: 50px;
+            display: block;
+        }
+
+        input[type='text'] {
+            height: 10px;
+        }
+
+        .item,
+        .selectize-dropdown .selectize-input {
+            text-align: left;
+        }
+
+        .selectize-dropdown,
+        .single,
+        .form-control {
+            text-align: left;
+        }
+
+        .option {
+            background-color: white;
+            text-align: left;
+            font-weight: bold;
+            background: white;
+        }
+    </style>
+</head>
+
+<body class="">
+    <div class="panel panel-default panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Manage Users</h3>
+        </div>
+        <div class="right">
+            <input type="button" class="button" id="change_pass" value="change password"><br><br>
+            <input type="button" class="button" id="" value="disable user"><br><br>
+            <input type="button" class="button" id="delete_user" value="delete user">
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            var userData = ['meharsh2001@gmail.com', 'chetansachdev@', 'rekha@']
+            var schemaForm = Backbone.Model.extend({
+                schema: {
+                    transfer: { type: 'Select', options: userData },
+                    share: { type: 'Select', options: userData }
+                }
+            });
+
+            var user = new schemaForm();
+
+            var form = new Backbone.Form({
+                model: user
+            }).render();
+
+            dialog = Backbone.View.extend({
+                el: 'html',
+                events: {
+                    "click #change_pass": "change",
+                    "click #delete_user": "delete",
+                },
+                change: function () {
+                    swal({
+                        title: "Are you sure?",
+                        text: "change password",
+                        type: "success",
+                        showCancelButton: true,
+                        confirmButtonColor: 'blue',
+                        confirmButtonText: 'change',
+                        closeOnConfirm: false,
+                        //closeOnCancel: false
+                    });
+                },
+                delete: function () {
+                    var formDivExist = document.getElementsByClassName('panel-body').length;
+                    if (formDivExist == 0) {
+                        $(".sweet-overlay").remove();
+                        $(".sweet-alert").remove();
+                        swal("Are you sure u want to continue if Yes click on button again");
+                        $("fieldset").after('<div class="panel-body"></div>');
+                        dialogInput()
+                    } else dialogInput()
+
+                    function dialogInput() {
+                        var userCollection = [
+                            { "id": 861, "name": "harsh jain", "email": 'meharsh2001@gmail.com' },
+                            { "id": 111, "name": "Chetan Sachdev", "email": 'chetansachdev@' },
+                            { "id": 394, "name": "Rekha", "email": 'rekha@' }
+                        ]
+                        function disableOption() {
+                            var transferValue = $('#c1_transfer').text();
+                            for (i = 0; i < userCollection.length; i++) {
+                                if (userCollection[i].email === transferValue) {
+                                    transferValue = userCollection[i].name + ' ' + '<' + userCollection[i].email + '>';
+                                }
+                            }
+                            $('.multi .selectize-dropdown-content div').each(function (index) {
+                                $(this).removeAttr('data-disabled', 'true')
+                                var shareValue = $(this).text();
+                                if (transferValue === shareValue) {
+                                    console.log(transferValue, shareValue)
+                                    $(this).attr('data-disabled', 'true')
+                                } else {
+                                }
+                            })
+                        }
+                        $(".panel-body").html(form.el);
+                        $(".field-share").attr('style', 'display:none;');
+                        $('#c1_transfer').selectize({
+                            maxItems: 1,//limit for user to select at a time
+                            create: false, //allow user to add custom tags
+                            closeAfterSelect: true,
+                            allowEmptyOption: false,
+                            options: userCollection,
+                            render: {
+                                option: function (item, escape) {
+                                    return '<div>'
+                                        + '<span"><b>' + item.name + '</b></span> '
+                                        + '<span style="margin-left:5px;">&lt;' + item.email + '&gt;</span>'
+                                        + '</div>';
+                                }
+                            },
+                            onChange: function () {
+                                var transferValue = $('#c1_transfer').val()
+                                $('#c1_share').selectize({
+                                    maxItems: null,
+                                    options: userCollection,
+                                    create: false,
+                                    render: {
+                                        option: function (item, escape) {
+                                            if ($('#c1_transfer').val() === item.email) {
+                                                return '<div data-disabled="true">'
+                                                    + '<span"><b>' + item.name + '</b></span> '
+                                                    + '<span style="margin-left:5px;">&lt;' + item.email + '&gt;</span>'
+                                                    + '</div>';
+                                            } else {
+                                                return '<div>'
+                                                    + '<span"><b>' + item.name + '</b></span> '
+                                                    + '<span style="margin-left:5px;">&lt;' + item.email + '&gt;</span>'
+                                                    + '</div>';
+                                            }
+                                        }
+                                    }, onDropdownOpen: function () {
+                                        disableOption()
+                                    }
+                                })[0].selectize.clear();
+                                $(".selectize-control").removeClass('form-control');
+                                $(".field-share").removeAttr('style', 'display:none;');
+                            }
+                        })[0].selectize.clear();
+                        disableOption()
+                        $(".selectize-control").removeClass('form-control');
+
+                        swal({
+                            title: "Are you sure?",
+                            text: "delete user",
+                            type: "warning",
+                            showCancelButton: true,
+                            confirmButtonColor: '#DD6B55',
+                            confirmButtonText: 'delete',
+                            closeOnConfirm: false,
+                            //closeOnCancel: false
+                        },
+                            function (rel) {
+                                var newOwner = $('#c1_transfer').val();
+                                var shareValue = $('#c1_share').val()
+                                $(".panel-body").remove()
+                                if (rel) {
+                                    swal({
+                                        title: "Deleted!" + newOwner,
+                                        text: "course shared with" + shareValue,
+                                        type: "success",
+                                        showCancelButton: true,
+                                        confirmButtonColor: '#DD6B55',
+                                        confirmButtonText: 'ok',
+                                        closeOnConfirm: false,
+                                    },
+                                        function (res) {
+                                            var newOwner = $('#c1_transfer').val();
+                                            var shareValue = $('#c1_share').val()
+                                            $(".panel-body").remove()
+                                            if (res) {
+                                                window.location.reload();
+                                            }
+                                        });
+                                }
+                            });
+                    }
+                }
+            });
+            var backbone = new dialog();
+        });  
+    </script>
+
+</body>
+
+</html>

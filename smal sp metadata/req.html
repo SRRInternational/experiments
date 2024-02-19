@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<samlp:AuthnRequest xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol" ID="_2b579c5be1c3454689e9" Version="2.0"
+    IssueInstant="2022-09-15T07:18:17.034Z" ProtocolBinding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST"
+    Destination="https://meharshjain-dev.onelogin.com/trust/saml2/http-post/sso/a6f098dc-26d7-410d-9f9b-bc14401d4f46"
+    ForceAuthn="true" AssertionConsumerServiceURL="http://localhost:8000/user/login/sso/callback">
+    <saml:Issuer xmlns:saml="urn:oasis:names:tc:SAML:2.0:assertion">http://localhost:8000/metadata</saml:Issuer>
+    <samlp:NameIDPolicy xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol"
+        Format="urn:oasis:names:tc:SAML:2.0:nameid-format:email" AllowCreate="true" />
+</samlp:AuthnRequest>
