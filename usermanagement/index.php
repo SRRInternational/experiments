@@ -2,7 +2,7 @@
 require_once "connection.php";
 session_start();
 if (isset($_SESSION['username'])) {
-    echo "You are already logged in";
+    header("Location: AdminPanel.php");
 }
 ?>
 
@@ -44,27 +44,40 @@ if (isset($_SESSION['username'])) {
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $query = "SELECT * FROM user WHERE username = '$username' AND password = '$password'";
+
+    // Encrypt the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Check if the username exists in the database
+    $query = "SELECT * FROM user WHERE username = '$username'";
     $result = mysqli_query($conn, $query);
+
     if (mysqli_num_rows($result) > 0) {
-        session_start();
-        $_SESSION['username'] = $username;
-        header("Location: AdminPanel.php");
-    } else {
-        $query = "INSERT INTO user (username, password) VALUES ('$username', '$password')";
-        if (mysqli_query($conn, $query)) {
-            echo "You are registered and logged in";
-            session_start();
+        // User exists, attempt login
+        $user = mysqli_fetch_assoc($result);
+        if (password_verify($password, $user['password'])) {
+            // Password is correct, start the session and redirect to admin panel
             $_SESSION['username'] = $username;
             header("Location: AdminPanel.php");
+            exit();
         } else {
+            // Incorrect password
+            echo "Incorrect password";
+        }
+    } else {
+        // User doesn't exist, register the user
+        $query = "INSERT INTO user (username, password) VALUES ('$username', '$hashed_password')";
+        if (mysqli_query($conn, $query)) {
+            // User registered successfully, start the session and redirect to admin panel
+            $_SESSION['username'] = $username;
+            header("Location: AdminPanel.php");
+            exit();
+        } else {
+            // Error occurred during registration
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
         }
     }
 }
-
-
-
 ?>
 
 </html>
