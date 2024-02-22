@@ -3,6 +3,7 @@ require_once "connection.php";
 session_start();
 if (isset($_SESSION['username'])) {
     header("Location: AdminPanel.php");
+    exit(); // Add exit here to prevent further execution
 }
 ?>
 
@@ -23,6 +24,10 @@ if (isset($_SESSION['username'])) {
         <h2 class="text-2xl font-bold mb-6">Login Form</h2>
         <form method="post">
             <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                <input type="email" name="email" placeholder="Enter Your Email" id="email" class="mt-1 p-2 block w-full ring-1 ring-black rounded-md border-gray-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
+            </div>
+            <div class="mb-4">
                 <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
                 <input type="text" name="username" placeholder="Enter Your Username" id="username" class="mt-1 p-2 block w-full ring-1 ring-black rounded-md border-gray-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
             </div>
@@ -39,11 +44,17 @@ if (isset($_SESSION['username'])) {
 </body>
 
 <?php
-//  check if the form is submitted  validate the data and add the user in databae it should also check if the user is already in the database if there is no user then it should insert a user in database
-
-if (isset($_POST['username']) && isset($_POST['password'])) {
+// Check if the form is submitted, validate the data, and add the user in the database
+if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
+
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Invalid email format";
+        exit(); // Add exit here to prevent further execution
+    }
 
     // Encrypt the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -63,10 +74,16 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         } else {
             // Incorrect password
             echo "Incorrect password";
+            exit(); // Add exit here to prevent further execution
         }
     } else {
         // User doesn't exist, register the user
-        $query = "INSERT INTO user (username, password) VALUES ('$username', '$hashed_password')";
+        // Get the current timestamp
+        $current_timestamp = date('Y-m-d H:i:s');
+
+        // SQL query to insert a new user with default CreatedAt time
+        $query = "INSERT INTO user (email, username, password, CreatedAt) VALUES ('$email', '$username', '$hashed_password', '$current_timestamp')";
+
         if (mysqli_query($conn, $query)) {
             // User registered successfully, start the session and redirect to admin panel
             $_SESSION['username'] = $username;
@@ -75,6 +92,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
         } else {
             // Error occurred during registration
             echo "Error: " . $query . "<br>" . mysqli_error($conn);
+            exit(); // Add exit here to prevent further execution
         }
     }
 }
