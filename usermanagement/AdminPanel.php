@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
     </div>
 
     <?php
-    $sql = "SELECT username, email, CreatedAt FROM user";
+    $sql = "SELECT username, email, CreatedAt, image FROM user";
     $result = mysqli_query($conn, $sql);
 
     if (!$result) {
@@ -59,6 +59,9 @@ if (!isset($_SESSION['username'])) {
                                             Created At
                                         </th>
                                         <th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
+                                            Image
+                                        </th>
+                                        <th scope='col' class='px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider'>
                                             Actions
                                         </th>
                                     </tr>
@@ -77,6 +80,9 @@ if (!isset($_SESSION['username'])) {
                         </td>
                         <td class='px-6 py-4 whitespace-nowrap'>
                             <div class='text-sm text-gray-900'>" . $row["CreatedAt"] . "</div>
+                        </td>
+                        <td class='px-6 py-4 whitespace-nowrap'>
+                            <img src='" . $row["image"] . "' alt='User Image' class='h-10 w-10 rounded-full'>
                         </td>
                         <td class='px-6 py-4 whitespace-nowrap flex gap-5'>
                             <!-- Edit Button -->
@@ -127,7 +133,7 @@ if (!isset($_SESSION['username'])) {
     }
     ?>
 
-    
+
 
 </body>
 

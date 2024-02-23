@@ -22,7 +22,7 @@ if (isset($_SESSION['username'])) {
 
     <div class="bg-white p-8 rounded shadow-md w-96">
         <h2 class="text-2xl font-bold mb-6">Login Form</h2>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="mb-4">
                 <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
                 <input type="email" name="email" placeholder="Enter Your Email" id="email" class="mt-1 p-2 block w-full ring-1 ring-black rounded-md border-gray-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
@@ -36,6 +36,10 @@ if (isset($_SESSION['username'])) {
                 <input type="password" name="password" placeholder="Enter Your password" id="password" class="mt-1 p-2 block ring-1 ring-black w-full rounded-md border-gray-600 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50" required>
             </div>
             <div class="mb-4">
+                <label for="image" class="block text-sm font-medium text-gray-700">Profile Image:</label>
+                <input type="file" name="image" id="image" class="mt-1 block w-full">
+            </div>
+            <div class="mb-4">
                 <button type="submit" class="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Login</button>
             </div>
         </form>
@@ -45,7 +49,7 @@ if (isset($_SESSION['username'])) {
 
 <?php
 // Check if the form is submitted, validate the data, and add the user in the database
-if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['password'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -53,46 +57,59 @@ if (isset($_POST['email']) && isset($_POST['username']) && isset($_POST['passwor
     // Validate email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         echo "Invalid email format";
-        exit(); // Add exit here to prevent further execution
+        exit();
     }
 
     // Encrypt the password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Check if the username exists in the database
-    $query = "SELECT * FROM user WHERE username = '$username'";
-    $result = mysqli_query($conn, $query);
-
-    if (mysqli_num_rows($result) > 0) {
-        // User exists, attempt login
-        $user = mysqli_fetch_assoc($result);
-        if (password_verify($password, $user['password'])) {
-            // Password is correct, start the session and redirect to admin panel
-            $_SESSION['username'] = $username;
-            header("Location: AdminPanel.php");
-            exit();
-        } else {
-            // Incorrect password
-            echo "Incorrect password";
-            exit(); // Add exit here to prevent further execution
-        }
+    // Process image upload
+    $target_dir = "uploads/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check !== false) {
+        $uploadOk = 1;
     } else {
-        // User doesn't exist, register the user
-        // Get the current timestamp
-        $current_timestamp = date('Y-m-d H:i:s');
+        echo "File is not an image.";
+        $uploadOk = 0;
+    }
+    // Check file size
+    if ($_FILES["image"]["size"] > 500000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+    }
+    // Allow certain file formats
+    if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
+    ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+    }
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+    } else {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
+            // SQL query to insert a new user with default CreatedAt time
+            $query = "INSERT INTO user (email, username, password, image) VALUES ('$email', '$username', '$hashed_password', '$target_file')";
 
-        // SQL query to insert a new user with default CreatedAt time
-        $query = "INSERT INTO user (email, username, password, CreatedAt) VALUES ('$email', '$username', '$hashed_password', '$current_timestamp')";
-
-        if (mysqli_query($conn, $query)) {
-            // User registered successfully, start the session and redirect to admin panel
-            $_SESSION['username'] = $username;
-            header("Location: AdminPanel.php");
-            exit();
+            if (mysqli_query($conn, $query)) {
+                // User registered successfully, start the session and redirect to admin panel
+                $_SESSION['username'] = $username;
+                header("Location: AdminPanel.php");
+                exit();
+            } else {
+                // Error occurred during registration
+                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+            }
         } else {
-            // Error occurred during registration
-            echo "Error: " . $query . "<br>" . mysqli_error($conn);
-            exit(); // Add exit here to prevent further execution
+            echo "Sorry, there was an error uploading your file.";
         }
     }
 }
