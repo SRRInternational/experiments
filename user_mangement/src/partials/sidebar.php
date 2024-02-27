@@ -5,7 +5,7 @@
 >
   <!-- SIDEBAR HEADER -->
   <div class="flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5">
-    <a href="index.html">
+    <a href="index.php">
       <img src="./images/logo/logo.svg" alt="Logo" />
     </a>
 
@@ -106,7 +106,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="index.html"
+                    href="index.php"
                     :class="page === 'ecommerce' && '!text-white'"
                     >eCommerce
                   </a>
@@ -121,7 +121,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="calendar.html"
+              href="calendar.php"
               @click="selected = (selected === 'Calendar' ? '':'Calendar')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Calendar') && (page === 'calendar') }"
             >
@@ -148,7 +148,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm px-4 py-2 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="profile.html"
+              href="profile.php"
               @click="selected = (selected === 'Profile' ? '':'Profile')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Profile') && (page === 'profile') }"
               :class="page === 'profile' && 'bg-graydark'"
@@ -243,7 +243,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="form-elements.html"
+                    href="form-elements.php"
                     :class="page === 'formElements' && '!text-white'"
                     >Form Elements</a
                   >
@@ -251,7 +251,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="form-layout.html"
+                    href="form-layout.php"
                     :class="page === 'formLayout' && '!text-white'"
                     >Form Layout</a
                   >
@@ -266,7 +266,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="tables.html"
+              href="tables.php"
               @click="selected = (selected === 'Tables' ? '':'Tables')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Tables') && (page === 'tables') }"
             >
@@ -305,7 +305,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="settings.html"
+              href="settings.php"
               @click="selected = (selected === 'Settings' ? '':'Settings')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Settings') && (page === 'settings') }"
               :class="page === 'settings' && 'bg-graydark'"
@@ -356,7 +356,7 @@
           <li>
             <a
               class="group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4"
-              href="chart.html"
+              href="chart.php"
               @click="selected = (selected === 'Chart' ? '':'Chart')"
               :class="{ 'bg-graydark dark:bg-meta-4': (selected === 'Chart') && (page === 'Chart') }"
             >
@@ -466,7 +466,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="alerts.html"
+                    href="alerts.php"
                     :class="page === 'alerts' && '!text-white'"
                     >Alerts</a
                   >
@@ -475,7 +475,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="buttons.html"
+                    href="buttons.php"
                     :class="page === 'buttons' && '!text-white'"
                     >Buttons</a
                   >
@@ -553,7 +553,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="signin.html"
+                    href="signin.php"
                     :class="page === 'signin' && '!text-white'"
                     >Sign In</a
                   >
@@ -561,7 +561,7 @@
                 <li>
                   <a
                     class="group relative flex items-center gap-2.5 rounded-md px-4 font-medium text-bodydark2 duration-300 ease-in-out hover:text-white"
-                    href="signup.html"
+                    href="signup.php"
                     :class="page === 'signup' && '!text-white'"
                     >Sign Up</a
                   >

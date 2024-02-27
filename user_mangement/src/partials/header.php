@@ -38,7 +38,7 @@
         </span>
       </button>
       <!-- Hamburger Toggle BTN -->
-      <a class="block flex-shrink-0 lg:hidden" href="index.html">
+      <a class="block flex-shrink-0 lg:hidden" href="index.php">
         <img src="./images/logo/logo-icon.svg" alt="Logo" />
       </a>
     </div>
@@ -307,7 +307,7 @@
               <li>
                 <a
                   class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                  href="messages.html"
+                  href="messages.php"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
                     <img src="./images/user/user-02.png" alt="User" />
@@ -325,7 +325,7 @@
               <li>
                 <a
                   class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                  href="messages.html"
+                  href="messages.php"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
                     <img src="./images/user/user-01.png" alt="User" />
@@ -343,7 +343,7 @@
               <li>
                 <a
                   class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                  href="messages.html"
+                  href="messages.php"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
                     <img src="./images/user/user-03.png" alt="User" />
@@ -361,7 +361,7 @@
               <li>
                 <a
                   class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                  href="messages.html"
+                  href="messages.php"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
                     <img src="./images/user/user-04.png" alt="User" />
@@ -379,7 +379,7 @@
               <li>
                 <a
                   class="flex gap-4.5 border-t border-stroke px-4.5 py-3 hover:bg-gray-2 dark:border-strokedark dark:hover:bg-meta-4"
-                  href="messages.html"
+                  href="messages.php"
                 >
                   <div class="h-12.5 w-12.5 rounded-full">
                     <img src="./images/user/user-02.png" alt="User" />
@@ -451,7 +451,7 @@
           >
             <li>
               <a
-                href="profile.html"
+                href="profile.php"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
@@ -476,7 +476,7 @@
             </li>
             <li>
               <a
-                href="messages.html"
+                href="messages.php"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
@@ -497,7 +497,7 @@
             </li>
             <li>
               <a
-                href="settings.html"
+                href="settings.php"
                 class="flex items-center gap-3.5 text-sm font-medium duration-300 ease-in-out hover:text-primary lg:text-base"
               >
                 <svg
