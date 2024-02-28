@@ -17,54 +17,36 @@ if (isset($_SESSION['username'])) {
     <!-- Include Tailwind CSS -->
 
     <script src="https://cdn.tailwindcss.com"></script>
-
 </head>
 
 <body class="bg-gray-100 flex justify-center items-center h-screen flex-col">
 
     <div class="bg-white flex gap-4 p-8 justify-between w-[1100px] rounded-3xl shadow-md">
         <div class="space-y-5 flex flex-col w-full">
-            <div class="w-16 h-16">
-                <image src="./images/google.png" alt="google" />
+            <div class="w-16 h-16 ">
+                <image src="./images/logo.png" class="object-cover w-full h-full" alt="google" />
             </div>
             <P class=" text-3xl font-normal">Login to Your Account</P>
-            <p class="text-2xl">Enter You Details</p>
+            <p class="text-2xl">Enter Your Details</p>
 
         </div>
-        <form class="w-full" method="post" enctype="multipart/form-data" class="flex flex-col justify-center">
+        <form method="post" enctype="multipart/form-data" class="flex flex-col justify-center w-full">
 
-            <div class="mb-4">
-                <label class="mb-2.5 block font-medium text-black ">Email</label>
-                <div class="relative">
-                    <input type="email" name="email" placeholder="Enter your email" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
-
-                    <span class="absolute right-4 top-4">
-                        <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g opacity="0.5">
-                                <path d="M19.2516 3.30005H2.75156C1.58281 3.30005 0.585938 4.26255 0.585938 5.46567V16.6032C0.585938 17.7719 1.54844 18.7688 2.75156 18.7688H19.2516C20.4203 18.7688 21.4172 17.8063 21.4172 16.6032V5.4313C21.4172 4.26255 20.4203 3.30005 19.2516 3.30005ZM19.2516 4.84692C19.2859 4.84692 19.3203 4.84692 19.3547 4.84692L11.0016 10.2094L2.64844 4.84692C2.68281 4.84692 2.71719 4.84692 2.75156 4.84692H19.2516ZM19.2516 17.1532H2.75156C2.40781 17.1532 2.13281 16.8782 2.13281 16.5344V6.35942L10.1766 11.5157C10.4172 11.6875 10.6922 11.7563 10.9672 11.7563C11.2422 11.7563 11.5172 11.6875 11.7578 11.5157L19.8016 6.35942V16.5688C19.8703 16.9125 19.5953 17.1532 19.2516 17.1532Z" fill="" />
-                            </g>
-                        </svg>
-                    </span>
+            <div class="my-3">
+                <div class="relative w-full h-10">
+                    <input name="email" class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-gray-800 focus:border-t-transparent text-m px-3 py-2.5 rounded-[7px] border-gray-800 focus:border-blue-600" placeholder=" " /><label class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[14px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-500 peer-focus:text-blue-600 before:border-blue-gray-200 peer-focus:before:!border-blue-600 after:border-blue-600 peer-focus:after:!border-blue-600">Email
+                    </label>
+                </div>
+            </div>
+            <div class="my-3">
+                <div class="relative w-full h-10 ">
+                    <input name="password" type="password" class="peer w-full h-full bg-transparent text-blue-gray-700 font-sans font-normal outline outline-0 focus:outline-0 disabled:bg-blue-gray-50 disabled:border-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 border focus:border-2 border-t-gray-800 focus:border-t-transparent text-m px-3 py-2.5 rounded-[7px] border-gray-800 focus:border-blue-600" placeholder=" " /><label class="flex w-full h-full select-none pointer-events-none absolute left-0 font-normal !overflow-visible truncate peer-placeholder-shown:text-blue-gray-500 leading-tight peer-focus:leading-tight peer-disabled:text-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500 transition-all -top-1.5 peer-placeholder-shown:text-sm text-[11px] peer-focus:text-[14px] before:content[' '] before:block before:box-border before:w-2.5 before:h-1.5 before:mt-[6.5px] before:mr-1 peer-placeholder-shown:before:border-transparent before:rounded-tl-md before:border-t peer-focus:before:border-t-2 before:border-l peer-focus:before:border-l-2 before:pointer-events-none before:transition-all peer-disabled:before:border-transparent after:content[' '] after:block after:flex-grow after:box-border after:w-2.5 after:h-1.5 after:mt-[6.5px] after:ml-1 peer-placeholder-shown:after:border-transparent after:rounded-tr-md after:border-t peer-focus:after:border-t-2 after:border-r peer-focus:after:border-r-2 after:pointer-events-none after:transition-all peer-disabled:after:border-transparent peer-placeholder-shown:leading-[3.75] text-gray-500 peer-focus:text-blue-600 before:border-blue-gray-200 peer-focus:before:!border-blue-600 after:border-blue-600 peer-focus:after:!border-blue-600">Password
+                    </label>
                 </div>
             </div>
 
-            <div class="mb-4">
-                <label class="mb-2.5 block font-medium text-black ">Password</label>
-                <div class="relative">
-                    <input type="password" name="password" placeholder="Enter your password" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
-
-                    <span class="absolute right-4 top-4">
-                        <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <g opacity="0.5">
-                                <path d="M16.1547 6.80626V5.91251C16.1547 3.16251 14.0922 0.825009 11.4797 0.618759C10.0359 0.481259 8.59219 0.996884 7.52656 1.95938C6.46094 2.92188 5.84219 4.29688 5.84219 5.70626V6.80626C3.84844 7.18438 2.33594 8.93751 2.33594 11.0688V17.2906C2.33594 19.5594 4.19219 21.3813 6.42656 21.3813H15.5016C17.7703 21.3813 19.6266 19.525 19.6266 17.2563V11C19.6609 8.93751 18.1484 7.21876 16.1547 6.80626ZM8.55781 3.09376C9.31406 2.40626 10.3109 2.06251 11.3422 2.16563C13.1641 2.33751 14.6078 3.98751 14.6078 5.91251V6.70313H7.38906V5.67188C7.38906 4.70938 7.80156 3.78126 8.55781 3.09376ZM18.1141 17.2906C18.1141 18.7 16.9453 19.8688 15.5359 19.8688H6.46094C5.05156 19.8688 3.91719 18.7344 3.91719 17.325V11.0688C3.91719 9.52189 5.15469 8.28438 6.70156 8.28438H15.2953C16.8422 8.28438 18.1141 9.52188 18.1141 11V17.2906Z" fill="" />
-                                <path d="M10.9977 11.8594C10.5852 11.8594 10.207 12.2031 10.207 12.65V16.2594C10.207 16.6719 10.5508 17.05 10.9977 17.05C11.4102 17.05 11.7883 16.7063 11.7883 16.2594V12.6156C11.7883 12.2031 11.4102 11.8594 10.9977 11.8594Z" fill="" />
-                            </g>
-                        </svg>
-                    </span>
-                </div>
-            </div>
             <div class=" w-full mb-4 flex items-end justify-end ">
-                <button type="submit" class="self-end  bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Log in</button>
+                <button type="submit" class="self-end  bg-blue-700 text-white py-2 px-4 rounded-md hover:bg-blue-600">Log in</button>
             </div>
         </form>
     </div>

@@ -28,14 +28,14 @@ if (isset($_SESSION['username'])) {
                 <image src="./images/google.png" alt="google" />
             </div>
             <P class=" text-3xl font-normal">Create Your Account</P>
-            <p class="text-2xl">Enter You Details</p>
+            <p class="text-2xl">Enter Your Details</p>
 
         </div>
         <form class="w-full" method="post" enctype="multipart/form-data">
             <div class="mb-4">
                 <label class="mb-2.5 block font-medium text-black">Name</label>
                 <div class="relative">
-                    <input name="username" type="text" placeholder="Enter your full name" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
+                    <input name="username" type="text" placeholder="Enter your full name" class="w-full rounded-lg border border-black bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
 
                     <span class="absolute right-4 top-4">
                         <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -51,7 +51,7 @@ if (isset($_SESSION['username'])) {
             <div class="mb-4">
                 <label class="mb-2.5 block font-medium text-black ">Email</label>
                 <div class="relative">
-                    <input type="email" name="email" placeholder="Enter your email" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
+                    <input type="email" name="email" placeholder="Enter your email" class="w-full rounded-lg border border-black bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
 
                     <span class="absolute right-4 top-4">
                         <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +66,7 @@ if (isset($_SESSION['username'])) {
             <div class="mb-4">
                 <label class="mb-2.5 block font-medium text-black ">Password</label>
                 <div class="relative">
-                    <input type="password" name="password" placeholder="Enter your password" class="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
+                    <input type="password" name="password" placeholder="Enter your password" class="w-full rounded-lg border border-black bg-transparent py-4 pl-6 pr-10 outline-none focus:border-blue-600 focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-blue-600" />
 
                     <span class="absolute right-4 top-4">
                         <svg class="fill-current" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
