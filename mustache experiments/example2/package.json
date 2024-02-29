@@ -1,0 +1,15 @@
+{
+  "name": "example2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "render.js",
+  "scripts": {
+    "start": "node render.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mustache": "^4.2.0"
+  }
+}
