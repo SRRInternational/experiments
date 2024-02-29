@@ -1,3 +1,4 @@
 **/node_modules/**
 usermanagement/vendor/**
+**/vendor/**
 **/build/**
