@@ -42,8 +42,17 @@ module.exports = {
     static: {
       directory: path.join(__dirname, "./build"),
     },
-    compress: true,
     port: 3000,
+    hot: true,
+    open: true,
+    proxy: {
+      "/tailadmin": {
+        target: "http://localhost:9080",
+        pathRewrite: { "^/tailadmin": "" },
+        changeOrigin: true,
+        secure: false,
+      },
+    },
   },
   module: {
     rules: [
