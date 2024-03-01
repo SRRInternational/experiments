@@ -1,0 +1,17 @@
+{
+    "name": "asus/example5",
+    "autoload": {
+        "psr-4": {
+            "Asus\\Example5\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Akshay Moolya",
+            "email": "akshay.moolya@srrintl.com"
+        }
+    ],
+    "require": {
+        "mustache/mustache": "^2.14"
+    }
+}

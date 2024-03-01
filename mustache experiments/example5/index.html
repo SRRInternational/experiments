@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorite Foods</title>
+  </head>
+  <body>
+    <h1>Favorite Foods</h1>
+    <form action="generate.php" method="POST">
+      <label for="foodInput">Enter your favorite food:</label>
+      <input type="text" id="foodInput" name="food" required />
+      <button type="submit">Add</button>
+    </form>
+    <h2>List of Favorite Foods:</h2>
+    <ul>
+      {{#foods}}
+      <li>{{.}}</li>
+      {{/foods}}
+    </ul>
+  </body>
+</html>
