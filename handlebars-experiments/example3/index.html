@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Handlebars Example 3</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div id="output"></div>
+
+    <script id="weather-template" type="text/x-handlebars-template">
+      <h1>Current Weather</h1>
+      <p>Temperature: {{formatTemperature temperature}}°C</p>
+      <p>Conditions: {{weatherCondition condition}}</p>
+    </script>
+    <button onclick="renderWeather()">Render Weather</button>
+  </body>
+</html>
