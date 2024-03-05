@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown Menu</title>
+  </head>
+  <body>
+    <div id="app" x-data="{ isOpen: false }">
+      <h1>Dropdown Menu</h1>
+
+      <!-- Dropdown Button -->
+      <button @click="isOpen = !isOpen">Toggle Dropdown</button>
+
+      <!-- Dropdown Content (hidden by default) -->
+      <div x-show="isOpen">
+        <ul>
+          <li>Option 1</li>
+          <li>Option 2</li>
+          <li>Option 3</li>
+        </ul>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js"
+      defer
+    ></script>
+  </body>
+</html>
