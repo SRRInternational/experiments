@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter App</title>
+  </head>
+  <body>
+    <div id="app" x-data="{ count: 0 }">
+      <h1>Counter App</h1>
+
+      <!-- Counter Display -->
+      <div>
+        <p>Count: <span x-text="count"></span></p>
+      </div>
+
+      <!-- Buttons -->
+      <div>
+        <button @click="count++">Increment</button>
+        <button @click="count--">Decrement</button>
+        <button @click="count = 0">Reset</button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js"
+      defer
+    ></script>
+    <script src="script.js"></script>
+  </body>
+</html>
