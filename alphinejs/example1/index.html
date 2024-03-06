@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter App</title>
+    <script src="./alpine-3.13.6/packages/alpinejs/builds/cdn.js"></script>
   </head>
   <body>
     <div id="app" x-data="{ count: 0 }">
@@ -21,11 +22,5 @@
         <button @click="count = 0">Reset</button>
       </div>
     </div>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js"
-      defer
-    ></script>
-    <script src="script.js"></script>
   </body>
 </html>
