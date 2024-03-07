@@ -1,5 +1,6 @@
 <?php
 require_once "./connection.php";
+require_once "./classes/crud.php";
 session_start();
 if (!isset($_SESSION['username'])) {
   header("Location: login.php");
@@ -25,7 +26,7 @@ if (!isset($_SESSION['username'])) {
 
 </head>
 
-<body  x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
+<body x-data="{ page: 'ecommerce', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
          darkMode = JSON.parse(localStorage.getItem('darkMode'));
          $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
   <!-- ===== Preloader Start ===== -->
@@ -50,7 +51,7 @@ if (!isset($_SESSION['username'])) {
       <!-- ===== Header End ===== -->
 
       <!-- ===== Main Content Start ===== -->
-      <main>
+      <main class="p-4">
         <?php include './partials/table-01.php'; ?>
       </main>
       <!-- ===== Main Content End ===== -->

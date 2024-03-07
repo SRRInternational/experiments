@@ -1,6 +1,6 @@
 <div class='rounded-sm border border-stroke bg-white px-5 pb-2.5 pt-6 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:pb-1'>
   <h4 class='mb-6 text-xl font-bold text-black dark:text-white'>
-    Top Channels
+    Users
   </h4>
 
   <div class='flex flex-col'>
@@ -30,7 +30,7 @@
       <h5 class="text-sm font-medium uppercase xsm:text-base">Mobile no</h5>
     </div>
     <div class="hidden p-2.5 text-center sm:block xl:p-5">
-      <h5 class="text-sm font-medium uppercase xsm:text-base">Conversion</h5>
+      <h5 class="text-sm font-medium uppercase xsm:text-base">Actions</h5>
     </div>
   </div>';
 
