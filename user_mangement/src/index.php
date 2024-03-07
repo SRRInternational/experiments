@@ -1,3 +1,12 @@
+<?php
+require_once "./connection.php";
+session_start();
+if (!isset($_SESSION['username'])) {
+  header("Location: login.php");
+  exit(); // Add exit here to prevent further execution
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,6 +58,18 @@
     <!-- ===== Content Area End ===== -->
   </div>
   <!-- ===== Page Wrapper End ===== -->
+
+  <?php
+
+  if (isset($_POST['Logout'])) {
+    session_destroy();
+    // Redirect to the login page
+    header("Location: login.php");
+    exit; // Add exit here to prevent further execution
+  }
+  ?>
+
+
 </body>
 
 </html>
