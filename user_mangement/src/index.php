@@ -6,6 +6,13 @@ if (!isset($_SESSION['username'])) {
   header("Location: login.php");
   exit(); // Add exit here to prevent further execution
 }
+
+if (isset($_POST['Logout'])) {
+  session_destroy();
+  // Redirect to the login page
+  header("Location: login.php");
+  exit; // Add exit here to prevent further execution
+}
 ?>
 
 <!DOCTYPE html>
@@ -60,15 +67,7 @@ if (!isset($_SESSION['username'])) {
   </div>
   <!-- ===== Page Wrapper End ===== -->
 
-  <?php
 
-  if (isset($_POST['Logout'])) {
-    session_destroy();
-    // Redirect to the login page
-    header("Location: login.php");
-    exit; // Add exit here to prevent further execution
-  }
-  ?>
 
 
 </body>

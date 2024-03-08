@@ -1,9 +1,81 @@
 <?php
 require_once "./connection.php";
 session_start();
+
 if (isset($_SESSION['username'])) {
     header("Location: index.php");
     exit(); // Add exit here to prevent further execution
+}
+
+// Check if the form is submitted, validate the data, and add the user in the database
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // Validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Invalid email format";
+        exit();
+    }
+
+    // Encrypt the password
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Process image upload
+    $target_dir = "./uploads/";
+    $target_file = $target_dir . basename($_FILES["image"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    // Check if image file is a actual image or fake image
+    $check = getimagesize($_FILES["image"]["tmp_name"]);
+    if ($check !== false) {
+        $uploadOk = 1;
+    } else {
+        echo "File is not an image.";
+        $uploadOk = 0;
+        exit();
+    }
+    // Check file size
+    if ($_FILES["image"]["size"] > 5000000) {
+        echo "Sorry, your file is too large.";
+        $uploadOk = 0;
+        exit();
+    }
+    // Allow certain file formats
+    if (
+        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+        && $imageFileType != "gif"
+    ) {
+        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $uploadOk = 0;
+        exit();
+    }
+    // Check if $uploadOk is set to 0 by an error
+    if ($uploadOk == 0) {
+        echo "Sorry, your file was not uploaded.";
+        exit();
+    } else {
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
+            // SQL query to insert a new user with default CreatedAt time
+            $query = "INSERT INTO user (email, username, password, image) VALUES ('$email', '$username', '$hashed_password', '$target_file')";
+
+            if (mysqli_query($conn, $query)) {
+                // User registered successfully, start the session and redirect to admin panel
+                $_SESSION['username'] = $username;
+                header("Location: userdetails.php");
+                exit();
+            } else {
+                // Error occurred during registration
+                echo "Error: " . $query . "<br>" . mysqli_error($conn);
+                exit();
+            }
+        } else {
+            echo "Sorry, there was an error uploading your file.";
+            exit();
+        }
+    }
 }
 ?>
 
@@ -88,72 +160,5 @@ if (isset($_SESSION['username'])) {
 
 </body>
 
-<?php
-// Check if the form is submitted, validate the data, and add the user in the database
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['email'];
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Validate email
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format";
-        exit();
-    }
-
-    // Encrypt the password
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
-    // Process image upload
-    $target_dir = "./uploads/";
-    $target_file = $target_dir . basename($_FILES["image"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-    // Check if image file is a actual image or fake image
-    $check = getimagesize($_FILES["image"]["tmp_name"]);
-    if ($check !== false) {
-        $uploadOk = 1;
-    } else {
-        echo "File is not an image.";
-        $uploadOk = 0;
-    }
-    // Check file size
-    if ($_FILES["image"]["size"] > 5000000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }
-    // Allow certain file formats
-    if (
-        $imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif"
-    ) {
-        echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
-    }
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
-            // SQL query to insert a new user with default CreatedAt time
-            $query = "INSERT INTO user (email, username, password, image) VALUES ('$email', '$username', '$hashed_password', '$target_file')";
-
-            if (mysqli_query($conn, $query)) {
-                // User registered successfully, start the session and redirect to admin panel
-                $_SESSION['username'] = $username;
-                header("Location: index.php");
-                exit();
-            } else {
-                // Error occurred during registration
-                echo "Error: " . $query . "<br>" . mysqli_error($conn);
-            }
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-    }
-}
-?>
 
 </html>

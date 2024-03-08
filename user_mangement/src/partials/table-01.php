@@ -6,7 +6,11 @@
   <div class='flex flex-col'>
 
     <?php
-    $sql = "SELECT username, email, CreatedAt, image FROM user WHERE username != 'admin'";
+    $currentUsername = $_SESSION['username'];
+
+    // Modify the SQL query to exclude the current user's username
+    $sql = "SELECT username, email, mobile, CreatedAt, image FROM user WHERE username !=  '$currentUsername'";
+
     $result = mysqli_query($conn, $sql);
 
     if (!$result) {
@@ -41,7 +45,9 @@
       <div class="h-11 w-11" style="border-radius: 90px;">
       <img class="object-cover h-full w-full rounded-full" src="' . $row["image"] . '" alt="Brand" />
     </div>
-        <p class="hidden font-medium text-black dark:text-white sm:block">' . $row['username'] . '</p>
+        <p class="hidden font-medium text-black dark:text-white sm:block">
+        <a href="user.php?username=' . $row['username'] . '" class="text-sky-600 hover:underline">' . $row['username'] . '</a>
+        </p>
       </div>
 
       <div class="flex items-center justify-center p-2.5 xl:p-5">
@@ -53,11 +59,16 @@
       </div>
 
       <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-        <p class="font-medium text-black dark:text-white">590</p>
+        <p class="font-medium text-black dark:text-white">' . $row['mobile'] . '</p>
       </div>
 
-      <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-        <p class="font-medium text-meta-5">4.8%</p>
+      <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5 gap-2">
+      <a href="#" class="inline-flex items-center justify-center rounded-md bg-primary px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+      View
+    </a>
+    <a href="#" class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+    Edit
+  </a>
       </div>
     </div>';
         }

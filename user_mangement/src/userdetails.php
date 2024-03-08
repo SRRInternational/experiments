@@ -33,6 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Check if user data is updated successfully
     if ($success) {
         echo "<script>alert('User data updated successfully');</script>";
+        header("Location: index.php");
     } else {
         echo "<script>alert('Failed to update user data');</script>";
     }
