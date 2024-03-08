@@ -1,9 +1,39 @@
 <?php
 require_once "connection.php";
 session_start();
+
+// Redirect if user is already logged in
 if (isset($_SESSION['username'])) {
     header("Location: index.php");
-    exit(); // Add exit here to prevent further execution
+    exit();
+}
+
+// Handle form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
+    // Get username and password from the form
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    // SQL query to retrieve user information based on the username
+    $query = "SELECT * FROM user WHERE username='$username'";
+    $result = mysqli_query($conn, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $user = mysqli_fetch_assoc($result);
+        // Verify password
+        if (password_verify($password, $user['password'])) {
+            // Password is correct, start session and redirect to admin panel
+            $_SESSION['username'] = $username;
+            header("Location: index.php");
+            exit();
+        } else {
+            // Incorrect password
+            $error = "Incorrect username or password.";
+        }
+    } else {
+        // User not found
+        $error = "User not found.";
+    }
 }
 ?>
 
@@ -15,7 +45,6 @@ if (isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <!-- Include Tailwind CSS -->
-
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
@@ -30,7 +59,7 @@ if (isset($_SESSION['username'])) {
             <p class="text-2xl">Enter Your Details</p>
 
         </div>
-        <form method="post" enctype="multipart/form-data" class="flex flex-col justify-center w-full">
+        <form method="post" name="login" enctype="multipart/form-data" class="flex flex-col justify-center w-full">
 
             <div class="my-3">
                 <div class="bg-white rounded-lg">
@@ -51,10 +80,14 @@ if (isset($_SESSION['username'])) {
                 <button class="self-end  bg-transparent text-blue-600 py-2 px-4 rounded-3xl hover:bg-gray-200/50 font-medium">
                     <a href="signup.php">Create Account</a>
                 </button>
-                <button type="submit" class="self-end  bg-blue-700 text-white py-2 px-4 rounded-3xl hover:bg-blue-600">Log in</button>
+                <button type="submit" name="login" class="self-end  bg-blue-700 text-white py-2 px-4 rounded-3xl hover:bg-blue-600">Log in</button>
             </div>
         </form>
+        <?php if (isset($error)) : ?>
+            <p><?php echo $error; ?></p>
+        <?php endif; ?>
     </div>
+
     <div class=" flex justify-between w-[1100px] mt-2">
         <form class="max-w-[200px] w-full">
             <select id="countries" class="bg-transparent hover:bg-gray-300/50 border-2 border-transparent text-gray-900 text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full py-1.5 px-2.5">
@@ -71,41 +104,6 @@ if (isset($_SESSION['username'])) {
             <button class="text-xs hover:bg-gray-300/50 py-1 px-4 rounded-xl">Term </button>
         </div>
     </div>
-
-
 </body>
-
-<?php
-// Check if the form is submitted, validate the data, and add the user in the database
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['login'])) {
-        // Handle login
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-
-        // SQL query to retrieve user information based on the username
-        $query = "SELECT * FROM user WHERE username='$username'";
-        $result = mysqli_query($conn, $query);
-
-        if ($result && mysqli_num_rows($result) > 0) {
-            $user = mysqli_fetch_assoc($result);
-            // Verify password
-            if (password_verify($password, $user['password'])) {
-                // Password is correct, start session and redirect to admin panel
-                session_start();
-                $_SESSION['username'] = $username;
-                header("Location: index.php");
-                exit();
-            } else {
-                // Incorrect password
-                echo "Incorrect username or password.";
-            }
-        } else {
-            // User not found
-            echo "User not found.";
-        }
-    }
-}
-?>
 
 </html>
