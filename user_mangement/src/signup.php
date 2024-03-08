@@ -136,8 +136,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </label>
                 <input type="file" name="image" class="w-full cursor-pointer rounded-lg border-[1.5px] border-stroke bg-transparent font-normal outline-none transition file:mr-5 file:border-none file:cursor-pointer file:border-0 file:border-r  file:border-stroke file:bg-whiter file:px-5 file:py-2 file:hover:bg-blue-600 file:hover:bg-opacity-10 focus:border-blue-600 active:border-primary disabled:cursor-default disabled:bg-whiter " />
             </div>
-            <div class=" w-full mt-4 flex items-end justify-end ">
-                <button type="submit" class="self-end  bg-blue-700 text-white py-2 px-4 rounded-3xl hover:bg-blue-600">Log in</button>
+            <div class=" w-full mt-4 flex items-end justify-end gap-2 ">
+                <button class="self-end  bg-transparent text-blue-600 py-2 px-4 rounded-3xl hover:bg-gray-200/50 font-medium">
+                    <a href="login.php">Log in</a>
+                </button>
+                <button type="submit" class="self-end  bg-blue-700 text-white py-2 px-4 rounded-3xl hover:bg-blue-600">Sign up</button>
             </div>
         </form>
     </div>
