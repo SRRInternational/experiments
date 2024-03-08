@@ -32,54 +32,31 @@ class UserCRUD
     }
 
 
-    public function getUserFromSession()
+    public function getUserFromSession(): ?array
     {
-        // Start the session
-
-
-        // Check if the username is set in the session
         if (isset($_SESSION['username'])) {
-            // Retrieve the username from the session
             $username = $_SESSION['username'];
-
-            // Prepare a SQL query to select the user based on the username
             $sql = "SELECT * FROM user WHERE username = ?";
-
-            // Prepare the SQL statement
             $stmt = mysqli_prepare($this->conn, $sql);
-
-            // Bind parameters
             mysqli_stmt_bind_param($stmt, "s", $username);
-
-            // Execute the statement
             mysqli_stmt_execute($stmt);
-
-            // Get the result
             $result = mysqli_stmt_get_result($stmt);
-
-            // Check if the user is found
-            if ($row = mysqli_fetch_assoc($result)) {
-                // Return the user data
-                return $row;
-            } else {
-                // If the user is not found, return null
-                return null;
-            }
+            $row = mysqli_fetch_assoc($result);
+            return $row ?: null;
         } else {
-            // If the username is not set in the session, return null
             return null;
         }
     }
 
     // Method to update user data
-    public function updateUser($username, $email, $imagePath)
+    public function updateUser($username, $email, $imagePath, $firstname, $lastname, $mobile, $country, $bio)
     {
         // Prepare the SQL statement
-        $query = "UPDATE user SET email = ?, image = ? WHERE username = ?";
+        $query = "UPDATE user SET email = ?, image = ?,firstname = ? , lastname = ?, mobile = ?, country = ?, bio = ? WHERE username = ?";
 
         // Prepare and execute the statement
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("sss", $email, $imagePath, $username);
+        $stmt->bind_param("sss", $email, $imagePath, $username, $firstname, $lastname, $mobile, $country, $bio);
         if ($stmt->execute()) {
             return true; // User updated successfully
         } else {
