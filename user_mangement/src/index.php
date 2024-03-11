@@ -13,6 +13,20 @@ if (isset($_POST['Logout'])) {
   header("Location: login.php");
   exit; // Add exit here to prevent further execution
 }
+
+$userCRUD = new UserCRUD($conn);
+if (isset($_POST['delete'])) {
+  $username = $_POST['delete_username'];
+  if ($userCRUD->deleteUser($username)) {
+    // User deleted successfully
+    header("Location: index.php");
+    exit; // Add exit here to prevent further execution
+  } else {
+    // Error occurred during user deletion
+    echo "Error occurred during user deletion";
+  }
+}
+
 ?>
 
 <!DOCTYPE html>

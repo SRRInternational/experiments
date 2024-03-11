@@ -63,9 +63,12 @@
       </div>
 
       <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5 gap-2">
-      <a href="#" class="inline-flex items-center justify-center rounded-md bg-primary px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
-      View
-    </a>
+    <form  method="POST">
+      <input type="hidden" name="delete_username" value="' . $row['username'] . '">
+      <button  type="submit" name="delete" class="inline-flex items-center justify-center rounded-md bg-red-500 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+      delete
+      </button>
+    </form>
     <a href="#" class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
     Edit
   </a>
