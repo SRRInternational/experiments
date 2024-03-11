@@ -69,7 +69,7 @@
       delete
       </button>
     </form>
-    <a href="#" class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+    <a href="edit_user.php?username=' . $row['username'] . '"  class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
     Edit
   </a>
       </div>
