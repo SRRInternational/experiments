@@ -77,7 +77,7 @@ $userDetails = $userHandler->getUserFromSession();
             <!-- ====== Profile Section Start -->
             <div class="overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
               <div class="relative z-20 h-35 md:h-65">
-                <img src="./images/cover/cover-01.png" alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
+                <img src=<?php echo $userDetails['image'] ? $userDetails['image'] : './images/cover/cover-01.png' ?> alt="profile cover" class="h-full w-full rounded-tl-sm rounded-tr-sm object-cover object-center" />
                 <div class="absolute bottom-1 right-1 z-10 xsm:bottom-4 xsm:right-4">
                   <label for="cover" class="flex cursor-pointer items-center justify-center gap-2 rounded bg-primary px-2 py-1 text-sm font-medium text-white hover:bg-opacity-80 xsm:px-4">
                     <input type="file" name="cover" id="cover" class="sr-only" />

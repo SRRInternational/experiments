@@ -12,7 +12,12 @@ if (isset($_GET['username'])) {
     $username = $_GET['username'];
 
     $userInfo = $userHandler->getUserByUsername($username);
-    print_r($userInfo);
+    $currentLoggedInUser = $userHandler->getUserFromSession();
+
+    if ($currentLoggedInUser['isAdmin'] === 0) {
+        header("Location: index.php");
+        exit();
+    }
 } else {
     echo "Username not provided.";
     exit();

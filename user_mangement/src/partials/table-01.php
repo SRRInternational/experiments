@@ -6,80 +6,158 @@
   <div class='flex flex-col'>
 
     <?php
-    $currentUsername = $_SESSION['username'];
+    $userHandler = new UserCRUD($conn);
+    $userDetails = $userHandler->getUserFromSession();
 
-    // Modify the SQL query to exclude the current user's username
-    $sql = "SELECT username, email, mobile, CreatedAt, image FROM user WHERE username !=  '$currentUsername'";
+    if ($userDetails['isAdmin'] == 1) {
+      $currentUsername = $_SESSION['username'];
 
-    $result = mysqli_query($conn, $sql);
+      // Modify the SQL query to exclude the current user's username
+      $sql = "SELECT username, email, mobile, CreatedAt, image FROM user WHERE username !=  '$currentUsername'";
 
-    if (!$result) {
-      // If there's an error in the query, display the error message
-      echo 'Error: ' . mysqli_error($conn);
-    } else {
-      // Check if there are any rows returned
-      if (mysqli_num_rows($result) > 0) {
-        // Start HTML output
-        echo '<div class="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
-    <div class="p-2.5 xl:p-5">
-      <h5 class="text-sm font-medium uppercase xsm:text-base">Source</h5>
-    </div>
-    <div class="p-2.5 text-center xl:p-5">
-      <h5 class="text-sm font-medium uppercase xsm:text-base">Name</h5>
-    </div>
-    <div class="p-2.5 text-center xl:p-5">
-      <h5 class="text-sm font-medium uppercase xsm:text-base">Email</h5>
-    </div>
-    <div class="hidden p-2.5 text-center sm:block xl:p-5">
-      <h5 class="text-sm font-medium uppercase xsm:text-base">Mobile no</h5>
-    </div>
-    <div class="hidden p-2.5 text-center sm:block xl:p-5">
-      <h5 class="text-sm font-medium uppercase xsm:text-base">Actions</h5>
-    </div>
-  </div>';
+      $result = mysqli_query($conn, $sql);
 
-        // Loop through each row of the result set
-        while ($row = mysqli_fetch_assoc($result)) {
-          echo '<div class="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-5">
-      <div class="flex items-center gap-3 p-2.5  xl:p-5">
-      <div class="h-11 w-11" style="border-radius: 90px;">
-      <img class="object-cover h-full w-full rounded-full" src="' . $row["image"] . '" alt="Brand" />
-    </div>
-        <p class="hidden font-medium text-black dark:text-white sm:block">
-        <a href="user.php?username=' . $row['username'] . '" class="text-sky-600 hover:underline">' . $row['username'] . '</a>
-        </p>
+      if (!$result) {
+        // If there's an error in the query, display the error message
+        echo 'Error: ' . mysqli_error($conn);
+      } else {
+        // Check if there are any rows returned
+        if (mysqli_num_rows($result) > 0) {
+          // Start HTML output
+          echo '<div class="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+      <div class="p-2.5 xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Source</h5>
       </div>
-
-      <div class="flex items-center justify-center p-2.5 xl:p-5">
-        <p class="font-medium text-black dark:text-white">' . $row['username'] . '</p>
+      <div class="p-2.5 text-center xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Name</h5>
       </div>
-
-      <div class="flex items-center justify-center p-2.5 xl:p-5">
-        <p class="font-medium text-meta-3">' . $row['email'] . '</p>
+      <div class="p-2.5 text-center xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Email</h5>
       </div>
-
-      <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-        <p class="font-medium text-black dark:text-white">' . $row['mobile'] . '</p>
+      <div class="hidden p-2.5 text-center sm:block xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Mobile no</h5>
       </div>
-
-      <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5 gap-2">
-    <form  method="POST">
-      <input type="hidden" name="delete_username" value="' . $row['username'] . '">
-      <button  type="submit" name="delete" class="inline-flex items-center justify-center rounded-md bg-red-500 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
-      Delete
-      </button>
-    </form>
-    <a href="edit.php?username=' . $row['username'] . '"  class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
-    Edit
-  </a>
+      <div class="hidden p-2.5 text-center sm:block xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Actions</h5>
       </div>
     </div>';
+
+          // Loop through each row of the result set
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-5">
+        <div class="flex items-center gap-3 p-2.5  xl:p-5">
+        <div class="h-11 w-11" style="border-radius: 90px;">
+        <img class="object-cover h-full w-full rounded-full" src="' . $row["image"] . '" alt="Brand" />
+      </div>
+          <p class="hidden font-medium text-black dark:text-white sm:block">
+          <a href="user.php?username=' . $row['username'] . '" class="text-sky-600 hover:underline">' . $row['username'] . '</a>
+          </p>
+        </div>
+  
+        <div class="flex items-center justify-center p-2.5 xl:p-5">
+          <p class="font-medium text-black dark:text-white">' . $row['username'] . '</p>
+        </div>
+  
+        <div class="flex items-center justify-center p-2.5 xl:p-5">
+          <p class="font-medium text-meta-3">' . $row['email'] . '</p>
+        </div>
+  
+        <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+          <p class="font-medium text-black dark:text-white">' . $row['mobile'] . '</p>
+        </div>
+  
+        <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5 gap-2">
+      <form  method="POST">
+        <input type="hidden" name="delete_username" value="' . $row['username'] . '">
+        <button  type="submit" name="delete" class="inline-flex items-center justify-center rounded-md bg-red-500 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+        Delete
+        </button>
+      </form>
+      <a href="edit.php?username=' . $row['username'] . '"  class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+      Edit
+    </a>
+        </div>
+      </div>';
+          }
+        } else {
+          // If there are no users, display a message
+          echo 'No users found.';
         }
+      }
+    } else {
+      $currentUsername = $_SESSION['username'];
+
+      // Modify the SQL query to exclude the current user's username
+      $sql = "SELECT username, email, mobile, CreatedAt, image FROM user WHERE username !=  '$currentUsername'";
+
+      $result = mysqli_query($conn, $sql);
+
+      if (!$result) {
+        // If there's an error in the query, display the error message
+        echo 'Error: ' . mysqli_error($conn);
       } else {
-        // If there are no users, display a message
-        echo 'No users found.';
+        // Check if there are any rows returned
+        if (mysqli_num_rows($result) > 0) {
+          // Start HTML output
+          echo '<div class="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+      <div class="p-2.5 xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Source</h5>
+      </div>
+      <div class="p-2.5 text-center xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Name</h5>
+      </div>
+      <div class="p-2.5 text-center xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Email</h5>
+      </div>
+      <div class="hidden p-2.5 text-center sm:block xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Mobile no</h5>
+      </div>
+      <div class="hidden p-2.5 text-center sm:block xl:p-5">
+        <h5 class="text-sm font-medium uppercase xsm:text-base">Actions</h5>
+      </div>
+    </div>';
+
+          // Loop through each row of the result set
+          while ($row = mysqli_fetch_assoc($result)) {
+            echo '<div class="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-5">
+        <div class="flex items-center gap-3 p-2.5  xl:p-5">
+        <div class="h-11 w-11" style="border-radius: 90px;">
+        <img class="object-cover h-full w-full rounded-full" src="' . $row["image"] . '" alt="Brand" />
+      </div>
+          <p class="hidden font-medium text-black dark:text-white sm:block">
+          <a href="user.php?username=' . $row['username'] . '" class="text-sky-600 hover:underline">' . $row['username'] . '</a>
+          </p>
+        </div>
+  
+        <div class="flex items-center justify-center p-2.5 xl:p-5">
+          <p class="font-medium text-black dark:text-white">' . $row['username'] . '</p>
+        </div>
+  
+        <div class="flex items-center justify-center p-2.5 xl:p-5">
+          <p class="font-medium text-meta-3">' . $row['email'] . '</p>
+        </div>
+  
+        <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+          <p class="font-medium text-black dark:text-white">' . $row['mobile'] . '</p>
+        </div>
+  
+        <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5 gap-2">
+      
+       <a href="view.php?username=' . $row['username'] . '"  class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+      view
+       </a>
+        </div>
+      </div>';
+          }
+        } else {
+          // If there are no users, display a message
+          echo 'No users found.';
+        }
       }
     }
+
+
+
     ?>
 
 
