@@ -66,10 +66,10 @@
     <form  method="POST">
       <input type="hidden" name="delete_username" value="' . $row['username'] . '">
       <button  type="submit" name="delete" class="inline-flex items-center justify-center rounded-md bg-red-500 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
-      delete
+      Delete
       </button>
     </form>
-    <a href="edit_user.php?username=' . $row['username'] . '"  class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+    <a href="edit.php?username=' . $row['username'] . '"  class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
     Edit
   </a>
       </div>
