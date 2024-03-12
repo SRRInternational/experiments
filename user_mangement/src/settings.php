@@ -7,10 +7,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Settings | TailAdmin - Tailwind CSS Admin Dashboard Template</title>
   <link href="../output.css" rel="stylesheet">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.js" integrity="sha512-KnYVZoWDMDmJwjmoUEcEd//9bap1dhg0ltiMWtdoKwvVdmEFZGoKsFhYBzuwP2v2iHGnstBor8tjPcFQNgI5cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.js" integrity="sha512-KnYVZoWDMDmJwjmoUEcEd//9bap1dhg0ltiMWtdoKwvVdmEFZGoKsFhYBzuwP2v2iHGnstBor8tjPcFQNgI5cA==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.4/cdn.min.js" integrity="sha512-Zq7JviKo/hIy704ZFZo18ULX3LjAcbM2Qft92HrEyNCXcEtt2+0On8DaEb7Dce+AbdS+jBpBgKSD2P/0WfKhIQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
-<body x-data="{ page: 'settings', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
+<body x-data="{ page: 'setting', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
           darkMode = JSON.parse(localStorage.getItem('darkMode'));
           $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(value)))" :class="{'dark text-bodydark bg-boxdark-2': darkMode === true}">
   <!-- ===== Preloader Start ===== -->
