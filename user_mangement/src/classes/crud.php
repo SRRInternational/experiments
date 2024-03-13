@@ -49,14 +49,14 @@ class UserCRUD
     }
 
     // Method to update user data
-    public function updateUser($username, $email, $imagePath, $firstname, $lastname, $mobile, $country, $bio)
+    public function updateUser($username, $dob, $age, $profession, $email, $imagePath, $firstname, $lastname, $mobile, $country, $bio)
     {
         // Prepare the SQL statement
-        $query = "UPDATE user SET email = ?, image = ?, firstname = ?, lastname = ?, mobile = ?, country = ?, bio = ? WHERE username = ?";
+        $query = "UPDATE user SET dob = ?, age = ?, profession = ?, email = ?, image = ?, firstname = ?, lastname = ?, mobile = ?, country = ?, bio = ? WHERE username = ?";
 
         // Prepare and execute the statement
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("ssssssss", $email, $imagePath, $firstname, $lastname, $mobile, $country, $bio, $username);
+        $stmt->bind_param("sssssssssss", $email, $dob, $age, $profession, $imagePath, $firstname, $lastname, $mobile, $country, $bio, $username);
         if ($stmt->execute()) {
             return true; // User updated successfully
         } else {

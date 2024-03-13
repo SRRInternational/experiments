@@ -22,13 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
+    $dob = $_POST['dob'];
+    $age = $_POST['age'];
+    $profession = $_POST['profession'];
     $email = $_POST['email'];
     $mobile = $_POST['mobile'];
     $country = $_POST['country'];
     $bio = $_POST['bio'];
 
     // Call updateUser method to update user data
-    $success = $userHandler->updateUser($username, $email, $image, $firstname, $lastname, $mobile, $country, $bio);
+    $success = $userHandler->updateUser($username, $dob, $age, $profession, $email, $image, $firstname, $lastname, $mobile, $country, $bio);
 
     // Check if user data is updated successfully
     if ($success) {
@@ -51,6 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template
     </title>
     <link href="../output.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.10.3/cdn.js" integrity="sha512-KnYVZoWDMDmJwjmoUEcEd//9bap1dhg0ltiMWtdoKwvVdmEFZGoKsFhYBzuwP2v2iHGnstBor8tjPcFQNgI5cA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body x-data="{ page: 'formLayout', 'loaded': true, 'darkMode': true, 'stickyMenu': false, 'sidebarToggle': false, 'scrollTop': false }" x-init="
@@ -85,6 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <!-- Contact Form -->
                     <div class="max-w-2xl w-full mx-auto rounded-3xl border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark ">
+
                         <div class=" px-6.5 py-6 ">
                             <h3 class="font-semibold text-2xl text-black dark:text-white">
                                 User Details
@@ -110,6 +115,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 <div class="mb-4.5">
                                     <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                        Date of Birth <span class="text-meta-1">*</span>
+                                    </label>
+                                    <input type="text" name="dob" required placeholder="mm/dd/yyyy" class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
+                                </div>
+                                <div class="mb-4.5">
+                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                        Age <span class="text-meta-1">*</span>
+                                    </label>
+                                    <input type="text" name="age" required placeholder="Enter Your Age" class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
+                                </div>
+                                <div class="mb-4.5">
+                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
+                                        Which option best describes you? <span class="text-meta-1">*</span>
+                                    </label>
+                                    <div x-data="{ isOptionSelected: false }" class="relative z-20 bg-transparent dark:bg-form-input">
+                                        <select name="profession" required class="relative z-20 w-full appearance-none rounded border border-stroke bg-transparent px-5 py-3 outline-none transition focus:border-primary active:border-primary dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary" :class="isOptionSelected && 'text-black dark:text-white'" @change="isOptionSelected = true">
+                                            <option value="" class="text-body">
+                                                Select Your Country <span class="text-meta-1">*</span>
+                                            </option>
+                                            <option value="Student" class="text-body">Student</option>
+                                            <option value="Web developer" class="text-body">Web developer</option>
+                                            <option value="Learner" class="text-body">Learner</option>
+                                            <option value="UX/UI designer" class="text-body">UX/UI designer</option>
+                                        </select>
+                                        <span class="absolute right-4 top-1/2 z-30 -translate-y-1/2">
+                                            <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <g opacity="0.8">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 8.29289C5.68342 7.90237 6.31658 7.90237 6.70711 8.29289L12 13.5858L17.2929 8.29289C17.6834 7.90237 18.3166 7.90237 18.7071 8.29289C19.0976 8.68342 19.0976 9.31658 18.7071 9.70711L12.7071 15.7071C12.3166 16.0976 11.6834 16.0976 11.2929 15.7071L5.29289 9.70711C4.90237 9.31658 4.90237 8.68342 5.29289 8.29289Z" fill=""></path>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="mb-4.5">
+                                    <label class="mb-3 block text-sm font-medium text-black dark:text-white">
                                         Email <span class="text-meta-1">*</span>
                                     </label>
                                     <input type="email" name="email" value="<?php echo $userDetails['email']; ?>" required placeholder="Enter your email address" class="w-full rounded border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
@@ -131,10 +171,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <option value="" class="text-body">
                                                 Select Your Country <span class="text-meta-1">*</span>
                                             </option>
-                                            <option value="" class="text-body">India</option>
-                                            <option value="" class="text-body">USA</option>
-                                            <option value="" class="text-body">UK</option>
-                                            <option value="" class="text-body">Canada</option>
+                                            <option value="India" class="text-body">India</option>
+                                            <option value="USA" class="text-body">USA</option>
+                                            <option value="UK" class="text-body">UK</option>
+                                            <option value="Canada" class="text-body">Canada</option>
                                         </select>
                                         <span class="absolute right-4 top-1/2 z-30 -translate-y-1/2">
                                             <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

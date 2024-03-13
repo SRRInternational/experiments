@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bio = $_POST['bio'];
 
     // Update user details in the database
-    if ($userHandler->updateUser($username, $email, $imagepath, $firstname, $lastname, $mobile, $country, $bio)) {
+    if ($userHandler->updateUser($username, $dob, $age, $profession, $email, $imagepath, $firstname, $lastname, $mobile, $country, $bio)) {
         // User updated successfully
         header("Location: index.php");
         exit();
