@@ -25,7 +25,7 @@ require_once "./classes/crud.php";
       </a>
     </div>
     <div class="hidden sm:block">
-      <form action="https://formbold.com/s/unique_form_id" method="POST">
+      <form method="POST">
         <div class="relative">
           <button class="absolute left-0 top-1/2 -translate-y-1/2">
             <svg class="fill-body hover:fill-primary dark:fill-bodydark dark:hover:fill-primary" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -34,7 +34,7 @@ require_once "./classes/crud.php";
             </svg>
           </button>
 
-          <input type="text" placeholder="Type to search..." class="w-full bg-transparent pl-9 pr-4 focus:outline-none xl:w-125" />
+          <input type="text" name="search_username" placeholder="Type to search..." class="w-full bg-transparent pl-9 pr-4 focus:outline-none xl:w-125" />
         </div>
       </form>
     </div>

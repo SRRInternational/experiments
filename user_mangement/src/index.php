@@ -28,6 +28,9 @@ if (isset($_POST['delete'])) {
   }
 }
 
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -74,7 +77,53 @@ if (isset($_POST['delete'])) {
 
       <!-- ===== Main Content Start ===== -->
       <main class="p-4">
-        <?php include './partials/table-01.php'; ?>
+
+        <?php
+        if (isset($_POST['search_username'])) {
+          $mustache = new Mustache_Engine;
+          $searchUsername = $_POST['search_username'];
+          $sql = "SELECT username, email, mobile, CreatedAt, image FROM user WHERE username LIKE '%$searchUsername%'";
+          $result = mysqli_query($conn, $sql);
+
+          if ($result && mysqli_num_rows($result) > 0) {
+            // Render user list based on search result
+            echo '<div class="grid grid-cols-3 rounded-sm bg-gray-2 dark:bg-meta-4 sm:grid-cols-5">
+            <div class="p-2.5 xl:p-5">
+              <h5 class="text-sm font-medium uppercase xsm:text-base">Source</h5>
+            </div>
+            <div class="p-2.5 text-center xl:p-5">
+              <h5 class="text-sm font-medium uppercase xsm:text-base">Name</h5>
+            </div>
+            <div class="p-2.5 text-center xl:p-5">
+              <h5 class="text-sm font-medium uppercase xsm:text-base">Email</h5>
+            </div>
+            <div class="hidden p-2.5 text-center sm:block xl:p-5">
+              <h5 class="text-sm font-medium uppercase xsm:text-base">Mobile no</h5>
+            </div>
+            <div class="hidden p-2.5 text-center sm:block xl:p-5">
+              <h5 class="text-sm font-medium uppercase xsm:text-base">Actions</h5>
+            </div>
+          </div>';
+            $userDetails = $userHandler->getUserFromSession();
+            if ($userDetails['isAdmin'] == 1) {
+              while ($row = mysqli_fetch_assoc($result)) {
+                // Render user information
+                echo $mustache->render(file_get_contents('./templates/adminuser_list.mustache'), ['users' => $row]);
+              }
+            } else {
+              while ($row = mysqli_fetch_assoc($result)) {
+                // Render user information
+                echo $mustache->render(file_get_contents('./templates/userlist.mustache'), ['users' => $row]);
+              }
+            }
+          } else {
+            echo 'No users found.';
+          }
+        } else {
+          include './partials/table-01.php';
+        }
+        ?>
+
       </main>
       <!-- ===== Main Content End ===== -->
     </div>
