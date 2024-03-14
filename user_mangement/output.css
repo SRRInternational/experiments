@@ -850,10 +850,6 @@ body{
   height: 8.75rem;
 }
 
-.h-4{
-  height: 1rem;
-}
-
 .h-5{
   height: 1.25rem;
 }
@@ -932,10 +928,6 @@ body{
 
 .w-2{
   width: 0.5rem;
-}
-
-.w-4{
-  width: 1rem;
 }
 
 .w-5{
@@ -1363,10 +1355,6 @@ body{
   fill: currentColor;
 }
 
-.fill-gray-2{
-  fill: #F7F9FC;
-}
-
 .object-cover{
   -o-object-fit: cover;
      object-fit: cover;
@@ -1648,16 +1636,6 @@ body{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-gray-2{
-  --tw-text-opacity: 1;
-  color: rgb(247 249 252 / var(--tw-text-opacity));
-}
-
-.text-red-600{
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .placeholder-transparent::placeholder{
@@ -2309,8 +2287,70 @@ body{
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
+.file\:hover\:bg-graydark:hover::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(51 58 72 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:bg-whiter\/75:hover::file-selector-button{
+  background-color: rgb(245 247 253 / 0.75);
+}
+
+.file\:hover\:bg-whiter\/80:hover::file-selector-button{
+  background-color: rgb(245 247 253 / 0.8);
+}
+
+.file\:hover\:bg-blue-500\/80:hover::file-selector-button{
+  background-color: rgb(59 130 246 / 0.8);
+}
+
+.file\:hover\:bg-blue-500:hover::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:bg-whiter:hover::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 247 253 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:bg-blue-100:hover::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
+}
+
+.file\:hover\:bg-blue-300:hover::file-selector-button{
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+}
+
 .file\:hover\:bg-opacity-10:hover::file-selector-button{
   --tw-bg-opacity: 0.1;
+}
+
+.file\:hover\:bg-opacity-40:hover::file-selector-button{
+  --tw-bg-opacity: 0.4;
+}
+
+.file\:hover\:bg-opacity-30:hover::file-selector-button{
+  --tw-bg-opacity: 0.3;
+}
+
+.file\:hover\:bg-opacity-75:hover::file-selector-button{
+  --tw-bg-opacity: 0.75;
+}
+
+.file\:hover\:bg-opacity-0:hover::file-selector-button{
+  --tw-bg-opacity: 0;
+}
+
+.file\:hover\:bg-opacity-80:hover::file-selector-button{
+  --tw-bg-opacity: 0.8;
+}
+
+.file\:hover\:text-white:hover::file-selector-button{
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .focus\:border-blue-500:focus{

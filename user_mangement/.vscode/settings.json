@@ -1,4 +1,7 @@
 {
   "css.validate": false,
-  "prettier.printWidth": 80
+  "prettier.printWidth": 80,
+  "files.associations": {
+    "*.mustache": "html"
+  }
 }

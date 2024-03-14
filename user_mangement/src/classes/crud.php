@@ -49,20 +49,62 @@ class UserCRUD
     }
 
     // Method to update user data
-    public function updateUser($username, $dob, $age, $profession, $email, $imagePath, $firstname, $lastname, $mobile, $country, $bio)
+    public function updateUser($username, $dob, $age, $profession, $email, $imagePath, $bnr_image, $firstname, $lastname, $mobile, $country, $bio)
     {
         // Prepare the SQL statement
-        $query = "UPDATE user SET dob = ?, age = ?, profession = ?, email = ?, image = ?, firstname = ?, lastname = ?, mobile = ?, country = ?, bio = ? WHERE username = ?";
+        $query = "UPDATE user SET dob = ?, age = ?, profession = ?, email = ?, image = ?, bnr_image = ?, firstname = ?, lastname = ?, mobile = ?, country = ?, bio = ? WHERE username = ?";
 
         // Prepare and execute the statement
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("sssssssssss", $email, $dob, $age, $profession, $imagePath, $firstname, $lastname, $mobile, $country, $bio, $username);
+        $stmt->bind_param("ssssssssssss", $email, $dob, $age, $profession, $imagePath, $bnr_image, $firstname, $lastname, $mobile, $country, $bio, $username);
         if ($stmt->execute()) {
             return true; // User updated successfully
         } else {
             return false; // Error occurred during user update
         }
     }
+
+
+
+    public function uploadImage($image)
+    {
+        $targetDir = "./uploads/";
+
+
+        $target_file = $targetDir . basename($image["name"]);
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Check if image file is a actual image or fake image
+        $check = getimagesize($image["tmp_name"]);
+        if ($check === false) {
+            return ['success' => false, 'message' => "File is not an image."];
+        }
+
+        // Check file size
+        if ($image["size"] > 5000000) {
+            return ['success' => false, 'message' => "Sorry, your file is too large."];
+        }
+
+        // Allow certain file formats
+        $allowed_formats = ["jpg", "jpeg", "png", "gif"];
+        if (!in_array($imageFileType, $allowed_formats)) {
+            return ['success' => false, 'message' => "Sorry, only JPG, JPEG, PNG & GIF files are allowed."];
+        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            return ['success' => false, 'message' => "Sorry, your file was not uploaded."];
+        }
+
+        // Upload the file
+        if (move_uploaded_file($image["tmp_name"], $target_file)) {
+            return ['success' => true, 'file_path' => $target_file];
+        } else {
+            return ['success' => false, 'message' => "Sorry, there was an error uploading your file."];
+        }
+    }
+
 
 
     // Method to delete a user
