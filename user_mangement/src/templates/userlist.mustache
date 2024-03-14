@@ -1,28 +1,39 @@
-
-        {{#users}}
-        <div class="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-5">
-            <div class="flex items-center gap-3 p-2.5  xl:p-5">
-                <div class="h-11 w-11" style="border-radius: 90px;">
-                    <img class="object-cover h-full w-full rounded-full" src="{{image}}" alt="Brand" />
-                </div>
-                <p class="hidden font-medium text-black dark:text-white sm:block">
-                    <a href="view.php?username={{username}}" class="text-sky-600 hover:underline">{{username}}</a>
-                </p>
-            </div>
-            <div class="flex items-center justify-center p-2.5 xl:p-5">
-                <p class="font-medium text-black dark:text-white">{{username}}</p>
-            </div>
-            <div class="flex items-center justify-center p-2.5 xl:p-5">
-                <p class="font-medium text-meta-3">{{email}}</p>
-            </div>
-            <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
-                <p class="font-medium text-black dark:text-white">{{mobile}}</p>
-            </div>
-            <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5 gap-2">
-                <a href="view.php?username={{username}}"  class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4">
+{{#users}}
+<div
+  class="grid grid-cols-3 border-b border-stroke dark:border-strokedark sm:grid-cols-5"
+>
+  <div class="flex items-center gap-3 p-2.5 xl:p-5">
+    <div class="h-11 w-11" style="border-radius: 90px">
+      <img
+        class="h-full w-full rounded-full object-cover"
+        src="{{ image }}"
+        alt="Brand"
+      />
+    </div>
+    <p class="hidden font-medium text-black dark:text-white sm:block">
+      <a
+        href="view.php?username={{ username }}"
+        class="text-sky-600 hover:underline"
+        >{{ username }}</a
+      >
+    </p>
+  </div>
+  <div class="flex items-center justify-center p-2.5 xl:p-5">
+    <p class="font-medium text-black dark:text-white">{{ username }}</p>
+  </div>
+  <div class="flex items-center justify-center p-2.5 xl:p-5">
+    <p class="font-medium text-meta-3">{{ email }}</p>
+  </div>
+  <div class="hidden items-center justify-center p-2.5 sm:flex xl:p-5">
+    <p class="font-medium text-black dark:text-white">{{ mobile }}</p>
+  </div>
+  <div class="hidden items-center justify-center gap-2 p-2.5 sm:flex xl:p-5">
+    <a
+      href="view.php?username={{ username }}"
+      class="inline-flex items-center justify-center rounded-md bg-meta-3 px-2 py-2 text-center font-medium text-white hover:bg-opacity-90 lg:px-4 xl:px-4"
+    >
       view
-       </a>
-            </div>
-        </div>
-        {{/users}}
-
+    </a>
+  </div>
+</div>
+{{/users}}
