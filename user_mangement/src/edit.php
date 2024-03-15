@@ -27,6 +27,7 @@ if (isset($_GET['username'])) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Process form submission and update user details
+    $bnr_image = $currentLoggedInUser;
     $imagepath = $userInfo['image'];
     $firstname = $_POST['firstname'];
     $lastname = $_POST['lastname'];
@@ -36,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $bio = $_POST['bio'];
 
     // Update user details in the database
-    if ($userHandler->updateUser($username, $dob, $age, $profession, $email, $imagepath, $firstname, $lastname, $mobile, $country, $bio)) {
+    if ($userHandler->updateUser($username, $dob, $age, $profession, $email, $imagepath, $bnr_image, $firstname, $lastname, $mobile, $country, $bio)) {
         // User updated successfully
         header("Location: index.php");
         exit();
