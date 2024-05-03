@@ -1,0 +1,17 @@
+{
+  "name": "extension2",
+  "version": "0.0.1",
+  "framework": ">=5",
+  "homepage": "https://github.com/adaptlearning/extension2",
+  "issues": "https://github.com/adaptlearning/extension2/issues/new",
+  "extension": "extension2",
+  "displayName": "extension2",
+  "description": "",
+  "main": "/js/extension2.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-extension"
+  ],
+  "license": "GPL-3.0",
+  "targetAttribute": "_extension2"
+}

@@ -1,0 +1,20 @@
+{{! make the _globals object in course.json available to this template}}
+{{import_globals}}
+
+{{#if _pageLevelProgress._isCircularProgressBar}}
+  <div class="pagelevelprogress__indicator-inner progress_circular" progressType="circular" parentid="{{_id}}">
+    <svg class="progress circularProgressBar"  parentid="{{_id}}" x="0px" y="0px" viewBox="0 0 80 80">
+      <path class="track" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+      <path class="js-indicator-bar fill" stroke-dashoffset="{{percentageComplete}}" d="M5,40a35,35 0 1,0 70,0a35,35 0 1,0 -70,0" />
+    </svg>
+  </div>
+{{else}}
+  <div class="pagelevelprogress__indicator-inner progress_bar" progressType="bar" parentid="{{_id}}">
+    <div class="pagelevelprogress__indicator-bar js-indicator-bar" style="width: {{percentageComplete}}%;"></div>
+    {{#if ariaLabel}}
+      <span class="aria-label js-indicator-aria-label">
+        {{compile ariaLabel}}
+      </span>
+    {{/if}}
+  </div>
+{{/if}}
