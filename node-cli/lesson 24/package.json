@@ -1,0 +1,17 @@
+{
+  "name": "lesson-18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cli-alerts": "^1.2.2",
+    "-": "^0.0.1",
+    "chalk": "^2.4.1",
+    "log-symbols": "^1.0.0"
+  }
+}

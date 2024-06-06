@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "clear-any-console": "^1.16.2"
+  },
+  "name": "lesson-13",
+  "version": "4.3.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
