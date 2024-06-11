@@ -1,60 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Accessible Tabs Example</title>
-    <!-- Include jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Include jQuery Accessible Tabs Plugin -->
-    <script src="jqueryaccessibletabs.js"></script>
+    <title>Example tabs</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Nicolas Hoffmann" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="https://rocssti.net/downloads/rocssti-fr.css"
+    />
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script src="https://a11y.nicolas-hoffmann.net/tabs/js/jquery-accessible-tabs.js"></script>
+
     <style>
-      /* Styling for demonstration purposes */
-      .tab-content {
-        padding: 20px;
-        border: 1px solid #ccc;
-        margin-top: 10px;
+      /* --------------- styles for tabs -----------------------*/
+
+      .invisible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
       }
-      .current {
-        font-weight: bold;
+
+      .example-tabs-tabs__list {
+        margin: 0;
+        padding: 0;
       }
-      /* Hide tab content by default */
-      .tab-content {
+      .example-tabs-tabs__item {
+        display: inline-block;
+      }
+
+      .example-tabs-tabs__link {
+        display: inline-block;
+        padding: 1em 2em;
+        background: #f2f2f2;
+        cursor: pointer;
+        color: #148297;
+      }
+
+      [aria-selected="true"].example-tabs-tabs__link {
+        color: #000;
+      }
+
+      .example-tabs-tabs__content {
+        background: #f2f2f2;
+        padding: 1em;
+      }
+
+      [aria-hidden="true"].example-tabs-tabs__content {
         display: none;
+      }
+
+      #page {
+        width: 960px;
+        margin: 0 auto;
       }
     </style>
   </head>
-  <body>
-    <div id="myTabs" class="accessibleTabs">
-      <!-- Tab navigation -->
-      <h4>Tab 1</h4>
-      <h4>Tab 2</h4>
-      <h4>Tab 3</h4>
+  <body role="document">
+    <div id="page">
+      <h1>Tabs example</h1>
 
-      <!-- Tab content -->
-      <div class="tab-content">
-        <h2>Tab 1 Content</h2>
-        <p>This is the content of Tab 1.</p>
+      <div class="js-tabs">
+        <ul
+          class="js-tablist"
+          data-hx="h2"
+          data-tabs-prefix-class="example-tabs"
+        >
+          <li class="js-tablist__item">
+            <a href="#id_first" id="label_id_first" class="js-tablist__link"
+              >1st tab</a
+            >
+          </li>
+          <li class="js-tablist__item">
+            <a href="#id_second" id="label_id_second" class="js-tablist__link"
+              >2nd tab</a
+            >
+          </li>
+        </ul>
+        <div id="id_first" class="js-tabcontent">
+          here the content of 1st tab
+        </div>
+        <div id="id_second" class="js-tabcontent">
+          here the content of 2nd tab
+        </div>
       </div>
-      <div class="tab-content">
-        <h2>Tab 2 Content</h2>
-        <p>This is the content of Tab 2.</p>
+
+      <div class="js-tabs">
+        <ul
+          class="js-tablist"
+          data-existing-hx="h2"
+          data-tabs-prefix-class="example-tabs"
+        >
+          <li class="js-tablist__item">
+            <a href="#id_other" id="label_id_other" class="js-tablist__link"
+              >1st tab</a
+            >
+          </li>
+          <li class="js-tablist__item">
+            <a href="#id_another" id="label_id_another" class="js-tablist__link"
+              >2nd tab</a
+            >
+          </li>
+        </ul>
+        <div id="id_other" class="js-tabcontent">
+          <h2>title</h2>
+          here the content of 1st tab
+        </div>
+        <div id="id_another" class="js-tabcontent">
+          <h2>other title</h2>
+          here the content of 2nd tab
+        </div>
       </div>
-      <div class="tab-content">
-        <h2>Tab 3 Content</h2>
-        <p>This is the content of Tab 3.</p>
-      </div>
+      <br /><br /><br />
     </div>
-
-    <script>
-      // Initialize Accessible Tabs Plugin with modified options
-      $(document).ready(function () {
-        $("#myTabs").accessibleTabs({
-          tabhead: "h4",
-          tabbody: ".tab-content",
-          fxspeed: "fast",
-        });
-      });
-    </script>
   </body>
 </html>

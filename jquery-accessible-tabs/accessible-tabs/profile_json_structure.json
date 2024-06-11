@@ -1,0 +1,27 @@
+{
+  "fullName": "john doe",
+  "email": "john@example.com",
+  "lastAccess": {
+    "$date": "2024-05-24T11:16:23.540Z"
+  },
+  "completionStatus": {
+    "status": "complete",
+    "passed": true,
+    "percentComplete": 100
+  },
+  "accessLog": [
+    {
+      "timestamp": {
+        "$date": "2024-05-24T11:16:23.540Z"
+      }
+    },
+    {
+      "timestamp": {
+        "$date": "2024-05-24T11:16:23.540Z"
+      }
+    }
+  ],
+  "_id": {
+    "$oid": "665077074111ce4e9b07ca2a"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jQuery Dialog Example</title>
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://rocssti.net/downloads/rocssti-fr.css"
+    /> -->
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <style>
+      /* --------------- styles for tabs -----------------------*/
+
+      .invisible {
+        border: 0;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+      }
+
+      .example-tabs-tabs__list {
+        margin: 0;
+        padding: 0;
+      }
+      .example-tabs-tabs__item {
+        display: inline-block;
+      }
+
+      .example-tabs-tabs__link {
+        display: inline-block;
+        padding: 1em 2em;
+        background: #f2f2f2;
+        cursor: pointer;
+        color: #148297;
+      }
+
+      [aria-selected="true"].example-tabs-tabs__link {
+        color: #000;
+      }
+
+      .example-tabs-tabs__content {
+        background: #f2f2f2;
+        padding: 1em;
+      }
+
+      [aria-hidden="true"].example-tabs-tabs__content {
+        display: none;
+      }
+
+      #page {
+        width: 960px;
+        margin: 0 auto;
+      }
+    </style>
+
+    <!-- <script src="https://a11y.nicolas-hoffmann.net/tabs/js/jquery-accessible-tabs.js"></script> -->
+  </head>
+  <body>
+    <button id="open-dialog">Open Dialog</button>
+
+    <div id="dialog" title="Basic dialog">
+      <p>This is a jQuery UI Dialog example!</p>
+      <div class="">
+        <div class="js-tabs">
+          <ul
+            class="js-tablist"
+            data-hx="h2"
+            data-tabs-prefix-class="example-tabs"
+          >
+            <li class="js-tablist__item">
+              <a href="#id_1" id="label_id_1" class="js-tablist__link"
+                >1st tab</a
+              >
+            </li>
+            <li class="js-tablist__item">
+              <a href="#id_2" id="label_id_2" class="js-tablist__link"
+                >2nd tab</a
+              >
+            </li>
+          </ul>
+          <div id="id_1" class="js-tabcontent">here the content of 1st tab</div>
+          <div id="id_2" class="js-tabcontent">here the content of 2nd tab</div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="scripts.js"></script>
+    <script src="jquery-accessible-tabs.js"></script>
+  </body>
+</html>
