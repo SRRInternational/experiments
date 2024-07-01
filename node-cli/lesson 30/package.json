@@ -1,5 +1,5 @@
 {
-  "name": "lesson-18",
+  "name": "lesson-30",
   "version": "1.0.0",
   "description": "",
   "main": "1.js",
@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^2.4.1",
-    "cli-handle-unhandled": "^1.1.1"
+    "le-unhandled": "^1.1.1"
   }
 }

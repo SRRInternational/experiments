@@ -1,15 +1,14 @@
 {
-  "name": "lesson-18",
+  "name": "lesson-12",
   "version": "1.0.0",
   "description": "",
   "main": "1.js",
+  "bin": {
+    "harsh": "1.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^2.4.1",
-    "cli-handle-unhandled": "^1.1.1"
-  }
+  "license": "ISC"
 }

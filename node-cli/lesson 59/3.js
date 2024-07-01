@@ -1,0 +1,16 @@
+const { Confirm } = require("enquirer");
+const chalk = require("chalk");
+
+(async () => {
+  const prompt = new Confirm({
+    name: "question", // or  name: "name",
+    message: "Did you like enquirer?",
+  });
+  prompt
+    .run()
+    .then((ans) => {
+      if (ans)
+      console.log(chalk.blue("Hello " + ans))
+
+    });
+})();
