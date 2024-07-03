@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CKEditor Example</title>
+    <!-- Include CKEditor from CDN -->
+    <script src="https://cdn.ckeditor.com/4.16.1/full-all/ckeditor.js"></script>
+  </head>
+  <body>
+    <h1>CKEditor Integration Example</h1>
+    <!-- Create a textarea element to be replaced by CKEditor -->
+    <textarea name="editor1" id="editor1" rows="10" cols="80">
+        This is a sample text to be edited by CKEditor.
+    </textarea>
+
+    <!-- Initialize CKEditor on the textarea element -->
+    <script>
+      CKEDITOR.replace("editor1", {
+        dataIndentationChars: "",
+        disableNativeSpellChecker: false,
+        enterMode: CKEDITOR["ENTER_P"],
+        entities: false,
+        removePlugins: "exportpdf",
+        extraAllowedContent: "span(*)",
+        allowedContent: true,
+        on: {
+          change: function () {
+            this.trigger("change", this);
+          }.bind(this),
+          instanceReady: function () {
+            var writer = this.dataProcessor.writer;
+            var elements = Object.keys(CKEDITOR.dtd.$block);
+
+            var rules = {
+              indent: false,
+              breakBeforeOpen: false,
+              breakAfterOpen: false,
+              breakBeforeClose: false,
+              breakAfterClose: false,
+            };
+
+            writer.indentationChars = "";
+            writer.lineBreakChars = "";
+            elements.forEach(function (element) {
+              writer.setRules(element, rules);
+            });
+          },
+        },
+        toolbar: [
+          { name: "document", groups: ["mode", "document", "doctools"], items: ["Source", "-", "ShowBlocks"] },
+          { name: "clipboard", groups: ["clipboard", "undo"], items: ["PasteText", "PasteFromWord", "-", "Undo", "Redo"] },
+          { name: "editing", groups: ["find", "selection", "spellchecker"], items: ["Find", "Replace", "-", "SelectAll"] },
+          {
+            name: "paragraph",
+            groups: ["list", "indent", "blocks", "align", "bidi"],
+            items: ["NumberedList", "BulletedList", "-", "Outdent", "Indent", "-", "Blockquote", "CreateDiv"],
+          },
+          { name: "direction", items: ["BidiLtr", "BidiRtl"] },
+          "/",
+          { name: "basicstyles", groups: ["basicstyles", "cleanup"], items: ["Bold", "Italic", "Underline", "Strike", "Subscript", "Superscript", "-", "RemoveFormat"] },
+          { name: "styles", items: ["JustifyLeft", "JustifyCenter", "JustifyRight", "JustifyBlock"] },
+          { name: "links", items: ["Link", "Unlink"] },
+          { name: "colors", items: ["TextColor", "BGColor"] },
+          { name: "insert", items: ["SpecialChar", "Table"] },
+          { name: "tools", items: [] },
+          { name: "others", items: ["-"] },
+        ],
+      });
+    </script>
+  </body>
+</html>

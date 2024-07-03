@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lexical WYSIWYG Editor Example</title>
+  <!-- Include Lexical library -->
+  <script src="https://cdn.jsdelivr.net/npm/lexical@0.16.1/Lexical.min.js"></script>
+  <style>
+    /* Optional: styling for the editor */
+    .lexical-editor {
+      border: 1px solid #ccc;
+      min-height: 200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lexical WYSIWYG Editor Example</h1>
+  
+  <!-- Textarea where Lexical will replace with editor -->
+  <textarea id="myTextarea"></textarea>
+
+  <script>
+    // Initialize Lexical editor
+    const myTextarea = document.getElementById('myTextarea');
+    const editor = new Lexical.Editor(myTextarea);
+  </script>
+</body>
+</html>
