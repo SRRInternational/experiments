@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Non-React Application</title>
+    <!-- Include React and ReactDOM from CDN -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Include Babel Standalone to compile JSX on the fly -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Enable ES6 Modules -->
+    <script type="module">
+      import React from "https://unpkg.com/react@17/umd/react.development.js";
+      import ReactDOM from "https://unpkg.com/react-dom@17/umd/react-dom.development.js";
+      import YourComponent from "./YourComponent.jsx";
+
+      // Function to render the component
+      window.renderYourComponent = (elementId, props) => {
+        ReactDOM.render(
+          <YourComponent /* {...props} */ />,
+          document.getElementById(elementId)
+        );
+      };
+
+      // Render the component
+      window.renderYourComponent("your-component-root", {
+        message: "Hello, World!",
+      });
+    </script>
+  </head>
+  <body>
+    <div id="your-component-root"></div>
+  </body>
+</html>
