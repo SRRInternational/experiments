@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TinyMCE Example</title>
+    <!-- Load TinyMCE from a relative path -->
+    <script src="./tinymce.min.js"></script>
+    <script>
+        // Initialize TinyMCE
+        tinymce.init({
+            selector: '#myTextarea', // Replace with your textarea ID
+            plugins: 'autolink lists link image charmap print preview anchor',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+            height: 400 // Adjust the height as needed
+        });
+    </script>
+</head>
+<body>
+    <h1>TinyMCE Example</h1>
+    <textarea id="myTextarea">Hello, World! Start typing here...</textarea>
+</body>
+</html>
