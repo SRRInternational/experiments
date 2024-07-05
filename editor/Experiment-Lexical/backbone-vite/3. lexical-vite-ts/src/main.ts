@@ -22,8 +22,6 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <div class="editor-wrapper">
       <div id="lexical-editor" contenteditable></div>
     </div>
-    <h4>Editor state:</h4>
-    <textarea id="lexical-state"></textarea>
   </div>
 `;
 const editorRef = document.getElementById('lexical-editor');
