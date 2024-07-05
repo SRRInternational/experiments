@@ -41,6 +41,12 @@ module.exports = function (grunt) {
             src: ["index.html", "require.js"],
             dest: "build",
           },
+          {
+            expand: true,
+            flatten: false,
+            src: ['js/libs/tinymce/**'],
+            dest: 'build'
+          },
         ],
       },
     },

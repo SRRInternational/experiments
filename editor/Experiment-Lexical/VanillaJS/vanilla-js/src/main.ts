@@ -44,7 +44,9 @@ const initialConfig = {
 };
 const editor = createEditor(initialConfig);
 editor.setRootElement(editorRef);
-
+// Initialize the toolbar
+const toolbar = new Toolbar(editor, config.toolbar);
+toolbar.init();
 // Registring Plugins
 /* mergeRegister(
   registerRichText(editor),
