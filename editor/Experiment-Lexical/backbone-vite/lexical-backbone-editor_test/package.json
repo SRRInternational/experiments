@@ -1,0 +1,22 @@
+{
+  "name": "lexical-backbone-editor",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.3.1"
+  },
+  "dependencies": {
+    "@lexical/react": "^0.16.1",
+    "@lexical/rich-text": "^0.16.1",
+    "backbone": "^1.6.0",
+    "handlebars": "^4.7.8",
+    "jquery": "^3.7.1",
+    "underscore": "^1.13.6"
+  }
+}
