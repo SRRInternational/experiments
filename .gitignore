@@ -2,3 +2,8 @@
 usermanagement/vendor/**
 **/vendor/**
 **/build/**
+
+**/lexical-vite/**
+
+**/lexical-backbone-editor/**
+**/lexical-backbone-vite/**
