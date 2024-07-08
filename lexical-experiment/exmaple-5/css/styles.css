@@ -1,0 +1,27 @@
+#editor-container {
+  width: 600px;
+  margin: 0 auto;
+}
+
+.toolbar {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.toolbar-item {
+  margin-right: 5px;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.toolbar-item.active {
+  background-color: #e0e0e0;
+}
+
+#lexical-editor {
+  border: 1px solid #ccc;
+  min-height: 200px;
+  padding: 10px;
+}
