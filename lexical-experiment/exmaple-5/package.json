@@ -10,7 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@lexical/rich-text": "^0.16.1",
+    "@lexical/dragon": "0.16.1",
+    "@lexical/history": "0.16.1",
+    "@lexical/rich-text": "0.16.1",
+    "@lexical/utils": "0.16.1",
     "backbone": "^1.6.0",
     "jquery": "^3.7.1",
     "lexical": "^0.16.1",

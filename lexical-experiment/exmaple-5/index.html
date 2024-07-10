@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lexical Editor with Backbone.js</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script data-main="js/main" src="node_modules/requirejs/require.js"></script>
-</head>
-<body>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      data-main="js/main.js"
+      src="node_modules/requirejs/require.js"
+    ></script>
+    <script>
+      window.process = {
+        env: {
+          NODE_ENV: "development",
+        },
+      };
+    </script>
+  </head>
+  <body>
     <div id="editor-container">
-        <div id="toolbar"></div>
-        <div id="editor"></div>
+      <div id="toolbar"></div>
+      <div id="editor"></div>
     </div>
-</body>
+  </body>
 </html>

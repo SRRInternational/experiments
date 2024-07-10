@@ -6,7 +6,6 @@ import _ from "underscore";
 import $ from "jquery";
 import editor from "./libs/editor/index";
 
-// Define a model
 const MyModel = Backbone.Model.extend({
   defaults: {
     name: "Default Name",
@@ -21,12 +20,6 @@ const MyView = Backbone.View.extend({
   render: function () {
     const templateContent = `
         <div>
-          <a href="https://vitejs.dev" target="_blank">
-            <img src="{{viteLogo}}" class="logo" alt="Vite logo" />
-          </a>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-            <img src="{{javascriptLogo}}" class="logo vanilla" alt="JavaScript logo" />
-          </a>
           <h1 class="h1-content">Hello {{name}}!</h1>
           <div class="toolbar"></div>
           <p class="lexical-editor" contenteditable>
@@ -40,15 +33,13 @@ const MyView = Backbone.View.extend({
   },
   postRender: function () {
     const editorRef = $(".lexical-editor");
-    editor(editorRef);    
+    editor(editorRef);
   },
 });
 
 // Instantiate the model and view
 const myModelInstance = new MyModel({
-  name: "John Doe",
-  viteLogo: viteLogo,
-  javascriptLogo: javascriptLogo,
+  name: "Random name",
 });
 const myViewInstance = new MyView({ model: myModelInstance });
 

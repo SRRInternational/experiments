@@ -23,7 +23,7 @@ export default function $prepopulatedRichText() {
       `In case you were wondering what the text area at the bottom is – it's the debug view, showing the current state of the editor. `,
     ),
   );
-  root.append(quote);
+  // root.append(quote);
   const paragraph = $createParagraphNode();
   paragraph.append(
     $createTextNode('This is a demo environment built with '),
@@ -32,8 +32,8 @@ export default function $prepopulatedRichText() {
     $createTextNode(' Try typing in '),
     $createTextNode('some text').toggleFormat('bold'),
     $createTextNode(' with '),
-    $createTextNode('different').toggleFormat('italic'),
+    $createTextNode('different').toggleFormat('underline'),
     $createTextNode(' formats.'),
   );
-  root.append(paragraph);
+  // root.append(paragraph);
 }

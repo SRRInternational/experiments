@@ -5,17 +5,10 @@ import {
   $isRangeSelection,
   FORMAT_TEXT_COMMAND,
   SELECTION_CHANGE_COMMAND,
-/*   LexicalEditor,
-  LexicalCommand,
-  TextFormatType, */
 } from "lexical";
 
 const LowPriority = 1;
 
-/* interface ButtonInfo {
-  button: HTMLButtonElement;
-  updateState?: (state: boolean) => void;
-} */
 
 function createButton(name, icon, command, commandValue) {
   const button = document.createElement("button");
@@ -54,10 +47,7 @@ export default function createToolbar(editor) {
     button.addEventListener("click", () => {
       editor.dispatchCommand(
         FORMAT_TEXT_COMMAND,
-        button.getAttribute("data-command-value") /* as
-          | "bold"
-          | "italic"
-          | "underline" */
+        button.getAttribute("data-command-value")
       );
     });
     toolbar.appendChild(button);
