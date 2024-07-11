@@ -1,0 +1,17 @@
+{
+  "name": "example-1",
+  "version": "1.0.0",
+  "description": "Examples of UMD, AMD, CJS, and ESM",
+  "main": "index.js",
+  "scripts": {
+    "start": "node cjs/main.js",
+    "start-esm": "node esm/main.mjs",
+    "start-amd": "npx requirejs amd/main.js",
+    "start-umd": "node umd/main.js"
+  },
+  "author": "Your Name",
+  "license": "ISC",
+  "dependencies": {
+    "requirejs": "^2.3.6"
+  }
+}
