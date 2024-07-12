@@ -1,0 +1,63 @@
+#editor-container {
+    border: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+#editor {
+    min-height: 200px;
+    padding: 10px;
+}
+
+.editor-paragraph {
+    margin: 0 0 15px 0;
+    position: relative;
+}
+
+.editor-placeholder {
+    color: #999;
+    overflow: hidden;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    user-select: none;
+    pointer-events: none;
+}
+
+.toolbar {
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+}
+
+.toolbar-item {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.toolbar-item.spaced {
+    margin-right: 5px;
+}
+
+.toolbar-item.active {
+    background-color: #eee;
+}
+
+.toolbar-item i {
+    font-style: normal;
+}
+
+.toolbar-item i.format.bold::before {
+    content: 'B';
+    font-weight: bold;
+}
+
+.toolbar-item i.format.italic::before {
+    content: 'I';
+    font-style: italic;
+}
+
+.toolbar-item i.format.underline::before {
+    content: 'U';
+    text-decoration: underline;
+}

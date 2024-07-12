@@ -1,0 +1,29 @@
+{
+  "name": "example-7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.24.8",
+    "@babel/core": "^7.24.8",
+    "@babel/plugin-transform-modules-amd": "^7.24.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.24.8",
+    "@babel/plugin-transform-modules-umd": "^7.24.7",
+    "@babel/preset-env": "^7.24.8",
+    "babel-plugin-transform-es2015-modules-amd": "^6.24.1"
+  },
+  "dependencies": {
+    "@lexical/react": "^0.16.1",
+    "backbone": "^1.6.0",
+    "jquery": "^3.7.1",
+    "lexical": "^0.16.1",
+    "requirejs": "^2.3.6",
+    "underscore": "^1.13.6"
+  }
+}
