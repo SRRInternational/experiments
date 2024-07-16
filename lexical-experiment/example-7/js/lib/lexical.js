@@ -7,7 +7,7 @@ define([], function () {
    *
    */
 
-  "use strict";
+  'use strict';
 
   /**
    * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -16,394 +16,85 @@ define([], function () {
    * LICENSE file in the root directory of this source tree.
    *
    */
-  function _typeof(o) {
-    "@babel/helpers - typeof";
-    return (
-      (_typeof =
-        "function" == typeof Symbol && "symbol" == typeof Symbol.iterator
-          ? function (o) {
-              return typeof o;
-            }
-          : function (o) {
-              return o &&
-                "function" == typeof Symbol &&
-                o.constructor === Symbol &&
-                o !== Symbol.prototype
-                ? "symbol"
-                : typeof o;
-            }),
-      _typeof(o)
-    );
-  }
-  function ownKeys(e, r) {
-    var t = Object.keys(e);
-    if (Object.getOwnPropertySymbols) {
-      var o = Object.getOwnPropertySymbols(e);
-      r &&
-        (o = o.filter(function (r) {
-          return Object.getOwnPropertyDescriptor(e, r).enumerable;
-        })),
-        t.push.apply(t, o);
-    }
-    return t;
-  }
-  function _objectSpread(e) {
-    for (var r = 1; r < arguments.length; r++) {
-      var t = null != arguments[r] ? arguments[r] : {};
-      r % 2
-        ? ownKeys(Object(t), !0).forEach(function (r) {
-            _defineProperty(e, r, t[r]);
-          })
-        : Object.getOwnPropertyDescriptors
-        ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t))
-        : ownKeys(Object(t)).forEach(function (r) {
-            Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r));
-          });
-    }
-    return e;
-  }
-  function _get() {
-    return (
-      (_get =
-        "undefined" != typeof Reflect && Reflect.get
-          ? Reflect.get.bind()
-          : function (e, t, r) {
-              var p = _superPropBase(e, t);
-              if (p) {
-                var n = Object.getOwnPropertyDescriptor(p, t);
-                return n.get
-                  ? n.get.call(arguments.length < 3 ? e : r)
-                  : n.value;
-              }
-            }),
-      _get.apply(null, arguments)
-    );
-  }
-  function _superPropBase(t, o) {
-    for (
-      ;
-      !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));
-
-    );
-    return t;
-  }
-  function _callSuper(t, o, e) {
-    return (
-      (o = _getPrototypeOf(o)),
-      _possibleConstructorReturn(
-        t,
-        _isNativeReflectConstruct()
-          ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor)
-          : o.apply(t, e)
-      )
-    );
-  }
-  function _possibleConstructorReturn(t, e) {
-    if (e && ("object" == _typeof(e) || "function" == typeof e)) return e;
-    if (void 0 !== e)
-      throw new TypeError(
-        "Derived constructors may only return object or undefined"
-      );
-    return _assertThisInitialized(t);
-  }
-  function _assertThisInitialized(e) {
-    if (void 0 === e)
-      throw new ReferenceError(
-        "this hasn't been initialised - super() hasn't been called"
-      );
-    return e;
-  }
-  function _isNativeReflectConstruct() {
-    try {
-      var t = !Boolean.prototype.valueOf.call(
-        Reflect.construct(Boolean, [], function () {})
-      );
-    } catch (t) {}
-    return (_isNativeReflectConstruct = function _isNativeReflectConstruct() {
-      return !!t;
-    })();
-  }
-  function _getPrototypeOf(t) {
-    return (
-      (_getPrototypeOf = Object.setPrototypeOf
-        ? Object.getPrototypeOf.bind()
-        : function (t) {
-            return t.__proto__ || Object.getPrototypeOf(t);
-          }),
-      _getPrototypeOf(t)
-    );
-  }
-  function _inherits(t, e) {
-    if ("function" != typeof e && null !== e)
-      throw new TypeError("Super expression must either be null or a function");
-    (t.prototype = Object.create(e && e.prototype, {
-      constructor: { value: t, writable: !0, configurable: !0 },
-    })),
-      Object.defineProperty(t, "prototype", { writable: !1 }),
-      e && _setPrototypeOf(t, e);
-  }
-  function _setPrototypeOf(t, e) {
-    return (
-      (_setPrototypeOf = Object.setPrototypeOf
-        ? Object.setPrototypeOf.bind()
-        : function (t, e) {
-            return (t.__proto__ = e), t;
-          }),
-      _setPrototypeOf(t, e)
-    );
-  }
-  function _classCallCheck(a, n) {
-    if (!(a instanceof n))
-      throw new TypeError("Cannot call a class as a function");
-  }
-  function _defineProperties(e, r) {
-    for (var t = 0; t < r.length; t++) {
-      var o = r[t];
-      (o.enumerable = o.enumerable || !1),
-        (o.configurable = !0),
-        "value" in o && (o.writable = !0),
-        Object.defineProperty(e, _toPropertyKey(o.key), o);
-    }
-  }
-  function _createClass(e, r, t) {
-    return (
-      r && _defineProperties(e.prototype, r),
-      t && _defineProperties(e, t),
-      Object.defineProperty(e, "prototype", { writable: !1 }),
-      e
-    );
-  }
-  function _toConsumableArray(r) {
-    return (
-      _arrayWithoutHoles(r) ||
-      _iterableToArray(r) ||
-      _unsupportedIterableToArray(r) ||
-      _nonIterableSpread()
-    );
-  }
-  function _nonIterableSpread() {
-    throw new TypeError(
-      "Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
-    );
-  }
-  function _iterableToArray(r) {
-    if (
-      ("undefined" != typeof Symbol && null != r[Symbol.iterator]) ||
-      null != r["@@iterator"]
-    )
-      return Array.from(r);
-  }
-  function _arrayWithoutHoles(r) {
-    if (Array.isArray(r)) return _arrayLikeToArray(r);
-  }
-  function _slicedToArray(r, e) {
-    return (
-      _arrayWithHoles(r) ||
-      _iterableToArrayLimit(r, e) ||
-      _unsupportedIterableToArray(r, e) ||
-      _nonIterableRest()
-    );
-  }
-  function _nonIterableRest() {
-    throw new TypeError(
-      "Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
-    );
-  }
-  function _iterableToArrayLimit(r, l) {
-    var t =
-      null == r
-        ? null
-        : ("undefined" != typeof Symbol && r[Symbol.iterator]) ||
-          r["@@iterator"];
-    if (null != t) {
-      var e,
-        n,
-        i,
-        u,
-        a = [],
-        f = !0,
-        o = !1;
-      try {
-        if (((i = (t = t.call(r)).next), 0 === l)) {
-          if (Object(t) !== t) return;
-          f = !1;
-        } else
-          for (
-            ;
-            !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l);
-            f = !0
-          );
-      } catch (r) {
-        (o = !0), (n = r);
-      } finally {
-        try {
-          if (
-            !f &&
-            null != t["return"] &&
-            ((u = t["return"]()), Object(u) !== u)
-          )
-            return;
-        } finally {
-          if (o) throw n;
-        }
-      }
-      return a;
-    }
-  }
-  function _arrayWithHoles(r) {
-    if (Array.isArray(r)) return r;
-  }
-  function _createForOfIteratorHelper(r, e) {
-    var t =
-      ("undefined" != typeof Symbol && r[Symbol.iterator]) || r["@@iterator"];
-    if (!t) {
-      if (
-        Array.isArray(r) ||
-        (t = _unsupportedIterableToArray(r)) ||
-        (e && r && "number" == typeof r.length)
-      ) {
-        t && (r = t);
-        var _n = 0,
-          F = function F() {};
-        return {
-          s: F,
-          n: function n() {
-            return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] };
-          },
-          e: function e(r) {
-            throw r;
-          },
-          f: F,
-        };
-      }
-      throw new TypeError(
-        "Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."
-      );
-    }
-    var o,
-      a = !0,
-      u = !1;
-    return {
-      s: function s() {
-        t = t.call(r);
-      },
-      n: function n() {
-        var r = t.next();
-        return (a = r.done), r;
-      },
-      e: function e(r) {
-        (u = !0), (o = r);
-      },
-      f: function f() {
-        try {
-          a || null == t["return"] || t["return"]();
-        } finally {
-          if (u) throw o;
-        }
-      },
-    };
-  }
-  function _unsupportedIterableToArray(r, a) {
-    if (r) {
-      if ("string" == typeof r) return _arrayLikeToArray(r, a);
-      var t = {}.toString.call(r).slice(8, -1);
-      return (
-        "Object" === t && r.constructor && (t = r.constructor.name),
-        "Map" === t || "Set" === t
-          ? Array.from(r)
-          : "Arguments" === t ||
-            /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t)
-          ? _arrayLikeToArray(r, a)
-          : void 0
-      );
-    }
-  }
-  function _arrayLikeToArray(r, a) {
-    (null == a || a > r.length) && (a = r.length);
-    for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e];
-    return n;
-  }
-  function _defineProperty(e, r, t) {
-    return (
-      (r = _toPropertyKey(r)) in e
-        ? Object.defineProperty(e, r, {
-            value: t,
-            enumerable: !0,
-            configurable: !0,
-            writable: !0,
-          })
-        : (e[r] = t),
-      e
-    );
-  }
-  function _toPropertyKey(t) {
-    var i = _toPrimitive(t, "string");
-    return "symbol" == _typeof(i) ? i : i + "";
-  }
-  function _toPrimitive(t, r) {
-    if ("object" != _typeof(t) || !t) return t;
-    var e = t[Symbol.toPrimitive];
-    if (void 0 !== e) {
-      var i = e.call(t, r || "default");
-      if ("object" != _typeof(i)) return i;
-      throw new TypeError("@@toPrimitive must return a primitive value.");
-    }
-    return ("string" === r ? String : Number)(t);
-  }
+  function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+  function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+  function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+  function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
+  function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+  function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+  function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+  function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+  function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+  function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+  function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+  function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+  function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+  function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+  function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+  function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+  function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t["return"] || t["return"](); } finally { if (u) throw o; } } }; }
+  function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+  function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+  function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   function createCommand(type) {
     return {
-      type: type,
+      type: type
     };
   }
-  var SELECTION_CHANGE_COMMAND = createCommand("SELECTION_CHANGE_COMMAND");
-  var SELECTION_INSERT_CLIPBOARD_NODES_COMMAND = createCommand(
-    "SELECTION_INSERT_CLIPBOARD_NODES_COMMAND"
-  );
-  var CLICK_COMMAND = createCommand("CLICK_COMMAND");
-  var DELETE_CHARACTER_COMMAND = createCommand("DELETE_CHARACTER_COMMAND");
-  var INSERT_LINE_BREAK_COMMAND = createCommand("INSERT_LINE_BREAK_COMMAND");
-  var INSERT_PARAGRAPH_COMMAND = createCommand("INSERT_PARAGRAPH_COMMAND");
-  var CONTROLLED_TEXT_INSERTION_COMMAND = createCommand(
-    "CONTROLLED_TEXT_INSERTION_COMMAND"
-  );
-  var PASTE_COMMAND = createCommand("PASTE_COMMAND");
-  var REMOVE_TEXT_COMMAND = createCommand("REMOVE_TEXT_COMMAND");
-  var DELETE_WORD_COMMAND = createCommand("DELETE_WORD_COMMAND");
-  var DELETE_LINE_COMMAND = createCommand("DELETE_LINE_COMMAND");
-  var FORMAT_TEXT_COMMAND = createCommand("FORMAT_TEXT_COMMAND");
-  var UNDO_COMMAND = createCommand("UNDO_COMMAND");
-  var REDO_COMMAND = createCommand("REDO_COMMAND");
-  var KEY_DOWN_COMMAND = createCommand("KEYDOWN_COMMAND");
-  var KEY_ARROW_RIGHT_COMMAND = createCommand("KEY_ARROW_RIGHT_COMMAND");
-  var MOVE_TO_END = createCommand("MOVE_TO_END");
-  var KEY_ARROW_LEFT_COMMAND = createCommand("KEY_ARROW_LEFT_COMMAND");
-  var MOVE_TO_START = createCommand("MOVE_TO_START");
-  var KEY_ARROW_UP_COMMAND = createCommand("KEY_ARROW_UP_COMMAND");
-  var KEY_ARROW_DOWN_COMMAND = createCommand("KEY_ARROW_DOWN_COMMAND");
-  var KEY_ENTER_COMMAND = createCommand("KEY_ENTER_COMMAND");
-  var KEY_SPACE_COMMAND = createCommand("KEY_SPACE_COMMAND");
-  var KEY_BACKSPACE_COMMAND = createCommand("KEY_BACKSPACE_COMMAND");
-  var KEY_ESCAPE_COMMAND = createCommand("KEY_ESCAPE_COMMAND");
-  var KEY_DELETE_COMMAND = createCommand("KEY_DELETE_COMMAND");
-  var KEY_TAB_COMMAND = createCommand("KEY_TAB_COMMAND");
-  var INSERT_TAB_COMMAND = createCommand("INSERT_TAB_COMMAND");
-  var INDENT_CONTENT_COMMAND = createCommand("INDENT_CONTENT_COMMAND");
-  var OUTDENT_CONTENT_COMMAND = createCommand("OUTDENT_CONTENT_COMMAND");
-  var DROP_COMMAND = createCommand("DROP_COMMAND");
-  var FORMAT_ELEMENT_COMMAND = createCommand("FORMAT_ELEMENT_COMMAND");
-  var DRAGSTART_COMMAND = createCommand("DRAGSTART_COMMAND");
-  var DRAGOVER_COMMAND = createCommand("DRAGOVER_COMMAND");
-  var DRAGEND_COMMAND = createCommand("DRAGEND_COMMAND");
-  var COPY_COMMAND = createCommand("COPY_COMMAND");
-  var CUT_COMMAND = createCommand("CUT_COMMAND");
-  var SELECT_ALL_COMMAND = createCommand("SELECT_ALL_COMMAND");
-  var CLEAR_EDITOR_COMMAND = createCommand("CLEAR_EDITOR_COMMAND");
-  var CLEAR_HISTORY_COMMAND = createCommand("CLEAR_HISTORY_COMMAND");
-  var CAN_REDO_COMMAND = createCommand("CAN_REDO_COMMAND");
-  var CAN_UNDO_COMMAND = createCommand("CAN_UNDO_COMMAND");
-  var FOCUS_COMMAND = createCommand("FOCUS_COMMAND");
-  var BLUR_COMMAND = createCommand("BLUR_COMMAND");
-  var KEY_MODIFIER_COMMAND = createCommand("KEY_MODIFIER_COMMAND");
+  var SELECTION_CHANGE_COMMAND = createCommand('SELECTION_CHANGE_COMMAND');
+  var SELECTION_INSERT_CLIPBOARD_NODES_COMMAND = createCommand('SELECTION_INSERT_CLIPBOARD_NODES_COMMAND');
+  var CLICK_COMMAND = createCommand('CLICK_COMMAND');
+  var DELETE_CHARACTER_COMMAND = createCommand('DELETE_CHARACTER_COMMAND');
+  var INSERT_LINE_BREAK_COMMAND = createCommand('INSERT_LINE_BREAK_COMMAND');
+  var INSERT_PARAGRAPH_COMMAND = createCommand('INSERT_PARAGRAPH_COMMAND');
+  var CONTROLLED_TEXT_INSERTION_COMMAND = createCommand('CONTROLLED_TEXT_INSERTION_COMMAND');
+  var PASTE_COMMAND = createCommand('PASTE_COMMAND');
+  var REMOVE_TEXT_COMMAND = createCommand('REMOVE_TEXT_COMMAND');
+  var DELETE_WORD_COMMAND = createCommand('DELETE_WORD_COMMAND');
+  var DELETE_LINE_COMMAND = createCommand('DELETE_LINE_COMMAND');
+  var FORMAT_TEXT_COMMAND = createCommand('FORMAT_TEXT_COMMAND');
+  var UNDO_COMMAND = createCommand('UNDO_COMMAND');
+  var REDO_COMMAND = createCommand('REDO_COMMAND');
+  var KEY_DOWN_COMMAND = createCommand('KEYDOWN_COMMAND');
+  var KEY_ARROW_RIGHT_COMMAND = createCommand('KEY_ARROW_RIGHT_COMMAND');
+  var MOVE_TO_END = createCommand('MOVE_TO_END');
+  var KEY_ARROW_LEFT_COMMAND = createCommand('KEY_ARROW_LEFT_COMMAND');
+  var MOVE_TO_START = createCommand('MOVE_TO_START');
+  var KEY_ARROW_UP_COMMAND = createCommand('KEY_ARROW_UP_COMMAND');
+  var KEY_ARROW_DOWN_COMMAND = createCommand('KEY_ARROW_DOWN_COMMAND');
+  var KEY_ENTER_COMMAND = createCommand('KEY_ENTER_COMMAND');
+  var KEY_SPACE_COMMAND = createCommand('KEY_SPACE_COMMAND');
+  var KEY_BACKSPACE_COMMAND = createCommand('KEY_BACKSPACE_COMMAND');
+  var KEY_ESCAPE_COMMAND = createCommand('KEY_ESCAPE_COMMAND');
+  var KEY_DELETE_COMMAND = createCommand('KEY_DELETE_COMMAND');
+  var KEY_TAB_COMMAND = createCommand('KEY_TAB_COMMAND');
+  var INSERT_TAB_COMMAND = createCommand('INSERT_TAB_COMMAND');
+  var INDENT_CONTENT_COMMAND = createCommand('INDENT_CONTENT_COMMAND');
+  var OUTDENT_CONTENT_COMMAND = createCommand('OUTDENT_CONTENT_COMMAND');
+  var DROP_COMMAND = createCommand('DROP_COMMAND');
+  var FORMAT_ELEMENT_COMMAND = createCommand('FORMAT_ELEMENT_COMMAND');
+  var DRAGSTART_COMMAND = createCommand('DRAGSTART_COMMAND');
+  var DRAGOVER_COMMAND = createCommand('DRAGOVER_COMMAND');
+  var DRAGEND_COMMAND = createCommand('DRAGEND_COMMAND');
+  var COPY_COMMAND = createCommand('COPY_COMMAND');
+  var CUT_COMMAND = createCommand('CUT_COMMAND');
+  var SELECT_ALL_COMMAND = createCommand('SELECT_ALL_COMMAND');
+  var CLEAR_EDITOR_COMMAND = createCommand('CLEAR_EDITOR_COMMAND');
+  var CLEAR_HISTORY_COMMAND = createCommand('CLEAR_HISTORY_COMMAND');
+  var CAN_REDO_COMMAND = createCommand('CAN_REDO_COMMAND');
+  var CAN_UNDO_COMMAND = createCommand('CAN_UNDO_COMMAND');
+  var FOCUS_COMMAND = createCommand('FOCUS_COMMAND');
+  var BLUR_COMMAND = createCommand('BLUR_COMMAND');
+  var KEY_MODIFIER_COMMAND = createCommand('KEY_MODIFIER_COMMAND');
 
   /**
    * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -413,10 +104,7 @@ define([], function () {
    *
    */
 
-  var CAN_USE_DOM =
-    typeof window !== "undefined" &&
-    typeof window.document !== "undefined" &&
-    typeof window.document.createElement !== "undefined";
+  var CAN_USE_DOM = typeof window !== 'undefined' && typeof window.document !== 'undefined' && typeof window.document.createElement !== 'undefined';
 
   /**
    * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -426,21 +114,12 @@ define([], function () {
    *
    */
 
-  var documentMode =
-    CAN_USE_DOM && "documentMode" in document ? document.documentMode : null;
+  var documentMode = CAN_USE_DOM && 'documentMode' in document ? document.documentMode : null;
   var IS_APPLE = CAN_USE_DOM && /Mac|iPod|iPhone|iPad/.test(navigator.platform);
-  var IS_FIREFOX =
-    CAN_USE_DOM && /^(?!.*Seamonkey)(?=.*Firefox).*/i.test(navigator.userAgent);
-  var CAN_USE_BEFORE_INPUT =
-    CAN_USE_DOM && "InputEvent" in window && !documentMode
-      ? "getTargetRanges" in new window.InputEvent("input")
-      : false;
-  var IS_SAFARI =
-    CAN_USE_DOM && /Version\/[\d.]+.*Safari/.test(navigator.userAgent);
-  var IS_IOS =
-    CAN_USE_DOM &&
-    /iPad|iPhone|iPod/.test(navigator.userAgent) &&
-    !window.MSStream;
+  var IS_FIREFOX = CAN_USE_DOM && /^(?!.*Seamonkey)(?=.*Firefox).*/i.test(navigator.userAgent);
+  var CAN_USE_BEFORE_INPUT = CAN_USE_DOM && 'InputEvent' in window && !documentMode ? 'getTargetRanges' in new window.InputEvent('input') : false;
+  var IS_SAFARI = CAN_USE_DOM && /Version\/[\d.]+.*Safari/.test(navigator.userAgent);
+  var IS_IOS = CAN_USE_DOM && /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   var IS_ANDROID = CAN_USE_DOM && /Android/.test(navigator.userAgent);
 
   // Keep these in case we need to use them in the future.
@@ -449,10 +128,7 @@ define([], function () {
   // export const canUseTextInputEvent: boolean = CAN_USE_DOM && 'TextEvent' in window && !documentMode;
 
   var IS_ANDROID_CHROME = CAN_USE_DOM && IS_ANDROID && IS_CHROME;
-  var IS_APPLE_WEBKIT =
-    CAN_USE_DOM &&
-    /AppleWebKit\/[\d.]+/.test(navigator.userAgent) &&
-    !IS_CHROME;
+  var IS_APPLE_WEBKIT = CAN_USE_DOM && /AppleWebKit\/[\d.]+/.test(navigator.userAgent) && !IS_CHROME;
 
   /**
    * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -486,15 +162,7 @@ define([], function () {
   var IS_SUBSCRIPT = 1 << 5;
   var IS_SUPERSCRIPT = 1 << 6;
   var IS_HIGHLIGHT = 1 << 7;
-  var IS_ALL_FORMATTING =
-    IS_BOLD |
-    IS_ITALIC |
-    IS_STRIKETHROUGH |
-    IS_UNDERLINE |
-    IS_CODE |
-    IS_SUBSCRIPT |
-    IS_SUPERSCRIPT |
-    IS_HIGHLIGHT;
+  var IS_ALL_FORMATTING = IS_BOLD | IS_ITALIC | IS_STRIKETHROUGH | IS_UNDERLINE | IS_CODE | IS_SUBSCRIPT | IS_SUPERSCRIPT | IS_HIGHLIGHT;
 
   // Text node details
   var IS_DIRECTIONLESS = 1;
@@ -514,27 +182,19 @@ define([], function () {
 
   // For iOS/Safari we use a non breaking space, otherwise the cursor appears
   // overlapping the composed text.
-  var COMPOSITION_SUFFIX =
-    IS_SAFARI || IS_IOS || IS_APPLE_WEBKIT
-      ? NON_BREAKING_SPACE
-      : ZERO_WIDTH_SPACE;
-  var DOUBLE_LINE_BREAK = "\n\n";
+  var COMPOSITION_SUFFIX = IS_SAFARI || IS_IOS || IS_APPLE_WEBKIT ? NON_BREAKING_SPACE : ZERO_WIDTH_SPACE;
+  var DOUBLE_LINE_BREAK = '\n\n';
 
   // For FF, we need to use a non-breaking space, or it gets composition
   // in a stuck state.
-  var COMPOSITION_START_CHAR = IS_FIREFOX
-    ? NON_BREAKING_SPACE
-    : COMPOSITION_SUFFIX;
+  var COMPOSITION_START_CHAR = IS_FIREFOX ? NON_BREAKING_SPACE : COMPOSITION_SUFFIX;
   var RTL = "\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC";
-  var LTR =
-    "A-Za-z\xC0-\xD6\xD8-\xF6" +
-    "\xF8-\u02B8\u0300-\u0590\u0800-\u1FFF\u200E\u2C00-\uFB1C" +
-    "\uFE00-\uFE6F\uFEFD-\uFFFF";
+  var LTR = "A-Za-z\xC0-\xD6\xD8-\xF6" + "\xF8-\u02B8\u0300-\u0590\u0800-\u1FFF\u200E\u2C00-\uFB1C" + "\uFE00-\uFE6F\uFEFD-\uFFFF";
 
   // eslint-disable-next-line no-misleading-character-class
-  var RTL_REGEX = new RegExp("^[^" + LTR + "]*[" + RTL + "]");
+  var RTL_REGEX = new RegExp('^[^' + LTR + ']*[' + RTL + ']');
   // eslint-disable-next-line no-misleading-character-class
-  var LTR_REGEX = new RegExp("^[^" + RTL + "]*[" + LTR + "]");
+  var LTR_REGEX = new RegExp('^[^' + RTL + ']*[' + LTR + ']');
   var TEXT_TYPE_TO_FORMAT = {
     bold: IS_BOLD,
     code: IS_CODE,
@@ -543,11 +203,11 @@ define([], function () {
     strikethrough: IS_STRIKETHROUGH,
     subscript: IS_SUBSCRIPT,
     superscript: IS_SUPERSCRIPT,
-    underline: IS_UNDERLINE,
+    underline: IS_UNDERLINE
   };
   var DETAIL_TYPE_TO_DETAIL = {
     directionless: IS_DIRECTIONLESS,
-    unmergeable: IS_UNMERGEABLE,
+    unmergeable: IS_UNMERGEABLE
   };
   var ELEMENT_TYPE_TO_FORMAT = {
     center: IS_ALIGN_CENTER,
@@ -555,43 +215,15 @@ define([], function () {
     justify: IS_ALIGN_JUSTIFY,
     left: IS_ALIGN_LEFT,
     right: IS_ALIGN_RIGHT,
-    start: IS_ALIGN_START,
+    start: IS_ALIGN_START
   };
-  var ELEMENT_FORMAT_TO_TYPE = _defineProperty(
-    _defineProperty(
-      _defineProperty(
-        _defineProperty(
-          _defineProperty(
-            _defineProperty({}, IS_ALIGN_CENTER, "center"),
-            IS_ALIGN_END,
-            "end"
-          ),
-          IS_ALIGN_JUSTIFY,
-          "justify"
-        ),
-        IS_ALIGN_LEFT,
-        "left"
-      ),
-      IS_ALIGN_RIGHT,
-      "right"
-    ),
-    IS_ALIGN_START,
-    "start"
-  );
+  var ELEMENT_FORMAT_TO_TYPE = _defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty(_defineProperty({}, IS_ALIGN_CENTER, 'center'), IS_ALIGN_END, 'end'), IS_ALIGN_JUSTIFY, 'justify'), IS_ALIGN_LEFT, 'left'), IS_ALIGN_RIGHT, 'right'), IS_ALIGN_START, 'start');
   var TEXT_MODE_TO_TYPE = {
     normal: IS_NORMAL,
     segmented: IS_SEGMENTED,
-    token: IS_TOKEN,
+    token: IS_TOKEN
   };
-  var TEXT_TYPE_TO_MODE = _defineProperty(
-    _defineProperty(
-      _defineProperty({}, IS_NORMAL, "normal"),
-      IS_SEGMENTED,
-      "segmented"
-    ),
-    IS_TOKEN,
-    "token"
-  );
+  var TEXT_TYPE_TO_MODE = _defineProperty(_defineProperty(_defineProperty({}, IS_NORMAL, 'normal'), IS_SEGMENTED, 'segmented'), IS_TOKEN, 'token');
 
   /**
    * Copyright (c) Meta Platforms, Inc. and affiliates.
@@ -603,20 +235,16 @@ define([], function () {
 
   function normalizeClassNames() {
     var rval = [];
-    for (
-      var _len = arguments.length, classNames = new Array(_len), _key = 0;
-      _key < _len;
-      _key++
-    ) {
+    for (var _len = arguments.length, classNames = new Array(_len), _key = 0; _key < _len; _key++) {
       classNames[_key] = arguments[_key];
     }
     for (var _i = 0, _classNames = classNames; _i < _classNames.length; _i++) {
       var className = _classNames[_i];
-      if (className && typeof className === "string") {
+      if (className && typeof className === 'string') {
         var _iterator = _createForOfIteratorHelper(className.matchAll(/\S+/g)),
           _step;
         try {
-          for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
             var _step$value = _slicedToArray(_step.value, 1),
               s = _step$value[0];
             rval.push(s);
@@ -651,7 +279,7 @@ define([], function () {
   }
   function initTextEntryListener(editor) {
     if (lastTextEntryTimeStamp === 0) {
-      getWindow(editor).addEventListener("textInput", updateTimeStamp, true);
+      getWindow(editor).addEventListener('textInput', updateTimeStamp, true);
     }
   }
   function isManagedLineBreak(dom, target, editor) {
@@ -678,22 +306,13 @@ define([], function () {
     }
     var text = target.nodeValue;
     if (text !== null) {
-      $updateTextNodeFromDOMContent(
-        node,
-        text,
-        anchorOffset,
-        focusOffset,
-        false
-      );
+      $updateTextNodeFromDOMContent(node, text, anchorOffset, focusOffset, false);
     }
   }
   function shouldUpdateTextNodeFromMutation(selection, targetDOM, targetNode) {
     if ($isRangeSelection(selection)) {
       var anchorNode = selection.anchor.getNode();
-      if (
-        anchorNode.is(targetNode) &&
-        selection.format !== anchorNode.getFormat()
-      ) {
+      if (anchorNode.is(targetNode) && selection.format !== anchorNode.getFormat()) {
         return false;
       }
     }
@@ -701,8 +320,7 @@ define([], function () {
   }
   function $flushMutations$1(editor, mutations, observer) {
     isProcessingMutations = true;
-    var shouldFlushTextMutations =
-      performance.now() - lastTextEntryTimeStamp > TEXT_MUTATION_VARIANCE;
+    var shouldFlushTextMutations = performance.now() - lastTextEntryTimeStamp > TEXT_MUTATION_VARIANCE;
     try {
       updateEditor(editor, function () {
         var selection = $getSelection() || getLastSelection(editor);
@@ -713,37 +331,24 @@ define([], function () {
         var currentEditorState = editor._editorState;
         var blockCursorElement = editor._blockCursorElement;
         var shouldRevertSelection = false;
-        var possibleTextForFirefoxPaste = "";
+        var possibleTextForFirefoxPaste = '';
         for (var i = 0; i < mutations.length; i++) {
           var mutation = mutations[i];
           var type = mutation.type;
           var targetDOM = mutation.target;
-          var targetNode = $getNearestNodeFromDOMNode(
-            targetDOM,
-            currentEditorState
-          );
-          if (
-            (targetNode === null && targetDOM !== rootElement) ||
-            $isDecoratorNode(targetNode)
-          ) {
+          var targetNode = $getNearestNodeFromDOMNode(targetDOM, currentEditorState);
+          if (targetNode === null && targetDOM !== rootElement || $isDecoratorNode(targetNode)) {
             continue;
           }
-          if (type === "characterData") {
+          if (type === 'characterData') {
             // Text mutations are deferred and passed to mutation listeners to be
             // processed outside of the Lexical engine.
-            if (
-              shouldFlushTextMutations &&
-              $isTextNode(targetNode) &&
-              shouldUpdateTextNodeFromMutation(selection, targetDOM, targetNode)
-            ) {
+            if (shouldFlushTextMutations && $isTextNode(targetNode) && shouldUpdateTextNodeFromMutation(selection, targetDOM, targetNode)) {
               $handleTextMutation(
-                // nodeType === DOM_TEXT_TYPE is a Text DOM node
-                targetDOM,
-                targetNode,
-                editor
-              );
+              // nodeType === DOM_TEXT_TYPE is a Text DOM node
+              targetDOM, targetNode, editor);
             }
-          } else if (type === "childList") {
+          } else if (type === 'childList') {
             shouldRevertSelection = true;
             // We attempt to "undo" any changes that have occurred outside
             // of Lexical. We want Lexical's editor state to be source of truth.
@@ -753,13 +358,7 @@ define([], function () {
               var addedDOM = addedDOMs[s];
               var node = $getNodeFromDOMNode(addedDOM);
               var parentDOM = addedDOM.parentNode;
-              if (
-                parentDOM != null &&
-                addedDOM !== blockCursorElement &&
-                node === null &&
-                (addedDOM.nodeName !== "BR" ||
-                  !isManagedLineBreak(addedDOM, parentDOM, editor))
-              ) {
+              if (parentDOM != null && addedDOM !== blockCursorElement && node === null && (addedDOM.nodeName !== 'BR' || !isManagedLineBreak(addedDOM, parentDOM, editor))) {
                 if (IS_FIREFOX) {
                   var possibleText = addedDOM.innerText || addedDOM.nodeValue;
                   if (possibleText) {
@@ -775,11 +374,7 @@ define([], function () {
               var unremovedBRs = 0;
               for (var _s = 0; _s < removedDOMsLength; _s++) {
                 var removedDOM = removedDOMs[_s];
-                if (
-                  (removedDOM.nodeName === "BR" &&
-                    isManagedLineBreak(removedDOM, targetDOM, editor)) ||
-                  blockCursorElement === removedDOM
-                ) {
+                if (removedDOM.nodeName === 'BR' && isManagedLineBreak(removedDOM, targetDOM, editor) || blockCursorElement === removedDOM) {
                   targetDOM.appendChild(removedDOM);
                   unremovedBRs++;
                 }
@@ -802,7 +397,7 @@ define([], function () {
           var _iterator2 = _createForOfIteratorHelper(badDOMTargets),
             _step2;
           try {
-            for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+            for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
               var _step2$value = _slicedToArray(_step2.value, 2),
                 _targetDOM = _step2$value[0],
                 _targetNode = _step2$value[1];
@@ -850,11 +445,7 @@ define([], function () {
             for (var _s3 = 0; _s3 < addedNodes.length; _s3++) {
               var _addedDOM = addedNodes[_s3];
               var _parentDOM = _addedDOM.parentNode;
-              if (
-                _parentDOM != null &&
-                _addedDOM.nodeName === "BR" &&
-                !isManagedLineBreak(_addedDOM, target, editor)
-              ) {
+              if (_parentDOM != null && _addedDOM.nodeName === 'BR' && !isManagedLineBreak(_addedDOM, target, editor)) {
                 _parentDOM.removeChild(_addedDOM);
               }
             }
@@ -906,11 +497,7 @@ define([], function () {
     var node2Mode = node2.__mode;
     var node2Format = node2.__format;
     var node2Style = node2.__style;
-    return (
-      (node1Mode === null || node1Mode === node2Mode) &&
-      (node1Format === null || node1Format === node2Format) &&
-      (node1Style === null || node1Style === node2Style)
-    );
+    return (node1Mode === null || node1Mode === node2Mode) && (node1Format === null || node1Format === node2Format) && (node1Style === null || node1Style === node2Style);
   }
   function $mergeTextNodes(node1, node2) {
     var writableNode1 = node1.mergeWithSibling(node2);
@@ -921,20 +508,15 @@ define([], function () {
   }
   function $normalizeTextNode(textNode) {
     var node = textNode;
-    if (node.__text === "" && node.isSimpleText() && !node.isUnmergeable()) {
+    if (node.__text === '' && node.isSimpleText() && !node.isUnmergeable()) {
       node.remove();
       return;
     }
 
     // Backward
     var previousNode;
-    while (
-      (previousNode = node.getPreviousSibling()) !== null &&
-      $isTextNode(previousNode) &&
-      previousNode.isSimpleText() &&
-      !previousNode.isUnmergeable()
-    ) {
-      if (previousNode.__text === "") {
+    while ((previousNode = node.getPreviousSibling()) !== null && $isTextNode(previousNode) && previousNode.isSimpleText() && !previousNode.isUnmergeable()) {
+      if (previousNode.__text === '') {
         previousNode.remove();
       } else if ($canSimpleTextNodesBeMerged(previousNode, node)) {
         node = $mergeTextNodes(previousNode, node);
@@ -946,13 +528,8 @@ define([], function () {
 
     // Forward
     var nextNode;
-    while (
-      (nextNode = node.getNextSibling()) !== null &&
-      $isTextNode(nextNode) &&
-      nextNode.isSimpleText() &&
-      !nextNode.isUnmergeable()
-    ) {
-      if (nextNode.__text === "") {
+    while ((nextNode = node.getNextSibling()) !== null && $isTextNode(nextNode) && nextNode.isSimpleText() && !nextNode.isUnmergeable()) {
+      if (nextNode.__text === '') {
         nextNode.remove();
       } else if ($canSimpleTextNodesBeMerged(node, nextNode)) {
         node = $mergeTextNodes(node, nextNode);
@@ -968,7 +545,7 @@ define([], function () {
     return selection;
   }
   function $normalizePoint(point) {
-    while (point.type === "element") {
+    while (point.type === 'element') {
       var node = point.getNode();
       var offset = point.offset;
       var nextNode = void 0;
@@ -981,20 +558,12 @@ define([], function () {
         nextOffsetAtEnd = false;
       }
       if ($isTextNode(nextNode)) {
-        point.set(
-          nextNode.__key,
-          nextOffsetAtEnd ? nextNode.getTextContentSize() : 0,
-          "text"
-        );
+        point.set(nextNode.__key, nextOffsetAtEnd ? nextNode.getTextContentSize() : 0, 'text');
         break;
       } else if (!$isElementNode(nextNode)) {
         break;
       }
-      point.set(
-        nextNode.__key,
-        nextOffsetAtEnd ? nextNode.getChildrenSize() : 0,
-        "element"
-      );
+      point.set(nextNode.__key, nextOffsetAtEnd ? nextNode.getChildrenSize() : 0, 'element');
     }
   }
 
@@ -1011,7 +580,7 @@ define([], function () {
     keyCounter = 1;
   }
   function generateRandomKey() {
-    return "" + keyCounter++;
+    return '' + keyCounter++;
   }
   function getRegisteredNodeOrThrow(editor, nodeType) {
     var registeredNode = editor._nodes.get(nodeType);
@@ -1022,13 +591,10 @@ define([], function () {
     }
     return registeredNode;
   }
-  var scheduleMicroTask =
-    typeof queueMicrotask === "function"
-      ? queueMicrotask
-      : function (fn) {
-          // No window prefix intended (#1400)
-          Promise.resolve().then(fn);
-        };
+  var scheduleMicroTask = typeof queueMicrotask === 'function' ? queueMicrotask : function (fn) {
+    // No window prefix intended (#1400)
+    Promise.resolve().then(fn);
+  };
   function $isSelectionCapturedInDecorator(node) {
     return $isDecoratorNode($getNearestNodeFromDOMNode(node));
   }
@@ -1038,27 +604,16 @@ define([], function () {
       return false;
     }
     var nodeName = activeElement.nodeName;
-    return (
-      $isDecoratorNode($getNearestNodeFromDOMNode(anchorDOM)) &&
-      (nodeName === "INPUT" ||
-        nodeName === "TEXTAREA" ||
-        (activeElement.contentEditable === "true" &&
-          // @ts-ignore internal field
-          activeElement.__lexicalEditor == null))
-    );
+    return $isDecoratorNode($getNearestNodeFromDOMNode(anchorDOM)) && (nodeName === 'INPUT' || nodeName === 'TEXTAREA' || activeElement.contentEditable === 'true' &&
+    // @ts-ignore internal field
+    activeElement.__lexicalEditor == null);
   }
   function isSelectionWithinEditor(editor, anchorDOM, focusDOM) {
     var rootElement = editor.getRootElement();
     try {
-      return (
-        rootElement !== null &&
-        rootElement.contains(anchorDOM) &&
-        rootElement.contains(focusDOM) &&
-        // Ignore if selection is within nested editor
-        anchorDOM !== null &&
-        !isSelectionCapturedInDecoratorInput(anchorDOM) &&
-        getNearestEditorFromDOMNode(anchorDOM) === editor
-      );
+      return rootElement !== null && rootElement.contains(anchorDOM) && rootElement.contains(focusDOM) &&
+      // Ignore if selection is within nested editor
+      anchorDOM !== null && !isSelectionCapturedInDecoratorInput(anchorDOM) && getNearestEditorFromDOMNode(anchorDOM) === editor;
     } catch (error) {
       return false;
     }
@@ -1077,10 +632,10 @@ define([], function () {
   }
   function getTextDirection(text) {
     if (RTL_REGEX.test(text)) {
-      return "rtl";
+      return 'rtl';
     }
     if (LTR_REGEX.test(text)) {
-      return "ltr";
+      return 'ltr';
     }
     return null;
   }
@@ -1102,24 +657,19 @@ define([], function () {
   }
   function toggleTextFormatType(format, type, alignWithFormat) {
     var activeFormat = TEXT_TYPE_TO_FORMAT[type];
-    if (
-      alignWithFormat !== null &&
-      (format & activeFormat) === (alignWithFormat & activeFormat)
-    ) {
+    if (alignWithFormat !== null && (format & activeFormat) === (alignWithFormat & activeFormat)) {
       return format;
     }
     var newFormat = format ^ activeFormat;
-    if (type === "subscript") {
+    if (type === 'subscript') {
       newFormat &= ~TEXT_TYPE_TO_FORMAT.superscript;
-    } else if (type === "superscript") {
+    } else if (type === 'superscript') {
       newFormat &= ~TEXT_TYPE_TO_FORMAT.subscript;
     }
     return newFormat;
   }
   function $isLeafNode(node) {
-    return (
-      $isTextNode(node) || $isLineBreakNode(node) || $isDecoratorNode(node)
-    );
+    return $isTextNode(node) || $isLineBreakNode(node) || $isDecoratorNode(node);
   }
   function $setNodeKey(node, existingKey) {
     if (existingKey != null) {
@@ -1156,35 +706,16 @@ define([], function () {
       // Lifted condition to if statement because the inverted logic is a bit confusing
       if (node.constructor.name !== existingNode.constructor.name) {
         {
-          throw Error(
-            "Lexical node with constructor "
-              .concat(
-                node.constructor.name,
-                " attempted to re-use key from node in active editor state with constructor "
-              )
-              .concat(
-                existingNode.constructor.name,
-                ". Keys must not be re-used when the type is changed."
-              )
-          );
+          throw Error("Lexical node with constructor ".concat(node.constructor.name, " attempted to re-use key from node in active editor state with constructor ").concat(existingNode.constructor.name, ". Keys must not be re-used when the type is changed."));
         }
       } else {
         {
-          throw Error(
-            "Lexical node with constructor ".concat(
-              node.constructor.name,
-              " attempted to re-use key from node in active editor state with different constructor with the same name (possibly due to invalid Hot Module Replacement). Keys must not be re-used when the type is changed."
-            )
-          );
+          throw Error("Lexical node with constructor ".concat(node.constructor.name, " attempted to re-use key from node in active editor state with different constructor with the same name (possibly due to invalid Hot Module Replacement). Keys must not be re-used when the type is changed."));
         }
       }
     }
   }
-  function internalMarkParentElementsAsDirty(
-    parentKey,
-    nodeMap,
-    dirtyElements
-  ) {
+  function internalMarkParentElementsAsDirty(parentKey, nodeMap, dirtyElements) {
     var nextParentKey = parentKey;
     while (nextParentKey !== null) {
       if (dirtyElements.has(nextParentKey)) {
@@ -1351,44 +882,38 @@ define([], function () {
   }
   function markAllNodesAsDirty(editor, type) {
     // Mark all existing text nodes as dirty
-    updateEditor(
-      editor,
-      function () {
-        var editorState = getActiveEditorState();
-        if (editorState.isEmpty()) {
-          return;
+    updateEditor(editor, function () {
+      var editorState = getActiveEditorState();
+      if (editorState.isEmpty()) {
+        return;
+      }
+      if (type === 'root') {
+        $getRoot().markDirty();
+        return;
+      }
+      var nodeMap = editorState._nodeMap;
+      var _iterator3 = _createForOfIteratorHelper(nodeMap),
+        _step3;
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var _step3$value = _slicedToArray(_step3.value, 2),
+            node = _step3$value[1];
+          node.markDirty();
         }
-        if (type === "root") {
-          $getRoot().markDirty();
-          return;
-        }
-        var nodeMap = editorState._nodeMap;
-        var _iterator3 = _createForOfIteratorHelper(nodeMap),
-          _step3;
-        try {
-          for (_iterator3.s(); !(_step3 = _iterator3.n()).done; ) {
-            var _step3$value = _slicedToArray(_step3.value, 2),
-              node = _step3$value[1];
-            node.markDirty();
-          }
-        } catch (err) {
-          _iterator3.e(err);
-        } finally {
-          _iterator3.f();
-        }
-      },
-      editor._pendingEditorState === null
-        ? {
-            tag: "history-merge",
-          }
-        : undefined
-    );
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+    }, editor._pendingEditorState === null ? {
+      tag: 'history-merge'
+    } : undefined);
   }
   function $getRoot() {
     return internalGetRoot(getActiveEditorState());
   }
   function internalGetRoot(editorState) {
-    return editorState._nodeMap.get("root");
+    return editorState._nodeMap.get('root');
   }
   function $setSelection(selection) {
     errorOnReadOnly();
@@ -1397,9 +922,7 @@ define([], function () {
       {
         if (Object.isFrozen(selection)) {
           {
-            throw Error(
-              "$setSelection called on frozen selection object. Ensure selection is cloned before passing in."
-            );
+            throw Error("$setSelection called on frozen selection object. Ensure selection is cloned before passing in.");
           }
         }
       }
@@ -1419,7 +942,7 @@ define([], function () {
     if (nodeKey === null) {
       var rootElement = editor.getRootElement();
       if (dom === rootElement) {
-        return $getNodeByKey("root");
+        return $getNodeByKey('root');
       }
       return null;
     }
@@ -1429,10 +952,8 @@ define([], function () {
     return moveSelectionToEnd ? node.getTextContentSize() : 0;
   }
   function getNodeKeyFromDOM(
-    // Note that node here refers to a DOM Node, not an Lexical Node
-    dom,
-    editor
-  ) {
+  // Note that node here refers to a DOM Node, not an Lexical Node
+  dom, editor) {
     var node = dom;
     while (node != null) {
       // @ts-ignore We intentionally add this to the Node.
@@ -1457,10 +978,7 @@ define([], function () {
     return editorsToPropagate;
   }
   function createUID() {
-    return Math.random()
-      .toString(36)
-      .replace(/[^a-z]+/g, "")
-      .substr(0, 5);
+    return Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
   }
   function getAnchorTextFromDOM(anchorNode) {
     if (anchorNode.nodeType === DOM_TEXT_TYPE) {
@@ -1489,37 +1007,22 @@ define([], function () {
           focusOffset = offset;
         }
         if (textContent !== null) {
-          $updateTextNodeFromDOMContent(
-            node,
-            textContent,
-            anchorOffset,
-            focusOffset,
-            isCompositionEnd
-          );
+          $updateTextNodeFromDOMContent(node, textContent, anchorOffset, focusOffset, isCompositionEnd);
         }
       }
     }
   }
-  function $updateTextNodeFromDOMContent(
-    textNode,
-    textContent,
-    anchorOffset,
-    focusOffset,
-    compositionEnd
-  ) {
+  function $updateTextNodeFromDOMContent(textNode, textContent, anchorOffset, focusOffset, compositionEnd) {
     var node = textNode;
     if (node.isAttached() && (compositionEnd || !node.isDirty())) {
       var isComposing = node.isComposing();
       var normalizedTextContent = textContent;
-      if (
-        (isComposing || compositionEnd) &&
-        textContent[textContent.length - 1] === COMPOSITION_SUFFIX
-      ) {
+      if ((isComposing || compositionEnd) && textContent[textContent.length - 1] === COMPOSITION_SUFFIX) {
         normalizedTextContent = textContent.slice(0, -1);
       }
       var prevTextContent = node.getTextContent();
       if (compositionEnd || normalizedTextContent !== prevTextContent) {
-        if (normalizedTextContent === "") {
+        if (normalizedTextContent === '') {
           $setCompositionKey(null);
           if (!IS_SAFARI && !IS_IOS && !IS_APPLE_WEBKIT) {
             // For composition (mainly Android), we have to remove the node on a later update
@@ -1541,35 +1044,15 @@ define([], function () {
         var prevTextContentSize = node.getTextContentSize();
         var compositionKey = $getCompositionKey();
         var nodeKey = node.getKey();
-        if (
-          node.isToken() ||
-          (compositionKey !== null &&
-            nodeKey === compositionKey &&
-            !isComposing) ||
-          // Check if character was added at the start or boundaries when not insertable, and we need
-          // to clear this input from occurring as that action wasn't permitted.
-          ($isRangeSelection(prevSelection) &&
-            ((parent !== null &&
-              !parent.canInsertTextBefore() &&
-              prevSelection.anchor.offset === 0) ||
-              (prevSelection.anchor.key === textNode.__key &&
-                prevSelection.anchor.offset === 0 &&
-                !node.canInsertTextBefore() &&
-                !isComposing) ||
-              (prevSelection.focus.key === textNode.__key &&
-                prevSelection.focus.offset === prevTextContentSize &&
-                !node.canInsertTextAfter() &&
-                !isComposing)))
-        ) {
+        if (node.isToken() || compositionKey !== null && nodeKey === compositionKey && !isComposing ||
+        // Check if character was added at the start or boundaries when not insertable, and we need
+        // to clear this input from occurring as that action wasn't permitted.
+        $isRangeSelection(prevSelection) && (parent !== null && !parent.canInsertTextBefore() && prevSelection.anchor.offset === 0 || prevSelection.anchor.key === textNode.__key && prevSelection.anchor.offset === 0 && !node.canInsertTextBefore() && !isComposing || prevSelection.focus.key === textNode.__key && prevSelection.focus.offset === prevTextContentSize && !node.canInsertTextAfter() && !isComposing)) {
           node.markDirty();
           return;
         }
         var selection = $getSelection();
-        if (
-          !$isRangeSelection(selection) ||
-          anchorOffset === null ||
-          focusOffset === null
-        ) {
+        if (!$isRangeSelection(selection) || anchorOffset === null || focusOffset === null) {
           node.setTextContent(normalizedTextContent);
           return;
         }
@@ -1586,11 +1069,7 @@ define([], function () {
   }
   function $previousSiblingDoesNotAcceptText(node) {
     var previousSibling = node.getPreviousSibling();
-    return (
-      ($isTextNode(previousSibling) ||
-        ($isElementNode(previousSibling) && previousSibling.isInline())) &&
-      !previousSibling.canInsertTextAfter()
-    );
+    return ($isTextNode(previousSibling) || $isElementNode(previousSibling) && previousSibling.isInline()) && !previousSibling.canInsertTextAfter();
   }
 
   // This function is connected to $shouldPreventDefaultAndInsertText and determines whether the
@@ -1607,39 +1086,24 @@ define([], function () {
     var parent = node.getParentOrThrow();
     var isToken = node.isToken();
     if (offset === 0) {
-      return (
-        !node.canInsertTextBefore() ||
-        (!parent.canInsertTextBefore() && !node.isComposing()) ||
-        isToken ||
-        $previousSiblingDoesNotAcceptText(node)
-      );
+      return !node.canInsertTextBefore() || !parent.canInsertTextBefore() && !node.isComposing() || isToken || $previousSiblingDoesNotAcceptText(node);
     } else if (offset === node.getTextContentSize()) {
-      return (
-        !node.canInsertTextAfter() ||
-        (!parent.canInsertTextAfter() && !node.isComposing()) ||
-        isToken
-      );
+      return !node.canInsertTextAfter() || !parent.canInsertTextAfter() && !node.isComposing() || isToken;
     } else {
       return false;
     }
   }
   function isTab(key, altKey, ctrlKey, metaKey) {
-    return key === "Tab" && !altKey && !ctrlKey && !metaKey;
+    return key === 'Tab' && !altKey && !ctrlKey && !metaKey;
   }
   function isBold(key, altKey, metaKey, ctrlKey) {
-    return (
-      key.toLowerCase() === "b" && !altKey && controlOrMeta(metaKey, ctrlKey)
-    );
+    return key.toLowerCase() === 'b' && !altKey && controlOrMeta(metaKey, ctrlKey);
   }
   function isItalic(key, altKey, metaKey, ctrlKey) {
-    return (
-      key.toLowerCase() === "i" && !altKey && controlOrMeta(metaKey, ctrlKey)
-    );
+    return key.toLowerCase() === 'i' && !altKey && controlOrMeta(metaKey, ctrlKey);
   }
   function isUnderline(key, altKey, metaKey, ctrlKey) {
-    return (
-      key.toLowerCase() === "u" && !altKey && controlOrMeta(metaKey, ctrlKey)
-    );
+    return key.toLowerCase() === 'u' && !altKey && controlOrMeta(metaKey, ctrlKey);
   }
   function isParagraph(key, shiftKey) {
     return isReturn(key) && !shiftKey;
@@ -1652,7 +1116,7 @@ define([], function () {
 
   function isOpenLineBreak(key, ctrlKey) {
     // 79 = KeyO
-    return IS_APPLE && ctrlKey && key.toLowerCase() === "o";
+    return IS_APPLE && ctrlKey && key.toLowerCase() === 'o';
   }
   function isDeleteWordBackward(key, altKey, ctrlKey) {
     return isBackspace(key) && (IS_APPLE ? altKey : ctrlKey);
@@ -1671,7 +1135,7 @@ define([], function () {
       if (altKey || metaKey) {
         return false;
       }
-      return isBackspace(key) || (key.toLowerCase() === "h" && ctrlKey);
+      return isBackspace(key) || key.toLowerCase() === 'h' && ctrlKey;
     }
     if (ctrlKey || altKey || metaKey) {
       return false;
@@ -1683,7 +1147,7 @@ define([], function () {
       if (shiftKey || altKey || metaKey) {
         return false;
       }
-      return isDelete(key) || (key.toLowerCase() === "d" && ctrlKey);
+      return isDelete(key) || key.toLowerCase() === 'd' && ctrlKey;
     }
     if (ctrlKey || altKey || metaKey) {
       return false;
@@ -1691,24 +1155,19 @@ define([], function () {
     return isDelete(key);
   }
   function isUndo(key, shiftKey, metaKey, ctrlKey) {
-    return (
-      key.toLowerCase() === "z" && !shiftKey && controlOrMeta(metaKey, ctrlKey)
-    );
+    return key.toLowerCase() === 'z' && !shiftKey && controlOrMeta(metaKey, ctrlKey);
   }
   function isRedo(key, shiftKey, metaKey, ctrlKey) {
     if (IS_APPLE) {
-      return key.toLowerCase() === "z" && metaKey && shiftKey;
+      return key.toLowerCase() === 'z' && metaKey && shiftKey;
     }
-    return (
-      (key.toLowerCase() === "y" && ctrlKey) ||
-      (key.toLowerCase() === "z" && ctrlKey && shiftKey)
-    );
+    return key.toLowerCase() === 'y' && ctrlKey || key.toLowerCase() === 'z' && ctrlKey && shiftKey;
   }
   function isCopy(key, shiftKey, metaKey, ctrlKey) {
     if (shiftKey) {
       return false;
     }
-    if (key.toLowerCase() === "c") {
+    if (key.toLowerCase() === 'c') {
       return IS_APPLE ? metaKey : ctrlKey;
     }
     return false;
@@ -1717,22 +1176,22 @@ define([], function () {
     if (shiftKey) {
       return false;
     }
-    if (key.toLowerCase() === "x") {
+    if (key.toLowerCase() === 'x') {
       return IS_APPLE ? metaKey : ctrlKey;
     }
     return false;
   }
   function isArrowLeft(key) {
-    return key === "ArrowLeft";
+    return key === 'ArrowLeft';
   }
   function isArrowRight(key) {
-    return key === "ArrowRight";
+    return key === 'ArrowRight';
   }
   function isArrowUp(key) {
-    return key === "ArrowUp";
+    return key === 'ArrowUp';
   }
   function isArrowDown(key) {
-    return key === "ArrowDown";
+    return key === 'ArrowDown';
   }
   function isMoveBackward(key, ctrlKey, altKey, metaKey) {
     return isArrowLeft(key) && !ctrlKey && !metaKey && !altKey;
@@ -1756,7 +1215,7 @@ define([], function () {
     return ctrlKey || shiftKey || altKey || metaKey;
   }
   function isSpace(key) {
-    return key === " ";
+    return key === ' ';
   }
   function controlOrMeta(metaKey, ctrlKey) {
     if (IS_APPLE) {
@@ -1765,19 +1224,19 @@ define([], function () {
     return ctrlKey;
   }
   function isReturn(key) {
-    return key === "Enter";
+    return key === 'Enter';
   }
   function isBackspace(key) {
-    return key === "Backspace";
+    return key === 'Backspace';
   }
   function isEscape(key) {
-    return key === "Escape";
+    return key === 'Escape';
   }
   function isDelete(key) {
-    return key === "Delete";
+    return key === 'Delete';
   }
   function isSelectAll(key, metaKey, ctrlKey) {
-    return key.toLowerCase() === "a" && controlOrMeta(metaKey, ctrlKey);
+    return key.toLowerCase() === 'a' && controlOrMeta(metaKey, ctrlKey);
   }
   function $selectAll() {
     var root = $getRoot();
@@ -1799,20 +1258,14 @@ define([], function () {
     // The easiest way to do this to convert the
     // className tokens to an array that can be
     // applied to classList.add()/remove().
-    if (typeof classNames === "string") {
+    if (typeof classNames === 'string') {
       var classNamesArr = normalizeClassNames(classNames);
       classNamesCache[classNameThemeType] = classNamesArr;
       return classNamesArr;
     }
     return classNames;
   }
-  function setMutatedNode(
-    mutatedNodes,
-    registeredNodes,
-    mutationListeners,
-    node,
-    mutation
-  ) {
+  function setMutatedNode(mutatedNodes, registeredNodes, mutationListeners, node, mutation) {
     if (mutationListeners.size === 0) {
       return;
     }
@@ -1835,9 +1288,9 @@ define([], function () {
     // re-making it, then this means a move likely happened.
     // We should change the mutation to be that of "updated"
     // instead.
-    var isMove = prevMutation === "destroyed" && mutation === "created";
+    var isMove = prevMutation === 'destroyed' && mutation === 'created';
     if (prevMutation === undefined || isMove) {
-      mutatedNodesByType.set(nodeKey, isMove ? "updated" : mutation);
+      mutatedNodesByType.set(nodeKey, isMove ? 'updated' : mutation);
     }
   }
   function $nodesOfType(klass) {
@@ -1849,14 +1302,10 @@ define([], function () {
     var _iterator4 = _createForOfIteratorHelper(nodes),
       _step4;
     try {
-      for (_iterator4.s(); !(_step4 = _iterator4.n()).done; ) {
+      for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
         var _step4$value = _slicedToArray(_step4.value, 2),
           node = _step4$value[1];
-        if (
-          node instanceof klass &&
-          node.__type === klassType &&
-          (readOnly || node.isAttached())
-        ) {
+        if (node instanceof klass && node.__type === klassType && (readOnly || node.isAttached())) {
           nodesOfType.push(node);
         }
       }
@@ -1884,24 +1333,15 @@ define([], function () {
   }
   function $getAdjacentNode(focus, isBackward) {
     var focusOffset = focus.offset;
-    if (focus.type === "element") {
+    if (focus.type === 'element') {
       var block = focus.getNode();
       return resolveElement(block, isBackward, focusOffset);
     } else {
       var focusNode = focus.getNode();
-      if (
-        (isBackward && focusOffset === 0) ||
-        (!isBackward && focusOffset === focusNode.getTextContentSize())
-      ) {
-        var possibleNode = isBackward
-          ? focusNode.getPreviousSibling()
-          : focusNode.getNextSibling();
+      if (isBackward && focusOffset === 0 || !isBackward && focusOffset === focusNode.getTextContentSize()) {
+        var possibleNode = isBackward ? focusNode.getPreviousSibling() : focusNode.getNextSibling();
         if (possibleNode === null) {
-          return resolveElement(
-            focusNode.getParentOrThrow(),
-            isBackward,
-            focusNode.getIndexWithinParent() + (isBackward ? 0 : 1)
-          );
+          return resolveElement(focusNode.getParentOrThrow(), isBackward, focusNode.getIndexWithinParent() + (isBackward ? 0 : 1));
         }
         return possibleNode;
       }
@@ -1911,10 +1351,7 @@ define([], function () {
   function isFirefoxClipboardEvents(editor) {
     var event = getWindow(editor).event;
     var inputType = event && event.inputType;
-    return (
-      inputType === "insertFromPaste" ||
-      inputType === "insertFromPasteAsQuotation"
-    );
+    return inputType === 'insertFromPaste' || inputType === 'insertFromPasteAsQuotation';
   }
   function _dispatchCommand(editor, command, payload) {
     return triggerCommandListeners(editor, command, payload);
@@ -1926,18 +1363,14 @@ define([], function () {
     var element = editor._keyToDOMMap.get(key);
     if (element === undefined) {
       {
-        throw Error(
-          "Reconciliation: could not find DOM element for node key ".concat(key)
-        );
+        throw Error("Reconciliation: could not find DOM element for node key ".concat(key));
       }
     }
     return element;
   }
   function getParentElement(node) {
     var parentElement = node.assignedSlot || node.parentElement;
-    return parentElement !== null && parentElement.nodeType === 11
-      ? parentElement.host
-      : parentElement;
+    return parentElement !== null && parentElement.nodeType === 11 ? parentElement.host : parentElement;
   }
   function scrollIntoViewIfNeeded(editor, selectionRect, rootElement) {
     var doc = rootElement.ownerDocument;
@@ -2003,10 +1436,10 @@ define([], function () {
     var anchorNode = anchor.getNode();
     var focusNode = focus.getNode();
     if ($hasAncestor(anchorNode, parentNode)) {
-      anchor.set(parentNode.__key, 0, "element");
+      anchor.set(parentNode.__key, 0, 'element');
     }
     if ($hasAncestor(focusNode, parentNode)) {
-      focus.set(parentNode.__key, 0, "element");
+      focus.set(parentNode.__key, 0, 'element');
     }
     return selection;
   }
@@ -2022,7 +1455,7 @@ define([], function () {
   }
   function getDefaultView(domElem) {
     var ownerDoc = domElem.ownerDocument;
-    return (ownerDoc && ownerDoc.defaultView) || null;
+    return ownerDoc && ownerDoc.defaultView || null;
   }
   function getWindow(editor) {
     var windowObj = editor._window;
@@ -2034,10 +1467,7 @@ define([], function () {
     return windowObj;
   }
   function $isInlineElementOrDecoratorNode(node) {
-    return (
-      ($isElementNode(node) && node.isInline()) ||
-      ($isDecoratorNode(node) && node.isInline())
-    );
+    return $isElementNode(node) && node.isInline() || $isDecoratorNode(node) && node.isInline();
   }
   function $getNearestRootOrShadowRoot(node) {
     var parent = node.getParentOrThrow();
@@ -2050,7 +1480,7 @@ define([], function () {
     return parent;
   }
   function $isRootOrShadowRoot(node) {
-    return $isRootNode(node) || ($isElementNode(node) && node.isShadowRoot());
+    return $isRootNode(node) || $isElementNode(node) && node.isShadowRoot();
   }
   function $copyNode(node) {
     var copy = node.constructor.clone(node);
@@ -2064,9 +1494,7 @@ define([], function () {
     var registeredNode = editor._nodes.get(nodeType);
     if (registeredNode === undefined) {
       {
-        throw Error(
-          '$initializeNode failed. Ensure node has been registered to the editor. You can do this by passing the node class via the "nodes" array in the editor config.'
-        );
+        throw Error("$initializeNode failed. Ensure node has been registered to the editor. You can do this by passing the node class via the \"nodes\" array in the editor config.");
       }
     }
     var replaceFunc = registeredNode.replace;
@@ -2074,9 +1502,7 @@ define([], function () {
       var replacementNode = replaceFunc(node);
       if (!(replacementNode instanceof node.constructor)) {
         {
-          throw Error(
-            "$initializeNode failed. Ensure replacement node is a subclass of the original node."
-          );
+          throw Error("$initializeNode failed. Ensure replacement node is a subclass of the original node.");
         }
       }
       return replacementNode;
@@ -2085,15 +1511,9 @@ define([], function () {
   }
   function errorOnInsertTextNodeOnRoot(node, insertNode) {
     var parentNode = node.getParent();
-    if (
-      $isRootNode(parentNode) &&
-      !$isElementNode(insertNode) &&
-      !$isDecoratorNode(insertNode)
-    ) {
+    if ($isRootNode(parentNode) && !$isElementNode(insertNode) && !$isDecoratorNode(insertNode)) {
       {
-        throw Error(
-          "Only element or decorator nodes can be inserted in to the root node"
-        );
+        throw Error("Only element or decorator nodes can be inserted in to the root node");
       }
     }
   }
@@ -2101,51 +1521,35 @@ define([], function () {
     var node = $getNodeByKey(key);
     if (node === null) {
       {
-        throw Error(
-          "Expected node with key ".concat(
-            key,
-            " to exist but it's not in the nodeMap."
-          )
-        );
+        throw Error("Expected node with key ".concat(key, " to exist but it's not in the nodeMap."));
       }
     }
     return node;
   }
   function createBlockCursorElement(editorConfig) {
     var theme = editorConfig.theme;
-    var element = document.createElement("div");
-    element.contentEditable = "false";
-    element.setAttribute("data-lexical-cursor", "true");
+    var element = document.createElement('div');
+    element.contentEditable = 'false';
+    element.setAttribute('data-lexical-cursor', 'true');
     var blockCursorTheme = theme.blockCursor;
     if (blockCursorTheme !== undefined) {
-      if (typeof blockCursorTheme === "string") {
+      if (typeof blockCursorTheme === 'string') {
         var classNamesArr = normalizeClassNames(blockCursorTheme);
         // @ts-expect-error: intentional
         blockCursorTheme = theme.blockCursor = classNamesArr;
       }
       if (blockCursorTheme !== undefined) {
         var _element$classList;
-        (_element$classList = element.classList).add.apply(
-          _element$classList,
-          _toConsumableArray(blockCursorTheme)
-        );
+        (_element$classList = element.classList).add.apply(_element$classList, _toConsumableArray(blockCursorTheme));
       }
     }
     return element;
   }
   function needsBlockCursor(node) {
-    return (
-      ($isDecoratorNode(node) ||
-        ($isElementNode(node) && !node.canBeEmpty())) &&
-      !node.isInline()
-    );
+    return ($isDecoratorNode(node) || $isElementNode(node) && !node.canBeEmpty()) && !node.isInline();
   }
-  function removeDOMBlockCursorElement(
-    blockCursorElement,
-    editor,
-    rootElement
-  ) {
-    rootElement.style.removeProperty("caret-color");
+  function removeDOMBlockCursorElement(blockCursorElement, editor, rootElement) {
+    rootElement.style.removeProperty('caret-color');
     editor._blockCursorElement = null;
     var parentElement = blockCursorElement.parentElement;
     if (parentElement !== null) {
@@ -2154,12 +1558,7 @@ define([], function () {
   }
   function updateDOMBlockCursorElement(editor, rootElement, nextSelection) {
     var blockCursorElement = editor._blockCursorElement;
-    if (
-      $isRangeSelection(nextSelection) &&
-      nextSelection.isCollapsed() &&
-      nextSelection.anchor.type === "element" &&
-      rootElement.contains(document.activeElement)
-    ) {
+    if ($isRangeSelection(nextSelection) && nextSelection.isCollapsed() && nextSelection.anchor.type === 'element' && rootElement.contains(document.activeElement)) {
       var anchor = nextSelection.anchor;
       var elementNode = anchor.getNode();
       var offset = anchor.offset;
@@ -2184,10 +1583,9 @@ define([], function () {
       if (isBlockCursor) {
         var elementDOM = editor.getElementByKey(elementNode.__key);
         if (blockCursorElement === null) {
-          editor._blockCursorElement = blockCursorElement =
-            createBlockCursorElement(editor._config);
+          editor._blockCursorElement = blockCursorElement = createBlockCursorElement(editor._config);
         }
-        rootElement.style.caretColor = "transparent";
+        rootElement.style.caretColor = 'transparent';
         if (insertBeforeElement === null) {
           elementDOM.appendChild(blockCursorElement);
         } else {
@@ -2217,10 +1615,7 @@ define([], function () {
       var isParentRoot = $isRootOrShadowRoot(parent);
       // The node we start split from (leaf) is moved, but its recursive
       // parents are copied to create separate tree
-      var nodeToMove =
-        currentNode === startNode && !isParentRoot
-          ? currentNode
-          : $copyNode(currentNode);
+      var nodeToMove = currentNode === startNode && !isParentRoot ? currentNode : $copyNode(currentNode);
       if (isParentRoot) {
         if (!($isElementNode(currentNode) && $isElementNode(nodeToMove))) {
           throw Error("Children of a root must be ElementNode");
@@ -2234,10 +1629,7 @@ define([], function () {
           _rightTree = _recurse2[1],
           newParent = _recurse2[2];
         var nextSiblings = currentNode.getNextSiblings();
-        newParent.append.apply(
-          newParent,
-          [nodeToMove].concat(_toConsumableArray(nextSiblings))
-        );
+        newParent.append.apply(newParent, [nodeToMove].concat(_toConsumableArray(nextSiblings)));
         return [_leftTree, _rightTree, nodeToMove];
       }
     };
@@ -2253,7 +1645,7 @@ define([], function () {
    * @returns Returns true if x is an HTML anchor tag, false otherwise
    */
   function isHTMLAnchorElement(x) {
-    return isHTMLElement(x) && x.tagName === "A";
+    return isHTMLElement(x) && x.tagName === 'A';
   }
 
   /**
@@ -2271,10 +1663,7 @@ define([], function () {
    * @returns if the Dom Node is an inline node
    */
   function isInlineDomNode(node) {
-    var inlineNodes = new RegExp(
-      /^(a|abbr|acronym|b|cite|code|del|em|i|ins|kbd|label|output|q|ruby|s|samp|span|strong|sub|sup|time|u|tt|var|#text)$/,
-      "i"
-    );
+    var inlineNodes = new RegExp(/^(a|abbr|acronym|b|cite|code|del|em|i|ins|kbd|label|output|q|ruby|s|samp|span|strong|sub|sup|time|u|tt|var|#text)$/, 'i');
     return node.nodeName.match(inlineNodes) !== null;
   }
 
@@ -2284,10 +1673,7 @@ define([], function () {
    * @returns if the Dom Node is a block node
    */
   function isBlockDomNode(node) {
-    var blockNodes = new RegExp(
-      /^(address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h1|h2|h3|h4|h5|h6|header|hr|li|main|nav|noscript|ol|p|pre|section|table|td|tfoot|ul|video)$/,
-      "i"
-    );
+    var blockNodes = new RegExp(/^(address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h1|h2|h3|h4|h5|h6|header|hr|li|main|nav|noscript|ol|p|pre|section|table|td|tfoot|ul|video)$/, 'i');
     return node.nodeName.match(blockNodes) !== null;
   }
 
@@ -2296,27 +1682,19 @@ define([], function () {
    * Please do not use it as it may change in the future.
    */
   function INTERNAL_$isBlock(node) {
-    if ($isRootNode(node) || ($isDecoratorNode(node) && !node.isInline())) {
+    if ($isRootNode(node) || $isDecoratorNode(node) && !node.isInline()) {
       return true;
     }
     if (!$isElementNode(node) || $isRootOrShadowRoot(node)) {
       return false;
     }
     var firstChild = node.getFirstChild();
-    var isLeafElement =
-      firstChild === null ||
-      $isLineBreakNode(firstChild) ||
-      $isTextNode(firstChild) ||
-      firstChild.isInline();
+    var isLeafElement = firstChild === null || $isLineBreakNode(firstChild) || $isTextNode(firstChild) || firstChild.isInline();
     return !node.isInline() && node.canBeEmpty() !== false && isLeafElement;
   }
   function $getAncestor(node, predicate) {
     var parent = node;
-    while (
-      parent !== null &&
-      parent.getParent() !== null &&
-      !predicate(parent)
-    ) {
+    while (parent !== null && parent.getParent() !== null && !predicate(parent)) {
       parent = parent.getParentOrThrow();
     }
     return predicate(parent) ? parent : null;
@@ -2353,28 +1731,14 @@ define([], function () {
       }
     }
   }
-  function $garbageCollectDetachedDeepChildNodes(
-    node,
-    parentKey,
-    prevNodeMap,
-    nodeMap,
-    nodeMapDelete,
-    dirtyNodes
-  ) {
+  function $garbageCollectDetachedDeepChildNodes(node, parentKey, prevNodeMap, nodeMap, nodeMapDelete, dirtyNodes) {
     var child = node.getFirstChild();
     while (child !== null) {
       var childKey = child.__key;
       // TODO Revise condition below, redundant? LexicalNode already cleans up children when moving Nodes
       if (child.__parent === parentKey) {
         if ($isElementNode(child)) {
-          $garbageCollectDetachedDeepChildNodes(
-            child,
-            childKey,
-            prevNodeMap,
-            nodeMap,
-            nodeMapDelete,
-            dirtyNodes
-          );
+          $garbageCollectDetachedDeepChildNodes(child, childKey, prevNodeMap, nodeMap, nodeMapDelete, dirtyNodes);
         }
 
         // If we have created a node and it was dereferenced, then also
@@ -2387,12 +1751,7 @@ define([], function () {
       child = child.getNextSibling();
     }
   }
-  function $garbageCollectDetachedNodes(
-    prevEditorState,
-    editorState,
-    dirtyLeaves,
-    dirtyElements
-  ) {
+  function $garbageCollectDetachedNodes(prevEditorState, editorState, dirtyLeaves, dirtyElements) {
     var prevNodeMap = prevEditorState._nodeMap;
     var nodeMap = editorState._nodeMap;
     // Store dirtyElements in a queue for later deletion; deleting dirty subtrees too early will
@@ -2401,7 +1760,7 @@ define([], function () {
     var _iterator5 = _createForOfIteratorHelper(dirtyElements),
       _step5;
     try {
-      for (_iterator5.s(); !(_step5 = _iterator5.n()).done; ) {
+      for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
         var _step5$value = _slicedToArray(_step5.value, 1),
           _nodeKey = _step5$value[0];
         var node = nodeMap.get(_nodeKey);
@@ -2409,14 +1768,7 @@ define([], function () {
           // Garbage collect node and its children if they exist
           if (!node.isAttached()) {
             if ($isElementNode(node)) {
-              $garbageCollectDetachedDeepChildNodes(
-                node,
-                _nodeKey,
-                prevNodeMap,
-                nodeMap,
-                nodeMapDelete,
-                dirtyElements
-              );
+              $garbageCollectDetachedDeepChildNodes(node, _nodeKey, prevNodeMap, nodeMap, nodeMapDelete, dirtyElements);
             }
             // If we have created a node and it was dereferenced, then also
             // remove it from out dirty nodes Set.
@@ -2432,18 +1784,14 @@ define([], function () {
     } finally {
       _iterator5.f();
     }
-    for (
-      var _i3 = 0, _nodeMapDelete = nodeMapDelete;
-      _i3 < _nodeMapDelete.length;
-      _i3++
-    ) {
+    for (var _i3 = 0, _nodeMapDelete = nodeMapDelete; _i3 < _nodeMapDelete.length; _i3++) {
       var nodeKey = _nodeMapDelete[_i3];
       nodeMap["delete"](nodeKey);
     }
     var _iterator6 = _createForOfIteratorHelper(dirtyLeaves),
       _step6;
     try {
-      for (_iterator6.s(); !(_step6 = _iterator6.n()).done; ) {
+      for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
         var _nodeKey2 = _step6.value;
         var _node2 = nodeMap.get(_nodeKey2);
         if (_node2 !== undefined && !_node2.isAttached()) {
@@ -2468,10 +1816,10 @@ define([], function () {
    *
    */
 
-  var subTreeTextContent = "";
-  var subTreeDirectionedTextContent = "";
+  var subTreeTextContent = '';
+  var subTreeDirectionedTextContent = '';
   var subTreeTextFormat = null;
-  var editorTextContent = "";
+  var editorTextContent = '';
   var activeEditorConfig;
   var activeEditor$1;
   var activeEditorNodes;
@@ -2504,13 +1852,7 @@ define([], function () {
       destroyChildren(children, 0, children.length - 1, null);
     }
     if (node !== undefined) {
-      setMutatedNode(
-        mutatedNodes,
-        activeEditorNodes,
-        activeMutationListeners,
-        node,
-        "destroyed"
-      );
+      setMutatedNode(mutatedNodes, activeEditorNodes, activeMutationListeners, node, 'destroyed');
     }
   }
   function destroyChildren(children, _startIndex, endIndex, dom) {
@@ -2523,12 +1865,12 @@ define([], function () {
     }
   }
   function setTextAlign(domStyle, value) {
-    domStyle.setProperty("text-align", value);
+    domStyle.setProperty('text-align', value);
   }
-  var DEFAULT_INDENT_VALUE = "40px";
+  var DEFAULT_INDENT_VALUE = '40px';
   function setElementIndent(dom, indent) {
     var indentClassName = activeEditorConfig.theme.indent;
-    if (typeof indentClassName === "string") {
+    if (typeof indentClassName === 'string') {
       var elementHasClassName = dom.classList.contains(indentClassName);
       if (indent > 0 && !elementHasClassName) {
         dom.classList.add(indentClassName);
@@ -2536,32 +1878,25 @@ define([], function () {
         dom.classList.remove(indentClassName);
       }
     }
-    var indentationBaseValue =
-      getComputedStyle(dom).getPropertyValue("--lexical-indent-base-value") ||
-      DEFAULT_INDENT_VALUE;
-    dom.style.setProperty(
-      "padding-inline-start",
-      indent === 0
-        ? ""
-        : "calc(".concat(indent, " * ").concat(indentationBaseValue, ")")
-    );
+    var indentationBaseValue = getComputedStyle(dom).getPropertyValue('--lexical-indent-base-value') || DEFAULT_INDENT_VALUE;
+    dom.style.setProperty('padding-inline-start', indent === 0 ? '' : "calc(".concat(indent, " * ").concat(indentationBaseValue, ")"));
   }
   function setElementFormat(dom, format) {
     var domStyle = dom.style;
     if (format === 0) {
-      setTextAlign(domStyle, "");
+      setTextAlign(domStyle, '');
     } else if (format === IS_ALIGN_LEFT) {
-      setTextAlign(domStyle, "left");
+      setTextAlign(domStyle, 'left');
     } else if (format === IS_ALIGN_CENTER) {
-      setTextAlign(domStyle, "center");
+      setTextAlign(domStyle, 'center');
     } else if (format === IS_ALIGN_RIGHT) {
-      setTextAlign(domStyle, "right");
+      setTextAlign(domStyle, 'right');
     } else if (format === IS_ALIGN_JUSTIFY) {
-      setTextAlign(domStyle, "justify");
+      setTextAlign(domStyle, 'justify');
     } else if (format === IS_ALIGN_START) {
-      setTextAlign(domStyle, "start");
+      setTextAlign(domStyle, 'start');
     } else if (format === IS_ALIGN_END) {
-      setTextAlign(domStyle, "end");
+      setTextAlign(domStyle, 'end');
     }
   }
   function $createNode(key, parentDOM, insertDOM) {
@@ -2578,9 +1913,9 @@ define([], function () {
     // merging or break the spans (which happens if they are missing
     // this attribute).
     if ($isTextNode(node)) {
-      dom.setAttribute("data-lexical-text", "true");
+      dom.setAttribute('data-lexical-text', 'true');
     } else if ($isDecoratorNode(node)) {
-      dom.setAttribute("data-lexical-decorator", "true");
+      dom.setAttribute('data-lexical-decorator', 'true');
     }
     if ($isElementNode(node)) {
       var indent = node.__indent;
@@ -2612,7 +1947,7 @@ define([], function () {
           reconcileDecorator(key, decorator);
         }
         // Decorators are always non editable
-        dom.contentEditable = "false";
+        dom.contentEditable = 'false';
       } else if ($isTextNode(node)) {
         if (!node.isDirectionless()) {
           subTreeDirectionedTextContent += text;
@@ -2638,32 +1973,19 @@ define([], function () {
       // Freeze the node in DEV to prevent accidental mutations
       Object.freeze(node);
     }
-    setMutatedNode(
-      mutatedNodes,
-      activeEditorNodes,
-      activeMutationListeners,
-      node,
-      "created"
-    );
+    setMutatedNode(mutatedNodes, activeEditorNodes, activeMutationListeners, node, 'created');
     return dom;
   }
   function $createChildrenWithDirection(children, endIndex, element, dom) {
     var previousSubTreeDirectionedTextContent = subTreeDirectionedTextContent;
-    subTreeDirectionedTextContent = "";
+    subTreeDirectionedTextContent = '';
     $createChildren(children, element, 0, endIndex, dom, null);
     reconcileBlockDirection(element, dom);
     subTreeDirectionedTextContent = previousSubTreeDirectionedTextContent;
   }
-  function $createChildren(
-    children,
-    element,
-    _startIndex,
-    endIndex,
-    dom,
-    insertDOM
-  ) {
+  function $createChildren(children, element, _startIndex, endIndex, dom, insertDOM) {
     var previousSubTreeTextContent = subTreeTextContent;
-    subTreeTextContent = "";
+    subTreeTextContent = '';
     var startIndex = _startIndex;
     for (; startIndex <= endIndex; ++startIndex) {
       $createNode(children[startIndex], dom, insertDOM);
@@ -2681,20 +2003,13 @@ define([], function () {
   }
   function isLastChildLineBreakOrDecorator(childKey, nodeMap) {
     var node = nodeMap.get(childKey);
-    return (
-      $isLineBreakNode(node) || ($isDecoratorNode(node) && node.isInline())
-    );
+    return $isLineBreakNode(node) || $isDecoratorNode(node) && node.isInline();
   }
 
   // If we end an element with a LineBreakNode, then we need to add an additional <br>
   function reconcileElementTerminatingLineBreak(prevElement, nextElement, dom) {
-    var prevLineBreak =
-      prevElement !== null &&
-      (prevElement.__size === 0 ||
-        isLastChildLineBreakOrDecorator(prevElement.__last, activePrevNodeMap));
-    var nextLineBreak =
-      nextElement.__size === 0 ||
-      isLastChildLineBreakOrDecorator(nextElement.__last, activeNextNodeMap);
+    var prevLineBreak = prevElement !== null && (prevElement.__size === 0 || isLastChildLineBreakOrDecorator(prevElement.__last, activePrevNodeMap));
+    var nextLineBreak = nextElement.__size === 0 || isLastChildLineBreakOrDecorator(nextElement.__last, activeNextNodeMap);
     if (prevLineBreak) {
       if (!nextLineBreak) {
         // @ts-expect-error: internal field
@@ -2707,76 +2022,55 @@ define([], function () {
         dom.__lexicalLineBreak = null;
       }
     } else if (nextLineBreak) {
-      var _element = document.createElement("br");
+      var _element = document.createElement('br');
       // @ts-expect-error: internal field
       dom.__lexicalLineBreak = _element;
       dom.appendChild(_element);
     }
   }
   function reconcileParagraphFormat(element) {
-    if (
-      $isParagraphNode(element) &&
-      subTreeTextFormat != null &&
-      subTreeTextFormat !== element.__textFormat &&
-      !activeEditorStateReadOnly
-    ) {
+    if ($isParagraphNode(element) && subTreeTextFormat != null && subTreeTextFormat !== element.__textFormat && !activeEditorStateReadOnly) {
       element.setTextFormat(subTreeTextFormat);
     }
   }
   function reconcileBlockDirection(element, dom) {
     var previousSubTreeDirectionTextContent =
-      // @ts-expect-error: internal field
-      dom.__lexicalDirTextContent;
+    // @ts-expect-error: internal field
+    dom.__lexicalDirTextContent;
     // @ts-expect-error: internal field
     var previousDirection = dom.__lexicalDir;
-    if (
-      previousSubTreeDirectionTextContent !== subTreeDirectionedTextContent ||
-      previousDirection !== activeTextDirection
-    ) {
-      var hasEmptyDirectionedTextContent = subTreeDirectionedTextContent === "";
-      var direction = hasEmptyDirectionedTextContent
-        ? activeTextDirection
-        : getTextDirection(subTreeDirectionedTextContent);
+    if (previousSubTreeDirectionTextContent !== subTreeDirectionedTextContent || previousDirection !== activeTextDirection) {
+      var hasEmptyDirectionedTextContent = subTreeDirectionedTextContent === '';
+      var direction = hasEmptyDirectionedTextContent ? activeTextDirection : getTextDirection(subTreeDirectionedTextContent);
       if (direction !== previousDirection) {
         var classList = dom.classList;
         var theme = activeEditorConfig.theme;
-        var previousDirectionTheme =
-          previousDirection !== null ? theme[previousDirection] : undefined;
-        var nextDirectionTheme =
-          direction !== null ? theme[direction] : undefined;
+        var previousDirectionTheme = previousDirection !== null ? theme[previousDirection] : undefined;
+        var nextDirectionTheme = direction !== null ? theme[direction] : undefined;
 
         // Remove the old theme classes if they exist
         if (previousDirectionTheme !== undefined) {
-          if (typeof previousDirectionTheme === "string") {
+          if (typeof previousDirectionTheme === 'string') {
             var classNamesArr = normalizeClassNames(previousDirectionTheme);
             previousDirectionTheme = theme[previousDirection] = classNamesArr;
           }
 
           // @ts-ignore: intentional
-          classList.remove.apply(
-            classList,
-            _toConsumableArray(previousDirectionTheme)
-          );
+          classList.remove.apply(classList, _toConsumableArray(previousDirectionTheme));
         }
-        if (
-          direction === null ||
-          (hasEmptyDirectionedTextContent && direction === "ltr")
-        ) {
+        if (direction === null || hasEmptyDirectionedTextContent && direction === 'ltr') {
           // Remove direction
-          dom.removeAttribute("dir");
+          dom.removeAttribute('dir');
         } else {
           // Apply the new theme classes if they exist
           if (nextDirectionTheme !== undefined) {
-            if (typeof nextDirectionTheme === "string") {
+            if (typeof nextDirectionTheme === 'string') {
               var _classNamesArr = normalizeClassNames(nextDirectionTheme);
               // @ts-expect-error: intentional
               nextDirectionTheme = theme[direction] = _classNamesArr;
             }
             if (nextDirectionTheme !== undefined) {
-              classList.add.apply(
-                classList,
-                _toConsumableArray(nextDirectionTheme)
-              );
+              classList.add.apply(classList, _toConsumableArray(nextDirectionTheme));
             }
           }
 
@@ -2797,7 +2091,7 @@ define([], function () {
   }
   function $reconcileChildrenWithDirection(prevElement, nextElement, dom) {
     var previousSubTreeDirectionTextContent = subTreeDirectionedTextContent;
-    subTreeDirectionedTextContent = "";
+    subTreeDirectionedTextContent = '';
     subTreeTextFormat = null;
     $reconcileChildren(prevElement, nextElement, dom);
     reconcileBlockDirection(nextElement, dom);
@@ -2824,7 +2118,7 @@ define([], function () {
     var previousSubTreeTextContent = subTreeTextContent;
     var prevChildrenSize = prevElement.__size;
     var nextChildrenSize = nextElement.__size;
-    subTreeTextContent = "";
+    subTreeTextContent = '';
     if (prevChildrenSize === 1 && nextChildrenSize === 1) {
       var prevFirstChildKey = prevElement.__first;
       var nextFrstChildKey = nextElement.__first;
@@ -2845,40 +2139,21 @@ define([], function () {
       var nextChildren = createChildrenArray(nextElement, activeNextNodeMap);
       if (prevChildrenSize === 0) {
         if (nextChildrenSize !== 0) {
-          $createChildren(
-            nextChildren,
-            nextElement,
-            0,
-            nextChildrenSize - 1,
-            dom,
-            null
-          );
+          $createChildren(nextChildren, nextElement, 0, nextChildrenSize - 1, dom, null);
         }
       } else if (nextChildrenSize === 0) {
         if (prevChildrenSize !== 0) {
           // @ts-expect-error: internal field
           var lexicalLineBreak = dom.__lexicalLineBreak;
           var canUseFastPath = lexicalLineBreak == null;
-          destroyChildren(
-            prevChildren,
-            0,
-            prevChildrenSize - 1,
-            canUseFastPath ? null : dom
-          );
+          destroyChildren(prevChildren, 0, prevChildrenSize - 1, canUseFastPath ? null : dom);
           if (canUseFastPath) {
             // Fast path for removing DOM nodes
-            dom.textContent = "";
+            dom.textContent = '';
           }
         }
       } else {
-        $reconcileNodeChildren(
-          nextElement,
-          prevChildren,
-          nextChildren,
-          prevChildrenSize,
-          nextChildrenSize,
-          dom
-        );
+        $reconcileNodeChildren(nextElement, prevChildren, nextChildren, prevChildrenSize, nextChildrenSize, dom);
       }
     }
     if ($textContentRequiresDoubleLinebreakAtEnd(nextElement)) {
@@ -2894,15 +2169,10 @@ define([], function () {
     var nextNode = activeNextNodeMap.get(key);
     if (prevNode === undefined || nextNode === undefined) {
       {
-        throw Error(
-          "reconcileNode: prevNode or nextNode does not exist in nodeMap"
-        );
+        throw Error("reconcileNode: prevNode or nextNode does not exist in nodeMap");
       }
     }
-    var isDirty =
-      treatAllNodesAsDirty ||
-      activeDirtyLeaves.has(key) ||
-      activeDirtyElements.has(key);
+    var isDirty = treatAllNodesAsDirty || activeDirtyLeaves.has(key) || activeDirtyElements.has(key);
     var dom = getElementByKeyOrThrow(activeEditor$1, key);
 
     // If the node key points to the same instance in both states
@@ -2935,13 +2205,7 @@ define([], function () {
     // If the node key doesn't point to the same instance in both maps,
     // it means it were cloned. If they're also dirty, we mark them as mutated.
     if (prevNode !== nextNode && isDirty) {
-      setMutatedNode(
-        mutatedNodes,
-        activeEditorNodes,
-        activeMutationListeners,
-        nextNode,
-        "updated"
-      );
+      setMutatedNode(mutatedNodes, activeEditorNodes, activeMutationListeners, nextNode, 'updated');
     }
 
     // Update node. If it returns true, we need to unmount and re-create the node
@@ -2990,11 +2254,7 @@ define([], function () {
       subTreeTextContent += _text2;
       editorTextContent += _text2;
     }
-    if (
-      !activeEditorStateReadOnly &&
-      $isRootNode(nextNode) &&
-      nextNode.__cachedText !== editorTextContent
-    ) {
+    if (!activeEditorStateReadOnly && $isRootNode(nextNode) && nextNode.__cachedText !== editorTextContent) {
       // Cache the latest text content.
       var nextRootNode = nextNode.getWritable();
       nextRootNode.__cachedText = editorTextContent;
@@ -3022,22 +2282,12 @@ define([], function () {
   }
   function getNextSibling(element) {
     var nextSibling = element.nextSibling;
-    if (
-      nextSibling !== null &&
-      nextSibling === activeEditor$1._blockCursorElement
-    ) {
+    if (nextSibling !== null && nextSibling === activeEditor$1._blockCursorElement) {
       nextSibling = nextSibling.nextSibling;
     }
     return nextSibling;
   }
-  function $reconcileNodeChildren(
-    nextElement,
-    prevChildren,
-    nextChildren,
-    prevChildrenLength,
-    nextChildrenLength,
-    dom
-  ) {
+  function $reconcileNodeChildren(nextElement, prevChildren, nextChildren, prevChildrenLength, nextChildrenLength, dom) {
     var prevEndIndex = prevChildrenLength - 1;
     var nextEndIndex = nextChildrenLength - 1;
     var prevChildrenSet;
@@ -3096,35 +2346,18 @@ define([], function () {
     var removeOldChildren = nextIndex > nextEndIndex;
     if (appendNewChildren && !removeOldChildren) {
       var previousNode = nextChildren[nextEndIndex + 1];
-      var insertDOM =
-        previousNode === undefined
-          ? null
-          : activeEditor$1.getElementByKey(previousNode);
-      $createChildren(
-        nextChildren,
-        nextElement,
-        nextIndex,
-        nextEndIndex,
-        dom,
-        insertDOM
-      );
+      var insertDOM = previousNode === undefined ? null : activeEditor$1.getElementByKey(previousNode);
+      $createChildren(nextChildren, nextElement, nextIndex, nextEndIndex, dom, insertDOM);
     } else if (removeOldChildren && !appendNewChildren) {
       destroyChildren(prevChildren, prevIndex, prevEndIndex, dom);
     }
   }
-  function $reconcileRoot(
-    prevEditorState,
-    nextEditorState,
-    editor,
-    dirtyType,
-    dirtyElements,
-    dirtyLeaves
-  ) {
+  function $reconcileRoot(prevEditorState, nextEditorState, editor, dirtyType, dirtyElements, dirtyLeaves) {
     // We cache text content to make retrieval more efficient.
     // The cache must be rebuilt during reconciliation to account for any changes.
-    subTreeTextContent = "";
-    editorTextContent = "";
-    subTreeDirectionedTextContent = "";
+    subTreeTextContent = '';
+    editorTextContent = '';
+    subTreeDirectionedTextContent = '';
     // Rather than pass around a load of arguments through the stack recursively
     // we instead set them as bindings within the scope of the module.
     treatAllNodesAsDirty = dirtyType === FULL_RECONCILE;
@@ -3143,7 +2376,7 @@ define([], function () {
     // listeners later in the update cycle.
     var currentMutatedNodes = new Map();
     mutatedNodes = currentMutatedNodes;
-    $reconcileNode("root", null);
+    $reconcileNode('root', null);
     // We don't want a bunch of void checks throughout the scope
     // so instead we make it seem that these values are always set.
     // We also want to make sure we clear them down, otherwise we
@@ -3171,16 +2404,14 @@ define([], function () {
   function storeDOMWithKey(key, dom, editor) {
     var keyToDOMMap = editor._keyToDOMMap;
     // @ts-ignore We intentionally add this to the Node.
-    dom["__lexicalKey_" + editor._key] = key;
+    dom['__lexicalKey_' + editor._key] = key;
     keyToDOMMap.set(key, dom);
   }
   function getPrevElementByKeyOrThrow(key) {
     var element = activePrevKeyToDOMMap.get(key);
     if (element === undefined) {
       {
-        throw Error(
-          "Reconciliation: could not find DOM element for node key ".concat(key)
-        );
+        throw Error("Reconciliation: could not find DOM element for node key ".concat(key));
       }
     }
     return element;
@@ -3196,30 +2427,11 @@ define([], function () {
 
   var PASS_THROUGH_COMMAND = Object.freeze({});
   var ANDROID_COMPOSITION_LATENCY = 30;
-  var rootElementEvents = [
-    ["keydown", onKeyDown],
-    ["pointerdown", onPointerDown],
-    ["compositionstart", onCompositionStart],
-    ["compositionend", onCompositionEnd],
-    ["input", onInput],
-    ["click", onClick],
-    ["cut", PASS_THROUGH_COMMAND],
-    ["copy", PASS_THROUGH_COMMAND],
-    ["dragstart", PASS_THROUGH_COMMAND],
-    ["dragover", PASS_THROUGH_COMMAND],
-    ["dragend", PASS_THROUGH_COMMAND],
-    ["paste", PASS_THROUGH_COMMAND],
-    ["focus", PASS_THROUGH_COMMAND],
-    ["blur", PASS_THROUGH_COMMAND],
-    ["drop", PASS_THROUGH_COMMAND],
-  ];
+  var rootElementEvents = [['keydown', onKeyDown], ['pointerdown', onPointerDown], ['compositionstart', onCompositionStart], ['compositionend', onCompositionEnd], ['input', onInput], ['click', onClick], ['cut', PASS_THROUGH_COMMAND], ['copy', PASS_THROUGH_COMMAND], ['dragstart', PASS_THROUGH_COMMAND], ['dragover', PASS_THROUGH_COMMAND], ['dragend', PASS_THROUGH_COMMAND], ['paste', PASS_THROUGH_COMMAND], ['focus', PASS_THROUGH_COMMAND], ['blur', PASS_THROUGH_COMMAND], ['drop', PASS_THROUGH_COMMAND]];
   if (CAN_USE_BEFORE_INPUT) {
-    rootElementEvents.push([
-      "beforeinput",
-      function (event, editor) {
-        return onBeforeInput(event, editor);
-      },
-    ]);
+    rootElementEvents.push(['beforeinput', function (event, editor) {
+      return onBeforeInput(event, editor);
+    }]);
   }
   var lastKeyDownTimeStamp = 0;
   var lastKeyCode = null;
@@ -3230,7 +2442,7 @@ define([], function () {
   var isSelectionChangeFromMouseDown = false;
   var isInsertLineBreak = false;
   var isFirefoxEndingComposition = false;
-  var collapsedSelectionFormat = [0, "", 0, "root", 0];
+  var collapsedSelectionFormat = [0, '', 0, 'root', 0];
 
   // This function is used to determine if Lexical should attempt to override
   // the default browser behavior for insertion of text and use its own internal
@@ -3239,13 +2451,7 @@ define([], function () {
   // boundary/formats. It also is important for text replacement, node schemas and
   // composition mechanics.
 
-  function $shouldPreventDefaultAndInsertText(
-    selection,
-    domTargetRange,
-    text,
-    timeStamp,
-    isBeforeInput
-  ) {
+  function $shouldPreventDefaultAndInsertText(selection, domTargetRange, text, timeStamp, isBeforeInput) {
     var anchor = selection.anchor;
     var focus = selection.focus;
     var anchorNode = anchor.getNode();
@@ -3255,55 +2461,34 @@ define([], function () {
     var anchorKey = anchor.key;
     var backingAnchorElement = editor.getElementByKey(anchorKey);
     var textLength = text.length;
-    return (
-      anchorKey !== focus.key ||
-      // If we're working with a non-text node.
-      !$isTextNode(anchorNode) ||
-      // If we are replacing a range with a single character or grapheme, and not composing.
-      (((!isBeforeInput &&
-        (!CAN_USE_BEFORE_INPUT ||
-          // We check to see if there has been
-          // a recent beforeinput event for "textInput". If there has been one in the last
-          // 50ms then we proceed as normal. However, if there is not, then this is likely
-          // a dangling `input` event caused by execCommand('insertText').
-          lastBeforeInputInsertTextTimeStamp < timeStamp + 50)) ||
-        (anchorNode.isDirty() && textLength < 2) ||
-        doesContainGrapheme(text)) &&
-        anchor.offset !== focus.offset &&
-        !anchorNode.isComposing()) ||
-      // Any non standard text node.
-      $isTokenOrSegmented(anchorNode) ||
-      // If the text length is more than a single character and we're either
-      // dealing with this in "beforeinput" or where the node has already recently
-      // been changed (thus is dirty).
-      (anchorNode.isDirty() && textLength > 1) ||
-      // If the DOM selection element is not the same as the backing node during beforeinput.
-      ((isBeforeInput || !CAN_USE_BEFORE_INPUT) &&
-        backingAnchorElement !== null &&
-        !anchorNode.isComposing() &&
-        domAnchorNode !== getDOMTextNode(backingAnchorElement)) ||
-      // If TargetRange is not the same as the DOM selection; browser trying to edit random parts
-      // of the editor.
-      (domSelection !== null &&
-        domTargetRange !== null &&
-        (!domTargetRange.collapsed ||
-          domTargetRange.startContainer !== domSelection.anchorNode ||
-          domTargetRange.startOffset !== domSelection.anchorOffset)) ||
-      // Check if we're changing from bold to italics, or some other format.
-      anchorNode.getFormat() !== selection.format ||
-      anchorNode.getStyle() !== selection.style ||
-      // One last set of heuristics to check against.
-      $shouldInsertTextAfterOrBeforeTextNode(selection, anchorNode)
-    );
+    return anchorKey !== focus.key ||
+    // If we're working with a non-text node.
+    !$isTextNode(anchorNode) ||
+    // If we are replacing a range with a single character or grapheme, and not composing.
+    (!isBeforeInput && (!CAN_USE_BEFORE_INPUT ||
+    // We check to see if there has been
+    // a recent beforeinput event for "textInput". If there has been one in the last
+    // 50ms then we proceed as normal. However, if there is not, then this is likely
+    // a dangling `input` event caused by execCommand('insertText').
+    lastBeforeInputInsertTextTimeStamp < timeStamp + 50) || anchorNode.isDirty() && textLength < 2 || doesContainGrapheme(text)) && anchor.offset !== focus.offset && !anchorNode.isComposing() ||
+    // Any non standard text node.
+    $isTokenOrSegmented(anchorNode) ||
+    // If the text length is more than a single character and we're either
+    // dealing with this in "beforeinput" or where the node has already recently
+    // been changed (thus is dirty).
+    anchorNode.isDirty() && textLength > 1 ||
+    // If the DOM selection element is not the same as the backing node during beforeinput.
+    (isBeforeInput || !CAN_USE_BEFORE_INPUT) && backingAnchorElement !== null && !anchorNode.isComposing() && domAnchorNode !== getDOMTextNode(backingAnchorElement) ||
+    // If TargetRange is not the same as the DOM selection; browser trying to edit random parts
+    // of the editor.
+    domSelection !== null && domTargetRange !== null && (!domTargetRange.collapsed || domTargetRange.startContainer !== domSelection.anchorNode || domTargetRange.startOffset !== domSelection.anchorOffset) ||
+    // Check if we're changing from bold to italics, or some other format.
+    anchorNode.getFormat() !== selection.format || anchorNode.getStyle() !== selection.style ||
+    // One last set of heuristics to check against.
+    $shouldInsertTextAfterOrBeforeTextNode(selection, anchorNode);
   }
   function shouldSkipSelectionChange(domNode, offset) {
-    return (
-      domNode !== null &&
-      domNode.nodeValue !== null &&
-      domNode.nodeType === DOM_TEXT_TYPE &&
-      offset !== 0 &&
-      offset !== domNode.nodeValue.length
-    );
+    return domNode !== null && domNode.nodeValue !== null && domNode.nodeType === DOM_TEXT_TYPE && offset !== 0 && offset !== domNode.nodeValue.length;
   }
   function onSelectionChange(domSelection, editor, isActive) {
     var anchorDOM = domSelection.anchorNode,
@@ -3321,10 +2506,7 @@ define([], function () {
       // We also need to check if the offset is at the boundary,
       // because in this case, we might need to normalize to a
       // sibling instead.
-      if (
-        shouldSkipSelectionChange(anchorDOM, anchorOffset) &&
-        shouldSkipSelectionChange(focusDOM, focusOffset)
-      ) {
+      if (shouldSkipSelectionChange(anchorDOM, anchorOffset) && shouldSkipSelectionChange(focusDOM, focusOffset)) {
         return;
       }
     }
@@ -3346,10 +2528,7 @@ define([], function () {
         var anchorNode = anchor.getNode();
         if (selection.isCollapsed()) {
           // Badly interpreted range selection when collapsed - #1482
-          if (
-            domSelection.type === "Range" &&
-            domSelection.anchorNode === domSelection.focusNode
-          ) {
+          if (domSelection.type === 'Range' && domSelection.anchorNode === domSelection.focusNode) {
             selection.dirty = true;
           }
 
@@ -3357,9 +2536,7 @@ define([], function () {
           // within the given time range – then attempt to use that format
           // instead of getting the format from the anchor node.
           var windowEvent = getWindow(editor).event;
-          var currentTimeStamp = windowEvent
-            ? windowEvent.timeStamp
-            : performance.now();
+          var currentTimeStamp = windowEvent ? windowEvent.timeStamp : performance.now();
           var _collapsedSelectionFo = collapsedSelectionFormat,
             _collapsedSelectionFo2 = _slicedToArray(_collapsedSelectionFo, 5),
             lastFormat = _collapsedSelectionFo2[0],
@@ -3368,35 +2545,25 @@ define([], function () {
             lastKey = _collapsedSelectionFo2[3],
             timeStamp = _collapsedSelectionFo2[4];
           var root = $getRoot();
-          var isRootTextContentEmpty =
-            editor.isComposing() === false && root.getTextContent() === "";
-          if (
-            currentTimeStamp < timeStamp + 200 &&
-            anchor.offset === lastOffset &&
-            anchor.key === lastKey
-          ) {
+          var isRootTextContentEmpty = editor.isComposing() === false && root.getTextContent() === '';
+          if (currentTimeStamp < timeStamp + 200 && anchor.offset === lastOffset && anchor.key === lastKey) {
             selection.format = lastFormat;
             selection.style = lastStyle;
           } else {
-            if (anchor.type === "text") {
+            if (anchor.type === 'text') {
               if (!$isTextNode(anchorNode)) {
-                throw Error(
-                  "Point.getNode() must return TextNode when type is text"
-                );
+                throw Error("Point.getNode() must return TextNode when type is text");
               }
               selection.format = anchorNode.getFormat();
               selection.style = anchorNode.getStyle();
-            } else if (anchor.type === "element" && !isRootTextContentEmpty) {
+            } else if (anchor.type === 'element' && !isRootTextContentEmpty) {
               var lastNode = anchor.getNode();
-              if (
-                lastNode instanceof ParagraphNode &&
-                lastNode.getChildrenSize() === 0
-              ) {
+              if (lastNode instanceof ParagraphNode && lastNode.getChildrenSize() === 0) {
                 selection.format = lastNode.getTextFormat();
               } else {
                 selection.format = 0;
               }
-              selection.style = "";
+              selection.style = '';
             }
           }
         } else {
@@ -3415,19 +2582,9 @@ define([], function () {
           for (var i = 0; i < nodesLength; i++) {
             var node = nodes[i];
             var textContentSize = node.getTextContentSize();
-            if (
-              $isTextNode(node) &&
-              textContentSize !== 0 &&
-              // Exclude empty text nodes at boundaries resulting from user's selection
-              !(
-                (i === 0 &&
-                  node.__key === startKey &&
-                  startOffset === textContentSize) ||
-                (i === nodesLength - 1 &&
-                  node.__key === endKey &&
-                  endOffset === 0)
-              )
-            ) {
+            if ($isTextNode(node) && textContentSize !== 0 &&
+            // Exclude empty text nodes at boundaries resulting from user's selection
+            !(i === 0 && node.__key === startKey && startOffset === textContentSize || i === nodesLength - 1 && node.__key === endKey && endOffset === 0)) {
               // TODO: what about style?
               hasTextNodes = true;
               combinedFormat &= node.getFormat();
@@ -3457,16 +2614,7 @@ define([], function () {
         if ($isRangeSelection(selection)) {
           var anchor = selection.anchor;
           var anchorNode = anchor.getNode();
-          if (
-            anchor.type === "element" &&
-            anchor.offset === 0 &&
-            selection.isCollapsed() &&
-            !$isRootNode(anchorNode) &&
-            $getRoot().getChildrenSize() === 1 &&
-            anchorNode.getTopLevelElementOrThrow().isEmpty() &&
-            lastSelection !== null &&
-            selection.is(lastSelection)
-          ) {
+          if (anchor.type === 'element' && anchor.offset === 0 && selection.isCollapsed() && !$isRootNode(anchorNode) && $getRoot().getChildrenSize() === 1 && anchorNode.getTopLevelElementOrThrow().isEmpty() && lastSelection !== null && selection.is(lastSelection)) {
             domSelection.removeAllRanges();
             selection.dirty = true;
           } else if (event.detail === 3 && !selection.isCollapsed()) {
@@ -3484,7 +2632,7 @@ define([], function () {
               }
             }
           }
-        } else if (event.pointerType === "touch") {
+        } else if (event.pointerType === 'touch') {
           // This is used to update the selection on touch devices when the user clicks on text after a
           // node selection. See isSelectionChangeFromMouseDown for the inverse
           var domAnchorNode = domSelection.anchorNode;
@@ -3495,12 +2643,7 @@ define([], function () {
             // When we click on an empty paragraph node or the end of a paragraph that ends
             // with an image/poll, the nodeType will be ELEMENT_NODE
             if (nodeType === DOM_ELEMENT_TYPE || nodeType === DOM_TEXT_TYPE) {
-              var newSelection = $internalCreateRangeSelection(
-                lastSelection,
-                domSelection,
-                editor,
-                event
-              );
+              var newSelection = $internalCreateRangeSelection(lastSelection, domSelection, editor, event);
               $setSelection(newSelection);
             }
           }
@@ -3513,7 +2656,7 @@ define([], function () {
     // TODO implement text drag & drop
     var target = event.target;
     var pointerType = event.pointerType;
-    if (target instanceof Node && pointerType !== "touch") {
+    if (target instanceof Node && pointerType !== 'touch') {
       updateEditor(editor, function () {
         // Drag & drop should not recompute selection until mouse up; otherwise the initially
         // selected content is lost.
@@ -3534,41 +2677,30 @@ define([], function () {
     return targetRanges[0];
   }
   function $canRemoveText(anchorNode, focusNode) {
-    return (
-      anchorNode !== focusNode ||
-      $isElementNode(anchorNode) ||
-      $isElementNode(focusNode) ||
-      !anchorNode.isToken() ||
-      !focusNode.isToken()
-    );
+    return anchorNode !== focusNode || $isElementNode(anchorNode) || $isElementNode(focusNode) || !anchorNode.isToken() || !focusNode.isToken();
   }
   function isPossiblyAndroidKeyPress(timeStamp) {
-    return (
-      lastKeyCode === "MediaLast" &&
-      timeStamp < lastKeyDownTimeStamp + ANDROID_COMPOSITION_LATENCY
-    );
+    return lastKeyCode === 'MediaLast' && timeStamp < lastKeyDownTimeStamp + ANDROID_COMPOSITION_LATENCY;
   }
   function onBeforeInput(event, editor) {
     var inputType = event.inputType;
     var targetRange = getTargetRange(event);
 
     // We let the browser do its own thing for composition.
-    if (
-      inputType === "deleteCompositionText" ||
-      // If we're pasting in FF, we shouldn't get this event
-      // as the `paste` event should have triggered, unless the
-      // user has dom.event.clipboardevents.enabled disabled in
-      // about:config. In that case, we need to process the
-      // pasted content in the DOM mutation phase.
-      (IS_FIREFOX && isFirefoxClipboardEvents(editor))
-    ) {
+    if (inputType === 'deleteCompositionText' ||
+    // If we're pasting in FF, we shouldn't get this event
+    // as the `paste` event should have triggered, unless the
+    // user has dom.event.clipboardevents.enabled disabled in
+    // about:config. In that case, we need to process the
+    // pasted content in the DOM mutation phase.
+    IS_FIREFOX && isFirefoxClipboardEvents(editor)) {
       return;
-    } else if (inputType === "insertCompositionText") {
+    } else if (inputType === 'insertCompositionText') {
       return;
     }
     updateEditor(editor, function () {
       var selection = $getSelection();
-      if (inputType === "deleteContentBackward") {
+      if (inputType === 'deleteContentBackward') {
         if (selection === null) {
           // Use previous selection
           var prevSelection = $getPreviousSelection();
@@ -3578,13 +2710,8 @@ define([], function () {
           $setSelection(prevSelection.clone());
         }
         if ($isRangeSelection(selection)) {
-          var isSelectionAnchorSameAsFocus =
-            selection.anchor.key === selection.focus.key;
-          if (
-            isPossiblyAndroidKeyPress(event.timeStamp) &&
-            editor.isComposing() &&
-            isSelectionAnchorSameAsFocus
-          ) {
+          var isSelectionAnchorSameAsFocus = selection.anchor.key === selection.focus.key;
+          if (isPossiblyAndroidKeyPress(event.timeStamp) && editor.isComposing() && isSelectionAnchorSameAsFocus) {
             $setCompositionKey(null);
             lastKeyDownTimeStamp = 0;
             // Fixes an Android bug where selection flickers when backspacing
@@ -3609,13 +2736,8 @@ define([], function () {
             // on 'deleteContentBackward' and still deletes the content. Which leads
             // to multiple deletions. So we let the browser handle the deletion in this case.
             var selectedNodeText = selection.anchor.getNode().getTextContent();
-            var hasSelectedAllTextInNode =
-              selection.anchor.offset === 0 &&
-              selection.focus.offset === selectedNodeText.length;
-            var shouldLetBrowserHandleDelete =
-              IS_ANDROID_CHROME &&
-              isSelectionAnchorSameAsFocus &&
-              !hasSelectedAllTextInNode;
+            var hasSelectedAllTextInNode = selection.anchor.offset === 0 && selection.focus.offset === selectedNodeText.length;
+            var shouldLetBrowserHandleDelete = IS_ANDROID_CHROME && isSelectionAnchorSameAsFocus && !hasSelectedAllTextInNode;
             if (!shouldLetBrowserHandleDelete) {
               _dispatchCommand(editor, DELETE_CHARACTER_COMMAND, true);
             }
@@ -3638,12 +2760,7 @@ define([], function () {
       if (unprocessedBeforeInputData !== null) {
         $updateSelectedTextFromDOM(false, editor, unprocessedBeforeInputData);
       }
-      if (
-        (!selection.dirty || unprocessedBeforeInputData !== null) &&
-        selection.isCollapsed() &&
-        !$isRootNode(selection.anchor.getNode()) &&
-        targetRange !== null
-      ) {
+      if ((!selection.dirty || unprocessedBeforeInputData !== null) && selection.isCollapsed() && !$isRootNode(selection.anchor.getNode()) && targetRange !== null) {
         selection.applyDOMRange(targetRange);
       }
       unprocessedBeforeInputData = null;
@@ -3651,8 +2768,8 @@ define([], function () {
       var focus = selection.focus;
       var anchorNode = anchor.getNode();
       var focusNode = focus.getNode();
-      if (inputType === "insertText" || inputType === "insertTranspose") {
-        if (data === "\n") {
+      if (inputType === 'insertText' || inputType === 'insertTranspose') {
+        if (data === '\n') {
           event.preventDefault();
           _dispatchCommand(editor, INSERT_LINE_BREAK_COMMAND, false);
         } else if (data === DOUBLE_LINE_BREAK) {
@@ -3660,19 +2777,10 @@ define([], function () {
           _dispatchCommand(editor, INSERT_PARAGRAPH_COMMAND, undefined);
         } else if (data == null && event.dataTransfer) {
           // Gets around a Safari text replacement bug.
-          var text = event.dataTransfer.getData("text/plain");
+          var text = event.dataTransfer.getData('text/plain');
           event.preventDefault();
           selection.insertRawText(text);
-        } else if (
-          data != null &&
-          $shouldPreventDefaultAndInsertText(
-            selection,
-            targetRange,
-            data,
-            event.timeStamp,
-            true
-          )
-        ) {
+        } else if (data != null && $shouldPreventDefaultAndInsertText(selection, targetRange, data, event.timeStamp, true)) {
           event.preventDefault();
           _dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, data);
         } else {
@@ -3687,103 +2795,121 @@ define([], function () {
       // output.
       event.preventDefault();
       switch (inputType) {
-        case "insertFromYank":
-        case "insertFromDrop":
-        case "insertReplacementText": {
-          _dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, event);
-          break;
-        }
-        case "insertFromComposition": {
-          // This is the end of composition
-          $setCompositionKey(null);
-          _dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, event);
-          break;
-        }
-        case "insertLineBreak": {
-          // Used for Android
-          $setCompositionKey(null);
-          _dispatchCommand(editor, INSERT_LINE_BREAK_COMMAND, false);
-          break;
-        }
-        case "insertParagraph": {
-          // Used for Android
-          $setCompositionKey(null);
-
-          // Safari does not provide the type "insertLineBreak".
-          // So instead, we need to infer it from the keyboard event.
-          // We do not apply this logic to iOS to allow newline auto-capitalization
-          // work without creating linebreaks when pressing Enter
-          if (isInsertLineBreak && !IS_IOS) {
-            isInsertLineBreak = false;
+        case 'insertFromYank':
+        case 'insertFromDrop':
+        case 'insertReplacementText':
+          {
+            _dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, event);
+            break;
+          }
+        case 'insertFromComposition':
+          {
+            // This is the end of composition
+            $setCompositionKey(null);
+            _dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, event);
+            break;
+          }
+        case 'insertLineBreak':
+          {
+            // Used for Android
+            $setCompositionKey(null);
             _dispatchCommand(editor, INSERT_LINE_BREAK_COMMAND, false);
-          } else {
-            _dispatchCommand(editor, INSERT_PARAGRAPH_COMMAND, undefined);
+            break;
           }
-          break;
-        }
-        case "insertFromPaste":
-        case "insertFromPasteAsQuotation": {
-          _dispatchCommand(editor, PASTE_COMMAND, event);
-          break;
-        }
-        case "deleteByComposition": {
-          if ($canRemoveText(anchorNode, focusNode)) {
+        case 'insertParagraph':
+          {
+            // Used for Android
+            $setCompositionKey(null);
+
+            // Safari does not provide the type "insertLineBreak".
+            // So instead, we need to infer it from the keyboard event.
+            // We do not apply this logic to iOS to allow newline auto-capitalization
+            // work without creating linebreaks when pressing Enter
+            if (isInsertLineBreak && !IS_IOS) {
+              isInsertLineBreak = false;
+              _dispatchCommand(editor, INSERT_LINE_BREAK_COMMAND, false);
+            } else {
+              _dispatchCommand(editor, INSERT_PARAGRAPH_COMMAND, undefined);
+            }
+            break;
+          }
+        case 'insertFromPaste':
+        case 'insertFromPasteAsQuotation':
+          {
+            _dispatchCommand(editor, PASTE_COMMAND, event);
+            break;
+          }
+        case 'deleteByComposition':
+          {
+            if ($canRemoveText(anchorNode, focusNode)) {
+              _dispatchCommand(editor, REMOVE_TEXT_COMMAND, event);
+            }
+            break;
+          }
+        case 'deleteByDrag':
+        case 'deleteByCut':
+          {
             _dispatchCommand(editor, REMOVE_TEXT_COMMAND, event);
+            break;
           }
-          break;
-        }
-        case "deleteByDrag":
-        case "deleteByCut": {
-          _dispatchCommand(editor, REMOVE_TEXT_COMMAND, event);
-          break;
-        }
-        case "deleteContent": {
-          _dispatchCommand(editor, DELETE_CHARACTER_COMMAND, false);
-          break;
-        }
-        case "deleteWordBackward": {
-          _dispatchCommand(editor, DELETE_WORD_COMMAND, true);
-          break;
-        }
-        case "deleteWordForward": {
-          _dispatchCommand(editor, DELETE_WORD_COMMAND, false);
-          break;
-        }
-        case "deleteHardLineBackward":
-        case "deleteSoftLineBackward": {
-          _dispatchCommand(editor, DELETE_LINE_COMMAND, true);
-          break;
-        }
-        case "deleteContentForward":
-        case "deleteHardLineForward":
-        case "deleteSoftLineForward": {
-          _dispatchCommand(editor, DELETE_LINE_COMMAND, false);
-          break;
-        }
-        case "formatStrikeThrough": {
-          _dispatchCommand(editor, FORMAT_TEXT_COMMAND, "strikethrough");
-          break;
-        }
-        case "formatBold": {
-          _dispatchCommand(editor, FORMAT_TEXT_COMMAND, "bold");
-          break;
-        }
-        case "formatItalic": {
-          _dispatchCommand(editor, FORMAT_TEXT_COMMAND, "italic");
-          break;
-        }
-        case "formatUnderline": {
-          _dispatchCommand(editor, FORMAT_TEXT_COMMAND, "underline");
-          break;
-        }
-        case "historyUndo": {
-          _dispatchCommand(editor, UNDO_COMMAND, undefined);
-          break;
-        }
-        case "historyRedo": {
-          _dispatchCommand(editor, REDO_COMMAND, undefined);
-          break;
-        }
+        case 'deleteContent':
+          {
+            _dispatchCommand(editor, DELETE_CHARACTER_COMMAND, false);
+            break;
+          }
+        case 'deleteWordBackward':
+          {
+            _dispatchCommand(editor, DELETE_WORD_COMMAND, true);
+            break;
+          }
+        case 'deleteWordForward':
+          {
+            _dispatchCommand(editor, DELETE_WORD_COMMAND, false);
+            break;
+          }
+        case 'deleteHardLineBackward':
+        case 'deleteSoftLineBackward':
+          {
+            _dispatchCommand(editor, DELETE_LINE_COMMAND, true);
+            break;
+          }
+        case 'deleteContentForward':
+        case 'deleteHardLineForward':
+        case 'deleteSoftLineForward':
+          {
+            _dispatchCommand(editor, DELETE_LINE_COMMAND, false);
+            break;
+          }
+        case 'formatStrikeThrough':
+          {
+            _dispatchCommand(editor, FORMAT_TEXT_COMMAND, 'strikethrough');
+            break;
+          }
+        case 'formatBold':
+          {
+            _dispatchCommand(editor, FORMAT_TEXT_COMMAND, 'bold');
+            break;
+          }
+        case 'formatItalic':
+          {
+            _dispatchCommand(editor, FORMAT_TEXT_COMMAND, 'italic');
+            break;
+          }
+        case 'formatUnderline':
+          {
+            _dispatchCommand(editor, FORMAT_TEXT_COMMAND, 'underline');
+            break;
+          }
+        case 'historyUndo':
+          {
+            _dispatchCommand(editor, UNDO_COMMAND, undefined);
+            break;
+          }
+        case 'historyRedo':
+          {
+            _dispatchCommand(editor, REDO_COMMAND, undefined);
+            break;
+          }
         // NO-OP
       }
     });
@@ -3795,17 +2921,7 @@ define([], function () {
       var selection = $getSelection();
       var data = event.data;
       var targetRange = getTargetRange(event);
-      if (
-        data != null &&
-        $isRangeSelection(selection) &&
-        $shouldPreventDefaultAndInsertText(
-          selection,
-          targetRange,
-          data,
-          event.timeStamp,
-          false
-        )
-      ) {
+      if (data != null && $isRangeSelection(selection) && $shouldPreventDefaultAndInsertText(selection, targetRange, data, event.timeStamp, false)) {
         // Given we're over-riding the default behavior, we will need
         // to ensure to disable composition before dispatching the
         // insertText command for when changing the sequence for FF.
@@ -3820,37 +2936,19 @@ define([], function () {
           return;
         }
         var isBackward = selection.isBackward();
-        var startOffset = isBackward
-          ? selection.anchor.offset
-          : selection.focus.offset;
-        var endOffset = isBackward
-          ? selection.focus.offset
-          : selection.anchor.offset;
+        var startOffset = isBackward ? selection.anchor.offset : selection.focus.offset;
+        var endOffset = isBackward ? selection.focus.offset : selection.anchor.offset;
         // If the content is the same as inserted, then don't dispatch an insertion.
         // Given onInput doesn't take the current selection (it uses the previous)
         // we can compare that against what the DOM currently says.
-        if (
-          !CAN_USE_BEFORE_INPUT ||
-          selection.isCollapsed() ||
-          !$isTextNode(anchorNode) ||
-          domSelection.anchorNode === null ||
-          anchorNode.getTextContent().slice(0, startOffset) +
-            data +
-            anchorNode.getTextContent().slice(startOffset + endOffset) !==
-            getAnchorTextFromDOM(domSelection.anchorNode)
-        ) {
+        if (!CAN_USE_BEFORE_INPUT || selection.isCollapsed() || !$isTextNode(anchorNode) || domSelection.anchorNode === null || anchorNode.getTextContent().slice(0, startOffset) + data + anchorNode.getTextContent().slice(startOffset + endOffset) !== getAnchorTextFromDOM(domSelection.anchorNode)) {
           _dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, data);
         }
         var textLength = data.length;
 
         // Another hack for FF, as it's possible that the IME is still
         // open, even though compositionend has already fired (sigh).
-        if (
-          IS_FIREFOX &&
-          textLength > 1 &&
-          event.inputType === "insertCompositionText" &&
-          !editor.isComposing()
-        ) {
+        if (IS_FIREFOX && textLength > 1 && event.inputType === 'insertCompositionText' && !editor.isComposing()) {
           selection.anchor.offset -= textLength;
         }
 
@@ -3884,27 +2982,18 @@ define([], function () {
         var node = selection.anchor.getNode();
         $setCompositionKey(anchor.key);
         if (
-          // If it has been 30ms since the last keydown, then we should
-          // apply the empty space heuristic. We can't do this for Safari,
-          // as the keydown fires after composition start.
-          event.timeStamp <
-            lastKeyDownTimeStamp + ANDROID_COMPOSITION_LATENCY ||
-          // FF has issues around composing multibyte characters, so we also
-          // need to invoke the empty space heuristic below.
-          anchor.type === "element" ||
-          !selection.isCollapsed() ||
-          node.getFormat() !== selection.format ||
-          ($isTextNode(node) && node.getStyle() !== selection.style)
-        ) {
+        // If it has been 30ms since the last keydown, then we should
+        // apply the empty space heuristic. We can't do this for Safari,
+        // as the keydown fires after composition start.
+        event.timeStamp < lastKeyDownTimeStamp + ANDROID_COMPOSITION_LATENCY ||
+        // FF has issues around composing multibyte characters, so we also
+        // need to invoke the empty space heuristic below.
+        anchor.type === 'element' || !selection.isCollapsed() || node.getFormat() !== selection.format || $isTextNode(node) && node.getStyle() !== selection.style) {
           // We insert a zero width character, ready for the composition
           // to get inserted into the new node we create. If
           // we don't do this, Safari will fail on us because
           // there is no text node matching the selection.
-          _dispatchCommand(
-            editor,
-            CONTROLLED_TEXT_INSERTION_COMMAND,
-            COMPOSITION_START_CHAR
-          );
+          _dispatchCommand(editor, CONTROLLED_TEXT_INSERTION_COMMAND, COMPOSITION_START_CHAR);
         }
       }
     });
@@ -3917,28 +3006,18 @@ define([], function () {
     if (compositionKey !== null && data != null) {
       // Composition can sometimes move to an adjacent DOM node when backspacing.
       // So check for the empty case.
-      if (data === "") {
+      if (data === '') {
         var node = $getNodeByKey(compositionKey);
         var textNode = getDOMTextNode(editor.getElementByKey(compositionKey));
-        if (
-          textNode !== null &&
-          textNode.nodeValue !== null &&
-          $isTextNode(node)
-        ) {
-          $updateTextNodeFromDOMContent(
-            node,
-            textNode.nodeValue,
-            null,
-            null,
-            true
-          );
+        if (textNode !== null && textNode.nodeValue !== null && $isTextNode(node)) {
+          $updateTextNodeFromDOMContent(node, textNode.nodeValue, null, null, true);
         }
         return;
       }
 
       // Composition can sometimes be that of a new line. In which case, we need to
       // handle that accordingly.
-      if (data[data.length - 1] === "\n") {
+      if (data[data.length - 1] === '\n') {
         var selection = $getSelection();
         if ($isRangeSelection(selection)) {
           // If the last character is a line break, we also need to insert
@@ -4037,13 +3116,13 @@ define([], function () {
       _dispatchCommand(editor, DELETE_LINE_COMMAND, false);
     } else if (isBold(key, altKey, metaKey, ctrlKey)) {
       event.preventDefault();
-      _dispatchCommand(editor, FORMAT_TEXT_COMMAND, "bold");
+      _dispatchCommand(editor, FORMAT_TEXT_COMMAND, 'bold');
     } else if (isUnderline(key, altKey, metaKey, ctrlKey)) {
       event.preventDefault();
-      _dispatchCommand(editor, FORMAT_TEXT_COMMAND, "underline");
+      _dispatchCommand(editor, FORMAT_TEXT_COMMAND, 'underline');
     } else if (isItalic(key, altKey, metaKey, ctrlKey)) {
       event.preventDefault();
-      _dispatchCommand(editor, FORMAT_TEXT_COMMAND, "italic");
+      _dispatchCommand(editor, FORMAT_TEXT_COMMAND, 'italic');
     } else if (isTab(key, altKey, ctrlKey, metaKey)) {
       _dispatchCommand(editor, KEY_TAB_COMMAND, event);
     } else if (isUndo(key, shiftKey, metaKey, ctrlKey)) {
@@ -4091,12 +3170,7 @@ define([], function () {
   var activeNestedEditorsMap = new Map();
   function onDocumentSelectionChange(event) {
     var target = event.target;
-    var targetWindow =
-      target == null
-        ? null
-        : target.nodeType === 9
-        ? target.defaultView
-        : target.ownerDocument.defaultView;
+    var targetWindow = target == null ? null : target.nodeType === 9 ? target.defaultView : target.ownerDocument.defaultView;
     var domSelection = getDOMSelection(targetWindow);
     if (domSelection === null) {
       return;
@@ -4121,12 +3195,7 @@ define([], function () {
         if (nodeType !== DOM_ELEMENT_TYPE && nodeType !== DOM_TEXT_TYPE) {
           return;
         }
-        var newSelection = $internalCreateRangeSelection(
-          lastSelection,
-          domSelection,
-          nextActiveEditor,
-          event
-        );
+        var newSelection = $internalCreateRangeSelection(lastSelection, domSelection, nextActiveEditor, event);
         $setSelection(newSelection);
       });
     }
@@ -4167,11 +3236,8 @@ define([], function () {
     // between all editor instances.
     var doc = rootElement.ownerDocument;
     var documentRootElementsCount = rootElementsRegistered.get(doc);
-    if (
-      documentRootElementsCount === undefined ||
-      documentRootElementsCount < 1
-    ) {
-      doc.addEventListener("selectionchange", onDocumentSelectionChange);
+    if (documentRootElementsCount === undefined || documentRootElementsCount < 1) {
+      doc.addEventListener('selectionchange', onDocumentSelectionChange);
     }
     rootElementsRegistered.set(doc, (documentRootElementsCount || 0) + 1);
 
@@ -4182,64 +3248,43 @@ define([], function () {
       var _rootElementEvents$i = _slicedToArray(rootElementEvents[i], 2),
         eventName = _rootElementEvents$i[0],
         onEvent = _rootElementEvents$i[1];
-      var eventHandler =
-        typeof onEvent === "function"
-          ? function (event) {
-              if (hasStoppedLexicalPropagation(event)) {
-                return;
-              }
-              stopLexicalPropagation(event);
-              if (editor.isEditable() || eventName === "click") {
-                onEvent(event, editor);
-              }
+      var eventHandler = typeof onEvent === 'function' ? function (event) {
+        if (hasStoppedLexicalPropagation(event)) {
+          return;
+        }
+        stopLexicalPropagation(event);
+        if (editor.isEditable() || eventName === 'click') {
+          onEvent(event, editor);
+        }
+      } : function (event) {
+        if (hasStoppedLexicalPropagation(event)) {
+          return;
+        }
+        stopLexicalPropagation(event);
+        var isEditable = editor.isEditable();
+        switch (eventName) {
+          case 'cut':
+            return isEditable && _dispatchCommand(editor, CUT_COMMAND, event);
+          case 'copy':
+            return _dispatchCommand(editor, COPY_COMMAND, event);
+          case 'paste':
+            return isEditable && _dispatchCommand(editor, PASTE_COMMAND, event);
+          case 'dragstart':
+            return isEditable && _dispatchCommand(editor, DRAGSTART_COMMAND, event);
+          case 'dragover':
+            return isEditable && _dispatchCommand(editor, DRAGOVER_COMMAND, event);
+          case 'dragend':
+            return isEditable && _dispatchCommand(editor, DRAGEND_COMMAND, event);
+          case 'focus':
+            return isEditable && _dispatchCommand(editor, FOCUS_COMMAND, event);
+          case 'blur':
+            {
+              return isEditable && _dispatchCommand(editor, BLUR_COMMAND, event);
             }
-          : function (event) {
-              if (hasStoppedLexicalPropagation(event)) {
-                return;
-              }
-              stopLexicalPropagation(event);
-              var isEditable = editor.isEditable();
-              switch (eventName) {
-                case "cut":
-                  return (
-                    isEditable && _dispatchCommand(editor, CUT_COMMAND, event)
-                  );
-                case "copy":
-                  return _dispatchCommand(editor, COPY_COMMAND, event);
-                case "paste":
-                  return (
-                    isEditable && _dispatchCommand(editor, PASTE_COMMAND, event)
-                  );
-                case "dragstart":
-                  return (
-                    isEditable &&
-                    _dispatchCommand(editor, DRAGSTART_COMMAND, event)
-                  );
-                case "dragover":
-                  return (
-                    isEditable &&
-                    _dispatchCommand(editor, DRAGOVER_COMMAND, event)
-                  );
-                case "dragend":
-                  return (
-                    isEditable &&
-                    _dispatchCommand(editor, DRAGEND_COMMAND, event)
-                  );
-                case "focus":
-                  return (
-                    isEditable && _dispatchCommand(editor, FOCUS_COMMAND, event)
-                  );
-                case "blur": {
-                  return (
-                    isEditable && _dispatchCommand(editor, BLUR_COMMAND, event)
-                  );
-                }
-                case "drop":
-                  return (
-                    isEditable && _dispatchCommand(editor, DROP_COMMAND, event)
-                  );
-              }
-            };
+          case 'drop':
+            return isEditable && _dispatchCommand(editor, DROP_COMMAND, event);
+        }
+      };
       rootElement.addEventListener(eventName, eventHandler);
       removeHandles.push(function () {
         rootElement.removeEventListener(eventName, eventHandler);
@@ -4262,7 +3307,7 @@ define([], function () {
     }
     rootElementsRegistered.set(doc, newCount);
     if (newCount === 0) {
-      doc.removeEventListener("selectionchange", onDocumentSelectionChange);
+      doc.removeEventListener('selectionchange', onDocumentSelectionChange);
     }
 
     // @ts-expect-error: internal field
@@ -4322,30 +3367,14 @@ define([], function () {
       var anchor = selection.anchor;
       var focus = selection.focus;
       if (anchor.key === key) {
-        moveSelectionPointToSibling(
-          anchor,
-          nodeToRemove,
-          parent,
-          nodeToRemove.getPreviousSibling(),
-          nodeToRemove.getNextSibling()
-        );
+        moveSelectionPointToSibling(anchor, nodeToRemove, parent, nodeToRemove.getPreviousSibling(), nodeToRemove.getNextSibling());
         selectionMoved = true;
       }
       if (focus.key === key) {
-        moveSelectionPointToSibling(
-          focus,
-          nodeToRemove,
-          parent,
-          nodeToRemove.getPreviousSibling(),
-          nodeToRemove.getNextSibling()
-        );
+        moveSelectionPointToSibling(focus, nodeToRemove, parent, nodeToRemove.getPreviousSibling(), nodeToRemove.getNextSibling());
         selectionMoved = true;
       }
-    } else if (
-      $isNodeSelection(selection) &&
-      restoreSelection &&
-      nodeToRemove.isSelected()
-    ) {
+    } else if ($isNodeSelection(selection) && restoreSelection && nodeToRemove.isSelected()) {
       nodeToRemove.selectPrevious();
     }
     if ($isRangeSelection(selection) && restoreSelection && !selectionMoved) {
@@ -4356,19 +3385,14 @@ define([], function () {
     } else {
       removeFromParent(nodeToRemove);
     }
-    if (
-      !preserveEmptyParent &&
-      !$isRootOrShadowRoot(parent) &&
-      !parent.canBeEmpty() &&
-      parent.isEmpty()
-    ) {
+    if (!preserveEmptyParent && !$isRootOrShadowRoot(parent) && !parent.canBeEmpty() && parent.isEmpty()) {
       $removeNode(parent, restoreSelection);
     }
     if (restoreSelection && $isRootNode(parent) && parent.isEmpty()) {
       parent.selectEnd();
     }
   }
-  var LexicalNode = /*#__PURE__*/ (function () {
+  var LexicalNode = /*#__PURE__*/function () {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
 
     function LexicalNode(key) {
@@ -4379,7 +3403,7 @@ define([], function () {
       this.__next = null;
       $setNodeKey(this, key);
       {
-        if (this.__type !== "root") {
+        if (this.__type !== 'root') {
           errorOnReadOnly();
           errorOnTypeKlassMismatch(this.__type, this.constructor);
         }
@@ -4390,1130 +3414,995 @@ define([], function () {
     /**
      * Returns the string type of this node.
      */
-    return _createClass(
-      LexicalNode,
-      [
+    return _createClass(LexicalNode, [{
+      key: "getType",
+      value: function getType() {
+        return this.__type;
+      }
+    }, {
+      key: "isInline",
+      value: function isInline() {
         {
-          key: "getType",
-          value: function getType() {
-            return this.__type;
-          },
-        },
-        {
-          key: "isInline",
-          value: function isInline() {
-            {
-              throw Error(
-                "LexicalNode: Node ".concat(
-                  this.constructor.name,
-                  " does not implement .isInline()."
-                )
-              );
-            }
-          },
+          throw Error("LexicalNode: Node ".concat(this.constructor.name, " does not implement .isInline()."));
+        }
+      }
 
-          /**
-           * Returns true if there is a path between this node and the RootNode, false otherwise.
-           * This is a way of determining if the node is "attached" EditorState. Unattached nodes
-           * won't be reconciled and will ultimatelt be cleaned up by the Lexical GC.
-           */
-        },
-        {
-          key: "isAttached",
-          value: function isAttached() {
-            var nodeKey = this.__key;
-            while (nodeKey !== null) {
-              if (nodeKey === "root") {
-                return true;
-              }
-              var node = $getNodeByKey(nodeKey);
-              if (node === null) {
-                break;
-              }
-              nodeKey = node.__parent;
-            }
-            return false;
-          },
+      /**
+       * Returns true if there is a path between this node and the RootNode, false otherwise.
+       * This is a way of determining if the node is "attached" EditorState. Unattached nodes
+       * won't be reconciled and will ultimatelt be cleaned up by the Lexical GC.
+       */
+    }, {
+      key: "isAttached",
+      value: function isAttached() {
+        var nodeKey = this.__key;
+        while (nodeKey !== null) {
+          if (nodeKey === 'root') {
+            return true;
+          }
+          var node = $getNodeByKey(nodeKey);
+          if (node === null) {
+            break;
+          }
+          nodeKey = node.__parent;
+        }
+        return false;
+      }
 
-          /**
-           * Returns true if this node is contained within the provided Selection., false otherwise.
-           * Relies on the algorithms implemented in {@link BaseSelection.getNodes} to determine
-           * what's included.
-           *
-           * @param selection - The selection that we want to determine if the node is in.
-           */
-        },
-        {
-          key: "isSelected",
-          value: function isSelected(selection) {
-            var _this = this;
-            var targetSelection = selection || $getSelection();
-            if (targetSelection == null) {
-              return false;
-            }
-            var isSelected = targetSelection.getNodes().some(function (n) {
-              return n.__key === _this.__key;
-            });
-            if ($isTextNode(this)) {
-              return isSelected;
-            }
-            // For inline images inside of element nodes.
-            // Without this change the image will be selected if the cursor is before or after it.
-            if (
-              $isRangeSelection(targetSelection) &&
-              targetSelection.anchor.type === "element" &&
-              targetSelection.focus.type === "element" &&
-              targetSelection.anchor.key === targetSelection.focus.key &&
-              targetSelection.anchor.offset === targetSelection.focus.offset
-            ) {
-              return false;
-            }
-            return isSelected;
-          },
+      /**
+       * Returns true if this node is contained within the provided Selection., false otherwise.
+       * Relies on the algorithms implemented in {@link BaseSelection.getNodes} to determine
+       * what's included.
+       *
+       * @param selection - The selection that we want to determine if the node is in.
+       */
+    }, {
+      key: "isSelected",
+      value: function isSelected(selection) {
+        var _this = this;
+        var targetSelection = selection || $getSelection();
+        if (targetSelection == null) {
+          return false;
+        }
+        var isSelected = targetSelection.getNodes().some(function (n) {
+          return n.__key === _this.__key;
+        });
+        if ($isTextNode(this)) {
+          return isSelected;
+        }
+        // For inline images inside of element nodes.
+        // Without this change the image will be selected if the cursor is before or after it.
+        if ($isRangeSelection(targetSelection) && targetSelection.anchor.type === 'element' && targetSelection.focus.type === 'element' && targetSelection.anchor.key === targetSelection.focus.key && targetSelection.anchor.offset === targetSelection.focus.offset) {
+          return false;
+        }
+        return isSelected;
+      }
 
-          /**
-           * Returns this nodes key.
-           */
-        },
-        {
-          key: "getKey",
-          value: function getKey() {
-            // Key is stable between copies
-            return this.__key;
-          },
+      /**
+       * Returns this nodes key.
+       */
+    }, {
+      key: "getKey",
+      value: function getKey() {
+        // Key is stable between copies
+        return this.__key;
+      }
 
-          /**
-           * Returns the zero-based index of this node within the parent.
-           */
-        },
-        {
-          key: "getIndexWithinParent",
-          value: function getIndexWithinParent() {
-            var parent = this.getParent();
-            if (parent === null) {
-              return -1;
-            }
-            var node = parent.getFirstChild();
-            var index = 0;
-            while (node !== null) {
-              if (this.is(node)) {
-                return index;
-              }
-              index++;
-              node = node.getNextSibling();
-            }
-            return -1;
-          },
+      /**
+       * Returns the zero-based index of this node within the parent.
+       */
+    }, {
+      key: "getIndexWithinParent",
+      value: function getIndexWithinParent() {
+        var parent = this.getParent();
+        if (parent === null) {
+          return -1;
+        }
+        var node = parent.getFirstChild();
+        var index = 0;
+        while (node !== null) {
+          if (this.is(node)) {
+            return index;
+          }
+          index++;
+          node = node.getNextSibling();
+        }
+        return -1;
+      }
 
-          /**
-           * Returns the parent of this node, or null if none is found.
-           */
-        },
-        {
-          key: "getParent",
-          value: function getParent() {
-            var parent = this.getLatest().__parent;
-            if (parent === null) {
-              return null;
-            }
-            return $getNodeByKey(parent);
-          },
+      /**
+       * Returns the parent of this node, or null if none is found.
+       */
+    }, {
+      key: "getParent",
+      value: function getParent() {
+        var parent = this.getLatest().__parent;
+        if (parent === null) {
+          return null;
+        }
+        return $getNodeByKey(parent);
+      }
 
-          /**
-           * Returns the parent of this node, or throws if none is found.
-           */
-        },
-        {
-          key: "getParentOrThrow",
-          value: function getParentOrThrow() {
-            var parent = this.getParent();
-            if (parent === null) {
+      /**
+       * Returns the parent of this node, or throws if none is found.
+       */
+    }, {
+      key: "getParentOrThrow",
+      value: function getParentOrThrow() {
+        var parent = this.getParent();
+        if (parent === null) {
+          {
+            throw Error("Expected node ".concat(this.__key, " to have a parent."));
+          }
+        }
+        return parent;
+      }
+
+      /**
+       * Returns the highest (in the EditorState tree)
+       * non-root ancestor of this node, or null if none is found. See {@link lexical!$isRootOrShadowRoot}
+       * for more information on which Elements comprise "roots".
+       */
+    }, {
+      key: "getTopLevelElement",
+      value: function getTopLevelElement() {
+        var node = this;
+        while (node !== null) {
+          var parent = node.getParent();
+          if ($isRootOrShadowRoot(parent)) {
+            if (!$isElementNode(node)) {
+              throw Error("Children of root nodes must be elements");
+            }
+            return node;
+          }
+          node = parent;
+        }
+        return null;
+      }
+
+      /**
+       * Returns the highest (in the EditorState tree)
+       * non-root ancestor of this node, or throws if none is found. See {@link lexical!$isRootOrShadowRoot}
+       * for more information on which Elements comprise "roots".
+       */
+    }, {
+      key: "getTopLevelElementOrThrow",
+      value: function getTopLevelElementOrThrow() {
+        var parent = this.getTopLevelElement();
+        if (parent === null) {
+          {
+            throw Error("Expected node ".concat(this.__key, " to have a top parent element."));
+          }
+        }
+        return parent;
+      }
+
+      /**
+       * Returns a list of the every ancestor of this node,
+       * all the way up to the RootNode.
+       *
+       */
+    }, {
+      key: "getParents",
+      value: function getParents() {
+        var parents = [];
+        var node = this.getParent();
+        while (node !== null) {
+          parents.push(node);
+          node = node.getParent();
+        }
+        return parents;
+      }
+
+      /**
+       * Returns a list of the keys of every ancestor of this node,
+       * all the way up to the RootNode.
+       *
+       */
+    }, {
+      key: "getParentKeys",
+      value: function getParentKeys() {
+        var parents = [];
+        var node = this.getParent();
+        while (node !== null) {
+          parents.push(node.__key);
+          node = node.getParent();
+        }
+        return parents;
+      }
+
+      /**
+       * Returns the "previous" siblings - that is, the node that comes
+       * before this one in the same parent.
+       *
+       */
+    }, {
+      key: "getPreviousSibling",
+      value: function getPreviousSibling() {
+        var self = this.getLatest();
+        var prevKey = self.__prev;
+        return prevKey === null ? null : $getNodeByKey(prevKey);
+      }
+
+      /**
+       * Returns the "previous" siblings - that is, the nodes that come between
+       * this one and the first child of it's parent, inclusive.
+       *
+       */
+    }, {
+      key: "getPreviousSiblings",
+      value: function getPreviousSiblings() {
+        var siblings = [];
+        var parent = this.getParent();
+        if (parent === null) {
+          return siblings;
+        }
+        var node = parent.getFirstChild();
+        while (node !== null) {
+          if (node.is(this)) {
+            break;
+          }
+          siblings.push(node);
+          node = node.getNextSibling();
+        }
+        return siblings;
+      }
+
+      /**
+       * Returns the "next" siblings - that is, the node that comes
+       * after this one in the same parent
+       *
+       */
+    }, {
+      key: "getNextSibling",
+      value: function getNextSibling() {
+        var self = this.getLatest();
+        var nextKey = self.__next;
+        return nextKey === null ? null : $getNodeByKey(nextKey);
+      }
+
+      /**
+       * Returns all "next" siblings - that is, the nodes that come between this
+       * one and the last child of it's parent, inclusive.
+       *
+       */
+    }, {
+      key: "getNextSiblings",
+      value: function getNextSiblings() {
+        var siblings = [];
+        var node = this.getNextSibling();
+        while (node !== null) {
+          siblings.push(node);
+          node = node.getNextSibling();
+        }
+        return siblings;
+      }
+
+      /**
+       * Returns the closest common ancestor of this node and the provided one or null
+       * if one cannot be found.
+       *
+       * @param node - the other node to find the common ancestor of.
+       */
+    }, {
+      key: "getCommonAncestor",
+      value: function getCommonAncestor(node) {
+        var a = this.getParents();
+        var b = node.getParents();
+        if ($isElementNode(this)) {
+          a.unshift(this);
+        }
+        if ($isElementNode(node)) {
+          b.unshift(node);
+        }
+        var aLength = a.length;
+        var bLength = b.length;
+        if (aLength === 0 || bLength === 0 || a[aLength - 1] !== b[bLength - 1]) {
+          return null;
+        }
+        var bSet = new Set(b);
+        for (var i = 0; i < aLength; i++) {
+          var ancestor = a[i];
+          if (bSet.has(ancestor)) {
+            return ancestor;
+          }
+        }
+        return null;
+      }
+
+      /**
+       * Returns true if the provided node is the exact same one as this node, from Lexical's perspective.
+       * Always use this instead of referential equality.
+       *
+       * @param object - the node to perform the equality comparison on.
+       */
+    }, {
+      key: "is",
+      value: function is(object) {
+        if (object == null) {
+          return false;
+        }
+        return this.__key === object.__key;
+      }
+
+      /**
+       * Returns true if this node logical precedes the target node in the editor state.
+       *
+       * @param targetNode - the node we're testing to see if it's after this one.
+       */
+    }, {
+      key: "isBefore",
+      value: function isBefore(targetNode) {
+        if (this === targetNode) {
+          return false;
+        }
+        if (targetNode.isParentOf(this)) {
+          return true;
+        }
+        if (this.isParentOf(targetNode)) {
+          return false;
+        }
+        var commonAncestor = this.getCommonAncestor(targetNode);
+        var indexA = 0;
+        var indexB = 0;
+        var node = this;
+        while (true) {
+          var parent = node.getParentOrThrow();
+          if (parent === commonAncestor) {
+            indexA = node.getIndexWithinParent();
+            break;
+          }
+          node = parent;
+        }
+        node = targetNode;
+        while (true) {
+          var _parent = node.getParentOrThrow();
+          if (_parent === commonAncestor) {
+            indexB = node.getIndexWithinParent();
+            break;
+          }
+          node = _parent;
+        }
+        return indexA < indexB;
+      }
+
+      /**
+       * Returns true if this node is the parent of the target node, false otherwise.
+       *
+       * @param targetNode - the would-be child node.
+       */
+    }, {
+      key: "isParentOf",
+      value: function isParentOf(targetNode) {
+        var key = this.__key;
+        if (key === targetNode.__key) {
+          return false;
+        }
+        var node = targetNode;
+        while (node !== null) {
+          if (node.__key === key) {
+            return true;
+          }
+          node = node.getParent();
+        }
+        return false;
+      }
+
+      // TO-DO: this function can be simplified a lot
+      /**
+       * Returns a list of nodes that are between this node and
+       * the target node in the EditorState.
+       *
+       * @param targetNode - the node that marks the other end of the range of nodes to be returned.
+       */
+    }, {
+      key: "getNodesBetween",
+      value: function getNodesBetween(targetNode) {
+        var isBefore = this.isBefore(targetNode);
+        var nodes = [];
+        var visited = new Set();
+        var node = this;
+        while (true) {
+          if (node === null) {
+            break;
+          }
+          var key = node.__key;
+          if (!visited.has(key)) {
+            visited.add(key);
+            nodes.push(node);
+          }
+          if (node === targetNode) {
+            break;
+          }
+          var child = $isElementNode(node) ? isBefore ? node.getFirstChild() : node.getLastChild() : null;
+          if (child !== null) {
+            node = child;
+            continue;
+          }
+          var nextSibling = isBefore ? node.getNextSibling() : node.getPreviousSibling();
+          if (nextSibling !== null) {
+            node = nextSibling;
+            continue;
+          }
+          var parent = node.getParentOrThrow();
+          if (!visited.has(parent.__key)) {
+            nodes.push(parent);
+          }
+          if (parent === targetNode) {
+            break;
+          }
+          var parentSibling = null;
+          var ancestor = parent;
+          do {
+            if (ancestor === null) {
               {
-                throw Error(
-                  "Expected node ".concat(this.__key, " to have a parent.")
-                );
+                throw Error("getNodesBetween: ancestor is null");
               }
             }
-            return parent;
-          },
-
-          /**
-           * Returns the highest (in the EditorState tree)
-           * non-root ancestor of this node, or null if none is found. See {@link lexical!$isRootOrShadowRoot}
-           * for more information on which Elements comprise "roots".
-           */
-        },
-        {
-          key: "getTopLevelElement",
-          value: function getTopLevelElement() {
-            var node = this;
-            while (node !== null) {
-              var parent = node.getParent();
-              if ($isRootOrShadowRoot(parent)) {
-                if (!$isElementNode(node)) {
-                  throw Error("Children of root nodes must be elements");
-                }
-                return node;
+            parentSibling = isBefore ? ancestor.getNextSibling() : ancestor.getPreviousSibling();
+            ancestor = ancestor.getParent();
+            if (ancestor !== null) {
+              if (parentSibling === null && !visited.has(ancestor.__key)) {
+                nodes.push(ancestor);
               }
-              node = parent;
-            }
-            return null;
-          },
-
-          /**
-           * Returns the highest (in the EditorState tree)
-           * non-root ancestor of this node, or throws if none is found. See {@link lexical!$isRootOrShadowRoot}
-           * for more information on which Elements comprise "roots".
-           */
-        },
-        {
-          key: "getTopLevelElementOrThrow",
-          value: function getTopLevelElementOrThrow() {
-            var parent = this.getTopLevelElement();
-            if (parent === null) {
-              {
-                throw Error(
-                  "Expected node ".concat(
-                    this.__key,
-                    " to have a top parent element."
-                  )
-                );
-              }
-            }
-            return parent;
-          },
-
-          /**
-           * Returns a list of the every ancestor of this node,
-           * all the way up to the RootNode.
-           *
-           */
-        },
-        {
-          key: "getParents",
-          value: function getParents() {
-            var parents = [];
-            var node = this.getParent();
-            while (node !== null) {
-              parents.push(node);
-              node = node.getParent();
-            }
-            return parents;
-          },
-
-          /**
-           * Returns a list of the keys of every ancestor of this node,
-           * all the way up to the RootNode.
-           *
-           */
-        },
-        {
-          key: "getParentKeys",
-          value: function getParentKeys() {
-            var parents = [];
-            var node = this.getParent();
-            while (node !== null) {
-              parents.push(node.__key);
-              node = node.getParent();
-            }
-            return parents;
-          },
-
-          /**
-           * Returns the "previous" siblings - that is, the node that comes
-           * before this one in the same parent.
-           *
-           */
-        },
-        {
-          key: "getPreviousSibling",
-          value: function getPreviousSibling() {
-            var self = this.getLatest();
-            var prevKey = self.__prev;
-            return prevKey === null ? null : $getNodeByKey(prevKey);
-          },
-
-          /**
-           * Returns the "previous" siblings - that is, the nodes that come between
-           * this one and the first child of it's parent, inclusive.
-           *
-           */
-        },
-        {
-          key: "getPreviousSiblings",
-          value: function getPreviousSiblings() {
-            var siblings = [];
-            var parent = this.getParent();
-            if (parent === null) {
-              return siblings;
-            }
-            var node = parent.getFirstChild();
-            while (node !== null) {
-              if (node.is(this)) {
-                break;
-              }
-              siblings.push(node);
-              node = node.getNextSibling();
-            }
-            return siblings;
-          },
-
-          /**
-           * Returns the "next" siblings - that is, the node that comes
-           * after this one in the same parent
-           *
-           */
-        },
-        {
-          key: "getNextSibling",
-          value: function getNextSibling() {
-            var self = this.getLatest();
-            var nextKey = self.__next;
-            return nextKey === null ? null : $getNodeByKey(nextKey);
-          },
-
-          /**
-           * Returns all "next" siblings - that is, the nodes that come between this
-           * one and the last child of it's parent, inclusive.
-           *
-           */
-        },
-        {
-          key: "getNextSiblings",
-          value: function getNextSiblings() {
-            var siblings = [];
-            var node = this.getNextSibling();
-            while (node !== null) {
-              siblings.push(node);
-              node = node.getNextSibling();
-            }
-            return siblings;
-          },
-
-          /**
-           * Returns the closest common ancestor of this node and the provided one or null
-           * if one cannot be found.
-           *
-           * @param node - the other node to find the common ancestor of.
-           */
-        },
-        {
-          key: "getCommonAncestor",
-          value: function getCommonAncestor(node) {
-            var a = this.getParents();
-            var b = node.getParents();
-            if ($isElementNode(this)) {
-              a.unshift(this);
-            }
-            if ($isElementNode(node)) {
-              b.unshift(node);
-            }
-            var aLength = a.length;
-            var bLength = b.length;
-            if (
-              aLength === 0 ||
-              bLength === 0 ||
-              a[aLength - 1] !== b[bLength - 1]
-            ) {
-              return null;
-            }
-            var bSet = new Set(b);
-            for (var i = 0; i < aLength; i++) {
-              var ancestor = a[i];
-              if (bSet.has(ancestor)) {
-                return ancestor;
-              }
-            }
-            return null;
-          },
-
-          /**
-           * Returns true if the provided node is the exact same one as this node, from Lexical's perspective.
-           * Always use this instead of referential equality.
-           *
-           * @param object - the node to perform the equality comparison on.
-           */
-        },
-        {
-          key: "is",
-          value: function is(object) {
-            if (object == null) {
-              return false;
-            }
-            return this.__key === object.__key;
-          },
-
-          /**
-           * Returns true if this node logical precedes the target node in the editor state.
-           *
-           * @param targetNode - the node we're testing to see if it's after this one.
-           */
-        },
-        {
-          key: "isBefore",
-          value: function isBefore(targetNode) {
-            if (this === targetNode) {
-              return false;
-            }
-            if (targetNode.isParentOf(this)) {
-              return true;
-            }
-            if (this.isParentOf(targetNode)) {
-              return false;
-            }
-            var commonAncestor = this.getCommonAncestor(targetNode);
-            var indexA = 0;
-            var indexB = 0;
-            var node = this;
-            while (true) {
-              var parent = node.getParentOrThrow();
-              if (parent === commonAncestor) {
-                indexA = node.getIndexWithinParent();
-                break;
-              }
-              node = parent;
-            }
-            node = targetNode;
-            while (true) {
-              var _parent = node.getParentOrThrow();
-              if (_parent === commonAncestor) {
-                indexB = node.getIndexWithinParent();
-                break;
-              }
-              node = _parent;
-            }
-            return indexA < indexB;
-          },
-
-          /**
-           * Returns true if this node is the parent of the target node, false otherwise.
-           *
-           * @param targetNode - the would-be child node.
-           */
-        },
-        {
-          key: "isParentOf",
-          value: function isParentOf(targetNode) {
-            var key = this.__key;
-            if (key === targetNode.__key) {
-              return false;
-            }
-            var node = targetNode;
-            while (node !== null) {
-              if (node.__key === key) {
-                return true;
-              }
-              node = node.getParent();
-            }
-            return false;
-          },
-
-          // TO-DO: this function can be simplified a lot
-          /**
-           * Returns a list of nodes that are between this node and
-           * the target node in the EditorState.
-           *
-           * @param targetNode - the node that marks the other end of the range of nodes to be returned.
-           */
-        },
-        {
-          key: "getNodesBetween",
-          value: function getNodesBetween(targetNode) {
-            var isBefore = this.isBefore(targetNode);
-            var nodes = [];
-            var visited = new Set();
-            var node = this;
-            while (true) {
-              if (node === null) {
-                break;
-              }
-              var key = node.__key;
-              if (!visited.has(key)) {
-                visited.add(key);
-                nodes.push(node);
-              }
-              if (node === targetNode) {
-                break;
-              }
-              var child = $isElementNode(node)
-                ? isBefore
-                  ? node.getFirstChild()
-                  : node.getLastChild()
-                : null;
-              if (child !== null) {
-                node = child;
-                continue;
-              }
-              var nextSibling = isBefore
-                ? node.getNextSibling()
-                : node.getPreviousSibling();
-              if (nextSibling !== null) {
-                node = nextSibling;
-                continue;
-              }
-              var parent = node.getParentOrThrow();
-              if (!visited.has(parent.__key)) {
-                nodes.push(parent);
-              }
-              if (parent === targetNode) {
-                break;
-              }
-              var parentSibling = null;
-              var ancestor = parent;
-              do {
-                if (ancestor === null) {
-                  {
-                    throw Error("getNodesBetween: ancestor is null");
-                  }
-                }
-                parentSibling = isBefore
-                  ? ancestor.getNextSibling()
-                  : ancestor.getPreviousSibling();
-                ancestor = ancestor.getParent();
-                if (ancestor !== null) {
-                  if (parentSibling === null && !visited.has(ancestor.__key)) {
-                    nodes.push(ancestor);
-                  }
-                } else {
-                  break;
-                }
-              } while (parentSibling === null);
-              node = parentSibling;
-            }
-            if (!isBefore) {
-              nodes.reverse();
-            }
-            return nodes;
-          },
-
-          /**
-           * Returns true if this node has been marked dirty during this update cycle.
-           *
-           */
-        },
-        {
-          key: "isDirty",
-          value: function isDirty() {
-            var editor = getActiveEditor();
-            var dirtyLeaves = editor._dirtyLeaves;
-            return dirtyLeaves !== null && dirtyLeaves.has(this.__key);
-          },
-
-          /**
-           * Returns the latest version of the node from the active EditorState.
-           * This is used to avoid getting values from stale node references.
-           *
-           */
-        },
-        {
-          key: "getLatest",
-          value: function getLatest() {
-            var latest = $getNodeByKey(this.__key);
-            if (latest === null) {
-              {
-                throw Error(
-                  "Lexical node does not exist in active editor state. Avoid using the same node references between nested closures from editorState.read/editor.update."
-                );
-              }
-            }
-            return latest;
-          },
-
-          /**
-           * Returns a mutable version of the node. Will throw an error if
-           * called outside of a Lexical Editor {@link LexicalEditor.update} callback.
-           *
-           */
-        },
-        {
-          key: "getWritable",
-          value: function getWritable() {
-            errorOnReadOnly();
-            var editorState = getActiveEditorState();
-            var editor = getActiveEditor();
-            var nodeMap = editorState._nodeMap;
-            var key = this.__key;
-            // Ensure we get the latest node from pending state
-            var latestNode = this.getLatest();
-            var parent = latestNode.__parent;
-            var cloneNotNeeded = editor._cloneNotNeeded;
-            var selection = $getSelection();
-            if (selection !== null) {
-              selection.setCachedNodes(null);
-            }
-            if (cloneNotNeeded.has(key)) {
-              // Transforms clear the dirty node set on each iteration to keep track on newly dirty nodes
-              internalMarkNodeAsDirty(latestNode);
-              return latestNode;
-            }
-            var constructor = latestNode.constructor;
-            var mutableNode = constructor.clone(latestNode);
-            mutableNode.__parent = parent;
-            mutableNode.__next = latestNode.__next;
-            mutableNode.__prev = latestNode.__prev;
-            if ($isElementNode(latestNode) && $isElementNode(mutableNode)) {
-              if (
-                $isParagraphNode(latestNode) &&
-                $isParagraphNode(mutableNode)
-              ) {
-                mutableNode.__textFormat = latestNode.__textFormat;
-              }
-              mutableNode.__first = latestNode.__first;
-              mutableNode.__last = latestNode.__last;
-              mutableNode.__size = latestNode.__size;
-              mutableNode.__indent = latestNode.__indent;
-              mutableNode.__format = latestNode.__format;
-              mutableNode.__dir = latestNode.__dir;
-            } else if ($isTextNode(latestNode) && $isTextNode(mutableNode)) {
-              mutableNode.__format = latestNode.__format;
-              mutableNode.__style = latestNode.__style;
-              mutableNode.__mode = latestNode.__mode;
-              mutableNode.__detail = latestNode.__detail;
-            }
-            cloneNotNeeded.add(key);
-            mutableNode.__key = key;
-            internalMarkNodeAsDirty(mutableNode);
-            // Update reference in node map
-            nodeMap.set(key, mutableNode);
-
-            // @ts-expect-error
-            return mutableNode;
-          },
-
-          /**
-           * Returns the text content of the node. Override this for
-           * custom nodes that should have a representation in plain text
-           * format (for copy + paste, for example)
-           *
-           */
-        },
-        {
-          key: "getTextContent",
-          value: function getTextContent() {
-            return "";
-          },
-
-          /**
-           * Returns the length of the string produced by calling getTextContent on this node.
-           *
-           */
-        },
-        {
-          key: "getTextContentSize",
-          value: function getTextContentSize() {
-            return this.getTextContent().length;
-          },
-
-          // View
-
-          /**
-           * Called during the reconciliation process to determine which nodes
-           * to insert into the DOM for this Lexical Node.
-           *
-           * This method must return exactly one HTMLElement. Nested elements are not supported.
-           *
-           * Do not attempt to update the Lexical EditorState during this phase of the update lifecyle.
-           *
-           * @param _config - allows access to things like the EditorTheme (to apply classes) during reconciliation.
-           * @param _editor - allows access to the editor for context during reconciliation.
-           *
-           * */
-        },
-        {
-          key: "createDOM",
-          value: function createDOM(_config, _editor) {
-            {
-              throw Error("createDOM: base method not extended");
-            }
-          },
-
-          /**
-           * Called when a node changes and should update the DOM
-           * in whatever way is necessary to make it align with any changes that might
-           * have happened during the update.
-           *
-           * Returning "true" here will cause lexical to unmount and recreate the DOM node
-           * (by calling createDOM). You would need to do this if the element tag changes,
-           * for instance.
-           *
-           * */
-        },
-        {
-          key: "updateDOM",
-          value: function updateDOM(_prevNode, _dom, _config) {
-            {
-              throw Error("updateDOM: base method not extended");
-            }
-          },
-
-          /**
-           * Controls how the this node is serialized to HTML. This is important for
-           * copy and paste between Lexical and non-Lexical editors, or Lexical editors with different namespaces,
-           * in which case the primary transfer format is HTML. It's also important if you're serializing
-           * to HTML for any other reason via {@link @lexical/html!$generateHtmlFromNodes}. You could
-           * also use this method to build your own HTML renderer.
-           *
-           * */
-        },
-        {
-          key: "exportDOM",
-          value: function exportDOM(editor) {
-            var element = this.createDOM(editor._config, editor);
-            return {
-              element: element,
-            };
-          },
-
-          /**
-           * Controls how the this node is serialized to JSON. This is important for
-           * copy and paste between Lexical editors sharing the same namespace. It's also important
-           * if you're serializing to JSON for persistent storage somewhere.
-           * See [Serialization & Deserialization](https://lexical.dev/docs/concepts/serialization#lexical---html).
-           *
-           * */
-        },
-        {
-          key: "exportJSON",
-          value: function exportJSON() {
-            {
-              throw Error("exportJSON: base method not extended");
-            }
-          },
-
-          /**
-           * Controls how the this node is deserialized from JSON. This is usually boilerplate,
-           * but provides an abstraction between the node implementation and serialized interface that can
-           * be important if you ever make breaking changes to a node schema (by adding or removing properties).
-           * See [Serialization & Deserialization](https://lexical.dev/docs/concepts/serialization#lexical---html).
-           *
-           * */
-        },
-        {
-          key: "remove",
-          value:
-            // Setters and mutators
-
-            /**
-             * Removes this LexicalNode from the EditorState. If the node isn't re-inserted
-             * somewhere, the Lexical garbage collector will eventually clean it up.
-             *
-             * @param preserveEmptyParent - If falsy, the node's parent will be removed if
-             * it's empty after the removal operation. This is the default behavior, subject to
-             * other node heuristics such as {@link ElementNode#canBeEmpty}
-             * */
-            function remove(preserveEmptyParent) {
-              $removeNode(this, true, preserveEmptyParent);
-            },
-
-          /**
-           * Replaces this LexicalNode with the provided node, optionally transferring the children
-           * of the replaced node to the replacing node.
-           *
-           * @param replaceWith - The node to replace this one with.
-           * @param includeChildren - Whether or not to transfer the children of this node to the replacing node.
-           * */
-        },
-        {
-          key: "replace",
-          value: function replace(replaceWith, includeChildren) {
-            errorOnReadOnly();
-            var selection = $getSelection();
-            if (selection !== null) {
-              selection = selection.clone();
-            }
-            errorOnInsertTextNodeOnRoot(this, replaceWith);
-            var self = this.getLatest();
-            var toReplaceKey = this.__key;
-            var key = replaceWith.__key;
-            var writableReplaceWith = replaceWith.getWritable();
-            var writableParent = this.getParentOrThrow().getWritable();
-            var size = writableParent.__size;
-            removeFromParent(writableReplaceWith);
-            var prevSibling = self.getPreviousSibling();
-            var nextSibling = self.getNextSibling();
-            var prevKey = self.__prev;
-            var nextKey = self.__next;
-            var parentKey = self.__parent;
-            $removeNode(self, false, true);
-            if (prevSibling === null) {
-              writableParent.__first = key;
             } else {
-              var writablePrevSibling = prevSibling.getWritable();
-              writablePrevSibling.__next = key;
+              break;
             }
-            writableReplaceWith.__prev = prevKey;
-            if (nextSibling === null) {
-              writableParent.__last = key;
-            } else {
-              var writableNextSibling = nextSibling.getWritable();
-              writableNextSibling.__prev = key;
-            }
-            writableReplaceWith.__next = nextKey;
-            writableReplaceWith.__parent = parentKey;
-            writableParent.__size = size;
-            if (includeChildren) {
-              if (
-                !($isElementNode(this) && $isElementNode(writableReplaceWith))
-              ) {
-                throw Error(
-                  "includeChildren should only be true for ElementNodes"
-                );
-              }
-              this.getChildren().forEach(function (child) {
-                writableReplaceWith.append(child);
-              });
-            }
-            if ($isRangeSelection(selection)) {
-              $setSelection(selection);
-              var anchor = selection.anchor;
-              var focus = selection.focus;
-              if (anchor.key === toReplaceKey) {
-                $moveSelectionPointToEnd(anchor, writableReplaceWith);
-              }
-              if (focus.key === toReplaceKey) {
-                $moveSelectionPointToEnd(focus, writableReplaceWith);
-              }
-            }
-            if ($getCompositionKey() === toReplaceKey) {
-              $setCompositionKey(key);
-            }
-            return writableReplaceWith;
-          },
+          } while (parentSibling === null);
+          node = parentSibling;
+        }
+        if (!isBefore) {
+          nodes.reverse();
+        }
+        return nodes;
+      }
 
-          /**
-           * Inserts a node after this LexicalNode (as the next sibling).
-           *
-           * @param nodeToInsert - The node to insert after this one.
-           * @param restoreSelection - Whether or not to attempt to resolve the
-           * selection to the appropriate place after the operation is complete.
-           * */
-        },
+      /**
+       * Returns true if this node has been marked dirty during this update cycle.
+       *
+       */
+    }, {
+      key: "isDirty",
+      value: function isDirty() {
+        var editor = getActiveEditor();
+        var dirtyLeaves = editor._dirtyLeaves;
+        return dirtyLeaves !== null && dirtyLeaves.has(this.__key);
+      }
+
+      /**
+       * Returns the latest version of the node from the active EditorState.
+       * This is used to avoid getting values from stale node references.
+       *
+       */
+    }, {
+      key: "getLatest",
+      value: function getLatest() {
+        var latest = $getNodeByKey(this.__key);
+        if (latest === null) {
+          {
+            throw Error("Lexical node does not exist in active editor state. Avoid using the same node references between nested closures from editorState.read/editor.update.");
+          }
+        }
+        return latest;
+      }
+
+      /**
+       * Returns a mutable version of the node. Will throw an error if
+       * called outside of a Lexical Editor {@link LexicalEditor.update} callback.
+       *
+       */
+    }, {
+      key: "getWritable",
+      value: function getWritable() {
+        errorOnReadOnly();
+        var editorState = getActiveEditorState();
+        var editor = getActiveEditor();
+        var nodeMap = editorState._nodeMap;
+        var key = this.__key;
+        // Ensure we get the latest node from pending state
+        var latestNode = this.getLatest();
+        var parent = latestNode.__parent;
+        var cloneNotNeeded = editor._cloneNotNeeded;
+        var selection = $getSelection();
+        if (selection !== null) {
+          selection.setCachedNodes(null);
+        }
+        if (cloneNotNeeded.has(key)) {
+          // Transforms clear the dirty node set on each iteration to keep track on newly dirty nodes
+          internalMarkNodeAsDirty(latestNode);
+          return latestNode;
+        }
+        var constructor = latestNode.constructor;
+        var mutableNode = constructor.clone(latestNode);
+        mutableNode.__parent = parent;
+        mutableNode.__next = latestNode.__next;
+        mutableNode.__prev = latestNode.__prev;
+        if ($isElementNode(latestNode) && $isElementNode(mutableNode)) {
+          if ($isParagraphNode(latestNode) && $isParagraphNode(mutableNode)) {
+            mutableNode.__textFormat = latestNode.__textFormat;
+          }
+          mutableNode.__first = latestNode.__first;
+          mutableNode.__last = latestNode.__last;
+          mutableNode.__size = latestNode.__size;
+          mutableNode.__indent = latestNode.__indent;
+          mutableNode.__format = latestNode.__format;
+          mutableNode.__dir = latestNode.__dir;
+        } else if ($isTextNode(latestNode) && $isTextNode(mutableNode)) {
+          mutableNode.__format = latestNode.__format;
+          mutableNode.__style = latestNode.__style;
+          mutableNode.__mode = latestNode.__mode;
+          mutableNode.__detail = latestNode.__detail;
+        }
+        cloneNotNeeded.add(key);
+        mutableNode.__key = key;
+        internalMarkNodeAsDirty(mutableNode);
+        // Update reference in node map
+        nodeMap.set(key, mutableNode);
+
+        // @ts-expect-error
+        return mutableNode;
+      }
+
+      /**
+       * Returns the text content of the node. Override this for
+       * custom nodes that should have a representation in plain text
+       * format (for copy + paste, for example)
+       *
+       */
+    }, {
+      key: "getTextContent",
+      value: function getTextContent() {
+        return '';
+      }
+
+      /**
+       * Returns the length of the string produced by calling getTextContent on this node.
+       *
+       */
+    }, {
+      key: "getTextContentSize",
+      value: function getTextContentSize() {
+        return this.getTextContent().length;
+      }
+
+      // View
+
+      /**
+       * Called during the reconciliation process to determine which nodes
+       * to insert into the DOM for this Lexical Node.
+       *
+       * This method must return exactly one HTMLElement. Nested elements are not supported.
+       *
+       * Do not attempt to update the Lexical EditorState during this phase of the update lifecyle.
+       *
+       * @param _config - allows access to things like the EditorTheme (to apply classes) during reconciliation.
+       * @param _editor - allows access to the editor for context during reconciliation.
+       *
+       * */
+    }, {
+      key: "createDOM",
+      value: function createDOM(_config, _editor) {
         {
-          key: "insertAfter",
-          value: function insertAfter(nodeToInsert) {
-            var restoreSelection =
-              arguments.length > 1 && arguments[1] !== undefined
-                ? arguments[1]
-                : true;
-            errorOnReadOnly();
-            errorOnInsertTextNodeOnRoot(this, nodeToInsert);
-            var writableSelf = this.getWritable();
-            var writableNodeToInsert = nodeToInsert.getWritable();
-            var oldParent = writableNodeToInsert.getParent();
-            var selection = $getSelection();
-            var elementAnchorSelectionOnNode = false;
-            var elementFocusSelectionOnNode = false;
-            if (oldParent !== null) {
-              // TODO: this is O(n), can we improve?
-              var oldIndex = nodeToInsert.getIndexWithinParent();
-              removeFromParent(writableNodeToInsert);
-              if ($isRangeSelection(selection)) {
-                var oldParentKey = oldParent.__key;
-                var anchor = selection.anchor;
-                var focus = selection.focus;
-                elementAnchorSelectionOnNode =
-                  anchor.type === "element" &&
-                  anchor.key === oldParentKey &&
-                  anchor.offset === oldIndex + 1;
-                elementFocusSelectionOnNode =
-                  focus.type === "element" &&
-                  focus.key === oldParentKey &&
-                  focus.offset === oldIndex + 1;
-              }
-            }
-            var nextSibling = this.getNextSibling();
-            var writableParent = this.getParentOrThrow().getWritable();
-            var insertKey = writableNodeToInsert.__key;
-            var nextKey = writableSelf.__next;
-            if (nextSibling === null) {
-              writableParent.__last = insertKey;
-            } else {
-              var writableNextSibling = nextSibling.getWritable();
-              writableNextSibling.__prev = insertKey;
-            }
-            writableParent.__size++;
-            writableSelf.__next = insertKey;
-            writableNodeToInsert.__next = nextKey;
-            writableNodeToInsert.__prev = writableSelf.__key;
-            writableNodeToInsert.__parent = writableSelf.__parent;
-            if (restoreSelection && $isRangeSelection(selection)) {
-              var index = this.getIndexWithinParent();
-              $updateElementSelectionOnCreateDeleteNode(
-                selection,
-                writableParent,
-                index + 1
-              );
-              var writableParentKey = writableParent.__key;
-              if (elementAnchorSelectionOnNode) {
-                selection.anchor.set(writableParentKey, index + 2, "element");
-              }
-              if (elementFocusSelectionOnNode) {
-                selection.focus.set(writableParentKey, index + 2, "element");
-              }
-            }
-            return nodeToInsert;
-          },
+          throw Error("createDOM: base method not extended");
+        }
+      }
 
-          /**
-           * Inserts a node before this LexicalNode (as the previous sibling).
-           *
-           * @param nodeToInsert - The node to insert before this one.
-           * @param restoreSelection - Whether or not to attempt to resolve the
-           * selection to the appropriate place after the operation is complete.
-           * */
-        },
+      /**
+       * Called when a node changes and should update the DOM
+       * in whatever way is necessary to make it align with any changes that might
+       * have happened during the update.
+       *
+       * Returning "true" here will cause lexical to unmount and recreate the DOM node
+       * (by calling createDOM). You would need to do this if the element tag changes,
+       * for instance.
+       *
+       * */
+    }, {
+      key: "updateDOM",
+      value: function updateDOM(_prevNode, _dom, _config) {
         {
-          key: "insertBefore",
-          value: function insertBefore(nodeToInsert) {
-            var restoreSelection =
-              arguments.length > 1 && arguments[1] !== undefined
-                ? arguments[1]
-                : true;
-            errorOnReadOnly();
-            errorOnInsertTextNodeOnRoot(this, nodeToInsert);
-            var writableSelf = this.getWritable();
-            var writableNodeToInsert = nodeToInsert.getWritable();
-            var insertKey = writableNodeToInsert.__key;
-            removeFromParent(writableNodeToInsert);
-            var prevSibling = this.getPreviousSibling();
-            var writableParent = this.getParentOrThrow().getWritable();
-            var prevKey = writableSelf.__prev;
-            // TODO: this is O(n), can we improve?
-            var index = this.getIndexWithinParent();
-            if (prevSibling === null) {
-              writableParent.__first = insertKey;
-            } else {
-              var writablePrevSibling = prevSibling.getWritable();
-              writablePrevSibling.__next = insertKey;
-            }
-            writableParent.__size++;
-            writableSelf.__prev = insertKey;
-            writableNodeToInsert.__prev = prevKey;
-            writableNodeToInsert.__next = writableSelf.__key;
-            writableNodeToInsert.__parent = writableSelf.__parent;
-            var selection = $getSelection();
-            if (restoreSelection && $isRangeSelection(selection)) {
-              var parent = this.getParentOrThrow();
-              $updateElementSelectionOnCreateDeleteNode(
-                selection,
-                parent,
-                index
-              );
-            }
-            return nodeToInsert;
-          },
+          throw Error("updateDOM: base method not extended");
+        }
+      }
 
-          /**
-           * Whether or not this node has a required parent. Used during copy + paste operations
-           * to normalize nodes that would otherwise be orphaned. For example, ListItemNodes without
-           * a ListNode parent or TextNodes with a ParagraphNode parent.
-           *
-           * */
-        },
+      /**
+       * Controls how the this node is serialized to HTML. This is important for
+       * copy and paste between Lexical and non-Lexical editors, or Lexical editors with different namespaces,
+       * in which case the primary transfer format is HTML. It's also important if you're serializing
+       * to HTML for any other reason via {@link @lexical/html!$generateHtmlFromNodes}. You could
+       * also use this method to build your own HTML renderer.
+       *
+       * */
+    }, {
+      key: "exportDOM",
+      value: function exportDOM(editor) {
+        var element = this.createDOM(editor._config, editor);
+        return {
+          element: element
+        };
+      }
+
+      /**
+       * Controls how the this node is serialized to JSON. This is important for
+       * copy and paste between Lexical editors sharing the same namespace. It's also important
+       * if you're serializing to JSON for persistent storage somewhere.
+       * See [Serialization & Deserialization](https://lexical.dev/docs/concepts/serialization#lexical---html).
+       *
+       * */
+    }, {
+      key: "exportJSON",
+      value: function exportJSON() {
         {
-          key: "isParentRequired",
-          value: function isParentRequired() {
-            return false;
-          },
+          throw Error("exportJSON: base method not extended");
+        }
+      }
 
-          /**
-           * The creation logic for any required parent. Should be implemented if {@link isParentRequired} returns true.
-           *
-           * */
-        },
+      /**
+       * Controls how the this node is deserialized from JSON. This is usually boilerplate,
+       * but provides an abstraction between the node implementation and serialized interface that can
+       * be important if you ever make breaking changes to a node schema (by adding or removing properties).
+       * See [Serialization & Deserialization](https://lexical.dev/docs/concepts/serialization#lexical---html).
+       *
+       * */
+    }, {
+      key: "remove",
+      value:
+      // Setters and mutators
+
+      /**
+       * Removes this LexicalNode from the EditorState. If the node isn't re-inserted
+       * somewhere, the Lexical garbage collector will eventually clean it up.
+       *
+       * @param preserveEmptyParent - If falsy, the node's parent will be removed if
+       * it's empty after the removal operation. This is the default behavior, subject to
+       * other node heuristics such as {@link ElementNode#canBeEmpty}
+       * */
+      function remove(preserveEmptyParent) {
+        $removeNode(this, true, preserveEmptyParent);
+      }
+
+      /**
+       * Replaces this LexicalNode with the provided node, optionally transferring the children
+       * of the replaced node to the replacing node.
+       *
+       * @param replaceWith - The node to replace this one with.
+       * @param includeChildren - Whether or not to transfer the children of this node to the replacing node.
+       * */
+    }, {
+      key: "replace",
+      value: function replace(replaceWith, includeChildren) {
+        errorOnReadOnly();
+        var selection = $getSelection();
+        if (selection !== null) {
+          selection = selection.clone();
+        }
+        errorOnInsertTextNodeOnRoot(this, replaceWith);
+        var self = this.getLatest();
+        var toReplaceKey = this.__key;
+        var key = replaceWith.__key;
+        var writableReplaceWith = replaceWith.getWritable();
+        var writableParent = this.getParentOrThrow().getWritable();
+        var size = writableParent.__size;
+        removeFromParent(writableReplaceWith);
+        var prevSibling = self.getPreviousSibling();
+        var nextSibling = self.getNextSibling();
+        var prevKey = self.__prev;
+        var nextKey = self.__next;
+        var parentKey = self.__parent;
+        $removeNode(self, false, true);
+        if (prevSibling === null) {
+          writableParent.__first = key;
+        } else {
+          var writablePrevSibling = prevSibling.getWritable();
+          writablePrevSibling.__next = key;
+        }
+        writableReplaceWith.__prev = prevKey;
+        if (nextSibling === null) {
+          writableParent.__last = key;
+        } else {
+          var writableNextSibling = nextSibling.getWritable();
+          writableNextSibling.__prev = key;
+        }
+        writableReplaceWith.__next = nextKey;
+        writableReplaceWith.__parent = parentKey;
+        writableParent.__size = size;
+        if (includeChildren) {
+          if (!($isElementNode(this) && $isElementNode(writableReplaceWith))) {
+            throw Error("includeChildren should only be true for ElementNodes");
+          }
+          this.getChildren().forEach(function (child) {
+            writableReplaceWith.append(child);
+          });
+        }
+        if ($isRangeSelection(selection)) {
+          $setSelection(selection);
+          var anchor = selection.anchor;
+          var focus = selection.focus;
+          if (anchor.key === toReplaceKey) {
+            $moveSelectionPointToEnd(anchor, writableReplaceWith);
+          }
+          if (focus.key === toReplaceKey) {
+            $moveSelectionPointToEnd(focus, writableReplaceWith);
+          }
+        }
+        if ($getCompositionKey() === toReplaceKey) {
+          $setCompositionKey(key);
+        }
+        return writableReplaceWith;
+      }
+
+      /**
+       * Inserts a node after this LexicalNode (as the next sibling).
+       *
+       * @param nodeToInsert - The node to insert after this one.
+       * @param restoreSelection - Whether or not to attempt to resolve the
+       * selection to the appropriate place after the operation is complete.
+       * */
+    }, {
+      key: "insertAfter",
+      value: function insertAfter(nodeToInsert) {
+        var restoreSelection = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+        errorOnReadOnly();
+        errorOnInsertTextNodeOnRoot(this, nodeToInsert);
+        var writableSelf = this.getWritable();
+        var writableNodeToInsert = nodeToInsert.getWritable();
+        var oldParent = writableNodeToInsert.getParent();
+        var selection = $getSelection();
+        var elementAnchorSelectionOnNode = false;
+        var elementFocusSelectionOnNode = false;
+        if (oldParent !== null) {
+          // TODO: this is O(n), can we improve?
+          var oldIndex = nodeToInsert.getIndexWithinParent();
+          removeFromParent(writableNodeToInsert);
+          if ($isRangeSelection(selection)) {
+            var oldParentKey = oldParent.__key;
+            var anchor = selection.anchor;
+            var focus = selection.focus;
+            elementAnchorSelectionOnNode = anchor.type === 'element' && anchor.key === oldParentKey && anchor.offset === oldIndex + 1;
+            elementFocusSelectionOnNode = focus.type === 'element' && focus.key === oldParentKey && focus.offset === oldIndex + 1;
+          }
+        }
+        var nextSibling = this.getNextSibling();
+        var writableParent = this.getParentOrThrow().getWritable();
+        var insertKey = writableNodeToInsert.__key;
+        var nextKey = writableSelf.__next;
+        if (nextSibling === null) {
+          writableParent.__last = insertKey;
+        } else {
+          var writableNextSibling = nextSibling.getWritable();
+          writableNextSibling.__prev = insertKey;
+        }
+        writableParent.__size++;
+        writableSelf.__next = insertKey;
+        writableNodeToInsert.__next = nextKey;
+        writableNodeToInsert.__prev = writableSelf.__key;
+        writableNodeToInsert.__parent = writableSelf.__parent;
+        if (restoreSelection && $isRangeSelection(selection)) {
+          var index = this.getIndexWithinParent();
+          $updateElementSelectionOnCreateDeleteNode(selection, writableParent, index + 1);
+          var writableParentKey = writableParent.__key;
+          if (elementAnchorSelectionOnNode) {
+            selection.anchor.set(writableParentKey, index + 2, 'element');
+          }
+          if (elementFocusSelectionOnNode) {
+            selection.focus.set(writableParentKey, index + 2, 'element');
+          }
+        }
+        return nodeToInsert;
+      }
+
+      /**
+       * Inserts a node before this LexicalNode (as the previous sibling).
+       *
+       * @param nodeToInsert - The node to insert before this one.
+       * @param restoreSelection - Whether or not to attempt to resolve the
+       * selection to the appropriate place after the operation is complete.
+       * */
+    }, {
+      key: "insertBefore",
+      value: function insertBefore(nodeToInsert) {
+        var restoreSelection = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+        errorOnReadOnly();
+        errorOnInsertTextNodeOnRoot(this, nodeToInsert);
+        var writableSelf = this.getWritable();
+        var writableNodeToInsert = nodeToInsert.getWritable();
+        var insertKey = writableNodeToInsert.__key;
+        removeFromParent(writableNodeToInsert);
+        var prevSibling = this.getPreviousSibling();
+        var writableParent = this.getParentOrThrow().getWritable();
+        var prevKey = writableSelf.__prev;
+        // TODO: this is O(n), can we improve?
+        var index = this.getIndexWithinParent();
+        if (prevSibling === null) {
+          writableParent.__first = insertKey;
+        } else {
+          var writablePrevSibling = prevSibling.getWritable();
+          writablePrevSibling.__next = insertKey;
+        }
+        writableParent.__size++;
+        writableSelf.__prev = insertKey;
+        writableNodeToInsert.__prev = prevKey;
+        writableNodeToInsert.__next = writableSelf.__key;
+        writableNodeToInsert.__parent = writableSelf.__parent;
+        var selection = $getSelection();
+        if (restoreSelection && $isRangeSelection(selection)) {
+          var parent = this.getParentOrThrow();
+          $updateElementSelectionOnCreateDeleteNode(selection, parent, index);
+        }
+        return nodeToInsert;
+      }
+
+      /**
+       * Whether or not this node has a required parent. Used during copy + paste operations
+       * to normalize nodes that would otherwise be orphaned. For example, ListItemNodes without
+       * a ListNode parent or TextNodes with a ParagraphNode parent.
+       *
+       * */
+    }, {
+      key: "isParentRequired",
+      value: function isParentRequired() {
+        return false;
+      }
+
+      /**
+       * The creation logic for any required parent. Should be implemented if {@link isParentRequired} returns true.
+       *
+       * */
+    }, {
+      key: "createParentElementNode",
+      value: function createParentElementNode() {
+        return $createParagraphNode();
+      }
+    }, {
+      key: "selectStart",
+      value: function selectStart() {
+        return this.selectPrevious();
+      }
+    }, {
+      key: "selectEnd",
+      value: function selectEnd() {
+        return this.selectNext(0, 0);
+      }
+
+      /**
+       * Moves selection to the previous sibling of this node, at the specified offsets.
+       *
+       * @param anchorOffset - The anchor offset for selection.
+       * @param focusOffset -  The focus offset for selection
+       * */
+    }, {
+      key: "selectPrevious",
+      value: function selectPrevious(anchorOffset, focusOffset) {
+        errorOnReadOnly();
+        var prevSibling = this.getPreviousSibling();
+        var parent = this.getParentOrThrow();
+        if (prevSibling === null) {
+          return parent.select(0, 0);
+        }
+        if ($isElementNode(prevSibling)) {
+          return prevSibling.select();
+        } else if (!$isTextNode(prevSibling)) {
+          var index = prevSibling.getIndexWithinParent() + 1;
+          return parent.select(index, index);
+        }
+        return prevSibling.select(anchorOffset, focusOffset);
+      }
+
+      /**
+       * Moves selection to the next sibling of this node, at the specified offsets.
+       *
+       * @param anchorOffset - The anchor offset for selection.
+       * @param focusOffset -  The focus offset for selection
+       * */
+    }, {
+      key: "selectNext",
+      value: function selectNext(anchorOffset, focusOffset) {
+        errorOnReadOnly();
+        var nextSibling = this.getNextSibling();
+        var parent = this.getParentOrThrow();
+        if (nextSibling === null) {
+          return parent.select();
+        }
+        if ($isElementNode(nextSibling)) {
+          return nextSibling.select(0, 0);
+        } else if (!$isTextNode(nextSibling)) {
+          var index = nextSibling.getIndexWithinParent();
+          return parent.select(index, index);
+        }
+        return nextSibling.select(anchorOffset, focusOffset);
+      }
+
+      /**
+       * Marks a node dirty, triggering transforms and
+       * forcing it to be reconciled during the update cycle.
+       *
+       * */
+    }, {
+      key: "markDirty",
+      value: function markDirty() {
+        this.getWritable();
+      }
+    }], [{
+      key: "getType",
+      value:
+      // Allow us to look up the type including static props
+
+      /** @internal */
+
+      /** @internal */
+      //@ts-ignore We set the key in the constructor.
+
+      /** @internal */
+
+      /** @internal */
+
+      /** @internal */
+
+      // Flow doesn't support abstract classes unfortunately, so we can't _force_
+      // subclasses of Node to implement statics. All subclasses of Node should have
+      // a static getType and clone method though. We define getType and clone here so we can call it
+      // on any  Node, and we throw this error by default since the subclass should provide
+      // their own implementation.
+      /**
+       * Returns the string type of this node. Every node must
+       * implement this and it MUST BE UNIQUE amongst nodes registered
+       * on the editor.
+       *
+       */
+      function getType() {
         {
-          key: "createParentElementNode",
-          value: function createParentElementNode() {
-            return $createParagraphNode();
-          },
-        },
+          throw Error("LexicalNode: Node ".concat(this.name, " does not implement .getType()."));
+        }
+      }
+
+      /**
+       * Clones this node, creating a new node with a different key
+       * and adding it to the EditorState (but not attaching it anywhere!). All nodes must
+       * implement this method.
+       *
+       */
+    }, {
+      key: "clone",
+      value: function clone(_data) {
         {
-          key: "selectStart",
-          value: function selectStart() {
-            return this.selectPrevious();
-          },
-        },
+          throw Error("LexicalNode: Node ".concat(this.name, " does not implement .clone()."));
+        }
+      }
+    }, {
+      key: "importJSON",
+      value: function importJSON(_serializedNode) {
         {
-          key: "selectEnd",
-          value: function selectEnd() {
-            return this.selectNext(0, 0);
-          },
-
-          /**
-           * Moves selection to the previous sibling of this node, at the specified offsets.
-           *
-           * @param anchorOffset - The anchor offset for selection.
-           * @param focusOffset -  The focus offset for selection
-           * */
-        },
-        {
-          key: "selectPrevious",
-          value: function selectPrevious(anchorOffset, focusOffset) {
-            errorOnReadOnly();
-            var prevSibling = this.getPreviousSibling();
-            var parent = this.getParentOrThrow();
-            if (prevSibling === null) {
-              return parent.select(0, 0);
-            }
-            if ($isElementNode(prevSibling)) {
-              return prevSibling.select();
-            } else if (!$isTextNode(prevSibling)) {
-              var index = prevSibling.getIndexWithinParent() + 1;
-              return parent.select(index, index);
-            }
-            return prevSibling.select(anchorOffset, focusOffset);
-          },
-
-          /**
-           * Moves selection to the next sibling of this node, at the specified offsets.
-           *
-           * @param anchorOffset - The anchor offset for selection.
-           * @param focusOffset -  The focus offset for selection
-           * */
-        },
-        {
-          key: "selectNext",
-          value: function selectNext(anchorOffset, focusOffset) {
-            errorOnReadOnly();
-            var nextSibling = this.getNextSibling();
-            var parent = this.getParentOrThrow();
-            if (nextSibling === null) {
-              return parent.select();
-            }
-            if ($isElementNode(nextSibling)) {
-              return nextSibling.select(0, 0);
-            } else if (!$isTextNode(nextSibling)) {
-              var index = nextSibling.getIndexWithinParent();
-              return parent.select(index, index);
-            }
-            return nextSibling.select(anchorOffset, focusOffset);
-          },
-
-          /**
-           * Marks a node dirty, triggering transforms and
-           * forcing it to be reconciled during the update cycle.
-           *
-           * */
-        },
-        {
-          key: "markDirty",
-          value: function markDirty() {
-            this.getWritable();
-          },
-        },
-      ],
-      [
-        {
-          key: "getType",
-          value:
-            // Allow us to look up the type including static props
-
-            /** @internal */
-
-            /** @internal */
-            //@ts-ignore We set the key in the constructor.
-
-            /** @internal */
-
-            /** @internal */
-
-            /** @internal */
-
-            // Flow doesn't support abstract classes unfortunately, so we can't _force_
-            // subclasses of Node to implement statics. All subclasses of Node should have
-            // a static getType and clone method though. We define getType and clone here so we can call it
-            // on any  Node, and we throw this error by default since the subclass should provide
-            // their own implementation.
-            /**
-             * Returns the string type of this node. Every node must
-             * implement this and it MUST BE UNIQUE amongst nodes registered
-             * on the editor.
-             *
-             */
-            function getType() {
-              {
-                throw Error(
-                  "LexicalNode: Node ".concat(
-                    this.name,
-                    " does not implement .getType()."
-                  )
-                );
-              }
-            },
-
-          /**
-           * Clones this node, creating a new node with a different key
-           * and adding it to the EditorState (but not attaching it anywhere!). All nodes must
-           * implement this method.
-           *
-           */
-        },
-        {
-          key: "clone",
-          value: function clone(_data) {
-            {
-              throw Error(
-                "LexicalNode: Node ".concat(
-                  this.name,
-                  " does not implement .clone()."
-                )
-              );
-            }
-          },
-        },
-        {
-          key: "importJSON",
-          value: function importJSON(_serializedNode) {
-            {
-              throw Error(
-                "LexicalNode: Node ".concat(
-                  this.name,
-                  " does not implement .importJSON()."
-                )
-              );
-            }
-          },
-          /**
-           * @experimental
-           *
-           * Registers the returned function as a transform on the node during
-           * Editor initialization. Most such use cases should be addressed via
-           * the {@link LexicalEditor.registerNodeTransform} API.
-           *
-           * Experimental - use at your own risk.
-           */
-        },
-        {
-          key: "transform",
-          value: function transform() {
-            return null;
-          },
-        },
-      ]
-    );
-  })();
+          throw Error("LexicalNode: Node ".concat(this.name, " does not implement .importJSON()."));
+        }
+      }
+      /**
+       * @experimental
+       *
+       * Registers the returned function as a transform on the node during
+       * Editor initialization. Most such use cases should be addressed via
+       * the {@link LexicalEditor.registerNodeTransform} API.
+       *
+       * Experimental - use at your own risk.
+       */
+    }, {
+      key: "transform",
+      value: function transform() {
+        return null;
+      }
+    }]);
+  }();
   function errorOnTypeKlassMismatch(type, klass) {
     var registeredNode = getActiveEditor()._nodes.get(type);
     // Common error - split in its own invariant
     if (registeredNode === undefined) {
       {
-        throw Error(
-          "Create node: Attempted to create node ".concat(
-            klass.name,
-            " that was not configured to be used on the editor."
-          )
-        );
+        throw Error("Create node: Attempted to create node ".concat(klass.name, " that was not configured to be used on the editor."));
       }
     }
     var editorKlass = registeredNode.klass;
     if (editorKlass !== klass) {
       {
-        throw Error(
-          "Create node: Type "
-            .concat(type, " in node ")
-            .concat(klass.name, " does not match registered node ")
-            .concat(editorKlass.name, " with the same type")
-        );
+        throw Error("Create node: Type ".concat(type, " in node ").concat(klass.name, " does not match registered node ").concat(editorKlass.name, " with the same type"));
       }
     }
   }
@@ -5532,20 +4421,14 @@ define([], function () {
     while (current !== lastToInsert2) {
       if (!current.getNextSibling()) {
         {
-          throw Error(
-            "insertRangeAfter: lastToInsert must be a later sibling of firstToInsert"
-          );
+          throw Error("insertRangeAfter: lastToInsert must be a later sibling of firstToInsert");
         }
       }
       current = current.getNextSibling();
       nodesToInsert.push(current);
     }
     var currentNode = node;
-    for (
-      var _i4 = 0, _nodesToInsert = nodesToInsert;
-      _i4 < _nodesToInsert.length;
-      _i4++
-    ) {
+    for (var _i4 = 0, _nodesToInsert = nodesToInsert; _i4 < _nodesToInsert.length; _i4++) {
       var nodeToInsert = _nodesToInsert[_i4];
       currentNode = currentNode.insertAfter(nodeToInsert);
     }
@@ -5560,84 +4443,70 @@ define([], function () {
    */
 
   /** @noInheritDoc */
-  var LineBreakNode = /*#__PURE__*/ (function (_LexicalNode) {
+  var LineBreakNode = /*#__PURE__*/function (_LexicalNode) {
     function LineBreakNode(key) {
       _classCallCheck(this, LineBreakNode);
       return _callSuper(this, LineBreakNode, [key]);
     }
     _inherits(LineBreakNode, _LexicalNode);
-    return _createClass(
-      LineBreakNode,
-      [
-        {
-          key: "getTextContent",
-          value: function getTextContent() {
-            return "\n";
-          },
-        },
-        {
-          key: "createDOM",
-          value: function createDOM() {
-            return document.createElement("br");
-          },
-        },
-        {
-          key: "updateDOM",
-          value: function updateDOM() {
-            return false;
-          },
-        },
-        {
-          key: "exportJSON",
-          value: function exportJSON() {
+    return _createClass(LineBreakNode, [{
+      key: "getTextContent",
+      value: function getTextContent() {
+        return '\n';
+      }
+    }, {
+      key: "createDOM",
+      value: function createDOM() {
+        return document.createElement('br');
+      }
+    }, {
+      key: "updateDOM",
+      value: function updateDOM() {
+        return false;
+      }
+    }, {
+      key: "exportJSON",
+      value: function exportJSON() {
+        return {
+          type: 'linebreak',
+          version: 1
+        };
+      }
+    }], [{
+      key: "getType",
+      value: function getType() {
+        return 'linebreak';
+      }
+    }, {
+      key: "clone",
+      value: function clone(node) {
+        return new LineBreakNode(node.__key);
+      }
+    }, {
+      key: "importDOM",
+      value: function importDOM() {
+        return {
+          br: function br(node) {
+            if (isOnlyChild(node)) {
+              return null;
+            }
             return {
-              type: "linebreak",
-              version: 1,
+              conversion: $convertLineBreakElement,
+              priority: 0
             };
-          },
-        },
-      ],
-      [
-        {
-          key: "getType",
-          value: function getType() {
-            return "linebreak";
-          },
-        },
-        {
-          key: "clone",
-          value: function clone(node) {
-            return new LineBreakNode(node.__key);
-          },
-        },
-        {
-          key: "importDOM",
-          value: function importDOM() {
-            return {
-              br: function br(node) {
-                if (isOnlyChild(node)) {
-                  return null;
-                }
-                return {
-                  conversion: $convertLineBreakElement,
-                  priority: 0,
-                };
-              },
-            };
-          },
-        },
-        {
-          key: "importJSON",
-          value: function importJSON(serializedLineBreakNode) {
-            return $createLineBreakNode();
-          },
-        },
-      ]
-    );
-  })(LexicalNode);
+          }
+        };
+      }
+    }, {
+      key: "importJSON",
+      value: function importJSON(serializedLineBreakNode) {
+        return $createLineBreakNode();
+      }
+    }]);
+  }(LexicalNode);
   function $convertLineBreakElement(node) {
     return {
-      node: $createLineBreakNode(),
+      node: $createLineBreakNode()
     };
   }
   function $createLineBreakNode() {
@@ -5650,16 +4519,9 @@ define([], function () {
     var parentElement = node.parentElement;
     if (parentElement !== null) {
       var firstChild = parentElement.firstChild;
-      if (
-        firstChild === node ||
-        (firstChild.nextSibling === node && isWhitespaceDomTextNode(firstChild))
-      ) {
+      if (firstChild === node || firstChild.nextSibling === node && isWhitespaceDomTextNode(firstChild)) {
         var lastChild = parentElement.lastChild;
-        if (
-          lastChild === node ||
-          (lastChild.previousSibling === node &&
-            isWhitespaceDomTextNode(lastChild))
-        ) {
+        if (lastChild === node || lastChild.previousSibling === node && isWhitespaceDomTextNode(lastChild)) {
           return true;
         }
       }
@@ -5667,10 +4529,7 @@ define([], function () {
     return false;
   }
   function isWhitespaceDomTextNode(node) {
-    return (
-      node.nodeType === DOM_TEXT_TYPE &&
-      /^( |\t|\r?\n)+$/.test(node.textContent || "")
-    );
+    return node.nodeType === DOM_TEXT_TYPE && /^( |\t|\r?\n)+$/.test(node.textContent || '');
   }
 
   /**
@@ -5683,38 +4542,32 @@ define([], function () {
 
   function getElementOuterTag(node, format) {
     if (format & IS_CODE) {
-      return "code";
+      return 'code';
     }
     if (format & IS_HIGHLIGHT) {
-      return "mark";
+      return 'mark';
     }
     if (format & IS_SUBSCRIPT) {
-      return "sub";
+      return 'sub';
     }
     if (format & IS_SUPERSCRIPT) {
-      return "sup";
+      return 'sup';
     }
     return null;
   }
   function getElementInnerTag(node, format) {
     if (format & IS_BOLD) {
-      return "strong";
+      return 'strong';
     }
     if (format & IS_ITALIC) {
-      return "em";
+      return 'em';
     }
-    return "span";
+    return 'span';
   }
-  function setTextThemeClassNames(
-    tag,
-    prevFormat,
-    nextFormat,
-    dom,
-    textClassNames
-  ) {
+  function setTextThemeClassNames(tag, prevFormat, nextFormat, dom, textClassNames) {
     var domClassList = dom.classList;
     // Firstly we handle the base theme.
-    var classNames = getCachedClassNameArray(textClassNames, "base");
+    var classNames = getCachedClassNameArray(textClassNames, 'base');
     if (classNames !== undefined) {
       domClassList.add.apply(domClassList, _toConsumableArray(classNames));
     }
@@ -5723,15 +4576,10 @@ define([], function () {
     // the same CSS property will need to be used: text-decoration.
     // In an ideal world we shouldn't have to do this, but there's no
     // easy workaround for many atomic CSS systems today.
-    classNames = getCachedClassNameArray(
-      textClassNames,
-      "underlineStrikethrough"
-    );
+    classNames = getCachedClassNameArray(textClassNames, 'underlineStrikethrough');
     var hasUnderlineStrikethrough = false;
-    var prevUnderlineStrikethrough =
-      prevFormat & IS_UNDERLINE && prevFormat & IS_STRIKETHROUGH;
-    var nextUnderlineStrikethrough =
-      nextFormat & IS_UNDERLINE && nextFormat & IS_STRIKETHROUGH;
+    var prevUnderlineStrikethrough = prevFormat & IS_UNDERLINE && prevFormat & IS_STRIKETHROUGH;
+    var nextUnderlineStrikethrough = nextFormat & IS_UNDERLINE && nextFormat & IS_STRIKETHROUGH;
     if (classNames !== undefined) {
       if (nextUnderlineStrikethrough) {
         hasUnderlineStrikethrough = true;
@@ -5748,33 +4596,17 @@ define([], function () {
       classNames = getCachedClassNameArray(textClassNames, key);
       if (classNames !== undefined) {
         if (nextFormat & flag) {
-          if (
-            hasUnderlineStrikethrough &&
-            (key === "underline" || key === "strikethrough")
-          ) {
+          if (hasUnderlineStrikethrough && (key === 'underline' || key === 'strikethrough')) {
             if (prevFormat & flag) {
-              domClassList.remove.apply(
-                domClassList,
-                _toConsumableArray(classNames)
-              );
+              domClassList.remove.apply(domClassList, _toConsumableArray(classNames));
             }
             continue;
           }
-          if (
-            (prevFormat & flag) === 0 ||
-            (prevUnderlineStrikethrough && key === "underline") ||
-            key === "strikethrough"
-          ) {
-            domClassList.add.apply(
-              domClassList,
-              _toConsumableArray(classNames)
-            );
+          if ((prevFormat & flag) === 0 || prevUnderlineStrikethrough && key === 'underline' || key === 'strikethrough') {
+            domClassList.add.apply(domClassList, _toConsumableArray(classNames));
           }
         } else if (prevFormat & flag) {
-          domClassList.remove.apply(
-            domClassList,
-            _toConsumableArray(classNames)
-          );
+          domClassList.remove.apply(domClassList, _toConsumableArray(classNames));
         }
       }
     }
@@ -5787,11 +4619,7 @@ define([], function () {
     while (left < aLength && left < bLength && a[left] === b[left]) {
       left++;
     }
-    while (
-      right + left < aLength &&
-      right + left < bLength &&
-      a[aLength - right - 1] === b[bLength - right - 1]
-    ) {
+    while (right + left < aLength && right + left < bLength && a[aLength - right - 1] === b[bLength - right - 1]) {
       right++;
     }
     return [left, aLength - left - right, b.slice(left, bLength - right)];
@@ -5800,7 +4628,7 @@ define([], function () {
     var firstChild = dom.firstChild;
     var isComposing = node.isComposing();
     // Always add a suffix if we're composing a node
-    var suffix = isComposing ? COMPOSITION_SUFFIX : "";
+    var suffix = isComposing ? COMPOSITION_SUFFIX : '';
     var text = nextText + suffix;
     if (firstChild == null) {
       dom.textContent = text;
@@ -5843,14 +4671,14 @@ define([], function () {
   }
 
   /** @noInheritDoc */
-  var TextNode = /*#__PURE__*/ (function (_LexicalNode2) {
+  var TextNode = /*#__PURE__*/function (_LexicalNode2) {
     function TextNode(text, key) {
       var _this2;
       _classCallCheck(this, TextNode);
       _this2 = _callSuper(this, TextNode, [key]);
       _this2.__text = text;
       _this2.__format = 0;
-      _this2.__style = "";
+      _this2.__style = '';
       _this2.__mode = 0;
       _this2.__detail = 0;
       return _this2;
@@ -5863,982 +4691,845 @@ define([], function () {
      * @returns a number representing the format of the text node.
      */
     _inherits(TextNode, _LexicalNode2);
-    return _createClass(
-      TextNode,
-      [
-        {
-          key: "getFormat",
-          value: function getFormat() {
-            var self = this.getLatest();
-            return self.__format;
-          },
+    return _createClass(TextNode, [{
+      key: "getFormat",
+      value: function getFormat() {
+        var self = this.getLatest();
+        return self.__format;
+      }
 
-          /**
-           * Returns a 32-bit integer that represents the TextDetailTypes currently applied to the
-           * TextNode. You probably don't want to use this method directly - consider using TextNode.isDirectionless
-           * or TextNode.isUnmergeable instead.
-           *
-           * @returns a number representing the detail of the text node.
-           */
-        },
-        {
-          key: "getDetail",
-          value: function getDetail() {
-            var self = this.getLatest();
-            return self.__detail;
-          },
+      /**
+       * Returns a 32-bit integer that represents the TextDetailTypes currently applied to the
+       * TextNode. You probably don't want to use this method directly - consider using TextNode.isDirectionless
+       * or TextNode.isUnmergeable instead.
+       *
+       * @returns a number representing the detail of the text node.
+       */
+    }, {
+      key: "getDetail",
+      value: function getDetail() {
+        var self = this.getLatest();
+        return self.__detail;
+      }
 
-          /**
-           * Returns the mode (TextModeType) of the TextNode, which may be "normal", "token", or "segmented"
-           *
-           * @returns TextModeType.
-           */
-        },
-        {
-          key: "getMode",
-          value: function getMode() {
-            var self = this.getLatest();
-            return TEXT_TYPE_TO_MODE[self.__mode];
-          },
+      /**
+       * Returns the mode (TextModeType) of the TextNode, which may be "normal", "token", or "segmented"
+       *
+       * @returns TextModeType.
+       */
+    }, {
+      key: "getMode",
+      value: function getMode() {
+        var self = this.getLatest();
+        return TEXT_TYPE_TO_MODE[self.__mode];
+      }
 
-          /**
-           * Returns the styles currently applied to the node. This is analogous to CSSText in the DOM.
-           *
-           * @returns CSSText-like string of styles applied to the underlying DOM node.
-           */
-        },
-        {
-          key: "getStyle",
-          value: function getStyle() {
-            var self = this.getLatest();
-            return self.__style;
-          },
+      /**
+       * Returns the styles currently applied to the node. This is analogous to CSSText in the DOM.
+       *
+       * @returns CSSText-like string of styles applied to the underlying DOM node.
+       */
+    }, {
+      key: "getStyle",
+      value: function getStyle() {
+        var self = this.getLatest();
+        return self.__style;
+      }
 
-          /**
-           * Returns whether or not the node is in "token" mode. TextNodes in token mode can be navigated through character-by-character
-           * with a RangeSelection, but are deleted as a single entity (not invdividually by character).
-           *
-           * @returns true if the node is in token mode, false otherwise.
-           */
-        },
-        {
-          key: "isToken",
-          value: function isToken() {
-            var self = this.getLatest();
-            return self.__mode === IS_TOKEN;
-          },
+      /**
+       * Returns whether or not the node is in "token" mode. TextNodes in token mode can be navigated through character-by-character
+       * with a RangeSelection, but are deleted as a single entity (not invdividually by character).
+       *
+       * @returns true if the node is in token mode, false otherwise.
+       */
+    }, {
+      key: "isToken",
+      value: function isToken() {
+        var self = this.getLatest();
+        return self.__mode === IS_TOKEN;
+      }
 
-          /**
-           *
-           * @returns true if Lexical detects that an IME or other 3rd-party script is attempting to
-           * mutate the TextNode, false otherwise.
-           */
-        },
-        {
-          key: "isComposing",
-          value: function isComposing() {
-            return this.__key === $getCompositionKey();
-          },
+      /**
+       *
+       * @returns true if Lexical detects that an IME or other 3rd-party script is attempting to
+       * mutate the TextNode, false otherwise.
+       */
+    }, {
+      key: "isComposing",
+      value: function isComposing() {
+        return this.__key === $getCompositionKey();
+      }
 
-          /**
-           * Returns whether or not the node is in "segemented" mode. TextNodes in segemented mode can be navigated through character-by-character
-           * with a RangeSelection, but are deleted in space-delimited "segments".
-           *
-           * @returns true if the node is in segmented mode, false otherwise.
-           */
-        },
-        {
-          key: "isSegmented",
-          value: function isSegmented() {
-            var self = this.getLatest();
-            return self.__mode === IS_SEGMENTED;
-          },
-          /**
-           * Returns whether or not the node is "directionless". Directionless nodes don't respect changes between RTL and LTR modes.
-           *
-           * @returns true if the node is directionless, false otherwise.
-           */
-        },
-        {
-          key: "isDirectionless",
-          value: function isDirectionless() {
-            var self = this.getLatest();
-            return (self.__detail & IS_DIRECTIONLESS) !== 0;
-          },
-          /**
-           * Returns whether or not the node is unmergeable. In some scenarios, Lexical tries to merge
-           * adjacent TextNodes into a single TextNode. If a TextNode is unmergeable, this won't happen.
-           *
-           * @returns true if the node is unmergeable, false otherwise.
-           */
-        },
-        {
-          key: "isUnmergeable",
-          value: function isUnmergeable() {
-            var self = this.getLatest();
-            return (self.__detail & IS_UNMERGEABLE) !== 0;
-          },
+      /**
+       * Returns whether or not the node is in "segemented" mode. TextNodes in segemented mode can be navigated through character-by-character
+       * with a RangeSelection, but are deleted in space-delimited "segments".
+       *
+       * @returns true if the node is in segmented mode, false otherwise.
+       */
+    }, {
+      key: "isSegmented",
+      value: function isSegmented() {
+        var self = this.getLatest();
+        return self.__mode === IS_SEGMENTED;
+      }
+      /**
+       * Returns whether or not the node is "directionless". Directionless nodes don't respect changes between RTL and LTR modes.
+       *
+       * @returns true if the node is directionless, false otherwise.
+       */
+    }, {
+      key: "isDirectionless",
+      value: function isDirectionless() {
+        var self = this.getLatest();
+        return (self.__detail & IS_DIRECTIONLESS) !== 0;
+      }
+      /**
+       * Returns whether or not the node is unmergeable. In some scenarios, Lexical tries to merge
+       * adjacent TextNodes into a single TextNode. If a TextNode is unmergeable, this won't happen.
+       *
+       * @returns true if the node is unmergeable, false otherwise.
+       */
+    }, {
+      key: "isUnmergeable",
+      value: function isUnmergeable() {
+        var self = this.getLatest();
+        return (self.__detail & IS_UNMERGEABLE) !== 0;
+      }
 
-          /**
-           * Returns whether or not the node has the provided format applied. Use this with the human-readable TextFormatType
-           * string values to get the format of a TextNode.
-           *
-           * @param type - the TextFormatType to check for.
-           *
-           * @returns true if the node has the provided format, false otherwise.
-           */
-        },
-        {
-          key: "hasFormat",
-          value: function hasFormat(type) {
-            var formatFlag = TEXT_TYPE_TO_FORMAT[type];
-            return (this.getFormat() & formatFlag) !== 0;
-          },
+      /**
+       * Returns whether or not the node has the provided format applied. Use this with the human-readable TextFormatType
+       * string values to get the format of a TextNode.
+       *
+       * @param type - the TextFormatType to check for.
+       *
+       * @returns true if the node has the provided format, false otherwise.
+       */
+    }, {
+      key: "hasFormat",
+      value: function hasFormat(type) {
+        var formatFlag = TEXT_TYPE_TO_FORMAT[type];
+        return (this.getFormat() & formatFlag) !== 0;
+      }
 
-          /**
-           * Returns whether or not the node is simple text. Simple text is defined as a TextNode that has the string type "text"
-           * (i.e., not a subclass) and has no mode applied to it (i.e., not segmented or token).
-           *
-           * @returns true if the node is simple text, false otherwise.
-           */
-        },
-        {
-          key: "isSimpleText",
-          value: function isSimpleText() {
-            return this.__type === "text" && this.__mode === 0;
-          },
+      /**
+       * Returns whether or not the node is simple text. Simple text is defined as a TextNode that has the string type "text"
+       * (i.e., not a subclass) and has no mode applied to it (i.e., not segmented or token).
+       *
+       * @returns true if the node is simple text, false otherwise.
+       */
+    }, {
+      key: "isSimpleText",
+      value: function isSimpleText() {
+        return this.__type === 'text' && this.__mode === 0;
+      }
 
-          /**
-           * Returns the text content of the node as a string.
-           *
-           * @returns a string representing the text content of the node.
-           */
-        },
-        {
-          key: "getTextContent",
-          value: function getTextContent() {
-            var self = this.getLatest();
-            return self.__text;
-          },
+      /**
+       * Returns the text content of the node as a string.
+       *
+       * @returns a string representing the text content of the node.
+       */
+    }, {
+      key: "getTextContent",
+      value: function getTextContent() {
+        var self = this.getLatest();
+        return self.__text;
+      }
 
-          /**
-           * Returns the format flags applied to the node as a 32-bit integer.
-           *
-           * @returns a number representing the TextFormatTypes applied to the node.
-           */
-        },
-        {
-          key: "getFormatFlags",
-          value: function getFormatFlags(type, alignWithFormat) {
-            var self = this.getLatest();
-            var format = self.__format;
-            return toggleTextFormatType(format, type, alignWithFormat);
-          },
+      /**
+       * Returns the format flags applied to the node as a 32-bit integer.
+       *
+       * @returns a number representing the TextFormatTypes applied to the node.
+       */
+    }, {
+      key: "getFormatFlags",
+      value: function getFormatFlags(type, alignWithFormat) {
+        var self = this.getLatest();
+        var format = self.__format;
+        return toggleTextFormatType(format, type, alignWithFormat);
+      }
 
-          /**
-           *
-           * @returns true if the text node supports font styling, false otherwise.
-           */
-        },
-        {
-          key: "canHaveFormat",
-          value: function canHaveFormat() {
-            return true;
-          },
+      /**
+       *
+       * @returns true if the text node supports font styling, false otherwise.
+       */
+    }, {
+      key: "canHaveFormat",
+      value: function canHaveFormat() {
+        return true;
+      }
 
-          // View
-        },
-        {
-          key: "createDOM",
-          value: function createDOM(config, editor) {
-            var format = this.__format;
-            var outerTag = getElementOuterTag(this, format);
-            var innerTag = getElementInnerTag(this, format);
-            var tag = outerTag === null ? innerTag : outerTag;
-            var dom = document.createElement(tag);
-            var innerDOM = dom;
-            if (this.hasFormat("code")) {
-              dom.setAttribute("spellcheck", "false");
+      // View
+    }, {
+      key: "createDOM",
+      value: function createDOM(config, editor) {
+        var format = this.__format;
+        var outerTag = getElementOuterTag(this, format);
+        var innerTag = getElementInnerTag(this, format);
+        var tag = outerTag === null ? innerTag : outerTag;
+        var dom = document.createElement(tag);
+        var innerDOM = dom;
+        if (this.hasFormat('code')) {
+          dom.setAttribute('spellcheck', 'false');
+        }
+        if (outerTag !== null) {
+          innerDOM = document.createElement(innerTag);
+          dom.appendChild(innerDOM);
+        }
+        var text = this.__text;
+        createTextInnerDOM(innerDOM, this, innerTag, format, text, config);
+        var style = this.__style;
+        if (style !== '') {
+          dom.style.cssText = style;
+        }
+        return dom;
+      }
+    }, {
+      key: "updateDOM",
+      value: function updateDOM(prevNode, dom, config) {
+        var nextText = this.__text;
+        var prevFormat = prevNode.__format;
+        var nextFormat = this.__format;
+        var prevOuterTag = getElementOuterTag(this, prevFormat);
+        var nextOuterTag = getElementOuterTag(this, nextFormat);
+        var prevInnerTag = getElementInnerTag(this, prevFormat);
+        var nextInnerTag = getElementInnerTag(this, nextFormat);
+        var prevTag = prevOuterTag === null ? prevInnerTag : prevOuterTag;
+        var nextTag = nextOuterTag === null ? nextInnerTag : nextOuterTag;
+        if (prevTag !== nextTag) {
+          return true;
+        }
+        if (prevOuterTag === nextOuterTag && prevInnerTag !== nextInnerTag) {
+          // should always be an element
+          var prevInnerDOM = dom.firstChild;
+          if (prevInnerDOM == null) {
+            {
+              throw Error("updateDOM: prevInnerDOM is null or undefined");
             }
-            if (outerTag !== null) {
-              innerDOM = document.createElement(innerTag);
-              dom.appendChild(innerDOM);
-            }
-            var text = this.__text;
-            createTextInnerDOM(innerDOM, this, innerTag, format, text, config);
-            var style = this.__style;
-            if (style !== "") {
-              dom.style.cssText = style;
-            }
-            return dom;
-          },
-        },
-        {
-          key: "updateDOM",
-          value: function updateDOM(prevNode, dom, config) {
-            var nextText = this.__text;
-            var prevFormat = prevNode.__format;
-            var nextFormat = this.__format;
-            var prevOuterTag = getElementOuterTag(this, prevFormat);
-            var nextOuterTag = getElementOuterTag(this, nextFormat);
-            var prevInnerTag = getElementInnerTag(this, prevFormat);
-            var nextInnerTag = getElementInnerTag(this, nextFormat);
-            var prevTag = prevOuterTag === null ? prevInnerTag : prevOuterTag;
-            var nextTag = nextOuterTag === null ? nextInnerTag : nextOuterTag;
-            if (prevTag !== nextTag) {
-              return true;
-            }
-            if (
-              prevOuterTag === nextOuterTag &&
-              prevInnerTag !== nextInnerTag
-            ) {
-              // should always be an element
-              var prevInnerDOM = dom.firstChild;
-              if (prevInnerDOM == null) {
-                {
-                  throw Error("updateDOM: prevInnerDOM is null or undefined");
-                }
-              }
-              var nextInnerDOM = document.createElement(nextInnerTag);
-              createTextInnerDOM(
-                nextInnerDOM,
-                this,
-                nextInnerTag,
-                nextFormat,
-                nextText,
-                config
-              );
-              dom.replaceChild(nextInnerDOM, prevInnerDOM);
-              return false;
-            }
-            var innerDOM = dom;
-            if (nextOuterTag !== null) {
-              if (prevOuterTag !== null) {
-                innerDOM = dom.firstChild;
-                if (innerDOM == null) {
-                  {
-                    throw Error("updateDOM: innerDOM is null or undefined");
-                  }
-                }
-              }
-            }
-            setTextContent(nextText, innerDOM, this);
-            var theme = config.theme;
-            // Apply theme class names
-            var textClassNames = theme.text;
-            if (textClassNames !== undefined && prevFormat !== nextFormat) {
-              setTextThemeClassNames(
-                nextInnerTag,
-                prevFormat,
-                nextFormat,
-                innerDOM,
-                textClassNames
-              );
-            }
-            var prevStyle = prevNode.__style;
-            var nextStyle = this.__style;
-            if (prevStyle !== nextStyle) {
-              dom.style.cssText = nextStyle;
-            }
-            return false;
-          },
-        },
-        {
-          key: "exportDOM",
-          value:
-            // This improves Lexical's basic text output in copy+paste plus
-            // for headless mode where people might use Lexical to generate
-            // HTML content and not have the ability to use CSS classes.
-            function exportDOM(editor) {
-              var _get$call = _get(
-                  _getPrototypeOf(TextNode.prototype),
-                  "exportDOM",
-                  this
-                ).call(this, editor),
-                element = _get$call.element;
-              if (!(element !== null && isHTMLElement(element))) {
-                throw Error(
-                  "Expected TextNode createDOM to always return a HTMLElement"
-                );
-              }
-              element.style.whiteSpace = "pre-wrap";
-              // This is the only way to properly add support for most clients,
-              // even if it's semantically incorrect to have to resort to using
-              // <b>, <u>, <s>, <i> elements.
-              if (this.hasFormat("bold")) {
-                element = wrapElementWith(element, "b");
-              }
-              if (this.hasFormat("italic")) {
-                element = wrapElementWith(element, "i");
-              }
-              if (this.hasFormat("strikethrough")) {
-                element = wrapElementWith(element, "s");
-              }
-              if (this.hasFormat("underline")) {
-                element = wrapElementWith(element, "u");
-              }
-              return {
-                element: element,
-              };
-            },
-        },
-        {
-          key: "exportJSON",
-          value: function exportJSON() {
-            return {
-              detail: this.getDetail(),
-              format: this.getFormat(),
-              mode: this.getMode(),
-              style: this.getStyle(),
-              text: this.getTextContent(),
-              type: "text",
-              version: 1,
-            };
-          },
-
-          // Mutators
-        },
-        {
-          key: "selectionTransform",
-          value: function selectionTransform(prevSelection, nextSelection) {
-            return;
-          },
-
-          /**
-           * Sets the node format to the provided TextFormatType or 32-bit integer. Note that the TextFormatType
-           * version of the argument can only specify one format and doing so will remove all other formats that
-           * may be applied to the node. For toggling behavior, consider using {@link TextNode.toggleFormat}
-           *
-           * @param format - TextFormatType or 32-bit integer representing the node format.
-           *
-           * @returns this TextNode.
-           * // TODO 0.12 This should just be a `string`.
-           */
-        },
-        {
-          key: "setFormat",
-          value: function setFormat(format) {
-            var self = this.getWritable();
-            self.__format =
-              typeof format === "string" ? TEXT_TYPE_TO_FORMAT[format] : format;
-            return self;
-          },
-
-          /**
-           * Sets the node detail to the provided TextDetailType or 32-bit integer. Note that the TextDetailType
-           * version of the argument can only specify one detail value and doing so will remove all other detail values that
-           * may be applied to the node. For toggling behavior, consider using {@link TextNode.toggleDirectionless}
-           * or {@link TextNode.toggleUnmergeable}
-           *
-           * @param detail - TextDetailType or 32-bit integer representing the node detail.
-           *
-           * @returns this TextNode.
-           * // TODO 0.12 This should just be a `string`.
-           */
-        },
-        {
-          key: "setDetail",
-          value: function setDetail(detail) {
-            var self = this.getWritable();
-            self.__detail =
-              typeof detail === "string"
-                ? DETAIL_TYPE_TO_DETAIL[detail]
-                : detail;
-            return self;
-          },
-
-          /**
-           * Sets the node style to the provided CSSText-like string. Set this property as you
-           * would an HTMLElement style attribute to apply inline styles to the underlying DOM Element.
-           *
-           * @param style - CSSText to be applied to the underlying HTMLElement.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "setStyle",
-          value: function setStyle(style) {
-            var self = this.getWritable();
-            self.__style = style;
-            return self;
-          },
-
-          /**
-           * Applies the provided format to this TextNode if it's not present. Removes it if it's present.
-           * The subscript and superscript formats are mutually exclusive.
-           * Prefer using this method to turn specific formats on and off.
-           *
-           * @param type - TextFormatType to toggle.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "toggleFormat",
-          value: function toggleFormat(type) {
-            var format = this.getFormat();
-            var newFormat = toggleTextFormatType(format, type, null);
-            return this.setFormat(newFormat);
-          },
-
-          /**
-           * Toggles the directionless detail value of the node. Prefer using this method over setDetail.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "toggleDirectionless",
-          value: function toggleDirectionless() {
-            var self = this.getWritable();
-            self.__detail ^= IS_DIRECTIONLESS;
-            return self;
-          },
-
-          /**
-           * Toggles the unmergeable detail value of the node. Prefer using this method over setDetail.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "toggleUnmergeable",
-          value: function toggleUnmergeable() {
-            var self = this.getWritable();
-            self.__detail ^= IS_UNMERGEABLE;
-            return self;
-          },
-
-          /**
-           * Sets the mode of the node.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "setMode",
-          value: function setMode(type) {
-            var mode = TEXT_MODE_TO_TYPE[type];
-            if (this.__mode === mode) {
-              return this;
-            }
-            var self = this.getWritable();
-            self.__mode = mode;
-            return self;
-          },
-
-          /**
-           * Sets the text content of the node.
-           *
-           * @param text - the string to set as the text value of the node.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "setTextContent",
-          value: function setTextContent(text) {
-            if (this.__text === text) {
-              return this;
-            }
-            var self = this.getWritable();
-            self.__text = text;
-            return self;
-          },
-
-          /**
-           * Sets the current Lexical selection to be a RangeSelection with anchor and focus on this TextNode at the provided offsets.
-           *
-           * @param _anchorOffset - the offset at which the Selection anchor will be placed.
-           * @param _focusOffset - the offset at which the Selection focus will be placed.
-           *
-           * @returns the new RangeSelection.
-           */
-        },
-        {
-          key: "select",
-          value: function select(_anchorOffset, _focusOffset) {
-            errorOnReadOnly();
-            var anchorOffset = _anchorOffset;
-            var focusOffset = _focusOffset;
-            var selection = $getSelection();
-            var text = this.getTextContent();
-            var key = this.__key;
-            if (typeof text === "string") {
-              var lastOffset = text.length;
-              if (anchorOffset === undefined) {
-                anchorOffset = lastOffset;
-              }
-              if (focusOffset === undefined) {
-                focusOffset = lastOffset;
-              }
-            } else {
-              anchorOffset = 0;
-              focusOffset = 0;
-            }
-            if (!$isRangeSelection(selection)) {
-              return $internalMakeRangeSelection(
-                key,
-                anchorOffset,
-                key,
-                focusOffset,
-                "text",
-                "text"
-              );
-            } else {
-              var compositionKey = $getCompositionKey();
-              if (
-                compositionKey === selection.anchor.key ||
-                compositionKey === selection.focus.key
-              ) {
-                $setCompositionKey(key);
-              }
-              selection.setTextNodeRange(this, anchorOffset, this, focusOffset);
-            }
-            return selection;
-          },
-        },
-        {
-          key: "selectStart",
-          value: function selectStart() {
-            return this.select(0, 0);
-          },
-        },
-        {
-          key: "selectEnd",
-          value: function selectEnd() {
-            var size = this.getTextContentSize();
-            return this.select(size, size);
-          },
-
-          /**
-           * Inserts the provided text into this TextNode at the provided offset, deleting the number of characters
-           * specified. Can optionally calculate a new selection after the operation is complete.
-           *
-           * @param offset - the offset at which the splice operation should begin.
-           * @param delCount - the number of characters to delete, starting from the offset.
-           * @param newText - the text to insert into the TextNode at the offset.
-           * @param moveSelection - optional, whether or not to move selection to the end of the inserted substring.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "spliceText",
-          value: function spliceText(offset, delCount, newText, moveSelection) {
-            var writableSelf = this.getWritable();
-            var text = writableSelf.__text;
-            var handledTextLength = newText.length;
-            var index = offset;
-            if (index < 0) {
-              index = handledTextLength + index;
-              if (index < 0) {
-                index = 0;
-              }
-            }
-            var selection = $getSelection();
-            if (moveSelection && $isRangeSelection(selection)) {
-              var newOffset = offset + handledTextLength;
-              selection.setTextNodeRange(
-                writableSelf,
-                newOffset,
-                writableSelf,
-                newOffset
-              );
-            }
-            var updatedText =
-              text.slice(0, index) + newText + text.slice(index + delCount);
-            writableSelf.__text = updatedText;
-            return writableSelf;
-          },
-
-          /**
-           * This method is meant to be overriden by TextNode subclasses to control the behavior of those nodes
-           * when a user event would cause text to be inserted before them in the editor. If true, Lexical will attempt
-           * to insert text into this node. If false, it will insert the text in a new sibling node.
-           *
-           * @returns true if text can be inserted before the node, false otherwise.
-           */
-        },
-        {
-          key: "canInsertTextBefore",
-          value: function canInsertTextBefore() {
-            return true;
-          },
-
-          /**
-           * This method is meant to be overriden by TextNode subclasses to control the behavior of those nodes
-           * when a user event would cause text to be inserted after them in the editor. If true, Lexical will attempt
-           * to insert text into this node. If false, it will insert the text in a new sibling node.
-           *
-           * @returns true if text can be inserted after the node, false otherwise.
-           */
-        },
-        {
-          key: "canInsertTextAfter",
-          value: function canInsertTextAfter() {
-            return true;
-          },
-
-          /**
-           * Splits this TextNode at the provided character offsets, forming new TextNodes from the substrings
-           * formed by the split, and inserting those new TextNodes into the editor, replacing the one that was split.
-           *
-           * @param splitOffsets - rest param of the text content character offsets at which this node should be split.
-           *
-           * @returns an Array containing the newly-created TextNodes.
-           */
-        },
-        {
-          key: "splitText",
-          value: function splitText() {
-            errorOnReadOnly();
-            var self = this.getLatest();
-            var textContent = self.getTextContent();
-            var key = self.__key;
-            var compositionKey = $getCompositionKey();
-            for (
-              var _len2 = arguments.length,
-                splitOffsets = new Array(_len2),
-                _key2 = 0;
-              _key2 < _len2;
-              _key2++
-            ) {
-              splitOffsets[_key2] = arguments[_key2];
-            }
-            var offsetsSet = new Set(splitOffsets);
-            var parts = [];
-            var textLength = textContent.length;
-            var string = "";
-            for (var i = 0; i < textLength; i++) {
-              if (string !== "" && offsetsSet.has(i)) {
-                parts.push(string);
-                string = "";
-              }
-              string += textContent[i];
-            }
-            if (string !== "") {
-              parts.push(string);
-            }
-            var partsLength = parts.length;
-            if (partsLength === 0) {
-              return [];
-            } else if (parts[0] === textContent) {
-              return [self];
-            }
-            var firstPart = parts[0];
-            var parent = self.getParentOrThrow();
-            var writableNode;
-            var format = self.getFormat();
-            var style = self.getStyle();
-            var detail = self.__detail;
-            var hasReplacedSelf = false;
-            if (self.isSegmented()) {
-              // Create a new TextNode
-              writableNode = $createTextNode(firstPart);
-              writableNode.__format = format;
-              writableNode.__style = style;
-              writableNode.__detail = detail;
-              hasReplacedSelf = true;
-            } else {
-              // For the first part, update the existing node
-              writableNode = self.getWritable();
-              writableNode.__text = firstPart;
-            }
-
-            // Handle selection
-            var selection = $getSelection();
-
-            // Then handle all other parts
-            var splitNodes = [writableNode];
-            var textSize = firstPart.length;
-            for (var _i5 = 1; _i5 < partsLength; _i5++) {
-              var part = parts[_i5];
-              var partSize = part.length;
-              var sibling = $createTextNode(part).getWritable();
-              sibling.__format = format;
-              sibling.__style = style;
-              sibling.__detail = detail;
-              var siblingKey = sibling.__key;
-              var nextTextSize = textSize + partSize;
-              if ($isRangeSelection(selection)) {
-                var anchor = selection.anchor;
-                var focus = selection.focus;
-                if (
-                  anchor.key === key &&
-                  anchor.type === "text" &&
-                  anchor.offset > textSize &&
-                  anchor.offset <= nextTextSize
-                ) {
-                  anchor.key = siblingKey;
-                  anchor.offset -= textSize;
-                  selection.dirty = true;
-                }
-                if (
-                  focus.key === key &&
-                  focus.type === "text" &&
-                  focus.offset > textSize &&
-                  focus.offset <= nextTextSize
-                ) {
-                  focus.key = siblingKey;
-                  focus.offset -= textSize;
-                  selection.dirty = true;
-                }
-              }
-              if (compositionKey === key) {
-                $setCompositionKey(siblingKey);
-              }
-              textSize = nextTextSize;
-              splitNodes.push(sibling);
-            }
-
-            // Insert the nodes into the parent's children
-            internalMarkSiblingsAsDirty(this);
-            var writableParent = parent.getWritable();
-            var insertionIndex = this.getIndexWithinParent();
-            if (hasReplacedSelf) {
-              writableParent.splice(insertionIndex, 0, splitNodes);
-              this.remove();
-            } else {
-              writableParent.splice(insertionIndex, 1, splitNodes);
-            }
-            if ($isRangeSelection(selection)) {
-              $updateElementSelectionOnCreateDeleteNode(
-                selection,
-                parent,
-                insertionIndex,
-                partsLength - 1
-              );
-            }
-            return splitNodes;
-          },
-
-          /**
-           * Merges the target TextNode into this TextNode, removing the target node.
-           *
-           * @param target - the TextNode to merge into this one.
-           *
-           * @returns this TextNode.
-           */
-        },
-        {
-          key: "mergeWithSibling",
-          value: function mergeWithSibling(target) {
-            var isBefore = target === this.getPreviousSibling();
-            if (!isBefore && target !== this.getNextSibling()) {
+          }
+          var nextInnerDOM = document.createElement(nextInnerTag);
+          createTextInnerDOM(nextInnerDOM, this, nextInnerTag, nextFormat, nextText, config);
+          dom.replaceChild(nextInnerDOM, prevInnerDOM);
+          return false;
+        }
+        var innerDOM = dom;
+        if (nextOuterTag !== null) {
+          if (prevOuterTag !== null) {
+            innerDOM = dom.firstChild;
+            if (innerDOM == null) {
               {
-                throw Error(
-                  "mergeWithSibling: sibling must be a previous or next sibling"
-                );
+                throw Error("updateDOM: innerDOM is null or undefined");
               }
             }
-            var key = this.__key;
-            var targetKey = target.__key;
-            var text = this.__text;
-            var textLength = text.length;
-            var compositionKey = $getCompositionKey();
-            if (compositionKey === targetKey) {
-              $setCompositionKey(key);
+          }
+        }
+        setTextContent(nextText, innerDOM, this);
+        var theme = config.theme;
+        // Apply theme class names
+        var textClassNames = theme.text;
+        if (textClassNames !== undefined && prevFormat !== nextFormat) {
+          setTextThemeClassNames(nextInnerTag, prevFormat, nextFormat, innerDOM, textClassNames);
+        }
+        var prevStyle = prevNode.__style;
+        var nextStyle = this.__style;
+        if (prevStyle !== nextStyle) {
+          dom.style.cssText = nextStyle;
+        }
+        return false;
+      }
+    }, {
+      key: "exportDOM",
+      value:
+      // This improves Lexical's basic text output in copy+paste plus
+      // for headless mode where people might use Lexical to generate
+      // HTML content and not have the ability to use CSS classes.
+      function exportDOM(editor) {
+        var _get$call = _get(_getPrototypeOf(TextNode.prototype), "exportDOM", this).call(this, editor),
+          element = _get$call.element;
+        if (!(element !== null && isHTMLElement(element))) {
+          throw Error("Expected TextNode createDOM to always return a HTMLElement");
+        }
+        element.style.whiteSpace = 'pre-wrap';
+        // This is the only way to properly add support for most clients,
+        // even if it's semantically incorrect to have to resort to using
+        // <b>, <u>, <s>, <i> elements.
+        if (this.hasFormat('bold')) {
+          element = wrapElementWith(element, 'b');
+        }
+        if (this.hasFormat('italic')) {
+          element = wrapElementWith(element, 'i');
+        }
+        if (this.hasFormat('strikethrough')) {
+          element = wrapElementWith(element, 's');
+        }
+        if (this.hasFormat('underline')) {
+          element = wrapElementWith(element, 'u');
+        }
+        return {
+          element: element
+        };
+      }
+    }, {
+      key: "exportJSON",
+      value: function exportJSON() {
+        return {
+          detail: this.getDetail(),
+          format: this.getFormat(),
+          mode: this.getMode(),
+          style: this.getStyle(),
+          text: this.getTextContent(),
+          type: 'text',
+          version: 1
+        };
+      }
+
+      // Mutators
+    }, {
+      key: "selectionTransform",
+      value: function selectionTransform(prevSelection, nextSelection) {
+        return;
+      }
+
+      /**
+       * Sets the node format to the provided TextFormatType or 32-bit integer. Note that the TextFormatType
+       * version of the argument can only specify one format and doing so will remove all other formats that
+       * may be applied to the node. For toggling behavior, consider using {@link TextNode.toggleFormat}
+       *
+       * @param format - TextFormatType or 32-bit integer representing the node format.
+       *
+       * @returns this TextNode.
+       * // TODO 0.12 This should just be a `string`.
+       */
+    }, {
+      key: "setFormat",
+      value: function setFormat(format) {
+        var self = this.getWritable();
+        self.__format = typeof format === 'string' ? TEXT_TYPE_TO_FORMAT[format] : format;
+        return self;
+      }
+
+      /**
+       * Sets the node detail to the provided TextDetailType or 32-bit integer. Note that the TextDetailType
+       * version of the argument can only specify one detail value and doing so will remove all other detail values that
+       * may be applied to the node. For toggling behavior, consider using {@link TextNode.toggleDirectionless}
+       * or {@link TextNode.toggleUnmergeable}
+       *
+       * @param detail - TextDetailType or 32-bit integer representing the node detail.
+       *
+       * @returns this TextNode.
+       * // TODO 0.12 This should just be a `string`.
+       */
+    }, {
+      key: "setDetail",
+      value: function setDetail(detail) {
+        var self = this.getWritable();
+        self.__detail = typeof detail === 'string' ? DETAIL_TYPE_TO_DETAIL[detail] : detail;
+        return self;
+      }
+
+      /**
+       * Sets the node style to the provided CSSText-like string. Set this property as you
+       * would an HTMLElement style attribute to apply inline styles to the underlying DOM Element.
+       *
+       * @param style - CSSText to be applied to the underlying HTMLElement.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "setStyle",
+      value: function setStyle(style) {
+        var self = this.getWritable();
+        self.__style = style;
+        return self;
+      }
+
+      /**
+       * Applies the provided format to this TextNode if it's not present. Removes it if it's present.
+       * The subscript and superscript formats are mutually exclusive.
+       * Prefer using this method to turn specific formats on and off.
+       *
+       * @param type - TextFormatType to toggle.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "toggleFormat",
+      value: function toggleFormat(type) {
+        var format = this.getFormat();
+        var newFormat = toggleTextFormatType(format, type, null);
+        return this.setFormat(newFormat);
+      }
+
+      /**
+       * Toggles the directionless detail value of the node. Prefer using this method over setDetail.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "toggleDirectionless",
+      value: function toggleDirectionless() {
+        var self = this.getWritable();
+        self.__detail ^= IS_DIRECTIONLESS;
+        return self;
+      }
+
+      /**
+       * Toggles the unmergeable detail value of the node. Prefer using this method over setDetail.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "toggleUnmergeable",
+      value: function toggleUnmergeable() {
+        var self = this.getWritable();
+        self.__detail ^= IS_UNMERGEABLE;
+        return self;
+      }
+
+      /**
+       * Sets the mode of the node.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "setMode",
+      value: function setMode(type) {
+        var mode = TEXT_MODE_TO_TYPE[type];
+        if (this.__mode === mode) {
+          return this;
+        }
+        var self = this.getWritable();
+        self.__mode = mode;
+        return self;
+      }
+
+      /**
+       * Sets the text content of the node.
+       *
+       * @param text - the string to set as the text value of the node.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "setTextContent",
+      value: function setTextContent(text) {
+        if (this.__text === text) {
+          return this;
+        }
+        var self = this.getWritable();
+        self.__text = text;
+        return self;
+      }
+
+      /**
+       * Sets the current Lexical selection to be a RangeSelection with anchor and focus on this TextNode at the provided offsets.
+       *
+       * @param _anchorOffset - the offset at which the Selection anchor will be placed.
+       * @param _focusOffset - the offset at which the Selection focus will be placed.
+       *
+       * @returns the new RangeSelection.
+       */
+    }, {
+      key: "select",
+      value: function select(_anchorOffset, _focusOffset) {
+        errorOnReadOnly();
+        var anchorOffset = _anchorOffset;
+        var focusOffset = _focusOffset;
+        var selection = $getSelection();
+        var text = this.getTextContent();
+        var key = this.__key;
+        if (typeof text === 'string') {
+          var lastOffset = text.length;
+          if (anchorOffset === undefined) {
+            anchorOffset = lastOffset;
+          }
+          if (focusOffset === undefined) {
+            focusOffset = lastOffset;
+          }
+        } else {
+          anchorOffset = 0;
+          focusOffset = 0;
+        }
+        if (!$isRangeSelection(selection)) {
+          return $internalMakeRangeSelection(key, anchorOffset, key, focusOffset, 'text', 'text');
+        } else {
+          var compositionKey = $getCompositionKey();
+          if (compositionKey === selection.anchor.key || compositionKey === selection.focus.key) {
+            $setCompositionKey(key);
+          }
+          selection.setTextNodeRange(this, anchorOffset, this, focusOffset);
+        }
+        return selection;
+      }
+    }, {
+      key: "selectStart",
+      value: function selectStart() {
+        return this.select(0, 0);
+      }
+    }, {
+      key: "selectEnd",
+      value: function selectEnd() {
+        var size = this.getTextContentSize();
+        return this.select(size, size);
+      }
+
+      /**
+       * Inserts the provided text into this TextNode at the provided offset, deleting the number of characters
+       * specified. Can optionally calculate a new selection after the operation is complete.
+       *
+       * @param offset - the offset at which the splice operation should begin.
+       * @param delCount - the number of characters to delete, starting from the offset.
+       * @param newText - the text to insert into the TextNode at the offset.
+       * @param moveSelection - optional, whether or not to move selection to the end of the inserted substring.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "spliceText",
+      value: function spliceText(offset, delCount, newText, moveSelection) {
+        var writableSelf = this.getWritable();
+        var text = writableSelf.__text;
+        var handledTextLength = newText.length;
+        var index = offset;
+        if (index < 0) {
+          index = handledTextLength + index;
+          if (index < 0) {
+            index = 0;
+          }
+        }
+        var selection = $getSelection();
+        if (moveSelection && $isRangeSelection(selection)) {
+          var newOffset = offset + handledTextLength;
+          selection.setTextNodeRange(writableSelf, newOffset, writableSelf, newOffset);
+        }
+        var updatedText = text.slice(0, index) + newText + text.slice(index + delCount);
+        writableSelf.__text = updatedText;
+        return writableSelf;
+      }
+
+      /**
+       * This method is meant to be overriden by TextNode subclasses to control the behavior of those nodes
+       * when a user event would cause text to be inserted before them in the editor. If true, Lexical will attempt
+       * to insert text into this node. If false, it will insert the text in a new sibling node.
+       *
+       * @returns true if text can be inserted before the node, false otherwise.
+       */
+    }, {
+      key: "canInsertTextBefore",
+      value: function canInsertTextBefore() {
+        return true;
+      }
+
+      /**
+       * This method is meant to be overriden by TextNode subclasses to control the behavior of those nodes
+       * when a user event would cause text to be inserted after them in the editor. If true, Lexical will attempt
+       * to insert text into this node. If false, it will insert the text in a new sibling node.
+       *
+       * @returns true if text can be inserted after the node, false otherwise.
+       */
+    }, {
+      key: "canInsertTextAfter",
+      value: function canInsertTextAfter() {
+        return true;
+      }
+
+      /**
+       * Splits this TextNode at the provided character offsets, forming new TextNodes from the substrings
+       * formed by the split, and inserting those new TextNodes into the editor, replacing the one that was split.
+       *
+       * @param splitOffsets - rest param of the text content character offsets at which this node should be split.
+       *
+       * @returns an Array containing the newly-created TextNodes.
+       */
+    }, {
+      key: "splitText",
+      value: function splitText() {
+        errorOnReadOnly();
+        var self = this.getLatest();
+        var textContent = self.getTextContent();
+        var key = self.__key;
+        var compositionKey = $getCompositionKey();
+        for (var _len2 = arguments.length, splitOffsets = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          splitOffsets[_key2] = arguments[_key2];
+        }
+        var offsetsSet = new Set(splitOffsets);
+        var parts = [];
+        var textLength = textContent.length;
+        var string = '';
+        for (var i = 0; i < textLength; i++) {
+          if (string !== '' && offsetsSet.has(i)) {
+            parts.push(string);
+            string = '';
+          }
+          string += textContent[i];
+        }
+        if (string !== '') {
+          parts.push(string);
+        }
+        var partsLength = parts.length;
+        if (partsLength === 0) {
+          return [];
+        } else if (parts[0] === textContent) {
+          return [self];
+        }
+        var firstPart = parts[0];
+        var parent = self.getParentOrThrow();
+        var writableNode;
+        var format = self.getFormat();
+        var style = self.getStyle();
+        var detail = self.__detail;
+        var hasReplacedSelf = false;
+        if (self.isSegmented()) {
+          // Create a new TextNode
+          writableNode = $createTextNode(firstPart);
+          writableNode.__format = format;
+          writableNode.__style = style;
+          writableNode.__detail = detail;
+          hasReplacedSelf = true;
+        } else {
+          // For the first part, update the existing node
+          writableNode = self.getWritable();
+          writableNode.__text = firstPart;
+        }
+
+        // Handle selection
+        var selection = $getSelection();
+
+        // Then handle all other parts
+        var splitNodes = [writableNode];
+        var textSize = firstPart.length;
+        for (var _i5 = 1; _i5 < partsLength; _i5++) {
+          var part = parts[_i5];
+          var partSize = part.length;
+          var sibling = $createTextNode(part).getWritable();
+          sibling.__format = format;
+          sibling.__style = style;
+          sibling.__detail = detail;
+          var siblingKey = sibling.__key;
+          var nextTextSize = textSize + partSize;
+          if ($isRangeSelection(selection)) {
+            var anchor = selection.anchor;
+            var focus = selection.focus;
+            if (anchor.key === key && anchor.type === 'text' && anchor.offset > textSize && anchor.offset <= nextTextSize) {
+              anchor.key = siblingKey;
+              anchor.offset -= textSize;
+              selection.dirty = true;
             }
-            var selection = $getSelection();
-            if ($isRangeSelection(selection)) {
-              var anchor = selection.anchor;
-              var focus = selection.focus;
-              if (anchor !== null && anchor.key === targetKey) {
-                adjustPointOffsetForMergedSibling(
-                  anchor,
-                  isBefore,
-                  key,
-                  target,
-                  textLength
-                );
-                selection.dirty = true;
-              }
-              if (focus !== null && focus.key === targetKey) {
-                adjustPointOffsetForMergedSibling(
-                  focus,
-                  isBefore,
-                  key,
-                  target,
-                  textLength
-                );
-                selection.dirty = true;
-              }
+            if (focus.key === key && focus.type === 'text' && focus.offset > textSize && focus.offset <= nextTextSize) {
+              focus.key = siblingKey;
+              focus.offset -= textSize;
+              selection.dirty = true;
             }
-            var targetText = target.__text;
-            var newText = isBefore ? targetText + text : text + targetText;
-            this.setTextContent(newText);
-            var writableSelf = this.getWritable();
-            target.remove();
-            return writableSelf;
-          },
+          }
+          if (compositionKey === key) {
+            $setCompositionKey(siblingKey);
+          }
+          textSize = nextTextSize;
+          splitNodes.push(sibling);
+        }
 
-          /**
-           * This method is meant to be overriden by TextNode subclasses to control the behavior of those nodes
-           * when used with the registerLexicalTextEntity function. If you're using registerLexicalTextEntity, the
-           * node class that you create and replace matched text with should return true from this method.
-           *
-           * @returns true if the node is to be treated as a "text entity", false otherwise.
-           */
-        },
-        {
-          key: "isTextEntity",
-          value: function isTextEntity() {
-            return false;
-          },
-        },
-      ],
-      [
-        {
-          key: "getType",
-          /** @internal */
+        // Insert the nodes into the parent's children
+        internalMarkSiblingsAsDirty(this);
+        var writableParent = parent.getWritable();
+        var insertionIndex = this.getIndexWithinParent();
+        if (hasReplacedSelf) {
+          writableParent.splice(insertionIndex, 0, splitNodes);
+          this.remove();
+        } else {
+          writableParent.splice(insertionIndex, 1, splitNodes);
+        }
+        if ($isRangeSelection(selection)) {
+          $updateElementSelectionOnCreateDeleteNode(selection, parent, insertionIndex, partsLength - 1);
+        }
+        return splitNodes;
+      }
 
-          value:
-            /** @internal */
+      /**
+       * Merges the target TextNode into this TextNode, removing the target node.
+       *
+       * @param target - the TextNode to merge into this one.
+       *
+       * @returns this TextNode.
+       */
+    }, {
+      key: "mergeWithSibling",
+      value: function mergeWithSibling(target) {
+        var isBefore = target === this.getPreviousSibling();
+        if (!isBefore && target !== this.getNextSibling()) {
+          {
+            throw Error("mergeWithSibling: sibling must be a previous or next sibling");
+          }
+        }
+        var key = this.__key;
+        var targetKey = target.__key;
+        var text = this.__text;
+        var textLength = text.length;
+        var compositionKey = $getCompositionKey();
+        if (compositionKey === targetKey) {
+          $setCompositionKey(key);
+        }
+        var selection = $getSelection();
+        if ($isRangeSelection(selection)) {
+          var anchor = selection.anchor;
+          var focus = selection.focus;
+          if (anchor !== null && anchor.key === targetKey) {
+            adjustPointOffsetForMergedSibling(anchor, isBefore, key, target, textLength);
+            selection.dirty = true;
+          }
+          if (focus !== null && focus.key === targetKey) {
+            adjustPointOffsetForMergedSibling(focus, isBefore, key, target, textLength);
+            selection.dirty = true;
+          }
+        }
+        var targetText = target.__text;
+        var newText = isBefore ? targetText + text : text + targetText;
+        this.setTextContent(newText);
+        var writableSelf = this.getWritable();
+        target.remove();
+        return writableSelf;
+      }
 
-            /** @internal */
+      /**
+       * This method is meant to be overriden by TextNode subclasses to control the behavior of those nodes
+       * when used with the registerLexicalTextEntity function. If you're using registerLexicalTextEntity, the
+       * node class that you create and replace matched text with should return true from this method.
+       *
+       * @returns true if the node is to be treated as a "text entity", false otherwise.
+       */
+    }, {
+      key: "isTextEntity",
+      value: function isTextEntity() {
+        return false;
+      }
+    }], [{
+      key: "getType",
+      value: /** @internal */
 
-            /** @internal */
+      /** @internal */
 
-            function getType() {
-              return "text";
-            },
-        },
-        {
-          key: "clone",
-          value: function clone(node) {
-            return new TextNode(node.__text, node.__key);
-          },
-        },
-        {
-          key: "importDOM",
-          value: function importDOM() {
+      /** @internal */
+
+      /** @internal */
+
+      function getType() {
+        return 'text';
+      }
+    }, {
+      key: "clone",
+      value: function clone(node) {
+        return new TextNode(node.__text, node.__key);
+      }
+    }, {
+      key: "importDOM",
+      value: function importDOM() {
+        return {
+          '#text': function text() {
             return {
-              "#text": function text() {
-                return {
-                  conversion: $convertTextDOMNode,
-                  priority: 0,
-                };
-              },
-              b: function b() {
-                return {
-                  conversion: convertBringAttentionToElement,
-                  priority: 0,
-                };
-              },
-              code: function code() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
-              em: function em() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
-              i: function i() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
-              s: function s() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
-              span: function span() {
-                return {
-                  conversion: convertSpanElement,
-                  priority: 0,
-                };
-              },
-              strong: function strong() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
-              sub: function sub() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
-              sup: function sup() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
-              u: function u() {
-                return {
-                  conversion: convertTextFormatElement,
-                  priority: 0,
-                };
-              },
+              conversion: $convertTextDOMNode,
+              priority: 0
             };
           },
-        },
-        {
-          key: "importJSON",
-          value: function importJSON(serializedNode) {
-            var node = $createTextNode(serializedNode.text);
-            node.setFormat(serializedNode.format);
-            node.setDetail(serializedNode.detail);
-            node.setMode(serializedNode.mode);
-            node.setStyle(serializedNode.style);
-            return node;
+          b: function b() {
+            return {
+              conversion: convertBringAttentionToElement,
+              priority: 0
+            };
           },
-        },
-      ]
-    );
-  })(LexicalNode);
+          code: function code() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          },
+          em: function em() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          },
+          i: function i() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          },
+          s: function s() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          },
+          span: function span() {
+            return {
+              conversion: convertSpanElement,
+              priority: 0
+            };
+          },
+          strong: function strong() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          },
+          sub: function sub() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          },
+          sup: function sup() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          },
+          u: function u() {
+            return {
+              conversion: convertTextFormatElement,
+              priority: 0
+            };
+          }
+        };
+      }
+    }, {
+      key: "importJSON",
+      value: function importJSON(serializedNode) {
+        var node = $createTextNode(serializedNode.text);
+        node.setFormat(serializedNode.format);
+        node.setDetail(serializedNode.detail);
+        node.setMode(serializedNode.mode);
+        node.setStyle(serializedNode.style);
+        return node;
+      }
+    }]);
+  }(LexicalNode);
   function convertSpanElement(domNode) {
     // domNode is a <span> since we matched it by nodeName
     var span = domNode;
     var style = span.style;
     return {
       forChild: applyTextFormatFromStyle(style),
-      node: null,
+      node: null
     };
   }
   function convertBringAttentionToElement(domNode) {
     // domNode is a <b> since we matched it by nodeName
     var b = domNode;
     // Google Docs wraps all copied HTML in a <b> with font-weight normal
-    var hasNormalFontWeight = b.style.fontWeight === "normal";
+    var hasNormalFontWeight = b.style.fontWeight === 'normal';
     return {
-      forChild: applyTextFormatFromStyle(
-        b.style,
-        hasNormalFontWeight ? undefined : "bold"
-      ),
-      node: null,
+      forChild: applyTextFormatFromStyle(b.style, hasNormalFontWeight ? undefined : 'bold'),
+      node: null
     };
   }
   var preParentCache = new WeakMap();
   function isNodePre(node) {
-    return (
-      node.nodeName === "PRE" ||
-      (node.nodeType === DOM_ELEMENT_TYPE &&
-        node.style !== undefined &&
-        node.style.whiteSpace !== undefined &&
-        node.style.whiteSpace.startsWith("pre"))
-    );
+    return node.nodeName === 'PRE' || node.nodeType === DOM_ELEMENT_TYPE && node.style !== undefined && node.style.whiteSpace !== undefined && node.style.whiteSpace.startsWith('pre');
   }
   function findParentPreDOMNode(node) {
     var cached;
     var parent = node.parentNode;
     var visited = [node];
-    while (
-      parent !== null &&
-      (cached = preParentCache.get(parent)) === undefined &&
-      !isNodePre(parent)
-    ) {
+    while (parent !== null && (cached = preParentCache.get(parent)) === undefined && !isNodePre(parent)) {
       visited.push(parent);
       parent = parent.parentNode;
     }
@@ -6854,7 +5545,7 @@ define([], function () {
     if (!(parentDom !== null)) {
       throw Error("Expected parentElement of Text not to be null");
     }
-    var textContent = domNode_.textContent || "";
+    var textContent = domNode_.textContent || '';
     // No collapse and preserve segment break for pre, pre-wrap and pre-line
     if (findParentPreDOMNode(domNode_) !== null) {
       var parts = textContent.split(/(\r?\n|\t)/);
@@ -6862,35 +5553,32 @@ define([], function () {
       var length = parts.length;
       for (var i = 0; i < length; i++) {
         var part = parts[i];
-        if (part === "\n" || part === "\r\n") {
+        if (part === '\n' || part === '\r\n') {
           nodes.push($createLineBreakNode());
-        } else if (part === "\t") {
+        } else if (part === '\t') {
           nodes.push($createTabNode());
-        } else if (part !== "") {
+        } else if (part !== '') {
           nodes.push($createTextNode(part));
         }
       }
       return {
-        node: nodes,
+        node: nodes
       };
     }
-    textContent = textContent.replace(/\r/g, "").replace(/[ \t\n]+/g, " ");
-    if (textContent === "") {
+    textContent = textContent.replace(/\r/g, '').replace(/[ \t\n]+/g, ' ');
+    if (textContent === '') {
       return {
-        node: null,
+        node: null
       };
     }
-    if (textContent[0] === " ") {
+    if (textContent[0] === ' ') {
       // Traverse backward while in the same line. If content contains new line or tab -> pontential
       // delete, other elements can borrow from this one. Deletion depends on whether it's also the
       // last space (see next condition: textContent[textContent.length - 1] === ' '))
       var previousText = domNode_;
       var isStartOfLine = true;
-      while (
-        previousText !== null &&
-        (previousText = findTextInLine(previousText, false)) !== null
-      ) {
-        var previousTextContent = previousText.textContent || "";
+      while (previousText !== null && (previousText = findTextInLine(previousText, false)) !== null) {
+        var previousTextContent = previousText.textContent || '';
         if (previousTextContent.length > 0) {
           if (/[ \t\n]$/.test(previousTextContent)) {
             textContent = textContent.slice(1);
@@ -6903,18 +5591,12 @@ define([], function () {
         textContent = textContent.slice(1);
       }
     }
-    if (textContent[textContent.length - 1] === " ") {
+    if (textContent[textContent.length - 1] === ' ') {
       // Traverse forward while in the same line, preserve if next inline will require a space
       var nextText = domNode_;
       var isEndOfLine = true;
-      while (
-        nextText !== null &&
-        (nextText = findTextInLine(nextText, true)) !== null
-      ) {
-        var nextTextContent = (nextText.textContent || "").replace(
-          /^( |\t|\r?\n)+/,
-          ""
-        );
+      while (nextText !== null && (nextText = findTextInLine(nextText, true)) !== null) {
+        var nextTextContent = (nextText.textContent || '').replace(/^( |\t|\r?\n)+/, '');
         if (nextTextContent.length > 0) {
           isEndOfLine = false;
           break;
@@ -6924,13 +5606,13 @@ define([], function () {
         textContent = textContent.slice(0, textContent.length - 1);
       }
     }
-    if (textContent === "") {
+    if (textContent === '') {
       return {
-        node: null,
+        node: null
       };
     }
     return {
-      node: $createTextNode(textContent),
+      node: $createTextNode(textContent)
     };
   }
   function findTextInLine(text, forward) {
@@ -6938,9 +5620,7 @@ define([], function () {
     // eslint-disable-next-line no-constant-condition
     while (true) {
       var sibling = void 0;
-      while (
-        (sibling = forward ? node.nextSibling : node.previousSibling) === null
-      ) {
+      while ((sibling = forward ? node.nextSibling : node.previousSibling) === null) {
         var parentElement = node.parentElement;
         if (parentElement === null) {
           return null;
@@ -6950,51 +5630,45 @@ define([], function () {
       node = sibling;
       if (node.nodeType === DOM_ELEMENT_TYPE) {
         var display = node.style.display;
-        if (
-          (display === "" && !isInlineDomNode(node)) ||
-          (display !== "" && !display.startsWith("inline"))
-        ) {
+        if (display === '' && !isInlineDomNode(node) || display !== '' && !display.startsWith('inline')) {
           return null;
         }
       }
       var descendant = node;
-      while (
-        (descendant = forward ? node.firstChild : node.lastChild) !== null
-      ) {
+      while ((descendant = forward ? node.firstChild : node.lastChild) !== null) {
         node = descendant;
       }
       if (node.nodeType === DOM_TEXT_TYPE) {
         return node;
-      } else if (node.nodeName === "BR") {
+      } else if (node.nodeName === 'BR') {
         return null;
       }
     }
   }
   var nodeNameToTextFormat = {
-    code: "code",
-    em: "italic",
-    i: "italic",
-    s: "strikethrough",
-    strong: "bold",
-    sub: "subscript",
-    sup: "superscript",
-    u: "underline",
+    code: 'code',
+    em: 'italic',
+    i: 'italic',
+    s: 'strikethrough',
+    strong: 'bold',
+    sub: 'subscript',
+    sup: 'superscript',
+    u: 'underline'
   };
   function convertTextFormatElement(domNode) {
     var format = nodeNameToTextFormat[domNode.nodeName.toLowerCase()];
     if (format === undefined) {
       return {
-        node: null,
+        node: null
       };
     }
     return {
       forChild: applyTextFormatFromStyle(domNode.style, format),
-      node: null,
+      node: null
     };
   }
   function $createTextNode() {
-    var text =
-      arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
+    var text = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
     return $applyNodeReplacement(new TextNode(text));
   }
   function $isTextNode(node) {
@@ -7002,41 +5676,38 @@ define([], function () {
   }
   function applyTextFormatFromStyle(style, shouldApply) {
     var fontWeight = style.fontWeight;
-    var textDecoration = style.textDecoration.split(" ");
+    var textDecoration = style.textDecoration.split(' ');
     // Google Docs uses span tags + font-weight for bold text
-    var hasBoldFontWeight = fontWeight === "700" || fontWeight === "bold";
+    var hasBoldFontWeight = fontWeight === '700' || fontWeight === 'bold';
     // Google Docs uses span tags + text-decoration: line-through for strikethrough text
-    var hasLinethroughTextDecoration = textDecoration.includes("line-through");
+    var hasLinethroughTextDecoration = textDecoration.includes('line-through');
     // Google Docs uses span tags + font-style for italic text
-    var hasItalicFontStyle = style.fontStyle === "italic";
+    var hasItalicFontStyle = style.fontStyle === 'italic';
     // Google Docs uses span tags + text-decoration: underline for underline text
-    var hasUnderlineTextDecoration = textDecoration.includes("underline");
+    var hasUnderlineTextDecoration = textDecoration.includes('underline');
     // Google Docs uses span tags + vertical-align to specify subscript and superscript
     var verticalAlign = style.verticalAlign;
     return function (lexicalNode) {
       if (!$isTextNode(lexicalNode)) {
         return lexicalNode;
       }
-      if (hasBoldFontWeight && !lexicalNode.hasFormat("bold")) {
-        lexicalNode.toggleFormat("bold");
+      if (hasBoldFontWeight && !lexicalNode.hasFormat('bold')) {
+        lexicalNode.toggleFormat('bold');
       }
-      if (
-        hasLinethroughTextDecoration &&
-        !lexicalNode.hasFormat("strikethrough")
-      ) {
-        lexicalNode.toggleFormat("strikethrough");
+      if (hasLinethroughTextDecoration && !lexicalNode.hasFormat('strikethrough')) {
+        lexicalNode.toggleFormat('strikethrough');
       }
-      if (hasItalicFontStyle && !lexicalNode.hasFormat("italic")) {
-        lexicalNode.toggleFormat("italic");
+      if (hasItalicFontStyle && !lexicalNode.hasFormat('italic')) {
+        lexicalNode.toggleFormat('italic');
       }
-      if (hasUnderlineTextDecoration && !lexicalNode.hasFormat("underline")) {
-        lexicalNode.toggleFormat("underline");
+      if (hasUnderlineTextDecoration && !lexicalNode.hasFormat('underline')) {
+        lexicalNode.toggleFormat('underline');
       }
-      if (verticalAlign === "sub" && !lexicalNode.hasFormat("subscript")) {
-        lexicalNode.toggleFormat("subscript");
+      if (verticalAlign === 'sub' && !lexicalNode.hasFormat('subscript')) {
+        lexicalNode.toggleFormat('subscript');
       }
-      if (verticalAlign === "super" && !lexicalNode.hasFormat("superscript")) {
-        lexicalNode.toggleFormat("superscript");
+      if (verticalAlign === 'super' && !lexicalNode.hasFormat('superscript')) {
+        lexicalNode.toggleFormat('superscript');
       }
       if (shouldApply && !lexicalNode.hasFormat(shouldApply)) {
         lexicalNode.toggleFormat(shouldApply);
@@ -7054,111 +5725,84 @@ define([], function () {
    */
 
   /** @noInheritDoc */
-  var TabNode = /*#__PURE__*/ (function (_TextNode) {
+  var TabNode = /*#__PURE__*/function (_TextNode) {
     function TabNode(key) {
       var _this3;
       _classCallCheck(this, TabNode);
-      _this3 = _callSuper(this, TabNode, ["\t", key]);
+      _this3 = _callSuper(this, TabNode, ['\t', key]);
       _this3.__detail = IS_UNMERGEABLE;
       return _this3;
     }
     _inherits(TabNode, _TextNode);
-    return _createClass(
-      TabNode,
-      [
+    return _createClass(TabNode, [{
+      key: "exportJSON",
+      value: function exportJSON() {
+        return _objectSpread(_objectSpread({}, _get(_getPrototypeOf(TabNode.prototype), "exportJSON", this).call(this)), {}, {
+          type: 'tab',
+          version: 1
+        });
+      }
+    }, {
+      key: "setTextContent",
+      value: function setTextContent(_text) {
         {
-          key: "exportJSON",
-          value: function exportJSON() {
-            return _objectSpread(
-              _objectSpread(
-                {},
-                _get(
-                  _getPrototypeOf(TabNode.prototype),
-                  "exportJSON",
-                  this
-                ).call(this)
-              ),
-              {},
-              {
-                type: "tab",
-                version: 1,
-              }
-            );
-          },
-        },
+          throw Error("TabNode does not support setTextContent");
+        }
+      }
+    }, {
+      key: "setDetail",
+      value: function setDetail(_detail) {
         {
-          key: "setTextContent",
-          value: function setTextContent(_text) {
-            {
-              throw Error("TabNode does not support setTextContent");
-            }
-          },
-        },
+          throw Error("TabNode does not support setDetail");
+        }
+      }
+    }, {
+      key: "setMode",
+      value: function setMode(_type) {
         {
-          key: "setDetail",
-          value: function setDetail(_detail) {
-            {
-              throw Error("TabNode does not support setDetail");
-            }
-          },
-        },
-        {
-          key: "setMode",
-          value: function setMode(_type) {
-            {
-              throw Error("TabNode does not support setMode");
-            }
-          },
-        },
-        {
-          key: "canInsertTextBefore",
-          value: function canInsertTextBefore() {
-            return false;
-          },
-        },
-        {
-          key: "canInsertTextAfter",
-          value: function canInsertTextAfter() {
-            return false;
-          },
-        },
-      ],
-      [
-        {
-          key: "getType",
-          value: function getType() {
-            return "tab";
-          },
-        },
-        {
-          key: "clone",
-          value: function clone(node) {
-            var newNode = new TabNode(node.__key);
-            // TabNode __text can be either '\t' or ''. insertText will remove the empty Node
-            newNode.__text = node.__text;
-            newNode.__format = node.__format;
-            newNode.__style = node.__style;
-            return newNode;
-          },
-        },
-        {
-          key: "importDOM",
-          value: function importDOM() {
-            return null;
-          },
-        },
-        {
-          key: "importJSON",
-          value: function importJSON(serializedTabNode) {
-            var node = $createTabNode();
-            node.setFormat(serializedTabNode.format);
-            node.setStyle(serializedTabNode.style);
-            return node;
-          },
-        },
-      ]
-    );
-  })(TextNode);
+          throw Error("TabNode does not support setMode");
+        }
+      }
+    }, {
+      key: "canInsertTextBefore",
+      value: function canInsertTextBefore() {
+        return false;
+      }
+    }, {
+      key: "canInsertTextAfter",
+      value: function canInsertTextAfter() {
+        return false;
+      }
+    }], [{
+      key: "getType",
+      value: function getType() {
+        return 'tab';
+      }
+    }, {
+      key: "clone",
+      value: function clone(node) {
+        var newNode = new TabNode(node.__key);
+        // TabNode __text can be either '\t' or ''. insertText will remove the empty Node
+        newNode.__text = node.__text;
+        newNode.__format = node.__format;
+        newNode.__style = node.__style;
+        return newNode;
+      }
+    }, {
+      key: "importDOM",
+      value: function importDOM() {
+        return null;
+      }
+    }, {
+      key: "importJSON",
+      value: function importJSON(serializedTabNode) {
+        var node = $createTabNode();
+        node.setFormat(serializedTabNode.format);
+        node.setStyle(serializedTabNode.style);
+        return node;
+      }
+    }]);
+  }(TextNode);
   function $createTabNode() {
     return $applyNodeReplacement(new TabNode());
   }
@@ -7173,7 +5817,7 @@ define([], function () {
    * LICENSE file in the root directory of this source tree.
    *
    */
-  var Point = /*#__PURE__*/ (function () {
+  var Point = /*#__PURE__*/function () {
     function Point(key, offset, type) {
       _classCallCheck(this, Point);
       this._selection = null;
@@ -7181,72 +5825,63 @@ define([], function () {
       this.offset = offset;
       this.type = type;
     }
-    return _createClass(Point, [
-      {
-        key: "is",
-        value: function is(point) {
-          return (
-            this.key === point.key &&
-            this.offset === point.offset &&
-            this.type === point.type
-          );
-        },
-      },
-      {
-        key: "isBefore",
-        value: function isBefore(b) {
-          var aNode = this.getNode();
-          var bNode = b.getNode();
-          var aOffset = this.offset;
-          var bOffset = b.offset;
-          if ($isElementNode(aNode)) {
-            var aNodeDescendant = aNode.getDescendantByIndex(aOffset);
-            aNode = aNodeDescendant != null ? aNodeDescendant : aNode;
+    return _createClass(Point, [{
+      key: "is",
+      value: function is(point) {
+        return this.key === point.key && this.offset === point.offset && this.type === point.type;
+      }
+    }, {
+      key: "isBefore",
+      value: function isBefore(b) {
+        var aNode = this.getNode();
+        var bNode = b.getNode();
+        var aOffset = this.offset;
+        var bOffset = b.offset;
+        if ($isElementNode(aNode)) {
+          var aNodeDescendant = aNode.getDescendantByIndex(aOffset);
+          aNode = aNodeDescendant != null ? aNodeDescendant : aNode;
+        }
+        if ($isElementNode(bNode)) {
+          var bNodeDescendant = bNode.getDescendantByIndex(bOffset);
+          bNode = bNodeDescendant != null ? bNodeDescendant : bNode;
+        }
+        if (aNode === bNode) {
+          return aOffset < bOffset;
+        }
+        return aNode.isBefore(bNode);
+      }
+    }, {
+      key: "getNode",
+      value: function getNode() {
+        var key = this.key;
+        var node = $getNodeByKey(key);
+        if (node === null) {
+          {
+            throw Error("Point.getNode: node not found");
           }
-          if ($isElementNode(bNode)) {
-            var bNodeDescendant = bNode.getDescendantByIndex(bOffset);
-            bNode = bNodeDescendant != null ? bNodeDescendant : bNode;
+        }
+        return node;
+      }
+    }, {
+      key: "set",
+      value: function set(key, offset, type) {
+        var selection = this._selection;
+        var oldKey = this.key;
+        this.key = key;
+        this.offset = offset;
+        this.type = type;
+        if (!isCurrentlyReadOnlyMode()) {
+          if ($getCompositionKey() === oldKey) {
+            $setCompositionKey(key);
           }
-          if (aNode === bNode) {
-            return aOffset < bOffset;
+          if (selection !== null) {
+            selection.setCachedNodes(null);
+            selection.dirty = true;
           }
-          return aNode.isBefore(bNode);
-        },
-      },
-      {
-        key: "getNode",
-        value: function getNode() {
-          var key = this.key;
-          var node = $getNodeByKey(key);
-          if (node === null) {
-            {
-              throw Error("Point.getNode: node not found");
-            }
-          }
-          return node;
-        },
-      },
-      {
-        key: "set",
-        value: function set(key, offset, type) {
-          var selection = this._selection;
-          var oldKey = this.key;
-          this.key = key;
-          this.offset = offset;
-          this.type = type;
-          if (!isCurrentlyReadOnlyMode()) {
-            if ($getCompositionKey() === oldKey) {
-              $setCompositionKey(key);
-            }
-            if (selection !== null) {
-              selection.setCachedNodes(null);
-              selection.dirty = true;
-            }
-          }
-        },
-      },
-    ]);
-  })();
+        }
+      }
+    }]);
+  }();
   function $createPoint(key, offset, type) {
     // @ts-expect-error: intentionally cast as we use a class for perf reasons
     return new Point(key, offset, type);
@@ -7254,9 +5889,9 @@ define([], function () {
   function selectPointOnNode(point, node) {
     var key = node.__key;
     var offset = point.offset;
-    var type = "element";
+    var type = 'element';
     if ($isTextNode(node)) {
-      type = "text";
+      type = 'text';
       var textContentLength = node.getTextContentSize();
       if (offset > textContentLength) {
         offset = textContentLength;
@@ -7266,7 +5901,7 @@ define([], function () {
       if ($isTextNode(nextSibling)) {
         key = nextSibling.__key;
         offset = 0;
-        type = "text";
+        type = 'text';
       } else {
         var parentNode = node.getParent();
         if (parentNode) {
@@ -7293,9 +5928,7 @@ define([], function () {
     var element = start.getNode();
     var placementNode = element.getChildAtIndex(start.offset);
     var textNode = $createTextNode();
-    var target = $isRootNode(element)
-      ? $createParagraphNode().append(textNode)
-      : textNode;
+    var target = $isRootNode(element) ? $createParagraphNode().append(textNode) : textNode;
     textNode.setFormat(format);
     textNode.setStyle(style);
     if (placementNode === null) {
@@ -7305,193 +5938,170 @@ define([], function () {
     }
     // Transfer the element point to a text point.
     if (start.is(end)) {
-      end.set(textNode.__key, 0, "text");
+      end.set(textNode.__key, 0, 'text');
     }
-    start.set(textNode.__key, 0, "text");
+    start.set(textNode.__key, 0, 'text');
   }
   function $setPointValues(point, key, offset, type) {
     point.key = key;
     point.offset = offset;
     point.type = type;
   }
-  var NodeSelection = /*#__PURE__*/ (function () {
+  var NodeSelection = /*#__PURE__*/function () {
     function NodeSelection(objects) {
       _classCallCheck(this, NodeSelection);
       this._cachedNodes = null;
       this._nodes = objects;
       this.dirty = false;
     }
-    return _createClass(NodeSelection, [
-      {
-        key: "getCachedNodes",
-        value: function getCachedNodes() {
-          return this._cachedNodes;
-        },
-      },
-      {
-        key: "setCachedNodes",
-        value: function setCachedNodes(nodes) {
-          this._cachedNodes = nodes;
-        },
-      },
-      {
-        key: "is",
-        value: function is(selection) {
-          if (!$isNodeSelection(selection)) {
-            return false;
-          }
-          var a = this._nodes;
-          var b = selection._nodes;
-          return (
-            a.size === b.size &&
-            Array.from(a).every(function (key) {
-              return b.has(key);
-            })
-          );
-        },
-      },
-      {
-        key: "isCollapsed",
-        value: function isCollapsed() {
+    return _createClass(NodeSelection, [{
+      key: "getCachedNodes",
+      value: function getCachedNodes() {
+        return this._cachedNodes;
+      }
+    }, {
+      key: "setCachedNodes",
+      value: function setCachedNodes(nodes) {
+        this._cachedNodes = nodes;
+      }
+    }, {
+      key: "is",
+      value: function is(selection) {
+        if (!$isNodeSelection(selection)) {
           return false;
-        },
-      },
-      {
-        key: "isBackward",
-        value: function isBackward() {
-          return false;
-        },
-      },
-      {
-        key: "getStartEndPoints",
-        value: function getStartEndPoints() {
-          return null;
-        },
-      },
-      {
-        key: "add",
-        value: function add(key) {
-          this.dirty = true;
-          this._nodes.add(key);
-          this._cachedNodes = null;
-        },
-      },
-      {
-        key: "delete",
-        value: function _delete(key) {
-          this.dirty = true;
-          this._nodes["delete"](key);
-          this._cachedNodes = null;
-        },
-      },
-      {
-        key: "clear",
-        value: function clear() {
-          this.dirty = true;
-          this._nodes.clear();
-          this._cachedNodes = null;
-        },
-      },
-      {
-        key: "has",
-        value: function has(key) {
-          return this._nodes.has(key);
-        },
-      },
-      {
-        key: "clone",
-        value: function clone() {
-          return new NodeSelection(new Set(this._nodes));
-        },
-      },
-      {
-        key: "extract",
-        value: function extract() {
-          return this.getNodes();
-        },
-      },
-      {
-        key: "insertRawText",
-        value: function insertRawText(text) {
-          // Do nothing?
-        },
-      },
-      {
-        key: "insertText",
-        value: function insertText() {
-          // Do nothing?
-        },
-      },
-      {
-        key: "insertNodes",
-        value: function insertNodes(nodes) {
-          var selectedNodes = this.getNodes();
-          var selectedNodesLength = selectedNodes.length;
-          var lastSelectedNode = selectedNodes[selectedNodesLength - 1];
-          var selectionAtEnd;
-          // Insert nodes
-          if ($isTextNode(lastSelectedNode)) {
-            selectionAtEnd = lastSelectedNode.select();
-          } else {
-            var index = lastSelectedNode.getIndexWithinParent() + 1;
-            selectionAtEnd = lastSelectedNode
-              .getParentOrThrow()
-              .select(index, index);
-          }
-          selectionAtEnd.insertNodes(nodes);
-          // Remove selected nodes
-          for (var i = 0; i < selectedNodesLength; i++) {
-            selectedNodes[i].remove();
-          }
-        },
-      },
-      {
-        key: "getNodes",
-        value: function getNodes() {
-          var cachedNodes = this._cachedNodes;
-          if (cachedNodes !== null) {
-            return cachedNodes;
-          }
-          var objects = this._nodes;
-          var nodes = [];
-          var _iterator7 = _createForOfIteratorHelper(objects),
-            _step7;
-          try {
-            for (_iterator7.s(); !(_step7 = _iterator7.n()).done; ) {
-              var object = _step7.value;
-              var node = $getNodeByKey(object);
-              if (node !== null) {
-                nodes.push(node);
-              }
+        }
+        var a = this._nodes;
+        var b = selection._nodes;
+        return a.size === b.size && Array.from(a).every(function (key) {
+          return b.has(key);
+        });
+      }
+    }, {
+      key: "isCollapsed",
+      value: function isCollapsed() {
+        return false;
+      }
+    }, {
+      key: "isBackward",
+      value: function isBackward() {
+        return false;
+      }
+    }, {
+      key: "getStartEndPoints",
+      value: function getStartEndPoints() {
+        return null;
+      }
+    }, {
+      key: "add",
+      value: function add(key) {
+        this.dirty = true;
+        this._nodes.add(key);
+        this._cachedNodes = null;
+      }
+    }, {
+      key: "delete",
+      value: function _delete(key) {
+        this.dirty = true;
+        this._nodes["delete"](key);
+        this._cachedNodes = null;
+      }
+    }, {
+      key: "clear",
+      value: function clear() {
+        this.dirty = true;
+        this._nodes.clear();
+        this._cachedNodes = null;
+      }
+    }, {
+      key: "has",
+      value: function has(key) {
+        return this._nodes.has(key);
+      }
+    }, {
+      key: "clone",
+      value: function clone() {
+        return new NodeSelection(new Set(this._nodes));
+      }
+    }, {
+      key: "extract",
+      value: function extract() {
+        return this.getNodes();
+      }
+    }, {
+      key: "insertRawText",
+      value: function insertRawText(text) {
+        // Do nothing?
+      }
+    }, {
+      key: "insertText",
+      value: function insertText() {
+        // Do nothing?
+      }
+    }, {
+      key: "insertNodes",
+      value: function insertNodes(nodes) {
+        var selectedNodes = this.getNodes();
+        var selectedNodesLength = selectedNodes.length;
+        var lastSelectedNode = selectedNodes[selectedNodesLength - 1];
+        var selectionAtEnd;
+        // Insert nodes
+        if ($isTextNode(lastSelectedNode)) {
+          selectionAtEnd = lastSelectedNode.select();
+        } else {
+          var index = lastSelectedNode.getIndexWithinParent() + 1;
+          selectionAtEnd = lastSelectedNode.getParentOrThrow().select(index, index);
+        }
+        selectionAtEnd.insertNodes(nodes);
+        // Remove selected nodes
+        for (var i = 0; i < selectedNodesLength; i++) {
+          selectedNodes[i].remove();
+        }
+      }
+    }, {
+      key: "getNodes",
+      value: function getNodes() {
+        var cachedNodes = this._cachedNodes;
+        if (cachedNodes !== null) {
+          return cachedNodes;
+        }
+        var objects = this._nodes;
+        var nodes = [];
+        var _iterator7 = _createForOfIteratorHelper(objects),
+          _step7;
+        try {
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var object = _step7.value;
+            var node = $getNodeByKey(object);
+            if (node !== null) {
+              nodes.push(node);
             }
-          } catch (err) {
-            _iterator7.e(err);
-          } finally {
-            _iterator7.f();
           }
-          if (!isCurrentlyReadOnlyMode()) {
-            this._cachedNodes = nodes;
-          }
-          return nodes;
-        },
-      },
-      {
-        key: "getTextContent",
-        value: function getTextContent() {
-          var nodes = this.getNodes();
-          var textContent = "";
-          for (var i = 0; i < nodes.length; i++) {
-            textContent += nodes[i].getTextContent();
-          }
-          return textContent;
-        },
-      },
-    ]);
-  })();
+        } catch (err) {
+          _iterator7.e(err);
+        } finally {
+          _iterator7.f();
+        }
+        if (!isCurrentlyReadOnlyMode()) {
+          this._cachedNodes = nodes;
+        }
+        return nodes;
+      }
+    }, {
+      key: "getTextContent",
+      value: function getTextContent() {
+        var nodes = this.getNodes();
+        var textContent = '';
+        for (var i = 0; i < nodes.length; i++) {
+          textContent += nodes[i].getTextContent();
+        }
+        return textContent;
+      }
+    }]);
+  }();
   function $isRangeSelection(x) {
     return x instanceof RangeSelection;
   }
-  var RangeSelection = /*#__PURE__*/ (function () {
+  var RangeSelection = /*#__PURE__*/function () {
     function RangeSelection(anchor, focus, format, style) {
       _classCallCheck(this, RangeSelection);
       this.anchor = anchor;
@@ -7503,1492 +6113,1188 @@ define([], function () {
       this.style = style;
       this.dirty = false;
     }
-    return _createClass(RangeSelection, [
-      {
-        key: "getCachedNodes",
-        value: function getCachedNodes() {
-          return this._cachedNodes;
-        },
-      },
-      {
-        key: "setCachedNodes",
-        value: function setCachedNodes(nodes) {
+    return _createClass(RangeSelection, [{
+      key: "getCachedNodes",
+      value: function getCachedNodes() {
+        return this._cachedNodes;
+      }
+    }, {
+      key: "setCachedNodes",
+      value: function setCachedNodes(nodes) {
+        this._cachedNodes = nodes;
+      }
+
+      /**
+       * Used to check if the provided selections is equal to this one by value,
+       * inluding anchor, focus, format, and style properties.
+       * @param selection - the Selection to compare this one to.
+       * @returns true if the Selections are equal, false otherwise.
+       */
+    }, {
+      key: "is",
+      value: function is(selection) {
+        if (!$isRangeSelection(selection)) {
+          return false;
+        }
+        return this.anchor.is(selection.anchor) && this.focus.is(selection.focus) && this.format === selection.format && this.style === selection.style;
+      }
+
+      /**
+       * Returns whether the Selection is "collapsed", meaning the anchor and focus are
+       * the same node and have the same offset.
+       *
+       * @returns true if the Selection is collapsed, false otherwise.
+       */
+    }, {
+      key: "isCollapsed",
+      value: function isCollapsed() {
+        return this.anchor.is(this.focus);
+      }
+
+      /**
+       * Gets all the nodes in the Selection. Uses caching to make it generally suitable
+       * for use in hot paths.
+       *
+       * @returns an Array containing all the nodes in the Selection
+       */
+    }, {
+      key: "getNodes",
+      value: function getNodes() {
+        var cachedNodes = this._cachedNodes;
+        if (cachedNodes !== null) {
+          return cachedNodes;
+        }
+        var anchor = this.anchor;
+        var focus = this.focus;
+        var isBefore = anchor.isBefore(focus);
+        var firstPoint = isBefore ? anchor : focus;
+        var lastPoint = isBefore ? focus : anchor;
+        var firstNode = firstPoint.getNode();
+        var lastNode = lastPoint.getNode();
+        var startOffset = firstPoint.offset;
+        var endOffset = lastPoint.offset;
+        if ($isElementNode(firstNode)) {
+          var firstNodeDescendant = firstNode.getDescendantByIndex(startOffset);
+          firstNode = firstNodeDescendant != null ? firstNodeDescendant : firstNode;
+        }
+        if ($isElementNode(lastNode)) {
+          var lastNodeDescendant = lastNode.getDescendantByIndex(endOffset);
+          // We don't want to over-select, as node selection infers the child before
+          // the last descendant, not including that descendant.
+          if (lastNodeDescendant !== null && lastNodeDescendant !== firstNode && lastNode.getChildAtIndex(endOffset) === lastNodeDescendant) {
+            lastNodeDescendant = lastNodeDescendant.getPreviousSibling();
+          }
+          lastNode = lastNodeDescendant != null ? lastNodeDescendant : lastNode;
+        }
+        var nodes;
+        if (firstNode.is(lastNode)) {
+          if ($isElementNode(firstNode) && firstNode.getChildrenSize() > 0) {
+            nodes = [];
+          } else {
+            nodes = [firstNode];
+          }
+        } else {
+          nodes = firstNode.getNodesBetween(lastNode);
+        }
+        if (!isCurrentlyReadOnlyMode()) {
           this._cachedNodes = nodes;
-        },
+        }
+        return nodes;
+      }
 
-        /**
-         * Used to check if the provided selections is equal to this one by value,
-         * inluding anchor, focus, format, and style properties.
-         * @param selection - the Selection to compare this one to.
-         * @returns true if the Selections are equal, false otherwise.
-         */
-      },
-      {
-        key: "is",
-        value: function is(selection) {
-          if (!$isRangeSelection(selection)) {
-            return false;
-          }
-          return (
-            this.anchor.is(selection.anchor) &&
-            this.focus.is(selection.focus) &&
-            this.format === selection.format &&
-            this.style === selection.style
-          );
-        },
+      /**
+       * Sets this Selection to be of type "text" at the provided anchor and focus values.
+       *
+       * @param anchorNode - the anchor node to set on the Selection
+       * @param anchorOffset - the offset to set on the Selection
+       * @param focusNode - the focus node to set on the Selection
+       * @param focusOffset - the focus offset to set on the Selection
+       */
+    }, {
+      key: "setTextNodeRange",
+      value: function setTextNodeRange(anchorNode, anchorOffset, focusNode, focusOffset) {
+        $setPointValues(this.anchor, anchorNode.__key, anchorOffset, 'text');
+        $setPointValues(this.focus, focusNode.__key, focusOffset, 'text');
+        this._cachedNodes = null;
+        this.dirty = true;
+      }
 
-        /**
-         * Returns whether the Selection is "collapsed", meaning the anchor and focus are
-         * the same node and have the same offset.
-         *
-         * @returns true if the Selection is collapsed, false otherwise.
-         */
-      },
-      {
-        key: "isCollapsed",
-        value: function isCollapsed() {
-          return this.anchor.is(this.focus);
-        },
-
-        /**
-         * Gets all the nodes in the Selection. Uses caching to make it generally suitable
-         * for use in hot paths.
-         *
-         * @returns an Array containing all the nodes in the Selection
-         */
-      },
-      {
-        key: "getNodes",
-        value: function getNodes() {
-          var cachedNodes = this._cachedNodes;
-          if (cachedNodes !== null) {
-            return cachedNodes;
-          }
-          var anchor = this.anchor;
-          var focus = this.focus;
-          var isBefore = anchor.isBefore(focus);
-          var firstPoint = isBefore ? anchor : focus;
-          var lastPoint = isBefore ? focus : anchor;
-          var firstNode = firstPoint.getNode();
-          var lastNode = lastPoint.getNode();
-          var startOffset = firstPoint.offset;
-          var endOffset = lastPoint.offset;
-          if ($isElementNode(firstNode)) {
-            var firstNodeDescendant =
-              firstNode.getDescendantByIndex(startOffset);
-            firstNode =
-              firstNodeDescendant != null ? firstNodeDescendant : firstNode;
-          }
-          if ($isElementNode(lastNode)) {
-            var lastNodeDescendant = lastNode.getDescendantByIndex(endOffset);
-            // We don't want to over-select, as node selection infers the child before
-            // the last descendant, not including that descendant.
-            if (
-              lastNodeDescendant !== null &&
-              lastNodeDescendant !== firstNode &&
-              lastNode.getChildAtIndex(endOffset) === lastNodeDescendant
-            ) {
-              lastNodeDescendant = lastNodeDescendant.getPreviousSibling();
+      /**
+       * Gets the (plain) text content of all the nodes in the selection.
+       *
+       * @returns a string representing the text content of all the nodes in the Selection
+       */
+    }, {
+      key: "getTextContent",
+      value: function getTextContent() {
+        var nodes = this.getNodes();
+        if (nodes.length === 0) {
+          return '';
+        }
+        var firstNode = nodes[0];
+        var lastNode = nodes[nodes.length - 1];
+        var anchor = this.anchor;
+        var focus = this.focus;
+        var isBefore = anchor.isBefore(focus);
+        var _$getCharacterOffsets = $getCharacterOffsets(this),
+          _$getCharacterOffsets2 = _slicedToArray(_$getCharacterOffsets, 2),
+          anchorOffset = _$getCharacterOffsets2[0],
+          focusOffset = _$getCharacterOffsets2[1];
+        var textContent = '';
+        var prevWasElement = true;
+        for (var i = 0; i < nodes.length; i++) {
+          var node = nodes[i];
+          if ($isElementNode(node) && !node.isInline()) {
+            if (!prevWasElement) {
+              textContent += '\n';
             }
-            lastNode =
-              lastNodeDescendant != null ? lastNodeDescendant : lastNode;
-          }
-          var nodes;
-          if (firstNode.is(lastNode)) {
-            if ($isElementNode(firstNode) && firstNode.getChildrenSize() > 0) {
-              nodes = [];
-            } else {
-              nodes = [firstNode];
-            }
-          } else {
-            nodes = firstNode.getNodesBetween(lastNode);
-          }
-          if (!isCurrentlyReadOnlyMode()) {
-            this._cachedNodes = nodes;
-          }
-          return nodes;
-        },
-
-        /**
-         * Sets this Selection to be of type "text" at the provided anchor and focus values.
-         *
-         * @param anchorNode - the anchor node to set on the Selection
-         * @param anchorOffset - the offset to set on the Selection
-         * @param focusNode - the focus node to set on the Selection
-         * @param focusOffset - the focus offset to set on the Selection
-         */
-      },
-      {
-        key: "setTextNodeRange",
-        value: function setTextNodeRange(
-          anchorNode,
-          anchorOffset,
-          focusNode,
-          focusOffset
-        ) {
-          $setPointValues(this.anchor, anchorNode.__key, anchorOffset, "text");
-          $setPointValues(this.focus, focusNode.__key, focusOffset, "text");
-          this._cachedNodes = null;
-          this.dirty = true;
-        },
-
-        /**
-         * Gets the (plain) text content of all the nodes in the selection.
-         *
-         * @returns a string representing the text content of all the nodes in the Selection
-         */
-      },
-      {
-        key: "getTextContent",
-        value: function getTextContent() {
-          var nodes = this.getNodes();
-          if (nodes.length === 0) {
-            return "";
-          }
-          var firstNode = nodes[0];
-          var lastNode = nodes[nodes.length - 1];
-          var anchor = this.anchor;
-          var focus = this.focus;
-          var isBefore = anchor.isBefore(focus);
-          var _$getCharacterOffsets = $getCharacterOffsets(this),
-            _$getCharacterOffsets2 = _slicedToArray(_$getCharacterOffsets, 2),
-            anchorOffset = _$getCharacterOffsets2[0],
-            focusOffset = _$getCharacterOffsets2[1];
-          var textContent = "";
-          var prevWasElement = true;
-          for (var i = 0; i < nodes.length; i++) {
-            var node = nodes[i];
-            if ($isElementNode(node) && !node.isInline()) {
-              if (!prevWasElement) {
-                textContent += "\n";
-              }
-              if (node.isEmpty()) {
-                prevWasElement = false;
-              } else {
-                prevWasElement = true;
-              }
-            } else {
+            if (node.isEmpty()) {
               prevWasElement = false;
-              if ($isTextNode(node)) {
-                var text = node.getTextContent();
-                if (node === firstNode) {
-                  if (node === lastNode) {
-                    if (
-                      anchor.type !== "element" ||
-                      focus.type !== "element" ||
-                      focus.offset === anchor.offset
-                    ) {
-                      text =
-                        anchorOffset < focusOffset
-                          ? text.slice(anchorOffset, focusOffset)
-                          : text.slice(focusOffset, anchorOffset);
-                    }
-                  } else {
-                    text = isBefore
-                      ? text.slice(anchorOffset)
-                      : text.slice(focusOffset);
+            } else {
+              prevWasElement = true;
+            }
+          } else {
+            prevWasElement = false;
+            if ($isTextNode(node)) {
+              var text = node.getTextContent();
+              if (node === firstNode) {
+                if (node === lastNode) {
+                  if (anchor.type !== 'element' || focus.type !== 'element' || focus.offset === anchor.offset) {
+                    text = anchorOffset < focusOffset ? text.slice(anchorOffset, focusOffset) : text.slice(focusOffset, anchorOffset);
                   }
-                } else if (node === lastNode) {
-                  text = isBefore
-                    ? text.slice(0, focusOffset)
-                    : text.slice(0, anchorOffset);
+                } else {
+                  text = isBefore ? text.slice(anchorOffset) : text.slice(focusOffset);
                 }
-                textContent += text;
-              } else if (
-                ($isDecoratorNode(node) || $isLineBreakNode(node)) &&
-                (node !== lastNode || !this.isCollapsed())
-              ) {
-                textContent += node.getTextContent();
+              } else if (node === lastNode) {
+                text = isBefore ? text.slice(0, focusOffset) : text.slice(0, anchorOffset);
               }
+              textContent += text;
+            } else if (($isDecoratorNode(node) || $isLineBreakNode(node)) && (node !== lastNode || !this.isCollapsed())) {
+              textContent += node.getTextContent();
             }
           }
-          return textContent;
-        },
+        }
+        return textContent;
+      }
 
-        /**
-         * Attempts to map a DOM selection range onto this Lexical Selection,
-         * setting the anchor, focus, and type accordingly
-         *
-         * @param range a DOM Selection range conforming to the StaticRange interface.
-         */
-      },
-      {
-        key: "applyDOMRange",
-        value: function applyDOMRange(range) {
-          var editor = getActiveEditor();
-          var currentEditorState = editor.getEditorState();
-          var lastSelection = currentEditorState._selection;
-          var resolvedSelectionPoints = $internalResolveSelectionPoints(
-            range.startContainer,
-            range.startOffset,
-            range.endContainer,
-            range.endOffset,
-            editor,
-            lastSelection
-          );
-          if (resolvedSelectionPoints === null) {
+      /**
+       * Attempts to map a DOM selection range onto this Lexical Selection,
+       * setting the anchor, focus, and type accordingly
+       *
+       * @param range a DOM Selection range conforming to the StaticRange interface.
+       */
+    }, {
+      key: "applyDOMRange",
+      value: function applyDOMRange(range) {
+        var editor = getActiveEditor();
+        var currentEditorState = editor.getEditorState();
+        var lastSelection = currentEditorState._selection;
+        var resolvedSelectionPoints = $internalResolveSelectionPoints(range.startContainer, range.startOffset, range.endContainer, range.endOffset, editor, lastSelection);
+        if (resolvedSelectionPoints === null) {
+          return;
+        }
+        var _resolvedSelectionPoi = _slicedToArray(resolvedSelectionPoints, 2),
+          anchorPoint = _resolvedSelectionPoi[0],
+          focusPoint = _resolvedSelectionPoi[1];
+        $setPointValues(this.anchor, anchorPoint.key, anchorPoint.offset, anchorPoint.type);
+        $setPointValues(this.focus, focusPoint.key, focusPoint.offset, focusPoint.type);
+        this._cachedNodes = null;
+      }
+
+      /**
+       * Creates a new RangeSelection, copying over all the property values from this one.
+       *
+       * @returns a new RangeSelection with the same property values as this one.
+       */
+    }, {
+      key: "clone",
+      value: function clone() {
+        var anchor = this.anchor;
+        var focus = this.focus;
+        var selection = new RangeSelection($createPoint(anchor.key, anchor.offset, anchor.type), $createPoint(focus.key, focus.offset, focus.type), this.format, this.style);
+        return selection;
+      }
+
+      /**
+       * Toggles the provided format on all the TextNodes in the Selection.
+       *
+       * @param format a string TextFormatType to toggle on the TextNodes in the selection
+       */
+    }, {
+      key: "toggleFormat",
+      value: function toggleFormat(format) {
+        this.format = toggleTextFormatType(this.format, format, null);
+        this.dirty = true;
+      }
+
+      /**
+       * Sets the value of the style property on the Selection
+       *
+       * @param style - the style to set at the value of the style property.
+       */
+    }, {
+      key: "setStyle",
+      value: function setStyle(style) {
+        this.style = style;
+        this.dirty = true;
+      }
+
+      /**
+       * Returns whether the provided TextFormatType is present on the Selection. This will be true if any node in the Selection
+       * has the specified format.
+       *
+       * @param type the TextFormatType to check for.
+       * @returns true if the provided format is currently toggled on on the Selection, false otherwise.
+       */
+    }, {
+      key: "hasFormat",
+      value: function hasFormat(type) {
+        var formatFlag = TEXT_TYPE_TO_FORMAT[type];
+        return (this.format & formatFlag) !== 0;
+      }
+
+      /**
+       * Attempts to insert the provided text into the EditorState at the current Selection.
+       * converts tabs, newlines, and carriage returns into LexicalNodes.
+       *
+       * @param text the text to insert into the Selection
+       */
+    }, {
+      key: "insertRawText",
+      value: function insertRawText(text) {
+        var parts = text.split(/(\r?\n|\t)/);
+        var nodes = [];
+        var length = parts.length;
+        for (var i = 0; i < length; i++) {
+          var part = parts[i];
+          if (part === '\n' || part === '\r\n') {
+            nodes.push($createLineBreakNode());
+          } else if (part === '\t') {
+            nodes.push($createTabNode());
+          } else {
+            nodes.push($createTextNode(part));
+          }
+        }
+        this.insertNodes(nodes);
+      }
+
+      /**
+       * Attempts to insert the provided text into the EditorState at the current Selection as a new
+       * Lexical TextNode, according to a series of insertion heuristics based on the selection type and position.
+       *
+       * @param text the text to insert into the Selection
+       */
+    }, {
+      key: "insertText",
+      value: function insertText(text) {
+        var anchor = this.anchor;
+        var focus = this.focus;
+        var format = this.format;
+        var style = this.style;
+        var firstPoint = anchor;
+        var endPoint = focus;
+        if (!this.isCollapsed() && focus.isBefore(anchor)) {
+          firstPoint = focus;
+          endPoint = anchor;
+        }
+        if (firstPoint.type === 'element') {
+          $transferStartingElementPointToTextPoint(firstPoint, endPoint, format, style);
+        }
+        var startOffset = firstPoint.offset;
+        var endOffset = endPoint.offset;
+        var selectedNodes = this.getNodes();
+        var selectedNodesLength = selectedNodes.length;
+        var firstNode = selectedNodes[0];
+        if (!$isTextNode(firstNode)) {
+          {
+            throw Error("insertText: first node is not a text node");
+          }
+        }
+        var firstNodeText = firstNode.getTextContent();
+        var firstNodeTextLength = firstNodeText.length;
+        var firstNodeParent = firstNode.getParentOrThrow();
+        var lastIndex = selectedNodesLength - 1;
+        var lastNode = selectedNodes[lastIndex];
+        if (selectedNodesLength === 1 && endPoint.type === 'element') {
+          endOffset = firstNodeTextLength;
+          endPoint.set(firstPoint.key, endOffset, 'text');
+        }
+        if (this.isCollapsed() && startOffset === firstNodeTextLength && (firstNode.isSegmented() || firstNode.isToken() || !firstNode.canInsertTextAfter() || !firstNodeParent.canInsertTextAfter() && firstNode.getNextSibling() === null)) {
+          var nextSibling = firstNode.getNextSibling();
+          if (!$isTextNode(nextSibling) || !nextSibling.canInsertTextBefore() || $isTokenOrSegmented(nextSibling)) {
+            nextSibling = $createTextNode();
+            nextSibling.setFormat(format);
+            nextSibling.setStyle(style);
+            if (!firstNodeParent.canInsertTextAfter()) {
+              firstNodeParent.insertAfter(nextSibling);
+            } else {
+              firstNode.insertAfter(nextSibling);
+            }
+          }
+          nextSibling.select(0, 0);
+          firstNode = nextSibling;
+          if (text !== '') {
+            this.insertText(text);
             return;
           }
-          var _resolvedSelectionPoi = _slicedToArray(
-              resolvedSelectionPoints,
-              2
-            ),
-            anchorPoint = _resolvedSelectionPoi[0],
-            focusPoint = _resolvedSelectionPoi[1];
-          $setPointValues(
-            this.anchor,
-            anchorPoint.key,
-            anchorPoint.offset,
-            anchorPoint.type
-          );
-          $setPointValues(
-            this.focus,
-            focusPoint.key,
-            focusPoint.offset,
-            focusPoint.type
-          );
-          this._cachedNodes = null;
-        },
-
-        /**
-         * Creates a new RangeSelection, copying over all the property values from this one.
-         *
-         * @returns a new RangeSelection with the same property values as this one.
-         */
-      },
-      {
-        key: "clone",
-        value: function clone() {
-          var anchor = this.anchor;
-          var focus = this.focus;
-          var selection = new RangeSelection(
-            $createPoint(anchor.key, anchor.offset, anchor.type),
-            $createPoint(focus.key, focus.offset, focus.type),
-            this.format,
-            this.style
-          );
-          return selection;
-        },
-
-        /**
-         * Toggles the provided format on all the TextNodes in the Selection.
-         *
-         * @param format a string TextFormatType to toggle on the TextNodes in the selection
-         */
-      },
-      {
-        key: "toggleFormat",
-        value: function toggleFormat(format) {
-          this.format = toggleTextFormatType(this.format, format, null);
-          this.dirty = true;
-        },
-
-        /**
-         * Sets the value of the style property on the Selection
-         *
-         * @param style - the style to set at the value of the style property.
-         */
-      },
-      {
-        key: "setStyle",
-        value: function setStyle(style) {
-          this.style = style;
-          this.dirty = true;
-        },
-
-        /**
-         * Returns whether the provided TextFormatType is present on the Selection. This will be true if any node in the Selection
-         * has the specified format.
-         *
-         * @param type the TextFormatType to check for.
-         * @returns true if the provided format is currently toggled on on the Selection, false otherwise.
-         */
-      },
-      {
-        key: "hasFormat",
-        value: function hasFormat(type) {
-          var formatFlag = TEXT_TYPE_TO_FORMAT[type];
-          return (this.format & formatFlag) !== 0;
-        },
-
-        /**
-         * Attempts to insert the provided text into the EditorState at the current Selection.
-         * converts tabs, newlines, and carriage returns into LexicalNodes.
-         *
-         * @param text the text to insert into the Selection
-         */
-      },
-      {
-        key: "insertRawText",
-        value: function insertRawText(text) {
-          var parts = text.split(/(\r?\n|\t)/);
-          var nodes = [];
-          var length = parts.length;
-          for (var i = 0; i < length; i++) {
-            var part = parts[i];
-            if (part === "\n" || part === "\r\n") {
-              nodes.push($createLineBreakNode());
-            } else if (part === "\t") {
-              nodes.push($createTabNode());
+        } else if (this.isCollapsed() && startOffset === 0 && (firstNode.isSegmented() || firstNode.isToken() || !firstNode.canInsertTextBefore() || !firstNodeParent.canInsertTextBefore() && firstNode.getPreviousSibling() === null)) {
+          var prevSibling = firstNode.getPreviousSibling();
+          if (!$isTextNode(prevSibling) || $isTokenOrSegmented(prevSibling)) {
+            prevSibling = $createTextNode();
+            prevSibling.setFormat(format);
+            if (!firstNodeParent.canInsertTextBefore()) {
+              firstNodeParent.insertBefore(prevSibling);
             } else {
-              nodes.push($createTextNode(part));
+              firstNode.insertBefore(prevSibling);
             }
           }
-          this.insertNodes(nodes);
-        },
-
-        /**
-         * Attempts to insert the provided text into the EditorState at the current Selection as a new
-         * Lexical TextNode, according to a series of insertion heuristics based on the selection type and position.
-         *
-         * @param text the text to insert into the Selection
-         */
-      },
-      {
-        key: "insertText",
-        value: function insertText(text) {
-          var anchor = this.anchor;
-          var focus = this.focus;
-          var format = this.format;
-          var style = this.style;
-          var firstPoint = anchor;
-          var endPoint = focus;
-          if (!this.isCollapsed() && focus.isBefore(anchor)) {
-            firstPoint = focus;
-            endPoint = anchor;
+          prevSibling.select();
+          firstNode = prevSibling;
+          if (text !== '') {
+            this.insertText(text);
+            return;
           }
-          if (firstPoint.type === "element") {
-            $transferStartingElementPointToTextPoint(
-              firstPoint,
-              endPoint,
-              format,
-              style
-            );
+        } else if (firstNode.isSegmented() && startOffset !== firstNodeTextLength) {
+          var textNode = $createTextNode(firstNode.getTextContent());
+          textNode.setFormat(format);
+          firstNode.replace(textNode);
+          firstNode = textNode;
+        } else if (!this.isCollapsed() && text !== '') {
+          // When the firstNode or lastNode parents are elements that
+          // do not allow text to be inserted before or after, we first
+          // clear the content. Then we normalize selection, then insert
+          // the new content.
+          var lastNodeParent = lastNode.getParent();
+          if (!firstNodeParent.canInsertTextBefore() || !firstNodeParent.canInsertTextAfter() || $isElementNode(lastNodeParent) && (!lastNodeParent.canInsertTextBefore() || !lastNodeParent.canInsertTextAfter())) {
+            this.insertText('');
+            $normalizeSelectionPointsForBoundaries(this.anchor, this.focus, null);
+            this.insertText(text);
+            return;
           }
-          var startOffset = firstPoint.offset;
-          var endOffset = endPoint.offset;
-          var selectedNodes = this.getNodes();
-          var selectedNodesLength = selectedNodes.length;
-          var firstNode = selectedNodes[0];
-          if (!$isTextNode(firstNode)) {
-            {
-              throw Error("insertText: first node is not a text node");
-            }
+        }
+        if (selectedNodesLength === 1) {
+          if (firstNode.isToken()) {
+            var _textNode = $createTextNode(text);
+            _textNode.select();
+            firstNode.replace(_textNode);
+            return;
           }
-          var firstNodeText = firstNode.getTextContent();
-          var firstNodeTextLength = firstNodeText.length;
-          var firstNodeParent = firstNode.getParentOrThrow();
-          var lastIndex = selectedNodesLength - 1;
-          var lastNode = selectedNodes[lastIndex];
-          if (selectedNodesLength === 1 && endPoint.type === "element") {
-            endOffset = firstNodeTextLength;
-            endPoint.set(firstPoint.key, endOffset, "text");
-          }
-          if (
-            this.isCollapsed() &&
-            startOffset === firstNodeTextLength &&
-            (firstNode.isSegmented() ||
-              firstNode.isToken() ||
-              !firstNode.canInsertTextAfter() ||
-              (!firstNodeParent.canInsertTextAfter() &&
-                firstNode.getNextSibling() === null))
-          ) {
-            var nextSibling = firstNode.getNextSibling();
-            if (
-              !$isTextNode(nextSibling) ||
-              !nextSibling.canInsertTextBefore() ||
-              $isTokenOrSegmented(nextSibling)
-            ) {
-              nextSibling = $createTextNode();
-              nextSibling.setFormat(format);
-              nextSibling.setStyle(style);
-              if (!firstNodeParent.canInsertTextAfter()) {
-                firstNodeParent.insertAfter(nextSibling);
+          var firstNodeFormat = firstNode.getFormat();
+          var firstNodeStyle = firstNode.getStyle();
+          if (startOffset === endOffset && (firstNodeFormat !== format || firstNodeStyle !== style)) {
+            if (firstNode.getTextContent() === '') {
+              firstNode.setFormat(format);
+              firstNode.setStyle(style);
+            } else {
+              var _textNode2 = $createTextNode(text);
+              _textNode2.setFormat(format);
+              _textNode2.setStyle(style);
+              _textNode2.select();
+              if (startOffset === 0) {
+                firstNode.insertBefore(_textNode2, false);
               } else {
-                firstNode.insertAfter(nextSibling);
+                var _firstNode$splitText = firstNode.splitText(startOffset),
+                  _firstNode$splitText2 = _slicedToArray(_firstNode$splitText, 1),
+                  targetNode = _firstNode$splitText2[0];
+                targetNode.insertAfter(_textNode2, false);
               }
-            }
-            nextSibling.select(0, 0);
-            firstNode = nextSibling;
-            if (text !== "") {
-              this.insertText(text);
-              return;
-            }
-          } else if (
-            this.isCollapsed() &&
-            startOffset === 0 &&
-            (firstNode.isSegmented() ||
-              firstNode.isToken() ||
-              !firstNode.canInsertTextBefore() ||
-              (!firstNodeParent.canInsertTextBefore() &&
-                firstNode.getPreviousSibling() === null))
-          ) {
-            var prevSibling = firstNode.getPreviousSibling();
-            if (!$isTextNode(prevSibling) || $isTokenOrSegmented(prevSibling)) {
-              prevSibling = $createTextNode();
-              prevSibling.setFormat(format);
-              if (!firstNodeParent.canInsertTextBefore()) {
-                firstNodeParent.insertBefore(prevSibling);
-              } else {
-                firstNode.insertBefore(prevSibling);
-              }
-            }
-            prevSibling.select();
-            firstNode = prevSibling;
-            if (text !== "") {
-              this.insertText(text);
-              return;
-            }
-          } else if (
-            firstNode.isSegmented() &&
-            startOffset !== firstNodeTextLength
-          ) {
-            var textNode = $createTextNode(firstNode.getTextContent());
-            textNode.setFormat(format);
-            firstNode.replace(textNode);
-            firstNode = textNode;
-          } else if (!this.isCollapsed() && text !== "") {
-            // When the firstNode or lastNode parents are elements that
-            // do not allow text to be inserted before or after, we first
-            // clear the content. Then we normalize selection, then insert
-            // the new content.
-            var lastNodeParent = lastNode.getParent();
-            if (
-              !firstNodeParent.canInsertTextBefore() ||
-              !firstNodeParent.canInsertTextAfter() ||
-              ($isElementNode(lastNodeParent) &&
-                (!lastNodeParent.canInsertTextBefore() ||
-                  !lastNodeParent.canInsertTextAfter()))
-            ) {
-              this.insertText("");
-              $normalizeSelectionPointsForBoundaries(
-                this.anchor,
-                this.focus,
-                null
-              );
-              this.insertText(text);
-              return;
-            }
-          }
-          if (selectedNodesLength === 1) {
-            if (firstNode.isToken()) {
-              var _textNode = $createTextNode(text);
-              _textNode.select();
-              firstNode.replace(_textNode);
-              return;
-            }
-            var firstNodeFormat = firstNode.getFormat();
-            var firstNodeStyle = firstNode.getStyle();
-            if (
-              startOffset === endOffset &&
-              (firstNodeFormat !== format || firstNodeStyle !== style)
-            ) {
-              if (firstNode.getTextContent() === "") {
-                firstNode.setFormat(format);
-                firstNode.setStyle(style);
-              } else {
-                var _textNode2 = $createTextNode(text);
-                _textNode2.setFormat(format);
-                _textNode2.setStyle(style);
-                _textNode2.select();
-                if (startOffset === 0) {
-                  firstNode.insertBefore(_textNode2, false);
-                } else {
-                  var _firstNode$splitText = firstNode.splitText(startOffset),
-                    _firstNode$splitText2 = _slicedToArray(
-                      _firstNode$splitText,
-                      1
-                    ),
-                    targetNode = _firstNode$splitText2[0];
-                  targetNode.insertAfter(_textNode2, false);
-                }
-                // When composing, we need to adjust the anchor offset so that
-                // we correctly replace that right range.
-                if (_textNode2.isComposing() && this.anchor.type === "text") {
-                  this.anchor.offset -= text.length;
-                }
-                return;
-              }
-            } else if ($isTabNode(firstNode)) {
-              // We don't need to check for delCount because there is only the entire selected node case
-              // that can hit here for content size 1 and with canInsertTextBeforeAfter false
-              var _textNode3 = $createTextNode(text);
-              _textNode3.setFormat(format);
-              _textNode3.setStyle(style);
-              _textNode3.select();
-              firstNode.replace(_textNode3);
-              return;
-            }
-            var delCount = endOffset - startOffset;
-            firstNode = firstNode.spliceText(startOffset, delCount, text, true);
-            if (firstNode.getTextContent() === "") {
-              firstNode.remove();
-            } else if (this.anchor.type === "text") {
-              if (firstNode.isComposing()) {
-                // When composing, we need to adjust the anchor offset so that
-                // we correctly replace that right range.
+              // When composing, we need to adjust the anchor offset so that
+              // we correctly replace that right range.
+              if (_textNode2.isComposing() && this.anchor.type === 'text') {
                 this.anchor.offset -= text.length;
+              }
+              return;
+            }
+          } else if ($isTabNode(firstNode)) {
+            // We don't need to check for delCount because there is only the entire selected node case
+            // that can hit here for content size 1 and with canInsertTextBeforeAfter false
+            var _textNode3 = $createTextNode(text);
+            _textNode3.setFormat(format);
+            _textNode3.setStyle(style);
+            _textNode3.select();
+            firstNode.replace(_textNode3);
+            return;
+          }
+          var delCount = endOffset - startOffset;
+          firstNode = firstNode.spliceText(startOffset, delCount, text, true);
+          if (firstNode.getTextContent() === '') {
+            firstNode.remove();
+          } else if (this.anchor.type === 'text') {
+            if (firstNode.isComposing()) {
+              // When composing, we need to adjust the anchor offset so that
+              // we correctly replace that right range.
+              this.anchor.offset -= text.length;
+            } else {
+              this.format = firstNodeFormat;
+              this.style = firstNodeStyle;
+            }
+          }
+        } else {
+          var markedNodeKeysForKeep = new Set([].concat(_toConsumableArray(firstNode.getParentKeys()), _toConsumableArray(lastNode.getParentKeys())));
+
+          // We have to get the parent elements before the next section,
+          // as in that section we might mutate the lastNode.
+          var firstElement = $isElementNode(firstNode) ? firstNode : firstNode.getParentOrThrow();
+          var lastElement = $isElementNode(lastNode) ? lastNode : lastNode.getParentOrThrow();
+          var lastElementChild = lastNode;
+
+          // If the last element is inline, we should instead look at getting
+          // the nodes of its parent, rather than itself. This behavior will
+          // then better match how text node insertions work. We will need to
+          // also update the last element's child accordingly as we do this.
+          if (!firstElement.is(lastElement) && lastElement.isInline()) {
+            // Keep traversing till we have a non-inline element parent.
+            do {
+              lastElementChild = lastElement;
+              lastElement = lastElement.getParentOrThrow();
+            } while (lastElement.isInline());
+          }
+
+          // Handle mutations to the last node.
+          if (endPoint.type === 'text' && (endOffset !== 0 || lastNode.getTextContent() === '') || endPoint.type === 'element' && lastNode.getIndexWithinParent() < endOffset) {
+            if ($isTextNode(lastNode) && !lastNode.isToken() && endOffset !== lastNode.getTextContentSize()) {
+              if (lastNode.isSegmented()) {
+                var _textNode4 = $createTextNode(lastNode.getTextContent());
+                lastNode.replace(_textNode4);
+                lastNode = _textNode4;
+              }
+              // root node selections only select whole nodes, so no text splice is necessary
+              if (!$isRootNode(endPoint.getNode()) && endPoint.type === 'text') {
+                lastNode = lastNode.spliceText(0, endOffset, '');
+              }
+              markedNodeKeysForKeep.add(lastNode.__key);
+            } else {
+              var _lastNodeParent = lastNode.getParentOrThrow();
+              if (!_lastNodeParent.canBeEmpty() && _lastNodeParent.getChildrenSize() === 1) {
+                _lastNodeParent.remove();
               } else {
-                this.format = firstNodeFormat;
-                this.style = firstNodeStyle;
+                lastNode.remove();
               }
             }
           } else {
-            var markedNodeKeysForKeep = new Set(
-              [].concat(
-                _toConsumableArray(firstNode.getParentKeys()),
-                _toConsumableArray(lastNode.getParentKeys())
-              )
-            );
+            markedNodeKeysForKeep.add(lastNode.__key);
+          }
 
-            // We have to get the parent elements before the next section,
-            // as in that section we might mutate the lastNode.
-            var firstElement = $isElementNode(firstNode)
-              ? firstNode
-              : firstNode.getParentOrThrow();
-            var lastElement = $isElementNode(lastNode)
-              ? lastNode
-              : lastNode.getParentOrThrow();
-            var lastElementChild = lastNode;
+          // Either move the remaining nodes of the last parent to after
+          // the first child, or remove them entirely. If the last parent
+          // is the same as the first parent, this logic also works.
+          var lastNodeChildren = lastElement.getChildren();
+          var selectedNodesSet = new Set(selectedNodes);
+          var firstAndLastElementsAreEqual = firstElement.is(lastElement);
 
-            // If the last element is inline, we should instead look at getting
-            // the nodes of its parent, rather than itself. This behavior will
-            // then better match how text node insertions work. We will need to
-            // also update the last element's child accordingly as we do this.
-            if (!firstElement.is(lastElement) && lastElement.isInline()) {
-              // Keep traversing till we have a non-inline element parent.
-              do {
-                lastElementChild = lastElement;
-                lastElement = lastElement.getParentOrThrow();
-              } while (lastElement.isInline());
+          // We choose a target to insert all nodes after. In the case of having
+          // and inline starting parent element with a starting node that has no
+          // siblings, we should insert after the starting parent element, otherwise
+          // we will incorrectly merge into the starting parent element.
+          // TODO: should we keep on traversing parents if we're inside another
+          // nested inline element?
+          var insertionTarget = firstElement.isInline() && firstNode.getNextSibling() === null ? firstElement : firstNode;
+          for (var i = lastNodeChildren.length - 1; i >= 0; i--) {
+            var lastNodeChild = lastNodeChildren[i];
+            if (lastNodeChild.is(firstNode) || $isElementNode(lastNodeChild) && lastNodeChild.isParentOf(firstNode)) {
+              break;
             }
-
-            // Handle mutations to the last node.
-            if (
-              (endPoint.type === "text" &&
-                (endOffset !== 0 || lastNode.getTextContent() === "")) ||
-              (endPoint.type === "element" &&
-                lastNode.getIndexWithinParent() < endOffset)
-            ) {
-              if (
-                $isTextNode(lastNode) &&
-                !lastNode.isToken() &&
-                endOffset !== lastNode.getTextContentSize()
-              ) {
-                if (lastNode.isSegmented()) {
-                  var _textNode4 = $createTextNode(lastNode.getTextContent());
-                  lastNode.replace(_textNode4);
-                  lastNode = _textNode4;
+            if (lastNodeChild.isAttached()) {
+              if (!selectedNodesSet.has(lastNodeChild) || lastNodeChild.is(lastElementChild)) {
+                if (!firstAndLastElementsAreEqual) {
+                  insertionTarget.insertAfter(lastNodeChild, false);
                 }
-                // root node selections only select whole nodes, so no text splice is necessary
-                if (
-                  !$isRootNode(endPoint.getNode()) &&
-                  endPoint.type === "text"
-                ) {
-                  lastNode = lastNode.spliceText(0, endOffset, "");
-                }
-                markedNodeKeysForKeep.add(lastNode.__key);
               } else {
-                var _lastNodeParent = lastNode.getParentOrThrow();
-                if (
-                  !_lastNodeParent.canBeEmpty() &&
-                  _lastNodeParent.getChildrenSize() === 1
-                ) {
-                  _lastNodeParent.remove();
-                } else {
-                  lastNode.remove();
-                }
-              }
-            } else {
-              markedNodeKeysForKeep.add(lastNode.__key);
-            }
-
-            // Either move the remaining nodes of the last parent to after
-            // the first child, or remove them entirely. If the last parent
-            // is the same as the first parent, this logic also works.
-            var lastNodeChildren = lastElement.getChildren();
-            var selectedNodesSet = new Set(selectedNodes);
-            var firstAndLastElementsAreEqual = firstElement.is(lastElement);
-
-            // We choose a target to insert all nodes after. In the case of having
-            // and inline starting parent element with a starting node that has no
-            // siblings, we should insert after the starting parent element, otherwise
-            // we will incorrectly merge into the starting parent element.
-            // TODO: should we keep on traversing parents if we're inside another
-            // nested inline element?
-            var insertionTarget =
-              firstElement.isInline() && firstNode.getNextSibling() === null
-                ? firstElement
-                : firstNode;
-            for (var i = lastNodeChildren.length - 1; i >= 0; i--) {
-              var lastNodeChild = lastNodeChildren[i];
-              if (
-                lastNodeChild.is(firstNode) ||
-                ($isElementNode(lastNodeChild) &&
-                  lastNodeChild.isParentOf(firstNode))
-              ) {
-                break;
-              }
-              if (lastNodeChild.isAttached()) {
-                if (
-                  !selectedNodesSet.has(lastNodeChild) ||
-                  lastNodeChild.is(lastElementChild)
-                ) {
-                  if (!firstAndLastElementsAreEqual) {
-                    insertionTarget.insertAfter(lastNodeChild, false);
-                  }
-                } else {
-                  lastNodeChild.remove();
-                }
-              }
-            }
-            if (!firstAndLastElementsAreEqual) {
-              // Check if we have already moved out all the nodes of the
-              // last parent, and if so, traverse the parent tree and mark
-              // them all as being able to deleted too.
-              var parent = lastElement;
-              var lastRemovedParent = null;
-              while (parent !== null) {
-                var children = parent.getChildren();
-                var childrenLength = children.length;
-                if (
-                  childrenLength === 0 ||
-                  children[childrenLength - 1].is(lastRemovedParent)
-                ) {
-                  markedNodeKeysForKeep["delete"](parent.__key);
-                  lastRemovedParent = parent;
-                }
-                parent = parent.getParent();
-              }
-            }
-
-            // Ensure we do splicing after moving of nodes, as splicing
-            // can have side-effects (in the case of hashtags).
-            if (!firstNode.isToken()) {
-              firstNode = firstNode.spliceText(
-                startOffset,
-                firstNodeTextLength - startOffset,
-                text,
-                true
-              );
-              if (firstNode.getTextContent() === "") {
-                firstNode.remove();
-              } else if (
-                firstNode.isComposing() &&
-                this.anchor.type === "text"
-              ) {
-                // When composing, we need to adjust the anchor offset so that
-                // we correctly replace that right range.
-                this.anchor.offset -= text.length;
-              }
-            } else if (startOffset === firstNodeTextLength) {
-              firstNode.select();
-            } else {
-              var _textNode5 = $createTextNode(text);
-              _textNode5.select();
-              firstNode.replace(_textNode5);
-            }
-
-            // Remove all selected nodes that haven't already been removed.
-            for (var _i6 = 1; _i6 < selectedNodesLength; _i6++) {
-              var selectedNode = selectedNodes[_i6];
-              var key = selectedNode.__key;
-              if (!markedNodeKeysForKeep.has(key)) {
-                selectedNode.remove();
+                lastNodeChild.remove();
               }
             }
           }
-        },
+          if (!firstAndLastElementsAreEqual) {
+            // Check if we have already moved out all the nodes of the
+            // last parent, and if so, traverse the parent tree and mark
+            // them all as being able to deleted too.
+            var parent = lastElement;
+            var lastRemovedParent = null;
+            while (parent !== null) {
+              var children = parent.getChildren();
+              var childrenLength = children.length;
+              if (childrenLength === 0 || children[childrenLength - 1].is(lastRemovedParent)) {
+                markedNodeKeysForKeep["delete"](parent.__key);
+                lastRemovedParent = parent;
+              }
+              parent = parent.getParent();
+            }
+          }
 
-        /**
-         * Removes the text in the Selection, adjusting the EditorState accordingly.
-         */
-      },
-      {
-        key: "removeText",
-        value: function removeText() {
-          this.insertText("");
-        },
+          // Ensure we do splicing after moving of nodes, as splicing
+          // can have side-effects (in the case of hashtags).
+          if (!firstNode.isToken()) {
+            firstNode = firstNode.spliceText(startOffset, firstNodeTextLength - startOffset, text, true);
+            if (firstNode.getTextContent() === '') {
+              firstNode.remove();
+            } else if (firstNode.isComposing() && this.anchor.type === 'text') {
+              // When composing, we need to adjust the anchor offset so that
+              // we correctly replace that right range.
+              this.anchor.offset -= text.length;
+            }
+          } else if (startOffset === firstNodeTextLength) {
+            firstNode.select();
+          } else {
+            var _textNode5 = $createTextNode(text);
+            _textNode5.select();
+            firstNode.replace(_textNode5);
+          }
 
-        /**
-         * Applies the provided format to the TextNodes in the Selection, splitting or
-         * merging nodes as necessary.
-         *
-         * @param formatType the format type to apply to the nodes in the Selection.
-         */
-      },
-      {
-        key: "formatText",
-        value: function formatText(formatType) {
-          if (this.isCollapsed()) {
-            this.toggleFormat(formatType);
-            // When changing format, we should stop composition
-            $setCompositionKey(null);
+          // Remove all selected nodes that haven't already been removed.
+          for (var _i6 = 1; _i6 < selectedNodesLength; _i6++) {
+            var selectedNode = selectedNodes[_i6];
+            var key = selectedNode.__key;
+            if (!markedNodeKeysForKeep.has(key)) {
+              selectedNode.remove();
+            }
+          }
+        }
+      }
+
+      /**
+       * Removes the text in the Selection, adjusting the EditorState accordingly.
+       */
+    }, {
+      key: "removeText",
+      value: function removeText() {
+        this.insertText('');
+      }
+
+      /**
+       * Applies the provided format to the TextNodes in the Selection, splitting or
+       * merging nodes as necessary.
+       *
+       * @param formatType the format type to apply to the nodes in the Selection.
+       */
+    }, {
+      key: "formatText",
+      value: function formatText(formatType) {
+        if (this.isCollapsed()) {
+          this.toggleFormat(formatType);
+          // When changing format, we should stop composition
+          $setCompositionKey(null);
+          return;
+        }
+        var selectedNodes = this.getNodes();
+        var selectedTextNodes = [];
+        var _iterator8 = _createForOfIteratorHelper(selectedNodes),
+          _step8;
+        try {
+          for (_iterator8.s(); !(_step8 = _iterator8.n()).done;) {
+            var selectedNode = _step8.value;
+            if ($isTextNode(selectedNode)) {
+              selectedTextNodes.push(selectedNode);
+            }
+          }
+        } catch (err) {
+          _iterator8.e(err);
+        } finally {
+          _iterator8.f();
+        }
+        var selectedTextNodesLength = selectedTextNodes.length;
+        if (selectedTextNodesLength === 0) {
+          this.toggleFormat(formatType);
+          // When changing format, we should stop composition
+          $setCompositionKey(null);
+          return;
+        }
+        var anchor = this.anchor;
+        var focus = this.focus;
+        var isBackward = this.isBackward();
+        var startPoint = isBackward ? focus : anchor;
+        var endPoint = isBackward ? anchor : focus;
+        var firstIndex = 0;
+        var firstNode = selectedTextNodes[0];
+        var startOffset = startPoint.type === 'element' ? 0 : startPoint.offset;
+
+        // In case selection started at the end of text node use next text node
+        if (startPoint.type === 'text' && startOffset === firstNode.getTextContentSize()) {
+          firstIndex = 1;
+          firstNode = selectedTextNodes[1];
+          startOffset = 0;
+        }
+        if (firstNode == null) {
+          return;
+        }
+        var firstNextFormat = firstNode.getFormatFlags(formatType, null);
+        var lastIndex = selectedTextNodesLength - 1;
+        var lastNode = selectedTextNodes[lastIndex];
+        var endOffset = endPoint.type === 'text' ? endPoint.offset : lastNode.getTextContentSize();
+
+        // Single node selected
+        if (firstNode.is(lastNode)) {
+          // No actual text is selected, so do nothing.
+          if (startOffset === endOffset) {
             return;
           }
-          var selectedNodes = this.getNodes();
-          var selectedTextNodes = [];
-          var _iterator8 = _createForOfIteratorHelper(selectedNodes),
-            _step8;
-          try {
-            for (_iterator8.s(); !(_step8 = _iterator8.n()).done; ) {
-              var selectedNode = _step8.value;
-              if ($isTextNode(selectedNode)) {
-                selectedTextNodes.push(selectedNode);
-              }
+          // The entire node is selected or it is token, so just format it
+          if ($isTokenOrSegmented(firstNode) || startOffset === 0 && endOffset === firstNode.getTextContentSize()) {
+            firstNode.setFormat(firstNextFormat);
+          } else {
+            // Node is partially selected, so split it into two nodes
+            // add style the selected one.
+            var splitNodes = firstNode.splitText(startOffset, endOffset);
+            var replacement = startOffset === 0 ? splitNodes[0] : splitNodes[1];
+            replacement.setFormat(firstNextFormat);
+
+            // Update selection only if starts/ends on text node
+            if (startPoint.type === 'text') {
+              startPoint.set(replacement.__key, 0, 'text');
             }
-          } catch (err) {
-            _iterator8.e(err);
-          } finally {
-            _iterator8.f();
-          }
-          var selectedTextNodesLength = selectedTextNodes.length;
-          if (selectedTextNodesLength === 0) {
-            this.toggleFormat(formatType);
-            // When changing format, we should stop composition
-            $setCompositionKey(null);
-            return;
-          }
-          var anchor = this.anchor;
-          var focus = this.focus;
-          var isBackward = this.isBackward();
-          var startPoint = isBackward ? focus : anchor;
-          var endPoint = isBackward ? anchor : focus;
-          var firstIndex = 0;
-          var firstNode = selectedTextNodes[0];
-          var startOffset =
-            startPoint.type === "element" ? 0 : startPoint.offset;
-
-          // In case selection started at the end of text node use next text node
-          if (
-            startPoint.type === "text" &&
-            startOffset === firstNode.getTextContentSize()
-          ) {
-            firstIndex = 1;
-            firstNode = selectedTextNodes[1];
-            startOffset = 0;
-          }
-          if (firstNode == null) {
-            return;
-          }
-          var firstNextFormat = firstNode.getFormatFlags(formatType, null);
-          var lastIndex = selectedTextNodesLength - 1;
-          var lastNode = selectedTextNodes[lastIndex];
-          var endOffset =
-            endPoint.type === "text"
-              ? endPoint.offset
-              : lastNode.getTextContentSize();
-
-          // Single node selected
-          if (firstNode.is(lastNode)) {
-            // No actual text is selected, so do nothing.
-            if (startOffset === endOffset) {
-              return;
+            if (endPoint.type === 'text') {
+              endPoint.set(replacement.__key, endOffset - startOffset, 'text');
             }
-            // The entire node is selected or it is token, so just format it
-            if (
-              $isTokenOrSegmented(firstNode) ||
-              (startOffset === 0 &&
-                endOffset === firstNode.getTextContentSize())
-            ) {
-              firstNode.setFormat(firstNextFormat);
-            } else {
-              // Node is partially selected, so split it into two nodes
-              // add style the selected one.
-              var splitNodes = firstNode.splitText(startOffset, endOffset);
-              var replacement =
-                startOffset === 0 ? splitNodes[0] : splitNodes[1];
-              replacement.setFormat(firstNextFormat);
+          }
+          this.format = firstNextFormat;
+          return;
+        }
+        // Multiple nodes selected
+        // The entire first node isn't selected, so split it
+        if (startOffset !== 0 && !$isTokenOrSegmented(firstNode)) {
+          var _firstNode$splitText3 = firstNode.splitText(startOffset);
+          var _firstNode$splitText4 = _slicedToArray(_firstNode$splitText3, 2);
+          firstNode = _firstNode$splitText4[1];
+          startOffset = 0;
+        }
+        firstNode.setFormat(firstNextFormat);
+        var lastNextFormat = lastNode.getFormatFlags(formatType, firstNextFormat);
+        // If the offset is 0, it means no actual characters are selected,
+        // so we skip formatting the last node altogether.
+        if (endOffset > 0) {
+          if (endOffset !== lastNode.getTextContentSize() && !$isTokenOrSegmented(lastNode)) {
+            var _lastNode$splitText = lastNode.splitText(endOffset);
+            var _lastNode$splitText2 = _slicedToArray(_lastNode$splitText, 1);
+            lastNode = _lastNode$splitText2[0];
+          }
+          lastNode.setFormat(lastNextFormat);
+        }
 
-              // Update selection only if starts/ends on text node
-              if (startPoint.type === "text") {
-                startPoint.set(replacement.__key, 0, "text");
-              }
-              if (endPoint.type === "text") {
-                endPoint.set(
-                  replacement.__key,
-                  endOffset - startOffset,
-                  "text"
-                );
-              }
-            }
-            this.format = firstNextFormat;
-            return;
-          }
-          // Multiple nodes selected
-          // The entire first node isn't selected, so split it
-          if (startOffset !== 0 && !$isTokenOrSegmented(firstNode)) {
-            var _firstNode$splitText3 = firstNode.splitText(startOffset);
-            var _firstNode$splitText4 = _slicedToArray(
-              _firstNode$splitText3,
-              2
-            );
-            firstNode = _firstNode$splitText4[1];
-            startOffset = 0;
-          }
-          firstNode.setFormat(firstNextFormat);
-          var lastNextFormat = lastNode.getFormatFlags(
-            formatType,
-            firstNextFormat
-          );
-          // If the offset is 0, it means no actual characters are selected,
-          // so we skip formatting the last node altogether.
-          if (endOffset > 0) {
-            if (
-              endOffset !== lastNode.getTextContentSize() &&
-              !$isTokenOrSegmented(lastNode)
-            ) {
-              var _lastNode$splitText = lastNode.splitText(endOffset);
-              var _lastNode$splitText2 = _slicedToArray(_lastNode$splitText, 1);
-              lastNode = _lastNode$splitText2[0];
-            }
-            lastNode.setFormat(lastNextFormat);
-          }
+        // Process all text nodes in between
+        for (var i = firstIndex + 1; i < lastIndex; i++) {
+          var textNode = selectedTextNodes[i];
+          var nextFormat = textNode.getFormatFlags(formatType, lastNextFormat);
+          textNode.setFormat(nextFormat);
+        }
 
-          // Process all text nodes in between
-          for (var i = firstIndex + 1; i < lastIndex; i++) {
-            var textNode = selectedTextNodes[i];
-            var nextFormat = textNode.getFormatFlags(
-              formatType,
-              lastNextFormat
-            );
-            textNode.setFormat(nextFormat);
-          }
+        // Update selection only if starts/ends on text node
+        if (startPoint.type === 'text') {
+          startPoint.set(firstNode.__key, startOffset, 'text');
+        }
+        if (endPoint.type === 'text') {
+          endPoint.set(lastNode.__key, endOffset, 'text');
+        }
+        this.format = firstNextFormat | lastNextFormat;
+      }
 
-          // Update selection only if starts/ends on text node
-          if (startPoint.type === "text") {
-            startPoint.set(firstNode.__key, startOffset, "text");
+      /**
+       * Attempts to "intelligently" insert an arbitrary list of Lexical nodes into the EditorState at the
+       * current Selection according to a set of heuristics that determine how surrounding nodes
+       * should be changed, replaced, or moved to accomodate the incoming ones.
+       *
+       * @param nodes - the nodes to insert
+       */
+    }, {
+      key: "insertNodes",
+      value: function insertNodes(nodes) {
+        if (nodes.length === 0) {
+          return;
+        }
+        if (this.anchor.key === 'root') {
+          this.insertParagraph();
+          var selection = $getSelection();
+          if (!$isRangeSelection(selection)) {
+            throw Error("Expected RangeSelection after insertParagraph");
           }
-          if (endPoint.type === "text") {
-            endPoint.set(lastNode.__key, endOffset, "text");
-          }
-          this.format = firstNextFormat | lastNextFormat;
-        },
+          return selection.insertNodes(nodes);
+        }
+        var firstPoint = this.isBackward() ? this.focus : this.anchor;
+        var firstBlock = $getAncestor(firstPoint.getNode(), INTERNAL_$isBlock);
+        var last = nodes[nodes.length - 1];
 
-        /**
-         * Attempts to "intelligently" insert an arbitrary list of Lexical nodes into the EditorState at the
-         * current Selection according to a set of heuristics that determine how surrounding nodes
-         * should be changed, replaced, or moved to accomodate the incoming ones.
-         *
-         * @param nodes - the nodes to insert
-         */
-      },
-      {
-        key: "insertNodes",
-        value: function insertNodes(nodes) {
-          if (nodes.length === 0) {
-            return;
-          }
-          if (this.anchor.key === "root") {
-            this.insertParagraph();
-            var selection = $getSelection();
-            if (!$isRangeSelection(selection)) {
-              throw Error("Expected RangeSelection after insertParagraph");
-            }
-            return selection.insertNodes(nodes);
-          }
-          var firstPoint = this.isBackward() ? this.focus : this.anchor;
-          var firstBlock = $getAncestor(
-            firstPoint.getNode(),
-            INTERNAL_$isBlock
-          );
-          var last = nodes[nodes.length - 1];
-
-          // CASE 1: insert inside a code block
-          if ("__language" in firstBlock && $isElementNode(firstBlock)) {
-            if ("__language" in nodes[0]) {
-              this.insertText(nodes[0].getTextContent());
-            } else {
-              var index = $removeTextAndSplitBlock(this);
-              firstBlock.splice(index, 0, nodes);
-              last.selectEnd();
-            }
-            return;
-          }
-
-          // CASE 2: All elements of the array are inline
-          var notInline = function notInline(node) {
-            return (
-              ($isElementNode(node) || $isDecoratorNode(node)) &&
-              !node.isInline()
-            );
-          };
-          if (!nodes.some(notInline)) {
-            if (!$isElementNode(firstBlock)) {
-              throw Error("Expected 'firstBlock' to be an ElementNode");
-            }
-            var _index = $removeTextAndSplitBlock(this);
-            firstBlock.splice(_index, 0, nodes);
+        // CASE 1: insert inside a code block
+        if ('__language' in firstBlock && $isElementNode(firstBlock)) {
+          if ('__language' in nodes[0]) {
+            this.insertText(nodes[0].getTextContent());
+          } else {
+            var index = $removeTextAndSplitBlock(this);
+            firstBlock.splice(index, 0, nodes);
             last.selectEnd();
+          }
+          return;
+        }
+
+        // CASE 2: All elements of the array are inline
+        var notInline = function notInline(node) {
+          return ($isElementNode(node) || $isDecoratorNode(node)) && !node.isInline();
+        };
+        if (!nodes.some(notInline)) {
+          if (!$isElementNode(firstBlock)) {
+            throw Error("Expected 'firstBlock' to be an ElementNode");
+          }
+          var _index = $removeTextAndSplitBlock(this);
+          firstBlock.splice(_index, 0, nodes);
+          last.selectEnd();
+          return;
+        }
+
+        // CASE 3: At least 1 element of the array is not inline
+        var blocksParent = $wrapInlineNodes(nodes);
+        var nodeToSelect = blocksParent.getLastDescendant();
+        var blocks = blocksParent.getChildren();
+        var isLI = function isLI(node) {
+          return '__value' in node && '__checked' in node;
+        };
+        var isMergeable = function isMergeable(node) {
+          return $isElementNode(node) && INTERNAL_$isBlock(node) && !node.isEmpty() && $isElementNode(firstBlock) && (!firstBlock.isEmpty() || isLI(firstBlock));
+        };
+        var shouldInsert = !$isElementNode(firstBlock) || !firstBlock.isEmpty();
+        var insertedParagraph = shouldInsert ? this.insertParagraph() : null;
+        var lastToInsert = blocks[blocks.length - 1];
+        var firstToInsert = blocks[0];
+        if (isMergeable(firstToInsert)) {
+          if (!$isElementNode(firstBlock)) {
+            throw Error("Expected 'firstBlock' to be an ElementNode");
+          }
+          firstBlock.append.apply(firstBlock, _toConsumableArray(firstToInsert.getChildren()));
+          firstToInsert = blocks[1];
+        }
+        if (firstToInsert) {
+          insertRangeAfter(firstBlock, firstToInsert);
+        }
+        var lastInsertedBlock = $getAncestor(nodeToSelect, INTERNAL_$isBlock);
+        if (insertedParagraph && $isElementNode(lastInsertedBlock) && (isLI(insertedParagraph) || INTERNAL_$isBlock(lastToInsert))) {
+          lastInsertedBlock.append.apply(lastInsertedBlock, _toConsumableArray(insertedParagraph.getChildren()));
+          insertedParagraph.remove();
+        }
+        if ($isElementNode(firstBlock) && firstBlock.isEmpty()) {
+          firstBlock.remove();
+        }
+        nodeToSelect.selectEnd();
+
+        // To understand this take a look at the test "can wrap post-linebreak nodes into new element"
+        var lastChild = $isElementNode(firstBlock) ? firstBlock.getLastChild() : null;
+        if ($isLineBreakNode(lastChild) && lastInsertedBlock !== firstBlock) {
+          lastChild.remove();
+        }
+      }
+
+      /**
+       * Inserts a new ParagraphNode into the EditorState at the current Selection
+       *
+       * @returns the newly inserted node.
+       */
+    }, {
+      key: "insertParagraph",
+      value: function insertParagraph() {
+        if (this.anchor.key === 'root') {
+          var paragraph = $createParagraphNode();
+          $getRoot().splice(this.anchor.offset, 0, [paragraph]);
+          paragraph.select();
+          return paragraph;
+        }
+        var index = $removeTextAndSplitBlock(this);
+        var block = $getAncestor(this.anchor.getNode(), INTERNAL_$isBlock);
+        if (!$isElementNode(block)) {
+          throw Error("Expected ancestor to be an ElementNode");
+        }
+        var firstToAppend = block.getChildAtIndex(index);
+        var nodesToInsert = firstToAppend ? [firstToAppend].concat(_toConsumableArray(firstToAppend.getNextSiblings())) : [];
+        var newBlock = block.insertNewAfter(this, false);
+        if (newBlock) {
+          newBlock.append.apply(newBlock, _toConsumableArray(nodesToInsert));
+          newBlock.selectStart();
+          return newBlock;
+        }
+        // if newBlock is null, it means that block is of type CodeNode.
+        return null;
+      }
+
+      /**
+       * Inserts a logical linebreak, which may be a new LineBreakNode or a new ParagraphNode, into the EditorState at the
+       * current Selection.
+       */
+    }, {
+      key: "insertLineBreak",
+      value: function insertLineBreak(selectStart) {
+        var lineBreak = $createLineBreakNode();
+        this.insertNodes([lineBreak]);
+        // this is used in MacOS with the command 'ctrl-O' (openLineBreak)
+        if (selectStart) {
+          var parent = lineBreak.getParentOrThrow();
+          var index = lineBreak.getIndexWithinParent();
+          parent.select(index, index);
+        }
+      }
+
+      /**
+       * Extracts the nodes in the Selection, splitting nodes where necessary
+       * to get offset-level precision.
+       *
+       * @returns The nodes in the Selection
+       */
+    }, {
+      key: "extract",
+      value: function extract() {
+        var selectedNodes = this.getNodes();
+        var selectedNodesLength = selectedNodes.length;
+        var lastIndex = selectedNodesLength - 1;
+        var anchor = this.anchor;
+        var focus = this.focus;
+        var firstNode = selectedNodes[0];
+        var lastNode = selectedNodes[lastIndex];
+        var _$getCharacterOffsets3 = $getCharacterOffsets(this),
+          _$getCharacterOffsets4 = _slicedToArray(_$getCharacterOffsets3, 2),
+          anchorOffset = _$getCharacterOffsets4[0],
+          focusOffset = _$getCharacterOffsets4[1];
+        if (selectedNodesLength === 0) {
+          return [];
+        } else if (selectedNodesLength === 1) {
+          if ($isTextNode(firstNode) && !this.isCollapsed()) {
+            var startOffset = anchorOffset > focusOffset ? focusOffset : anchorOffset;
+            var endOffset = anchorOffset > focusOffset ? anchorOffset : focusOffset;
+            var splitNodes = firstNode.splitText(startOffset, endOffset);
+            var node = startOffset === 0 ? splitNodes[0] : splitNodes[1];
+            return node != null ? [node] : [];
+          }
+          return [firstNode];
+        }
+        var isBefore = anchor.isBefore(focus);
+        if ($isTextNode(firstNode)) {
+          var _startOffset = isBefore ? anchorOffset : focusOffset;
+          if (_startOffset === firstNode.getTextContentSize()) {
+            selectedNodes.shift();
+          } else if (_startOffset !== 0) {
+            var _firstNode$splitText5 = firstNode.splitText(_startOffset);
+            var _firstNode$splitText6 = _slicedToArray(_firstNode$splitText5, 2);
+            firstNode = _firstNode$splitText6[1];
+            selectedNodes[0] = firstNode;
+          }
+        }
+        if ($isTextNode(lastNode)) {
+          var lastNodeText = lastNode.getTextContent();
+          var lastNodeTextLength = lastNodeText.length;
+          var _endOffset = isBefore ? focusOffset : anchorOffset;
+          if (_endOffset === 0) {
+            selectedNodes.pop();
+          } else if (_endOffset !== lastNodeTextLength) {
+            var _lastNode$splitText3 = lastNode.splitText(_endOffset);
+            var _lastNode$splitText4 = _slicedToArray(_lastNode$splitText3, 1);
+            lastNode = _lastNode$splitText4[0];
+            selectedNodes[lastIndex] = lastNode;
+          }
+        }
+        return selectedNodes;
+      }
+
+      /**
+       * Modifies the Selection according to the parameters and a set of heuristics that account for
+       * various node types. Can be used to safely move or extend selection by one logical "unit" without
+       * dealing explicitly with all the possible node types.
+       *
+       * @param alter the type of modification to perform
+       * @param isBackward whether or not selection is backwards
+       * @param granularity the granularity at which to apply the modification
+       */
+    }, {
+      key: "modify",
+      value: function modify(alter, isBackward, granularity) {
+        var focus = this.focus;
+        var anchor = this.anchor;
+        var collapse = alter === 'move';
+
+        // Handle the selection movement around decorators.
+        var possibleNode = $getAdjacentNode(focus, isBackward);
+        if ($isDecoratorNode(possibleNode) && !possibleNode.isIsolated()) {
+          // Make it possible to move selection from range selection to
+          // node selection on the node.
+          if (collapse && possibleNode.isKeyboardSelectable()) {
+            var nodeSelection = $createNodeSelection();
+            nodeSelection.add(possibleNode.__key);
+            $setSelection(nodeSelection);
+            return;
+          }
+          var sibling = isBackward ? possibleNode.getPreviousSibling() : possibleNode.getNextSibling();
+          if (!$isTextNode(sibling)) {
+            var parent = possibleNode.getParentOrThrow();
+            var offset;
+            var elementKey;
+            if ($isElementNode(sibling)) {
+              elementKey = sibling.__key;
+              offset = isBackward ? sibling.getChildrenSize() : 0;
+            } else {
+              offset = possibleNode.getIndexWithinParent();
+              elementKey = parent.__key;
+              if (!isBackward) {
+                offset++;
+              }
+            }
+            focus.set(elementKey, offset, 'element');
+            if (collapse) {
+              anchor.set(elementKey, offset, 'element');
+            }
+            return;
+          } else {
+            var siblingKey = sibling.__key;
+            var _offset = isBackward ? sibling.getTextContent().length : 0;
+            focus.set(siblingKey, _offset, 'text');
+            if (collapse) {
+              anchor.set(siblingKey, _offset, 'text');
+            }
+            return;
+          }
+        }
+        var editor = getActiveEditor();
+        var domSelection = getDOMSelection(editor._window);
+        if (!domSelection) {
+          return;
+        }
+        var blockCursorElement = editor._blockCursorElement;
+        var rootElement = editor._rootElement;
+        // Remove the block cursor element if it exists. This will ensure selection
+        // works as intended. If we leave it in the DOM all sorts of strange bugs
+        // occur. :/
+        if (rootElement !== null && blockCursorElement !== null && $isElementNode(possibleNode) && !possibleNode.isInline() && !possibleNode.canBeEmpty()) {
+          removeDOMBlockCursorElement(blockCursorElement, editor, rootElement);
+        }
+        // We use the DOM selection.modify API here to "tell" us what the selection
+        // will be. We then use it to update the Lexical selection accordingly. This
+        // is much more reliable than waiting for a beforeinput and using the ranges
+        // from getTargetRanges(), and is also better than trying to do it ourselves
+        // using Intl.Segmenter or other workarounds that struggle with word segments
+        // and line segments (especially with word wrapping and non-Roman languages).
+        moveNativeSelection(domSelection, alter, isBackward ? 'backward' : 'forward', granularity);
+        // Guard against no ranges
+        if (domSelection.rangeCount > 0) {
+          var range = domSelection.getRangeAt(0);
+          // Apply the DOM selection to our Lexical selection.
+          var anchorNode = this.anchor.getNode();
+          var root = $isRootNode(anchorNode) ? anchorNode : $getNearestRootOrShadowRoot(anchorNode);
+          this.applyDOMRange(range);
+          this.dirty = true;
+          if (!collapse) {
+            // Validate selection; make sure that the new extended selection respects shadow roots
+            var nodes = this.getNodes();
+            var validNodes = [];
+            var shrinkSelection = false;
+            for (var i = 0; i < nodes.length; i++) {
+              var nextNode = nodes[i];
+              if ($hasAncestor(nextNode, root)) {
+                validNodes.push(nextNode);
+              } else {
+                shrinkSelection = true;
+              }
+            }
+            if (shrinkSelection && validNodes.length > 0) {
+              // validNodes length check is a safeguard against an invalid selection; as getNodes()
+              // will return an empty array in this case
+              if (isBackward) {
+                var firstValidNode = validNodes[0];
+                if ($isElementNode(firstValidNode)) {
+                  firstValidNode.selectStart();
+                } else {
+                  firstValidNode.getParentOrThrow().selectStart();
+                }
+              } else {
+                var lastValidNode = validNodes[validNodes.length - 1];
+                if ($isElementNode(lastValidNode)) {
+                  lastValidNode.selectEnd();
+                } else {
+                  lastValidNode.getParentOrThrow().selectEnd();
+                }
+              }
+            }
+
+            // Because a range works on start and end, we might need to flip
+            // the anchor and focus points to match what the DOM has, not what
+            // the range has specifically.
+            if (domSelection.anchorNode !== range.startContainer || domSelection.anchorOffset !== range.startOffset) {
+              $swapPoints(this);
+            }
+          }
+        }
+      }
+      /**
+       * Helper for handling forward character and word deletion that prevents element nodes
+       * like a table, columns layout being destroyed
+       *
+       * @param anchor the anchor
+       * @param anchorNode the anchor node in the selection
+       * @param isBackward whether or not selection is backwards
+       */
+    }, {
+      key: "forwardDeletion",
+      value: function forwardDeletion(anchor, anchorNode, isBackward) {
+        if (!isBackward && (
+        // Delete forward handle case
+        anchor.type === 'element' && $isElementNode(anchorNode) && anchor.offset === anchorNode.getChildrenSize() || anchor.type === 'text' && anchor.offset === anchorNode.getTextContentSize())) {
+          var parent = anchorNode.getParent();
+          var nextSibling = anchorNode.getNextSibling() || (parent === null ? null : parent.getNextSibling());
+          if ($isElementNode(nextSibling) && nextSibling.isShadowRoot()) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      /**
+       * Performs one logical character deletion operation on the EditorState based on the current Selection.
+       * Handles different node types.
+       *
+       * @param isBackward whether or not the selection is backwards.
+       */
+    }, {
+      key: "deleteCharacter",
+      value: function deleteCharacter(isBackward) {
+        var wasCollapsed = this.isCollapsed();
+        if (this.isCollapsed()) {
+          var anchor = this.anchor;
+          var anchorNode = anchor.getNode();
+          if (this.forwardDeletion(anchor, anchorNode, isBackward)) {
             return;
           }
 
-          // CASE 3: At least 1 element of the array is not inline
-          var blocksParent = $wrapInlineNodes(nodes);
-          var nodeToSelect = blocksParent.getLastDescendant();
-          var blocks = blocksParent.getChildren();
-          var isLI = function isLI(node) {
-            return "__value" in node && "__checked" in node;
-          };
-          var isMergeable = function isMergeable(node) {
-            return (
-              $isElementNode(node) &&
-              INTERNAL_$isBlock(node) &&
-              !node.isEmpty() &&
-              $isElementNode(firstBlock) &&
-              (!firstBlock.isEmpty() || isLI(firstBlock))
-            );
-          };
-          var shouldInsert =
-            !$isElementNode(firstBlock) || !firstBlock.isEmpty();
-          var insertedParagraph = shouldInsert ? this.insertParagraph() : null;
-          var lastToInsert = blocks[blocks.length - 1];
-          var firstToInsert = blocks[0];
-          if (isMergeable(firstToInsert)) {
-            if (!$isElementNode(firstBlock)) {
-              throw Error("Expected 'firstBlock' to be an ElementNode");
-            }
-            firstBlock.append.apply(
-              firstBlock,
-              _toConsumableArray(firstToInsert.getChildren())
-            );
-            firstToInsert = blocks[1];
-          }
-          if (firstToInsert) {
-            insertRangeAfter(firstBlock, firstToInsert);
-          }
-          var lastInsertedBlock = $getAncestor(nodeToSelect, INTERNAL_$isBlock);
-          if (
-            insertedParagraph &&
-            $isElementNode(lastInsertedBlock) &&
-            (isLI(insertedParagraph) || INTERNAL_$isBlock(lastToInsert))
-          ) {
-            lastInsertedBlock.append.apply(
-              lastInsertedBlock,
-              _toConsumableArray(insertedParagraph.getChildren())
-            );
-            insertedParagraph.remove();
-          }
-          if ($isElementNode(firstBlock) && firstBlock.isEmpty()) {
-            firstBlock.remove();
-          }
-          nodeToSelect.selectEnd();
-
-          // To understand this take a look at the test "can wrap post-linebreak nodes into new element"
-          var lastChild = $isElementNode(firstBlock)
-            ? firstBlock.getLastChild()
-            : null;
-          if ($isLineBreakNode(lastChild) && lastInsertedBlock !== firstBlock) {
-            lastChild.remove();
-          }
-        },
-
-        /**
-         * Inserts a new ParagraphNode into the EditorState at the current Selection
-         *
-         * @returns the newly inserted node.
-         */
-      },
-      {
-        key: "insertParagraph",
-        value: function insertParagraph() {
-          if (this.anchor.key === "root") {
-            var paragraph = $createParagraphNode();
-            $getRoot().splice(this.anchor.offset, 0, [paragraph]);
-            paragraph.select();
-            return paragraph;
-          }
-          var index = $removeTextAndSplitBlock(this);
-          var block = $getAncestor(this.anchor.getNode(), INTERNAL_$isBlock);
-          if (!$isElementNode(block)) {
-            throw Error("Expected ancestor to be an ElementNode");
-          }
-          var firstToAppend = block.getChildAtIndex(index);
-          var nodesToInsert = firstToAppend
-            ? [firstToAppend].concat(
-                _toConsumableArray(firstToAppend.getNextSiblings())
-              )
-            : [];
-          var newBlock = block.insertNewAfter(this, false);
-          if (newBlock) {
-            newBlock.append.apply(newBlock, _toConsumableArray(nodesToInsert));
-            newBlock.selectStart();
-            return newBlock;
-          }
-          // if newBlock is null, it means that block is of type CodeNode.
-          return null;
-        },
-
-        /**
-         * Inserts a logical linebreak, which may be a new LineBreakNode or a new ParagraphNode, into the EditorState at the
-         * current Selection.
-         */
-      },
-      {
-        key: "insertLineBreak",
-        value: function insertLineBreak(selectStart) {
-          var lineBreak = $createLineBreakNode();
-          this.insertNodes([lineBreak]);
-          // this is used in MacOS with the command 'ctrl-O' (openLineBreak)
-          if (selectStart) {
-            var parent = lineBreak.getParentOrThrow();
-            var index = lineBreak.getIndexWithinParent();
-            parent.select(index, index);
-          }
-        },
-
-        /**
-         * Extracts the nodes in the Selection, splitting nodes where necessary
-         * to get offset-level precision.
-         *
-         * @returns The nodes in the Selection
-         */
-      },
-      {
-        key: "extract",
-        value: function extract() {
-          var selectedNodes = this.getNodes();
-          var selectedNodesLength = selectedNodes.length;
-          var lastIndex = selectedNodesLength - 1;
-          var anchor = this.anchor;
+          // Handle the deletion around decorators.
           var focus = this.focus;
-          var firstNode = selectedNodes[0];
-          var lastNode = selectedNodes[lastIndex];
-          var _$getCharacterOffsets3 = $getCharacterOffsets(this),
-            _$getCharacterOffsets4 = _slicedToArray(_$getCharacterOffsets3, 2),
-            anchorOffset = _$getCharacterOffsets4[0],
-            focusOffset = _$getCharacterOffsets4[1];
-          if (selectedNodesLength === 0) {
-            return [];
-          } else if (selectedNodesLength === 1) {
-            if ($isTextNode(firstNode) && !this.isCollapsed()) {
-              var startOffset =
-                anchorOffset > focusOffset ? focusOffset : anchorOffset;
-              var endOffset =
-                anchorOffset > focusOffset ? anchorOffset : focusOffset;
-              var splitNodes = firstNode.splitText(startOffset, endOffset);
-              var node = startOffset === 0 ? splitNodes[0] : splitNodes[1];
-              return node != null ? [node] : [];
-            }
-            return [firstNode];
-          }
-          var isBefore = anchor.isBefore(focus);
-          if ($isTextNode(firstNode)) {
-            var _startOffset = isBefore ? anchorOffset : focusOffset;
-            if (_startOffset === firstNode.getTextContentSize()) {
-              selectedNodes.shift();
-            } else if (_startOffset !== 0) {
-              var _firstNode$splitText5 = firstNode.splitText(_startOffset);
-              var _firstNode$splitText6 = _slicedToArray(
-                _firstNode$splitText5,
-                2
-              );
-              firstNode = _firstNode$splitText6[1];
-              selectedNodes[0] = firstNode;
-            }
-          }
-          if ($isTextNode(lastNode)) {
-            var lastNodeText = lastNode.getTextContent();
-            var lastNodeTextLength = lastNodeText.length;
-            var _endOffset = isBefore ? focusOffset : anchorOffset;
-            if (_endOffset === 0) {
-              selectedNodes.pop();
-            } else if (_endOffset !== lastNodeTextLength) {
-              var _lastNode$splitText3 = lastNode.splitText(_endOffset);
-              var _lastNode$splitText4 = _slicedToArray(
-                _lastNode$splitText3,
-                1
-              );
-              lastNode = _lastNode$splitText4[0];
-              selectedNodes[lastIndex] = lastNode;
-            }
-          }
-          return selectedNodes;
-        },
-
-        /**
-         * Modifies the Selection according to the parameters and a set of heuristics that account for
-         * various node types. Can be used to safely move or extend selection by one logical "unit" without
-         * dealing explicitly with all the possible node types.
-         *
-         * @param alter the type of modification to perform
-         * @param isBackward whether or not selection is backwards
-         * @param granularity the granularity at which to apply the modification
-         */
-      },
-      {
-        key: "modify",
-        value: function modify(alter, isBackward, granularity) {
-          var focus = this.focus;
-          var anchor = this.anchor;
-          var collapse = alter === "move";
-
-          // Handle the selection movement around decorators.
           var possibleNode = $getAdjacentNode(focus, isBackward);
           if ($isDecoratorNode(possibleNode) && !possibleNode.isIsolated()) {
             // Make it possible to move selection from range selection to
             // node selection on the node.
-            if (collapse && possibleNode.isKeyboardSelectable()) {
+            if (possibleNode.isKeyboardSelectable() && $isElementNode(anchorNode) && anchorNode.getChildrenSize() === 0) {
+              anchorNode.remove();
               var nodeSelection = $createNodeSelection();
               nodeSelection.add(possibleNode.__key);
               $setSelection(nodeSelection);
-              return;
-            }
-            var sibling = isBackward
-              ? possibleNode.getPreviousSibling()
-              : possibleNode.getNextSibling();
-            if (!$isTextNode(sibling)) {
-              var parent = possibleNode.getParentOrThrow();
-              var offset;
-              var elementKey;
-              if ($isElementNode(sibling)) {
-                elementKey = sibling.__key;
-                offset = isBackward ? sibling.getChildrenSize() : 0;
-              } else {
-                offset = possibleNode.getIndexWithinParent();
-                elementKey = parent.__key;
-                if (!isBackward) {
-                  offset++;
-                }
-              }
-              focus.set(elementKey, offset, "element");
-              if (collapse) {
-                anchor.set(elementKey, offset, "element");
-              }
-              return;
             } else {
-              var siblingKey = sibling.__key;
-              var _offset = isBackward ? sibling.getTextContent().length : 0;
-              focus.set(siblingKey, _offset, "text");
-              if (collapse) {
-                anchor.set(siblingKey, _offset, "text");
-              }
-              return;
+              possibleNode.remove();
+              var editor = getActiveEditor();
+              editor.dispatchCommand(SELECTION_CHANGE_COMMAND, undefined);
             }
-          }
-          var editor = getActiveEditor();
-          var domSelection = getDOMSelection(editor._window);
-          if (!domSelection) {
+            return;
+          } else if (!isBackward && $isElementNode(possibleNode) && $isElementNode(anchorNode) && anchorNode.isEmpty()) {
+            anchorNode.remove();
+            possibleNode.selectStart();
             return;
           }
-          var blockCursorElement = editor._blockCursorElement;
-          var rootElement = editor._rootElement;
-          // Remove the block cursor element if it exists. This will ensure selection
-          // works as intended. If we leave it in the DOM all sorts of strange bugs
-          // occur. :/
-          if (
-            rootElement !== null &&
-            blockCursorElement !== null &&
-            $isElementNode(possibleNode) &&
-            !possibleNode.isInline() &&
-            !possibleNode.canBeEmpty()
-          ) {
-            removeDOMBlockCursorElement(
-              blockCursorElement,
-              editor,
-              rootElement
-            );
-          }
-          // We use the DOM selection.modify API here to "tell" us what the selection
-          // will be. We then use it to update the Lexical selection accordingly. This
-          // is much more reliable than waiting for a beforeinput and using the ranges
-          // from getTargetRanges(), and is also better than trying to do it ourselves
-          // using Intl.Segmenter or other workarounds that struggle with word segments
-          // and line segments (especially with word wrapping and non-Roman languages).
-          moveNativeSelection(
-            domSelection,
-            alter,
-            isBackward ? "backward" : "forward",
-            granularity
-          );
-          // Guard against no ranges
-          if (domSelection.rangeCount > 0) {
-            var range = domSelection.getRangeAt(0);
-            // Apply the DOM selection to our Lexical selection.
-            var anchorNode = this.anchor.getNode();
-            var root = $isRootNode(anchorNode)
-              ? anchorNode
-              : $getNearestRootOrShadowRoot(anchorNode);
-            this.applyDOMRange(range);
-            this.dirty = true;
-            if (!collapse) {
-              // Validate selection; make sure that the new extended selection respects shadow roots
-              var nodes = this.getNodes();
-              var validNodes = [];
-              var shrinkSelection = false;
-              for (var i = 0; i < nodes.length; i++) {
-                var nextNode = nodes[i];
-                if ($hasAncestor(nextNode, root)) {
-                  validNodes.push(nextNode);
-                } else {
-                  shrinkSelection = true;
-                }
+          this.modify('extend', isBackward, 'character');
+          if (!this.isCollapsed()) {
+            var focusNode = focus.type === 'text' ? focus.getNode() : null;
+            anchorNode = anchor.type === 'text' ? anchor.getNode() : null;
+            if (focusNode !== null && focusNode.isSegmented()) {
+              var offset = focus.offset;
+              var textContentSize = focusNode.getTextContentSize();
+              if (focusNode.is(anchorNode) || isBackward && offset !== textContentSize || !isBackward && offset !== 0) {
+                $removeSegment(focusNode, isBackward, offset);
+                return;
               }
-              if (shrinkSelection && validNodes.length > 0) {
-                // validNodes length check is a safeguard against an invalid selection; as getNodes()
-                // will return an empty array in this case
-                if (isBackward) {
-                  var firstValidNode = validNodes[0];
-                  if ($isElementNode(firstValidNode)) {
-                    firstValidNode.selectStart();
-                  } else {
-                    firstValidNode.getParentOrThrow().selectStart();
-                  }
-                } else {
-                  var lastValidNode = validNodes[validNodes.length - 1];
-                  if ($isElementNode(lastValidNode)) {
-                    lastValidNode.selectEnd();
-                  } else {
-                    lastValidNode.getParentOrThrow().selectEnd();
-                  }
-                }
-              }
-
-              // Because a range works on start and end, we might need to flip
-              // the anchor and focus points to match what the DOM has, not what
-              // the range has specifically.
-              if (
-                domSelection.anchorNode !== range.startContainer ||
-                domSelection.anchorOffset !== range.startOffset
-              ) {
-                $swapPoints(this);
-              }
-            }
-          }
-        },
-        /**
-         * Helper for handling forward character and word deletion that prevents element nodes
-         * like a table, columns layout being destroyed
-         *
-         * @param anchor the anchor
-         * @param anchorNode the anchor node in the selection
-         * @param isBackward whether or not selection is backwards
-         */
-      },
-      {
-        key: "forwardDeletion",
-        value: function forwardDeletion(anchor, anchorNode, isBackward) {
-          if (
-            !isBackward &&
-            // Delete forward handle case
-            ((anchor.type === "element" &&
-              $isElementNode(anchorNode) &&
-              anchor.offset === anchorNode.getChildrenSize()) ||
-              (anchor.type === "text" &&
-                anchor.offset === anchorNode.getTextContentSize()))
-          ) {
-            var parent = anchorNode.getParent();
-            var nextSibling =
-              anchorNode.getNextSibling() ||
-              (parent === null ? null : parent.getNextSibling());
-            if ($isElementNode(nextSibling) && nextSibling.isShadowRoot()) {
-              return true;
-            }
-          }
-          return false;
-        },
-
-        /**
-         * Performs one logical character deletion operation on the EditorState based on the current Selection.
-         * Handles different node types.
-         *
-         * @param isBackward whether or not the selection is backwards.
-         */
-      },
-      {
-        key: "deleteCharacter",
-        value: function deleteCharacter(isBackward) {
-          var wasCollapsed = this.isCollapsed();
-          if (this.isCollapsed()) {
-            var anchor = this.anchor;
-            var anchorNode = anchor.getNode();
-            if (this.forwardDeletion(anchor, anchorNode, isBackward)) {
-              return;
-            }
-
-            // Handle the deletion around decorators.
-            var focus = this.focus;
-            var possibleNode = $getAdjacentNode(focus, isBackward);
-            if ($isDecoratorNode(possibleNode) && !possibleNode.isIsolated()) {
-              // Make it possible to move selection from range selection to
-              // node selection on the node.
-              if (
-                possibleNode.isKeyboardSelectable() &&
-                $isElementNode(anchorNode) &&
-                anchorNode.getChildrenSize() === 0
-              ) {
-                anchorNode.remove();
-                var nodeSelection = $createNodeSelection();
-                nodeSelection.add(possibleNode.__key);
-                $setSelection(nodeSelection);
-              } else {
-                possibleNode.remove();
-                var editor = getActiveEditor();
-                editor.dispatchCommand(SELECTION_CHANGE_COMMAND, undefined);
-              }
-              return;
-            } else if (
-              !isBackward &&
-              $isElementNode(possibleNode) &&
-              $isElementNode(anchorNode) &&
-              anchorNode.isEmpty()
-            ) {
-              anchorNode.remove();
-              possibleNode.selectStart();
-              return;
-            }
-            this.modify("extend", isBackward, "character");
-            if (!this.isCollapsed()) {
-              var focusNode = focus.type === "text" ? focus.getNode() : null;
-              anchorNode = anchor.type === "text" ? anchor.getNode() : null;
-              if (focusNode !== null && focusNode.isSegmented()) {
-                var offset = focus.offset;
-                var textContentSize = focusNode.getTextContentSize();
-                if (
-                  focusNode.is(anchorNode) ||
-                  (isBackward && offset !== textContentSize) ||
-                  (!isBackward && offset !== 0)
-                ) {
-                  $removeSegment(focusNode, isBackward, offset);
-                  return;
-                }
-              } else if (anchorNode !== null && anchorNode.isSegmented()) {
-                var _offset2 = anchor.offset;
-                var _textContentSize = anchorNode.getTextContentSize();
-                if (
-                  anchorNode.is(focusNode) ||
-                  (isBackward && _offset2 !== 0) ||
-                  (!isBackward && _offset2 !== _textContentSize)
-                ) {
-                  $removeSegment(anchorNode, isBackward, _offset2);
-                  return;
-                }
-              }
-              $updateCaretSelectionForUnicodeCharacter(this, isBackward);
-            } else if (isBackward && anchor.offset === 0) {
-              // Special handling around rich text nodes
-              var element =
-                anchor.type === "element"
-                  ? anchor.getNode()
-                  : anchor.getNode().getParentOrThrow();
-              if (element.collapseAtStart(this)) {
+            } else if (anchorNode !== null && anchorNode.isSegmented()) {
+              var _offset2 = anchor.offset;
+              var _textContentSize = anchorNode.getTextContentSize();
+              if (anchorNode.is(focusNode) || isBackward && _offset2 !== 0 || !isBackward && _offset2 !== _textContentSize) {
+                $removeSegment(anchorNode, isBackward, _offset2);
                 return;
               }
             }
-          }
-          this.removeText();
-          if (
-            isBackward &&
-            !wasCollapsed &&
-            this.isCollapsed() &&
-            this.anchor.type === "element" &&
-            this.anchor.offset === 0
-          ) {
-            var _anchorNode2 = this.anchor.getNode();
-            if (
-              _anchorNode2.isEmpty() &&
-              $isRootNode(_anchorNode2.getParent()) &&
-              _anchorNode2.getIndexWithinParent() === 0
-            ) {
-              _anchorNode2.collapseAtStart(this);
-            }
-          }
-        },
-
-        /**
-         * Performs one logical line deletion operation on the EditorState based on the current Selection.
-         * Handles different node types.
-         *
-         * @param isBackward whether or not the selection is backwards.
-         */
-      },
-      {
-        key: "deleteLine",
-        value: function deleteLine(isBackward) {
-          if (this.isCollapsed()) {
-            // Since `domSelection.modify('extend', ..., 'lineboundary')` works well for text selections
-            // but doesn't properly handle selections which end on elements, a space character is added
-            // for such selections transforming their anchor's type to 'text'
-            var anchorIsElement = this.anchor.type === "element";
-            if (anchorIsElement) {
-              this.insertText(" ");
-            }
-            this.modify("extend", isBackward, "lineboundary");
-
-            // If selection is extended to cover text edge then extend it one character more
-            // to delete its parent element. Otherwise text content will be deleted but empty
-            // parent node will remain
-            var endPoint = isBackward ? this.focus : this.anchor;
-            if (endPoint.offset === 0) {
-              this.modify("extend", isBackward, "character");
-            }
-
-            // Adjusts selection to include an extra character added for element anchors to remove it
-            if (anchorIsElement) {
-              var startPoint = isBackward ? this.anchor : this.focus;
-              startPoint.set(
-                startPoint.key,
-                startPoint.offset + 1,
-                startPoint.type
-              );
-            }
-          }
-          this.removeText();
-        },
-
-        /**
-         * Performs one logical word deletion operation on the EditorState based on the current Selection.
-         * Handles different node types.
-         *
-         * @param isBackward whether or not the selection is backwards.
-         */
-      },
-      {
-        key: "deleteWord",
-        value: function deleteWord(isBackward) {
-          if (this.isCollapsed()) {
-            var anchor = this.anchor;
-            var anchorNode = anchor.getNode();
-            if (this.forwardDeletion(anchor, anchorNode, isBackward)) {
+            $updateCaretSelectionForUnicodeCharacter(this, isBackward);
+          } else if (isBackward && anchor.offset === 0) {
+            // Special handling around rich text nodes
+            var element = anchor.type === 'element' ? anchor.getNode() : anchor.getNode().getParentOrThrow();
+            if (element.collapseAtStart(this)) {
               return;
             }
-            this.modify("extend", isBackward, "word");
           }
-          this.removeText();
-        },
+        }
+        this.removeText();
+        if (isBackward && !wasCollapsed && this.isCollapsed() && this.anchor.type === 'element' && this.anchor.offset === 0) {
+          var _anchorNode2 = this.anchor.getNode();
+          if (_anchorNode2.isEmpty() && $isRootNode(_anchorNode2.getParent()) && _anchorNode2.getIndexWithinParent() === 0) {
+            _anchorNode2.collapseAtStart(this);
+          }
+        }
+      }
 
-        /**
-         * Returns whether the Selection is "backwards", meaning the focus
-         * logically precedes the anchor in the EditorState.
-         * @returns true if the Selection is backwards, false otherwise.
-         */
-      },
-      {
-        key: "isBackward",
-        value: function isBackward() {
-          return this.focus.isBefore(this.anchor);
-        },
-      },
-      {
-        key: "getStartEndPoints",
-        value: function getStartEndPoints() {
-          return [this.anchor, this.focus];
-        },
-      },
-    ]);
-  })();
+      /**
+       * Performs one logical line deletion operation on the EditorState based on the current Selection.
+       * Handles different node types.
+       *
+       * @param isBackward whether or not the selection is backwards.
+       */
+    }, {
+      key: "deleteLine",
+      value: function deleteLine(isBackward) {
+        if (this.isCollapsed()) {
+          // Since `domSelection.modify('extend', ..., 'lineboundary')` works well for text selections
+          // but doesn't properly handle selections which end on elements, a space character is added
+          // for such selections transforming their anchor's type to 'text'
+          var anchorIsElement = this.anchor.type === 'element';
+          if (anchorIsElement) {
+            this.insertText(' ');
+          }
+          this.modify('extend', isBackward, 'lineboundary');
+
+          // If selection is extended to cover text edge then extend it one character more
+          // to delete its parent element. Otherwise text content will be deleted but empty
+          // parent node will remain
+          var endPoint = isBackward ? this.focus : this.anchor;
+          if (endPoint.offset === 0) {
+            this.modify('extend', isBackward, 'character');
+          }
+
+          // Adjusts selection to include an extra character added for element anchors to remove it
+          if (anchorIsElement) {
+            var startPoint = isBackward ? this.anchor : this.focus;
+            startPoint.set(startPoint.key, startPoint.offset + 1, startPoint.type);
+          }
+        }
+        this.removeText();
+      }
+
+      /**
+       * Performs one logical word deletion operation on the EditorState based on the current Selection.
+       * Handles different node types.
+       *
+       * @param isBackward whether or not the selection is backwards.
+       */
+    }, {
+      key: "deleteWord",
+      value: function deleteWord(isBackward) {
+        if (this.isCollapsed()) {
+          var anchor = this.anchor;
+          var anchorNode = anchor.getNode();
+          if (this.forwardDeletion(anchor, anchorNode, isBackward)) {
+            return;
+          }
+          this.modify('extend', isBackward, 'word');
+        }
+        this.removeText();
+      }
+
+      /**
+       * Returns whether the Selection is "backwards", meaning the focus
+       * logically precedes the anchor in the EditorState.
+       * @returns true if the Selection is backwards, false otherwise.
+       */
+    }, {
+      key: "isBackward",
+      value: function isBackward() {
+        return this.focus.isBefore(this.anchor);
+      }
+    }, {
+      key: "getStartEndPoints",
+      value: function getStartEndPoints() {
+        return [this.anchor, this.focus];
+      }
+    }]);
+  }();
   function $isNodeSelection(x) {
     return x instanceof NodeSelection;
   }
   function getCharacterOffset(point) {
     var offset = point.offset;
-    if (point.type === "text") {
+    if (point.type === 'text') {
       return offset;
     }
     var parent = point.getNode();
-    return offset === parent.getChildrenSize()
-      ? parent.getTextContent().length
-      : 0;
+    return offset === parent.getChildrenSize() ? parent.getTextContent().length : 0;
   }
   function $getCharacterOffsets(selection) {
     var anchorAndFocus = selection.getStartEndPoints();
@@ -8998,12 +7304,7 @@ define([], function () {
     var _anchorAndFocus = _slicedToArray(anchorAndFocus, 2),
       anchor = _anchorAndFocus[0],
       focus = _anchorAndFocus[1];
-    if (
-      anchor.type === "element" &&
-      focus.type === "element" &&
-      anchor.key === focus.key &&
-      anchor.offset === focus.offset
-    ) {
+    if (anchor.type === 'element' && focus.type === 'element' && anchor.key === focus.key && anchor.offset === focus.offset) {
       return [0, 0];
     }
     return [getCharacterOffset(anchor), getCharacterOffset(focus)];
@@ -9028,11 +7329,7 @@ define([], function () {
     var focus = selection.focus;
     var anchorNode = anchor.getNode();
     var focusNode = focus.getNode();
-    if (
-      anchorNode === focusNode &&
-      anchor.type === "text" &&
-      focus.type === "text"
-    ) {
+    if (anchorNode === focusNode && anchor.type === 'text' && focus.type === 'text') {
       // Handling of multibyte characters
       var anchorOffset = anchor.offset;
       var focusOffset = focus.offset;
@@ -9064,11 +7361,7 @@ define([], function () {
       var isLast = i === splitLength - 1;
       restoreOffset = segmentOffset;
       segmentOffset += text.length;
-      if (
-        (isBackward && segmentOffset === offset) ||
-        segmentOffset > offset ||
-        isLast
-      ) {
+      if (isBackward && segmentOffset === offset || segmentOffset > offset || isLast) {
         split.splice(i, 1);
         if (isLast) {
           restoreOffset = undefined;
@@ -9076,8 +7369,8 @@ define([], function () {
         break;
       }
     }
-    var nextTextContent = split.join("").trim();
-    if (nextTextContent === "") {
+    var nextTextContent = split.join('').trim();
+    if (nextTextContent === '') {
       textNode.remove();
     } else {
       textNode.setTextContent(nextTextContent);
@@ -9086,12 +7379,7 @@ define([], function () {
   }
   function shouldResolveAncestor(resolvedElement, resolvedOffset, lastPoint) {
     var parent = resolvedElement.getParent();
-    return (
-      lastPoint === null ||
-      parent === null ||
-      !parent.canBeEmpty() ||
-      parent !== lastPoint.getNode()
-    );
+    return lastPoint === null || parent === null || !parent.canBeEmpty() || parent !== lastPoint.getNode();
   }
   function $internalResolveSelectionPoint(dom, offset, lastPoint, editor) {
     var resolvedOffset = offset;
@@ -9123,10 +7411,7 @@ define([], function () {
       } else if (blockCursorElement !== null) {
         var blockCursorElementParent = blockCursorElement.parentNode;
         if (dom === blockCursorElementParent) {
-          var blockCursorOffset = Array.prototype.indexOf.call(
-            blockCursorElementParent.children,
-            blockCursorElement
-          );
+          var blockCursorOffset = Array.prototype.indexOf.call(blockCursorElementParent.children, blockCursorElement);
           if (offset > blockCursorOffset) {
             resolvedOffset--;
           }
@@ -9142,25 +7427,15 @@ define([], function () {
           return null;
         }
         if ($isElementNode(resolvedElement)) {
-          resolvedOffset = Math.min(
-            resolvedElement.getChildrenSize(),
-            resolvedOffset
-          );
+          resolvedOffset = Math.min(resolvedElement.getChildrenSize(), resolvedOffset);
           var child = resolvedElement.getChildAtIndex(resolvedOffset);
-          if (
-            $isElementNode(child) &&
-            shouldResolveAncestor(child, resolvedOffset, lastPoint)
-          ) {
-            var descendant = moveSelectionToEnd
-              ? child.getLastDescendant()
-              : child.getFirstDescendant();
+          if ($isElementNode(child) && shouldResolveAncestor(child, resolvedOffset, lastPoint)) {
+            var descendant = moveSelectionToEnd ? child.getLastDescendant() : child.getFirstDescendant();
             if (descendant === null) {
               resolvedElement = child;
             } else {
               child = descendant;
-              resolvedElement = $isElementNode(child)
-                ? child
-                : child.getParentOrThrow();
+              resolvedElement = $isElementNode(child) ? child : child.getParentOrThrow();
             }
             resolvedOffset = 0;
           }
@@ -9168,22 +7443,14 @@ define([], function () {
             resolvedNode = child;
             resolvedElement = null;
             resolvedOffset = getTextNodeOffset(child, moveSelectionToEnd);
-          } else if (
-            child !== resolvedElement &&
-            moveSelectionToEnd &&
-            !hasBlockCursor
-          ) {
+          } else if (child !== resolvedElement && moveSelectionToEnd && !hasBlockCursor) {
             resolvedOffset++;
           }
         } else {
           var index = resolvedElement.getIndexWithinParent();
           // When selecting decorators, there can be some selection issues when using resolvedOffset,
           // and instead we should be checking if we're using the offset
-          if (
-            offset === 0 &&
-            $isDecoratorNode(resolvedElement) &&
-            $getNodeFromDOM(dom) === resolvedElement
-          ) {
+          if (offset === 0 && $isDecoratorNode(resolvedElement) && $getNodeFromDOM(dom) === resolvedElement) {
             resolvedOffset = index;
           } else {
             resolvedOffset = index + 1;
@@ -9191,7 +7458,7 @@ define([], function () {
           resolvedElement = resolvedElement.getParentOrThrow();
         }
         if ($isElementNode(resolvedElement)) {
-          return $createPoint(resolvedElement.__key, resolvedOffset, "element");
+          return $createPoint(resolvedElement.__key, resolvedOffset, 'element');
         }
       }
     } else {
@@ -9201,7 +7468,7 @@ define([], function () {
     if (!$isTextNode(resolvedNode)) {
       return null;
     }
-    return $createPoint(resolvedNode.__key, resolvedOffset, "text");
+    return $createPoint(resolvedNode.__key, resolvedOffset, 'text');
   }
   function resolveSelectionPointOnBoundary(point, isBackward, isCollapsed) {
     var offset = point.offset;
@@ -9210,25 +7477,16 @@ define([], function () {
       var prevSibling = node.getPreviousSibling();
       var parent = node.getParent();
       if (!isBackward) {
-        if (
-          $isElementNode(prevSibling) &&
-          !isCollapsed &&
-          prevSibling.isInline()
-        ) {
+        if ($isElementNode(prevSibling) && !isCollapsed && prevSibling.isInline()) {
           point.key = prevSibling.__key;
           point.offset = prevSibling.getChildrenSize();
           // @ts-expect-error: intentional
-          point.type = "element";
+          point.type = 'element';
         } else if ($isTextNode(prevSibling)) {
           point.key = prevSibling.__key;
           point.offset = prevSibling.getTextContent().length;
         }
-      } else if (
-        (isCollapsed || !isBackward) &&
-        prevSibling === null &&
-        $isElementNode(parent) &&
-        parent.isInline()
-      ) {
+      } else if ((isCollapsed || !isBackward) && prevSibling === null && $isElementNode(parent) && parent.isInline()) {
         var parentSibling = parent.getPreviousSibling();
         if ($isTextNode(parentSibling)) {
           point.key = parentSibling.__key;
@@ -9242,14 +7500,8 @@ define([], function () {
         point.key = nextSibling.__key;
         point.offset = 0;
         // @ts-expect-error: intentional
-        point.type = "element";
-      } else if (
-        (isCollapsed || isBackward) &&
-        nextSibling === null &&
-        $isElementNode(_parent2) &&
-        _parent2.isInline() &&
-        !_parent2.canInsertTextAfter()
-      ) {
+        point.type = 'element';
+      } else if ((isCollapsed || isBackward) && nextSibling === null && $isElementNode(_parent2) && _parent2.isInline() && !_parent2.canInsertTextAfter()) {
         var _parentSibling = _parent2.getNextSibling();
         if ($isTextNode(_parentSibling)) {
           point.key = _parentSibling.__key;
@@ -9258,12 +7510,8 @@ define([], function () {
       }
     }
   }
-  function $normalizeSelectionPointsForBoundaries(
-    anchor,
-    focus,
-    lastSelection
-  ) {
-    if (anchor.type === "text" && focus.type === "text") {
+  function $normalizeSelectionPointsForBoundaries(anchor, focus, lastSelection) {
+    if (anchor.type === 'text' && focus.type === 'text') {
       var isBackward = anchor.isBefore(focus);
       var isCollapsed = anchor.is(focus);
 
@@ -9277,60 +7525,27 @@ define([], function () {
         focus.type = anchor.type;
       }
       var editor = getActiveEditor();
-      if (
-        editor.isComposing() &&
-        editor._compositionKey !== anchor.key &&
-        $isRangeSelection(lastSelection)
-      ) {
+      if (editor.isComposing() && editor._compositionKey !== anchor.key && $isRangeSelection(lastSelection)) {
         var lastAnchor = lastSelection.anchor;
         var lastFocus = lastSelection.focus;
-        $setPointValues(
-          anchor,
-          lastAnchor.key,
-          lastAnchor.offset,
-          lastAnchor.type
-        );
+        $setPointValues(anchor, lastAnchor.key, lastAnchor.offset, lastAnchor.type);
         $setPointValues(focus, lastFocus.key, lastFocus.offset, lastFocus.type);
       }
     }
   }
-  function $internalResolveSelectionPoints(
-    anchorDOM,
-    anchorOffset,
-    focusDOM,
-    focusOffset,
-    editor,
-    lastSelection
-  ) {
-    if (
-      anchorDOM === null ||
-      focusDOM === null ||
-      !isSelectionWithinEditor(editor, anchorDOM, focusDOM)
-    ) {
+  function $internalResolveSelectionPoints(anchorDOM, anchorOffset, focusDOM, focusOffset, editor, lastSelection) {
+    if (anchorDOM === null || focusDOM === null || !isSelectionWithinEditor(editor, anchorDOM, focusDOM)) {
       return null;
     }
-    var resolvedAnchorPoint = $internalResolveSelectionPoint(
-      anchorDOM,
-      anchorOffset,
-      $isRangeSelection(lastSelection) ? lastSelection.anchor : null,
-      editor
-    );
+    var resolvedAnchorPoint = $internalResolveSelectionPoint(anchorDOM, anchorOffset, $isRangeSelection(lastSelection) ? lastSelection.anchor : null, editor);
     if (resolvedAnchorPoint === null) {
       return null;
     }
-    var resolvedFocusPoint = $internalResolveSelectionPoint(
-      focusDOM,
-      focusOffset,
-      $isRangeSelection(lastSelection) ? lastSelection.focus : null,
-      editor
-    );
+    var resolvedFocusPoint = $internalResolveSelectionPoint(focusDOM, focusOffset, $isRangeSelection(lastSelection) ? lastSelection.focus : null, editor);
     if (resolvedFocusPoint === null) {
       return null;
     }
-    if (
-      resolvedAnchorPoint.type === "element" &&
-      resolvedFocusPoint.type === "element"
-    ) {
+    if (resolvedAnchorPoint.type === 'element' && resolvedFocusPoint.type === 'element') {
       var anchorNode = $getNodeFromDOM(anchorDOM);
       var focusNode = $getNodeFromDOM(focusDOM);
       // Ensure if we're selecting the content of a decorator that we
@@ -9342,11 +7557,7 @@ define([], function () {
     }
 
     // Handle normalization of selection when it is at the boundaries.
-    $normalizeSelectionPointsForBoundaries(
-      resolvedAnchorPoint,
-      resolvedFocusPoint,
-      lastSelection
-    );
+    $normalizeSelectionPointsForBoundaries(resolvedAnchorPoint, resolvedFocusPoint, lastSelection);
     return [resolvedAnchorPoint, resolvedFocusPoint];
   }
   function $isBlockElementNode(node) {
@@ -9357,29 +7568,17 @@ define([], function () {
   // selection is null, i.e. forcing selection on the editor
   // when it current exists outside the editor.
 
-  function $internalMakeRangeSelection(
-    anchorKey,
-    anchorOffset,
-    focusKey,
-    focusOffset,
-    anchorType,
-    focusType
-  ) {
+  function $internalMakeRangeSelection(anchorKey, anchorOffset, focusKey, focusOffset, anchorType, focusType) {
     var editorState = getActiveEditorState();
-    var selection = new RangeSelection(
-      $createPoint(anchorKey, anchorOffset, anchorType),
-      $createPoint(focusKey, focusOffset, focusType),
-      0,
-      ""
-    );
+    var selection = new RangeSelection($createPoint(anchorKey, anchorOffset, anchorType), $createPoint(focusKey, focusOffset, focusType), 0, '');
     selection.dirty = true;
     editorState._selection = selection;
     return selection;
   }
   function $createRangeSelection() {
-    var anchor = $createPoint("root", 0, "element");
-    var focus = $createPoint("root", 0, "element");
-    return new RangeSelection(anchor, focus, 0, "");
+    var anchor = $createPoint('root', 0, 'element');
+    var focus = $createPoint('root', 0, 'element');
+    return new RangeSelection(anchor, focus, 0, '');
   }
   function $createNodeSelection() {
     return new NodeSelection(new Set());
@@ -9389,24 +7588,14 @@ define([], function () {
     var lastSelection = currentEditorState._selection;
     var domSelection = getDOMSelection(editor._window);
     if ($isRangeSelection(lastSelection) || lastSelection == null) {
-      return $internalCreateRangeSelection(
-        lastSelection,
-        domSelection,
-        editor,
-        null
-      );
+      return $internalCreateRangeSelection(lastSelection, domSelection, editor, null);
     }
     return lastSelection.clone();
   }
   function $createRangeSelectionFromDom(domSelection, editor) {
     return $internalCreateRangeSelection(null, domSelection, editor, null);
   }
-  function $internalCreateRangeSelection(
-    lastSelection,
-    domSelection,
-    editor,
-    event
-  ) {
+  function $internalCreateRangeSelection(lastSelection, domSelection, editor, event) {
     var windowObj = editor._window;
     if (windowObj === null) {
       return null;
@@ -9427,16 +7616,8 @@ define([], function () {
 
     var windowEvent = event || windowObj.event;
     var eventType = windowEvent ? windowEvent.type : undefined;
-    var isSelectionChange = eventType === "selectionchange";
-    var useDOMSelection =
-      !getIsProcessingMutations() &&
-      (isSelectionChange ||
-        eventType === "beforeinput" ||
-        eventType === "compositionstart" ||
-        eventType === "compositionend" ||
-        (eventType === "click" && windowEvent && windowEvent.detail === 3) ||
-        eventType === "drop" ||
-        eventType === undefined);
+    var isSelectionChange = eventType === 'selectionchange';
+    var useDOMSelection = !getIsProcessingMutations() && (isSelectionChange || eventType === 'beforeinput' || eventType === 'compositionstart' || eventType === 'compositionend' || eventType === 'click' && windowEvent && windowEvent.detail === 3 || eventType === 'drop' || eventType === undefined);
     var anchorDOM, focusDOM, anchorOffset, focusOffset;
     if (!$isRangeSelection(lastSelection) || useDOMSelection) {
       if (domSelection === null) {
@@ -9446,11 +7627,7 @@ define([], function () {
       focusDOM = domSelection.focusNode;
       anchorOffset = domSelection.anchorOffset;
       focusOffset = domSelection.focusOffset;
-      if (
-        isSelectionChange &&
-        $isRangeSelection(lastSelection) &&
-        !isSelectionWithinEditor(editor, anchorDOM, focusDOM)
-      ) {
+      if (isSelectionChange && $isRangeSelection(lastSelection) && !isSelectionWithinEditor(editor, anchorDOM, focusDOM)) {
         return lastSelection.clone();
       }
     } else {
@@ -9458,26 +7635,14 @@ define([], function () {
     }
     // Let's resolve the text nodes from the offsets and DOM nodes we have from
     // native selection.
-    var resolvedSelectionPoints = $internalResolveSelectionPoints(
-      anchorDOM,
-      anchorOffset,
-      focusDOM,
-      focusOffset,
-      editor,
-      lastSelection
-    );
+    var resolvedSelectionPoints = $internalResolveSelectionPoints(anchorDOM, anchorOffset, focusDOM, focusOffset, editor, lastSelection);
     if (resolvedSelectionPoints === null) {
       return null;
     }
     var _resolvedSelectionPoi2 = _slicedToArray(resolvedSelectionPoints, 2),
       resolvedAnchorPoint = _resolvedSelectionPoi2[0],
       resolvedFocusPoint = _resolvedSelectionPoi2[1];
-    return new RangeSelection(
-      resolvedAnchorPoint,
-      resolvedFocusPoint,
-      !$isRangeSelection(lastSelection) ? 0 : lastSelection.format,
-      !$isRangeSelection(lastSelection) ? "" : lastSelection.style
-    );
+    return new RangeSelection(resolvedAnchorPoint, resolvedFocusPoint, !$isRangeSelection(lastSelection) ? 0 : lastSelection.format, !$isRangeSelection(lastSelection) ? '' : lastSelection.style);
   }
   function $getSelection() {
     var editorState = getActiveEditorState();
@@ -9487,13 +7652,8 @@ define([], function () {
     var editor = getActiveEditor();
     return editor._editorState._selection;
   }
-  function $updateElementSelectionOnCreateDeleteNode(
-    selection,
-    parentNode,
-    nodeOffset
-  ) {
-    var times =
-      arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
+  function $updateElementSelectionOnCreateDeleteNode(selection, parentNode, nodeOffset) {
+    var times = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
     var anchor = selection.anchor;
     var focus = selection.focus;
     var anchorNode = anchor.getNode();
@@ -9505,13 +7665,10 @@ define([], function () {
     // Single node. We shift selection but never redimension it
     if (selection.isCollapsed()) {
       var selectionOffset = anchor.offset;
-      if (
-        (nodeOffset <= selectionOffset && times > 0) ||
-        (nodeOffset < selectionOffset && times < 0)
-      ) {
+      if (nodeOffset <= selectionOffset && times > 0 || nodeOffset < selectionOffset && times < 0) {
         var newSelectionOffset = Math.max(0, selectionOffset + times);
-        anchor.set(parentKey, newSelectionOffset, "element");
-        focus.set(parentKey, newSelectionOffset, "element");
+        anchor.set(parentKey, newSelectionOffset, 'element');
+        focus.set(parentKey, newSelectionOffset, 'element');
         // The new selection might point to text nodes, try to resolve them
         $updateSelectionResolveTextNodes(selection);
       }
@@ -9524,28 +7681,14 @@ define([], function () {
       var lastPointNode = lastPoint.getNode();
       if (parentNode.is(firstPointNode)) {
         var firstPointOffset = firstPoint.offset;
-        if (
-          (nodeOffset <= firstPointOffset && times > 0) ||
-          (nodeOffset < firstPointOffset && times < 0)
-        ) {
-          firstPoint.set(
-            parentKey,
-            Math.max(0, firstPointOffset + times),
-            "element"
-          );
+        if (nodeOffset <= firstPointOffset && times > 0 || nodeOffset < firstPointOffset && times < 0) {
+          firstPoint.set(parentKey, Math.max(0, firstPointOffset + times), 'element');
         }
       }
       if (parentNode.is(lastPointNode)) {
         var lastPointOffset = lastPoint.offset;
-        if (
-          (nodeOffset <= lastPointOffset && times > 0) ||
-          (nodeOffset < lastPointOffset && times < 0)
-        ) {
-          lastPoint.set(
-            parentKey,
-            Math.max(0, lastPointOffset + times),
-            "element"
-          );
+        if (nodeOffset <= lastPointOffset && times > 0 || nodeOffset < lastPointOffset && times < 0) {
+          lastPoint.set(parentKey, Math.max(0, lastPointOffset + times), 'element');
         }
       }
     }
@@ -9565,45 +7708,39 @@ define([], function () {
       }
       var childSize = anchorNode.getChildrenSize();
       var anchorOffsetAtEnd = anchorOffset >= childSize;
-      var child = anchorOffsetAtEnd
-        ? anchorNode.getChildAtIndex(childSize - 1)
-        : anchorNode.getChildAtIndex(anchorOffset);
+      var child = anchorOffsetAtEnd ? anchorNode.getChildAtIndex(childSize - 1) : anchorNode.getChildAtIndex(anchorOffset);
       if ($isTextNode(child)) {
         var newOffset = 0;
         if (anchorOffsetAtEnd) {
           newOffset = child.getTextContentSize();
         }
-        anchor.set(child.__key, newOffset, "text");
-        focus.set(child.__key, newOffset, "text");
+        anchor.set(child.__key, newOffset, 'text');
+        focus.set(child.__key, newOffset, 'text');
       }
       return;
     }
     if ($isElementNode(anchorNode)) {
       var _childSize = anchorNode.getChildrenSize();
       var _anchorOffsetAtEnd = anchorOffset >= _childSize;
-      var _child2 = _anchorOffsetAtEnd
-        ? anchorNode.getChildAtIndex(_childSize - 1)
-        : anchorNode.getChildAtIndex(anchorOffset);
+      var _child2 = _anchorOffsetAtEnd ? anchorNode.getChildAtIndex(_childSize - 1) : anchorNode.getChildAtIndex(anchorOffset);
       if ($isTextNode(_child2)) {
         var _newOffset = 0;
         if (_anchorOffsetAtEnd) {
           _newOffset = _child2.getTextContentSize();
         }
-        anchor.set(_child2.__key, _newOffset, "text");
+        anchor.set(_child2.__key, _newOffset, 'text');
       }
     }
     if ($isElementNode(focusNode)) {
       var _childSize2 = focusNode.getChildrenSize();
       var focusOffsetAtEnd = focusOffset >= _childSize2;
-      var _child3 = focusOffsetAtEnd
-        ? focusNode.getChildAtIndex(_childSize2 - 1)
-        : focusNode.getChildAtIndex(focusOffset);
+      var _child3 = focusOffsetAtEnd ? focusNode.getChildAtIndex(_childSize2 - 1) : focusNode.getChildAtIndex(focusOffset);
       if ($isTextNode(_child3)) {
         var _newOffset2 = 0;
         if (focusOffsetAtEnd) {
           _newOffset2 = _child3.getTextContentSize();
         }
-        focus.set(_child3.__key, _newOffset2, "text");
+        focus.set(_child3.__key, _newOffset2, 'text');
       }
     }
   }
@@ -9615,11 +7752,11 @@ define([], function () {
       var anchor = nextSelection.anchor;
       var focus = nextSelection.focus;
       var anchorNode;
-      if (anchor.type === "text") {
+      if (anchor.type === 'text') {
         anchorNode = anchor.getNode();
         anchorNode.selectionTransform(prevSelection, nextSelection);
       }
-      if (focus.type === "text") {
+      if (focus.type === 'text') {
         var focusNode = focus.getNode();
         if (anchorNode !== focusNode) {
           focusNode.selectionTransform(prevSelection, nextSelection);
@@ -9627,13 +7764,7 @@ define([], function () {
       }
     }
   }
-  function moveSelectionPointToSibling(
-    point,
-    node,
-    parent,
-    prevSibling,
-    nextSibling
-  ) {
+  function moveSelectionPointToSibling(point, node, parent, prevSibling, nextSibling) {
     var siblingKey = null;
     var offset = 0;
     var type = null;
@@ -9641,18 +7772,18 @@ define([], function () {
       siblingKey = prevSibling.__key;
       if ($isTextNode(prevSibling)) {
         offset = prevSibling.getTextContentSize();
-        type = "text";
+        type = 'text';
       } else if ($isElementNode(prevSibling)) {
         offset = prevSibling.getChildrenSize();
-        type = "element";
+        type = 'element';
       }
     } else {
       if (nextSibling !== null) {
         siblingKey = nextSibling.__key;
         if ($isTextNode(nextSibling)) {
-          type = "text";
+          type = 'text';
         } else if ($isElementNode(nextSibling)) {
-          type = "element";
+          type = 'element';
         }
       }
     }
@@ -9664,17 +7795,11 @@ define([], function () {
         // Move selection to end of parent
         offset = parent.getChildrenSize();
       }
-      point.set(parent.__key, offset, "element");
+      point.set(parent.__key, offset, 'element');
     }
   }
-  function adjustPointOffsetForMergedSibling(
-    point,
-    isBefore,
-    key,
-    target,
-    textLength
-  ) {
-    if (point.type === "text") {
+  function adjustPointOffsetForMergedSibling(point, isBefore, key, target, textLength) {
+    if (point.type === 'text') {
       point.key = key;
       if (!isBefore) {
         point.offset += textLength;
@@ -9683,15 +7808,7 @@ define([], function () {
       point.offset -= 1;
     }
   }
-  function updateDOMSelection(
-    prevSelection,
-    nextSelection,
-    editor,
-    domSelection,
-    tags,
-    rootElement,
-    nodeCount
-  ) {
+  function updateDOMSelection(prevSelection, nextSelection, editor, domSelection, tags, rootElement, nodeCount) {
     var anchorDOMNode = domSelection.anchorNode;
     var focusDOMNode = domSelection.focusNode;
     var anchorOffset = domSelection.anchorOffset;
@@ -9700,11 +7817,7 @@ define([], function () {
 
     // TODO: make this not hard-coded, and add another config option
     // that makes this configurable.
-    if (
-      (tags.has("collaboration") && activeElement !== rootElement) ||
-      (activeElement !== null &&
-        isSelectionCapturedInDecoratorInput(activeElement))
-    ) {
+    if (tags.has('collaboration') && activeElement !== rootElement || activeElement !== null && isSelectionCapturedInDecoratorInput(activeElement)) {
       return;
     }
     if (!$isRangeSelection(nextSelection)) {
@@ -9712,10 +7825,7 @@ define([], function () {
       // of editor.setRootElement(). If this occurs on init when the
       // editor is already focused, then this can cause the editor to
       // lose focus.
-      if (
-        prevSelection !== null &&
-        isSelectionWithinEditor(editor, anchorDOMNode, focusDOMNode)
-      ) {
+      if (prevSelection !== null && isSelectionWithinEditor(editor, anchorDOMNode, focusDOMNode)) {
         domSelection.removeAllRanges();
       }
       return;
@@ -9734,19 +7844,14 @@ define([], function () {
     var nextAnchorNode = anchorDOM;
     var nextFocusNode = focusDOM;
     var anchorFormatOrStyleChanged = false;
-    if (anchor.type === "text") {
+    if (anchor.type === 'text') {
       nextAnchorNode = getDOMTextNode(anchorDOM);
       var anchorNode = anchor.getNode();
-      anchorFormatOrStyleChanged =
-        anchorNode.getFormat() !== nextFormat ||
-        anchorNode.getStyle() !== nextStyle;
-    } else if (
-      $isRangeSelection(prevSelection) &&
-      prevSelection.anchor.type === "text"
-    ) {
+      anchorFormatOrStyleChanged = anchorNode.getFormat() !== nextFormat || anchorNode.getStyle() !== nextStyle;
+    } else if ($isRangeSelection(prevSelection) && prevSelection.anchor.type === 'text') {
       anchorFormatOrStyleChanged = true;
     }
-    if (focus.type === "text") {
+    if (focus.type === 'text') {
       nextFocusNode = getDOMTextNode(focusDOM);
     }
 
@@ -9755,42 +7860,24 @@ define([], function () {
     if (nextAnchorNode === null || nextFocusNode === null) {
       return;
     }
-    if (
-      isCollapsed &&
-      (prevSelection === null ||
-        anchorFormatOrStyleChanged ||
-        ($isRangeSelection(prevSelection) &&
-          (prevSelection.format !== nextFormat ||
-            prevSelection.style !== nextStyle)))
-    ) {
-      markCollapsedSelectionFormat(
-        nextFormat,
-        nextStyle,
-        nextAnchorOffset,
-        anchorKey,
-        performance.now()
-      );
+    if (isCollapsed && (prevSelection === null || anchorFormatOrStyleChanged || $isRangeSelection(prevSelection) && (prevSelection.format !== nextFormat || prevSelection.style !== nextStyle))) {
+      markCollapsedSelectionFormat(nextFormat, nextStyle, nextAnchorOffset, anchorKey, performance.now());
     }
 
     // Diff against the native DOM selection to ensure we don't do
     // an unnecessary selection update. We also skip this check if
     // we're moving selection to within an element, as this can
     // sometimes be problematic around scrolling.
-    if (
-      anchorOffset === nextAnchorOffset &&
-      focusOffset === nextFocusOffset &&
-      anchorDOMNode === nextAnchorNode &&
-      focusDOMNode === nextFocusNode &&
-      // Badly interpreted range selection when collapsed - #1482
-      !(domSelection.type === "Range" && isCollapsed)
-    ) {
+    if (anchorOffset === nextAnchorOffset && focusOffset === nextFocusOffset && anchorDOMNode === nextAnchorNode && focusDOMNode === nextFocusNode &&
+    // Badly interpreted range selection when collapsed - #1482
+    !(domSelection.type === 'Range' && isCollapsed)) {
       // If the root element does not have focus, ensure it has focus
       if (activeElement === null || !rootElement.contains(activeElement)) {
         rootElement.focus({
-          preventScroll: true,
+          preventScroll: true
         });
       }
-      if (anchor.type !== "element") {
+      if (anchor.type !== 'element') {
         return;
       }
     }
@@ -9798,12 +7885,7 @@ define([], function () {
     // Apply the updated selection to the DOM. Note: this will trigger
     // a "selectionchange" event, although it will be asynchronous.
     try {
-      domSelection.setBaseAndExtent(
-        nextAnchorNode,
-        nextAnchorOffset,
-        nextFocusNode,
-        nextFocusOffset
-      );
+      domSelection.setBaseAndExtent(nextAnchorNode, nextAnchorOffset, nextFocusNode, nextFocusOffset);
     } catch (error) {
       // If we encounter an error, continue. This can sometimes
       // occur with FF and there's no good reason as to why it
@@ -9812,19 +7894,8 @@ define([], function () {
         console.warn(error);
       }
     }
-    if (
-      !tags.has("skip-scroll-into-view") &&
-      nextSelection.isCollapsed() &&
-      rootElement !== null &&
-      rootElement === document.activeElement
-    ) {
-      var selectionTarget =
-        nextSelection instanceof RangeSelection &&
-        nextSelection.anchor.type === "element"
-          ? nextAnchorNode.childNodes[nextAnchorOffset] || null
-          : domSelection.rangeCount > 0
-          ? domSelection.getRangeAt(0)
-          : null;
+    if (!tags.has('skip-scroll-into-view') && nextSelection.isCollapsed() && rootElement !== null && rootElement === document.activeElement) {
+      var selectionTarget = nextSelection instanceof RangeSelection && nextSelection.anchor.type === 'element' ? nextAnchorNode.childNodes[nextAnchorOffset] || null : domSelection.rangeCount > 0 ? domSelection.getRangeAt(0) : null;
       if (selectionTarget !== null) {
         var selectionRect;
         if (selectionTarget instanceof Text) {
@@ -9849,7 +7920,7 @@ define([], function () {
   function $getTextContent() {
     var selection = $getSelection();
     if (selection === null) {
-      return "";
+      return '';
     }
     return selection.getTextContent();
   }
@@ -9900,20 +7971,10 @@ define([], function () {
     }
     var firstToAppend = node.getChildAtIndex(offset);
     if (firstToAppend) {
-      var insertPoint = new RangeSelection(
-        $createPoint(node.__key, offset, "element"),
-        $createPoint(node.__key, offset, "element"),
-        0,
-        ""
-      );
+      var insertPoint = new RangeSelection($createPoint(node.__key, offset, 'element'), $createPoint(node.__key, offset, 'element'), 0, '');
       var newElement = node.insertNewAfter(insertPoint);
       if (newElement) {
-        newElement.append.apply(
-          newElement,
-          [firstToAppend].concat(
-            _toConsumableArray(firstToAppend.getNextSiblings())
-          )
-        );
+        newElement.append.apply(newElement, [firstToAppend].concat(_toConsumableArray(firstToAppend.getNextSiblings())));
       }
     }
     return [parent, node.getIndexWithinParent() + 1];
@@ -9926,13 +7987,7 @@ define([], function () {
     for (var i = 0; i < nodes.length; i++) {
       var node = nodes[i];
       var isLineBreakNode = $isLineBreakNode(node);
-      if (
-        isLineBreakNode ||
-        ($isDecoratorNode(node) && node.isInline()) ||
-        ($isElementNode(node) && node.isInline()) ||
-        $isTextNode(node) ||
-        node.isParentRequired()
-      ) {
+      if (isLineBreakNode || $isDecoratorNode(node) && node.isInline() || $isElementNode(node) && node.isInline() || $isTextNode(node) || node.isParentRequired()) {
         if (currentBlock === null) {
           currentBlock = node.createParentElementNode();
           virtualRoot.append(currentBlock);
@@ -9969,13 +8024,10 @@ define([], function () {
   var observerOptions = {
     characterData: true,
     childList: true,
-    subtree: true,
+    subtree: true
   };
   function isCurrentlyReadOnlyMode() {
-    return (
-      isReadOnlyMode ||
-      (activeEditorState !== null && activeEditorState._readOnly)
-    );
+    return isReadOnlyMode || activeEditorState !== null && activeEditorState._readOnly;
   }
   function errorOnReadOnly() {
     if (isReadOnlyMode) {
@@ -9987,18 +8039,14 @@ define([], function () {
   function errorOnInfiniteTransforms() {
     if (infiniteTransformCount > 99) {
       {
-        throw Error(
-          "One or more transforms are endlessly triggering additional transforms. May have encountered infinite recursion caused by transforms that have their preconditions too lose and/or conflict with each other."
-        );
+        throw Error("One or more transforms are endlessly triggering additional transforms. May have encountered infinite recursion caused by transforms that have their preconditions too lose and/or conflict with each other.");
       }
     }
   }
   function getActiveEditorState() {
     if (activeEditorState === null) {
       {
-        throw Error(
-          "Unable to find an active editor state. State helpers or node methods can only be used synchronously during the callback of editor.update() or editorState.read()."
-        );
+        throw Error("Unable to find an active editor state. State helpers or node methods can only be used synchronously during the callback of editor.update() or editorState.read().");
       }
     }
     return activeEditorState;
@@ -10006,9 +8054,7 @@ define([], function () {
   function getActiveEditor() {
     if (activeEditor === null) {
       {
-        throw Error(
-          "Unable to find an active editor. This method can only be used synchronously during the callback of editor.update()."
-        );
+        throw Error("Unable to find an active editor. This method can only be used synchronously during the callback of editor.update().");
       }
     }
     return activeEditor;
@@ -10036,12 +8082,9 @@ define([], function () {
     }
   }
   function $isNodeValidForTransform(node, compositionKey) {
-    return (
-      node !== undefined &&
-      // We don't want to transform nodes being composed
-      node.__key !== compositionKey &&
-      node.isAttached()
-    );
+    return node !== undefined &&
+    // We don't want to transform nodes being composed
+    node.__key !== compositionKey && node.isAttached();
   }
   function $normalizeAllDirtyTextNodes(editorState, editor) {
     var dirtyLeaves = editor._dirtyLeaves;
@@ -10049,15 +8092,10 @@ define([], function () {
     var _iterator9 = _createForOfIteratorHelper(dirtyLeaves),
       _step9;
     try {
-      for (_iterator9.s(); !(_step9 = _iterator9.n()).done; ) {
+      for (_iterator9.s(); !(_step9 = _iterator9.n()).done;) {
         var nodeKey = _step9.value;
         var node = nodeMap.get(nodeKey);
-        if (
-          $isTextNode(node) &&
-          node.isAttached() &&
-          node.isSimpleText() &&
-          !node.isUnmergeable()
-        ) {
+        if ($isTextNode(node) && node.isAttached() && node.isSimpleText() && !node.isUnmergeable()) {
           $normalizeTextNode(node);
         }
       }
@@ -10088,31 +8126,20 @@ define([], function () {
     var untransformedDirtyLeavesLength = untransformedDirtyLeaves.size;
     var untransformedDirtyElements = dirtyElements;
     var untransformedDirtyElementsLength = untransformedDirtyElements.size;
-    while (
-      untransformedDirtyLeavesLength > 0 ||
-      untransformedDirtyElementsLength > 0
-    ) {
+    while (untransformedDirtyLeavesLength > 0 || untransformedDirtyElementsLength > 0) {
       if (untransformedDirtyLeavesLength > 0) {
         // We leverage editor._dirtyLeaves to track the new dirty leaves after the transforms
         editor._dirtyLeaves = new Set();
         var _iterator10 = _createForOfIteratorHelper(untransformedDirtyLeaves),
           _step10;
         try {
-          for (_iterator10.s(); !(_step10 = _iterator10.n()).done; ) {
+          for (_iterator10.s(); !(_step10 = _iterator10.n()).done;) {
             var nodeKey = _step10.value;
             var node = nodeMap.get(nodeKey);
-            if (
-              $isTextNode(node) &&
-              node.isAttached() &&
-              node.isSimpleText() &&
-              !node.isUnmergeable()
-            ) {
+            if ($isTextNode(node) && node.isAttached() && node.isSimpleText() && !node.isUnmergeable()) {
               $normalizeTextNode(node);
             }
-            if (
-              node !== undefined &&
-              $isNodeValidForTransform(node, compositionKey)
-            ) {
+            if (node !== undefined && $isNodeValidForTransform(node, compositionKey)) {
               $applyTransforms(editor, node, transformsCache);
             }
             dirtyLeaves.add(nodeKey);
@@ -10140,18 +8167,15 @@ define([], function () {
       var _iterator11 = _createForOfIteratorHelper(untransformedDirtyElements),
         _step11;
       try {
-        for (_iterator11.s(); !(_step11 = _iterator11.n()).done; ) {
+        for (_iterator11.s(); !(_step11 = _iterator11.n()).done;) {
           var currentUntransformedDirtyElement = _step11.value;
           var _nodeKey3 = currentUntransformedDirtyElement[0];
           var intentionallyMarkedAsDirty = currentUntransformedDirtyElement[1];
-          if (_nodeKey3 !== "root" && !intentionallyMarkedAsDirty) {
+          if (_nodeKey3 !== 'root' && !intentionallyMarkedAsDirty) {
             continue;
           }
           var _node3 = nodeMap.get(_nodeKey3);
-          if (
-            _node3 !== undefined &&
-            $isNodeValidForTransform(_node3, compositionKey)
-          ) {
+          if (_node3 !== undefined && $isNodeValidForTransform(_node3, compositionKey)) {
             $applyTransforms(editor, _node3, transformsCache);
           }
           dirtyElements.set(_nodeKey3, intentionallyMarkedAsDirty);
@@ -10172,28 +8196,20 @@ define([], function () {
   }
   function $parseSerializedNode(serializedNode) {
     var internalSerializedNode = serializedNode;
-    return $parseSerializedNodeImpl(
-      internalSerializedNode,
-      getActiveEditor()._nodes
-    );
+    return $parseSerializedNodeImpl(internalSerializedNode, getActiveEditor()._nodes);
   }
   function $parseSerializedNodeImpl(serializedNode, registeredNodes) {
     var type = serializedNode.type;
     var registeredNode = registeredNodes.get(type);
     if (registeredNode === undefined) {
       {
-        throw Error('parseEditorState: type "'.concat(type, '" + not found'));
+        throw Error("parseEditorState: type \"".concat(type, "\" + not found"));
       }
     }
     var nodeClass = registeredNode.klass;
     if (serializedNode.type !== nodeClass.getType()) {
       {
-        throw Error(
-          "LexicalNode: Node ".concat(
-            nodeClass.name,
-            " does not implement .importJSON()."
-          )
-        );
+        throw Error("LexicalNode: Node ".concat(nodeClass.name, " does not implement .importJSON()."));
       }
     }
     var node = nodeClass.importJSON(serializedNode);
@@ -10201,10 +8217,7 @@ define([], function () {
     if ($isElementNode(node) && Array.isArray(children)) {
       for (var i = 0; i < children.length; i++) {
         var serializedJSONChildNode = children[i];
-        var childNode = $parseSerializedNodeImpl(
-          serializedJSONChildNode,
-          registeredNodes
-        );
+        var childNode = $parseSerializedNodeImpl(serializedJSONChildNode, registeredNodes);
         node.append(childNode);
       }
     }
@@ -10279,13 +8292,13 @@ define([], function () {
     // we instead replace its set, clear and delete methods.
     var nodeMap = pendingEditorState._nodeMap;
     nodeMap.set = function () {
-      throw new Error("Cannot call set() on a frozen Lexical node map");
+      throw new Error('Cannot call set() on a frozen Lexical node map');
     };
     nodeMap.clear = function () {
-      throw new Error("Cannot call clear() on a frozen Lexical node map");
+      throw new Error('Cannot call clear() on a frozen Lexical node map');
     };
     nodeMap["delete"] = function () {
-      throw new Error("Cannot call delete() on a frozen Lexical node map");
+      throw new Error('Cannot call delete() on a frozen Lexical node map');
     };
   }
   function $commitPendingUpdates(editor, recoveryEditorState) {
@@ -10323,14 +8336,7 @@ define([], function () {
         var _dirtyElements = editor._dirtyElements;
         var _dirtyLeaves = editor._dirtyLeaves;
         observer.disconnect();
-        mutatedNodes = $reconcileRoot(
-          currentEditorState,
-          pendingEditorState,
-          editor,
-          dirtyType,
-          _dirtyElements,
-          _dirtyLeaves
-        );
+        mutatedNodes = $reconcileRoot(currentEditorState, pendingEditorState, editor, dirtyType, _dirtyElements, _dirtyLeaves);
       } catch (error) {
         // Report errors
         if (error instanceof Error) {
@@ -10392,39 +8398,21 @@ define([], function () {
 
     // Attempt to update the DOM selection, including focusing of the root element,
     // and scroll into view if needed.
-    if (
-      editor._editable &&
-      // domSelection will be null in headless
-      domSelection !== null &&
-      (needsUpdate || pendingSelection === null || pendingSelection.dirty)
-    ) {
+    if (editor._editable &&
+    // domSelection will be null in headless
+    domSelection !== null && (needsUpdate || pendingSelection === null || pendingSelection.dirty)) {
       activeEditor = editor;
       activeEditorState = pendingEditorState;
       try {
         if (observer !== null) {
           observer.disconnect();
         }
-        if (
-          needsUpdate ||
-          pendingSelection === null ||
-          pendingSelection.dirty
-        ) {
+        if (needsUpdate || pendingSelection === null || pendingSelection.dirty) {
           var blockCursorElement = editor._blockCursorElement;
           if (blockCursorElement !== null) {
-            removeDOMBlockCursorElement(
-              blockCursorElement,
-              editor,
-              rootElement
-            );
+            removeDOMBlockCursorElement(blockCursorElement, editor, rootElement);
           }
-          updateDOMSelection(
-            currentSelection,
-            pendingSelection,
-            editor,
-            domSelection,
-            tags,
-            rootElement
-          );
+          updateDOMSelection(currentSelection, pendingSelection, editor, domSelection, tags, rootElement);
         }
         updateDOMBlockCursorElement(editor, rootElement, pendingSelection);
         if (observer !== null) {
@@ -10436,19 +8424,9 @@ define([], function () {
       }
     }
     if (mutatedNodes !== null) {
-      triggerMutationListeners(
-        editor,
-        mutatedNodes,
-        tags,
-        dirtyLeaves,
-        currentEditorState
-      );
+      triggerMutationListeners(editor, mutatedNodes, tags, dirtyLeaves, currentEditorState);
     }
-    if (
-      !$isRangeSelection(pendingSelection) &&
-      pendingSelection !== null &&
-      (currentSelection === null || !currentSelection.is(pendingSelection))
-    ) {
+    if (!$isRangeSelection(pendingSelection) && pendingSelection !== null && (currentSelection === null || !currentSelection.is(pendingSelection))) {
       editor.dispatchCommand(SELECTION_CHANGE_COMMAND, undefined);
     }
     /**
@@ -10458,7 +8436,7 @@ define([], function () {
     if (pendingDecorators !== null) {
       editor._decorators = pendingDecorators;
       editor._pendingDecorators = null;
-      triggerListeners("decorator", editor, true, pendingDecorators);
+      triggerListeners('decorator', editor, true, pendingDecorators);
     }
 
     // If reconciler fails, we reset whole editor (so current editor state becomes empty)
@@ -10466,40 +8444,26 @@ define([], function () {
     // listeners, but instead use recoverEditorState which is current editor state before reset
     // This specifically important for collab that relies on prevEditorState from update
     // listener to calculate delta of changed nodes/properties
-    triggerTextContentListeners(
-      editor,
-      recoveryEditorState || currentEditorState,
-      pendingEditorState
-    );
-    triggerListeners("update", editor, true, {
+    triggerTextContentListeners(editor, recoveryEditorState || currentEditorState, pendingEditorState);
+    triggerListeners('update', editor, true, {
       dirtyElements: dirtyElements,
       dirtyLeaves: dirtyLeaves,
       editorState: pendingEditorState,
       normalizedNodes: normalizedNodes,
       prevEditorState: recoveryEditorState || currentEditorState,
-      tags: tags,
+      tags: tags
     });
     triggerDeferredUpdateCallbacks(editor, deferred);
     $triggerEnqueuedUpdates(editor);
   }
-  function triggerTextContentListeners(
-    editor,
-    currentEditorState,
-    pendingEditorState
-  ) {
+  function triggerTextContentListeners(editor, currentEditorState, pendingEditorState) {
     var currentTextContent = getEditorStateTextContent(currentEditorState);
     var latestTextContent = getEditorStateTextContent(pendingEditorState);
     if (currentTextContent !== latestTextContent) {
-      triggerListeners("textcontent", editor, true, latestTextContent);
+      triggerListeners('textcontent', editor, true, latestTextContent);
     }
   }
-  function triggerMutationListeners(
-    editor,
-    mutatedNodes,
-    updateTags,
-    dirtyLeaves,
-    prevEditorState
-  ) {
+  function triggerMutationListeners(editor, mutatedNodes, updateTags, dirtyLeaves, prevEditorState) {
     var listeners = Array.from(editor._listeners.mutation);
     var listenersLength = listeners.length;
     for (var i = 0; i < listenersLength; i++) {
@@ -10511,7 +8475,7 @@ define([], function () {
         listener(mutatedNodesByType, {
           dirtyLeaves: dirtyLeaves,
           prevEditorState: prevEditorState,
-          updateTags: updateTags,
+          updateTags: updateTags
         });
       }
     }
@@ -10521,13 +8485,7 @@ define([], function () {
     editor._updating = isCurrentlyEnqueuingUpdates;
     try {
       var listeners = Array.from(editor._listeners[type]);
-      for (
-        var _len3 = arguments.length,
-          payload = new Array(_len3 > 3 ? _len3 - 3 : 0),
-          _key3 = 3;
-        _key3 < _len3;
-        _key3++
-      ) {
+      for (var _len3 = arguments.length, payload = new Array(_len3 > 3 ? _len3 - 3 : 0), _key3 = 3; _key3 < _len3; _key3++) {
         payload[_key3 - 3] = arguments[_key3];
       }
       for (var i = 0; i < listeners.length; i++) {
@@ -10649,9 +8607,7 @@ define([], function () {
     var pendingEditorState = editor._pendingEditorState;
     var editorStateWasCloned = false;
     if (pendingEditorState === null || pendingEditorState._readOnly) {
-      pendingEditorState = editor._pendingEditorState = cloneEditorState(
-        pendingEditorState || currentEditorState
-      );
+      pendingEditorState = editor._pendingEditorState = cloneEditorState(pendingEditorState || currentEditorState);
       editorStateWasCloned = true;
     }
     pendingEditorState._flushSync = discrete;
@@ -10667,8 +8623,7 @@ define([], function () {
       if (editorStateWasCloned) {
         if (editor._headless) {
           if (currentEditorState._selection !== null) {
-            pendingEditorState._selection =
-              currentEditorState._selection.clone();
+            pendingEditorState._selection = currentEditorState._selection.clone();
           }
         } else {
           pendingEditorState._selection = $internalCreateSelection(editor);
@@ -10685,12 +8640,7 @@ define([], function () {
           $applyAllTransforms(pendingEditorState, editor);
         }
         processNestedUpdates(editor);
-        $garbageCollectDetachedNodes(
-          currentEditorState,
-          pendingEditorState,
-          editor._dirtyLeaves,
-          editor._dirtyElements
-        );
+        $garbageCollectDetachedNodes(currentEditorState, pendingEditorState, editor._dirtyLeaves, editor._dirtyElements);
       }
       var endingCompositionKey = editor._compositionKey;
       if (startingCompositionKey !== endingCompositionKey) {
@@ -10701,14 +8651,9 @@ define([], function () {
         var pendingNodeMap = pendingEditorState._nodeMap;
         var anchorKey = pendingSelection.anchor.key;
         var focusKey = pendingSelection.focus.key;
-        if (
-          pendingNodeMap.get(anchorKey) === undefined ||
-          pendingNodeMap.get(focusKey) === undefined
-        ) {
+        if (pendingNodeMap.get(anchorKey) === undefined || pendingNodeMap.get(focusKey) === undefined) {
           {
-            throw Error(
-              "updateEditor: selection has been lost because the previously selected nodes have been removed and selection wasn't moved to another node. Ensure selection changes after removing/replacing a selected node."
-            );
+            throw Error("updateEditor: selection has been lost because the previously selected nodes have been removed and selection wasn't moved to another node. Ensure selection changes after removing/replacing a selected node.");
           }
         }
       } else if ($isNodeSelection(pendingSelection)) {
@@ -10738,9 +8683,7 @@ define([], function () {
       editor._updating = previouslyUpdating;
       infiniteTransformCount = 0;
     }
-    var shouldUpdate =
-      editor._dirtyType !== NO_DIRTY_NODES ||
-      editorStateHasDirtySelection(pendingEditorState, editor);
+    var shouldUpdate = editor._dirtyType !== NO_DIRTY_NODES || editorStateHasDirtySelection(pendingEditorState, editor);
     if (shouldUpdate) {
       if (pendingEditorState._flushSync) {
         pendingEditorState._flushSync = false;
@@ -10776,7 +8719,7 @@ define([], function () {
    */
 
   /** @noInheritDoc */
-  var ElementNode = /*#__PURE__*/ (function (_LexicalNode3) {
+  var ElementNode = /*#__PURE__*/function (_LexicalNode3) {
     /** @internal */
 
     /** @internal */
@@ -10802,643 +8745,532 @@ define([], function () {
       return _this4;
     }
     _inherits(ElementNode, _LexicalNode3);
-    return _createClass(ElementNode, [
-      {
-        key: "getFormat",
-        value: function getFormat() {
-          var self = this.getLatest();
-          return self.__format;
-        },
-      },
-      {
-        key: "getFormatType",
-        value: function getFormatType() {
-          var format = this.getFormat();
-          return ELEMENT_FORMAT_TO_TYPE[format] || "";
-        },
-      },
-      {
-        key: "getIndent",
-        value: function getIndent() {
-          var self = this.getLatest();
-          return self.__indent;
-        },
-      },
-      {
-        key: "getChildren",
-        value: function getChildren() {
-          var children = [];
-          var child = this.getFirstChild();
-          while (child !== null) {
-            children.push(child);
-            child = child.getNextSibling();
+    return _createClass(ElementNode, [{
+      key: "getFormat",
+      value: function getFormat() {
+        var self = this.getLatest();
+        return self.__format;
+      }
+    }, {
+      key: "getFormatType",
+      value: function getFormatType() {
+        var format = this.getFormat();
+        return ELEMENT_FORMAT_TO_TYPE[format] || '';
+      }
+    }, {
+      key: "getIndent",
+      value: function getIndent() {
+        var self = this.getLatest();
+        return self.__indent;
+      }
+    }, {
+      key: "getChildren",
+      value: function getChildren() {
+        var children = [];
+        var child = this.getFirstChild();
+        while (child !== null) {
+          children.push(child);
+          child = child.getNextSibling();
+        }
+        return children;
+      }
+    }, {
+      key: "getChildrenKeys",
+      value: function getChildrenKeys() {
+        var children = [];
+        var child = this.getFirstChild();
+        while (child !== null) {
+          children.push(child.__key);
+          child = child.getNextSibling();
+        }
+        return children;
+      }
+    }, {
+      key: "getChildrenSize",
+      value: function getChildrenSize() {
+        var self = this.getLatest();
+        return self.__size;
+      }
+    }, {
+      key: "isEmpty",
+      value: function isEmpty() {
+        return this.getChildrenSize() === 0;
+      }
+    }, {
+      key: "isDirty",
+      value: function isDirty() {
+        var editor = getActiveEditor();
+        var dirtyElements = editor._dirtyElements;
+        return dirtyElements !== null && dirtyElements.has(this.__key);
+      }
+    }, {
+      key: "isLastChild",
+      value: function isLastChild() {
+        var self = this.getLatest();
+        var parentLastChild = this.getParentOrThrow().getLastChild();
+        return parentLastChild !== null && parentLastChild.is(self);
+      }
+    }, {
+      key: "getAllTextNodes",
+      value: function getAllTextNodes() {
+        var textNodes = [];
+        var child = this.getFirstChild();
+        while (child !== null) {
+          if ($isTextNode(child)) {
+            textNodes.push(child);
           }
-          return children;
-        },
-      },
-      {
-        key: "getChildrenKeys",
-        value: function getChildrenKeys() {
-          var children = [];
-          var child = this.getFirstChild();
-          while (child !== null) {
-            children.push(child.__key);
-            child = child.getNextSibling();
+          if ($isElementNode(child)) {
+            var subChildrenNodes = child.getAllTextNodes();
+            textNodes.push.apply(textNodes, _toConsumableArray(subChildrenNodes));
           }
-          return children;
-        },
-      },
-      {
-        key: "getChildrenSize",
-        value: function getChildrenSize() {
-          var self = this.getLatest();
-          return self.__size;
-        },
-      },
-      {
-        key: "isEmpty",
-        value: function isEmpty() {
-          return this.getChildrenSize() === 0;
-        },
-      },
-      {
-        key: "isDirty",
-        value: function isDirty() {
-          var editor = getActiveEditor();
-          var dirtyElements = editor._dirtyElements;
-          return dirtyElements !== null && dirtyElements.has(this.__key);
-        },
-      },
-      {
-        key: "isLastChild",
-        value: function isLastChild() {
-          var self = this.getLatest();
-          var parentLastChild = this.getParentOrThrow().getLastChild();
-          return parentLastChild !== null && parentLastChild.is(self);
-        },
-      },
-      {
-        key: "getAllTextNodes",
-        value: function getAllTextNodes() {
-          var textNodes = [];
-          var child = this.getFirstChild();
-          while (child !== null) {
-            if ($isTextNode(child)) {
-              textNodes.push(child);
-            }
-            if ($isElementNode(child)) {
-              var subChildrenNodes = child.getAllTextNodes();
-              textNodes.push.apply(
-                textNodes,
-                _toConsumableArray(subChildrenNodes)
-              );
-            }
-            child = child.getNextSibling();
+          child = child.getNextSibling();
+        }
+        return textNodes;
+      }
+    }, {
+      key: "getFirstDescendant",
+      value: function getFirstDescendant() {
+        var node = this.getFirstChild();
+        while ($isElementNode(node)) {
+          var child = node.getFirstChild();
+          if (child === null) {
+            break;
           }
-          return textNodes;
-        },
-      },
-      {
-        key: "getFirstDescendant",
-        value: function getFirstDescendant() {
-          var node = this.getFirstChild();
-          while ($isElementNode(node)) {
-            var child = node.getFirstChild();
-            if (child === null) {
-              break;
-            }
-            node = child;
+          node = child;
+        }
+        return node;
+      }
+    }, {
+      key: "getLastDescendant",
+      value: function getLastDescendant() {
+        var node = this.getLastChild();
+        while ($isElementNode(node)) {
+          var child = node.getLastChild();
+          if (child === null) {
+            break;
           }
-          return node;
-        },
-      },
-      {
-        key: "getLastDescendant",
-        value: function getLastDescendant() {
-          var node = this.getLastChild();
-          while ($isElementNode(node)) {
-            var child = node.getLastChild();
-            if (child === null) {
-              break;
-            }
-            node = child;
+          node = child;
+        }
+        return node;
+      }
+    }, {
+      key: "getDescendantByIndex",
+      value: function getDescendantByIndex(index) {
+        var children = this.getChildren();
+        var childrenLength = children.length;
+        // For non-empty element nodes, we resolve its descendant
+        // (either a leaf node or the bottom-most element)
+        if (index >= childrenLength) {
+          var _resolvedNode = children[childrenLength - 1];
+          return $isElementNode(_resolvedNode) && _resolvedNode.getLastDescendant() || _resolvedNode || null;
+        }
+        var resolvedNode = children[index];
+        return $isElementNode(resolvedNode) && resolvedNode.getFirstDescendant() || resolvedNode || null;
+      }
+    }, {
+      key: "getFirstChild",
+      value: function getFirstChild() {
+        var self = this.getLatest();
+        var firstKey = self.__first;
+        return firstKey === null ? null : $getNodeByKey(firstKey);
+      }
+    }, {
+      key: "getFirstChildOrThrow",
+      value: function getFirstChildOrThrow() {
+        var firstChild = this.getFirstChild();
+        if (firstChild === null) {
+          {
+            throw Error("Expected node ".concat(this.__key, " to have a first child."));
           }
-          return node;
-        },
-      },
-      {
-        key: "getDescendantByIndex",
-        value: function getDescendantByIndex(index) {
-          var children = this.getChildren();
-          var childrenLength = children.length;
-          // For non-empty element nodes, we resolve its descendant
-          // (either a leaf node or the bottom-most element)
-          if (index >= childrenLength) {
-            var _resolvedNode = children[childrenLength - 1];
-            return (
-              ($isElementNode(_resolvedNode) &&
-                _resolvedNode.getLastDescendant()) ||
-              _resolvedNode ||
-              null
-            );
+        }
+        return firstChild;
+      }
+    }, {
+      key: "getLastChild",
+      value: function getLastChild() {
+        var self = this.getLatest();
+        var lastKey = self.__last;
+        return lastKey === null ? null : $getNodeByKey(lastKey);
+      }
+    }, {
+      key: "getLastChildOrThrow",
+      value: function getLastChildOrThrow() {
+        var lastChild = this.getLastChild();
+        if (lastChild === null) {
+          {
+            throw Error("Expected node ".concat(this.__key, " to have a last child."));
           }
-          var resolvedNode = children[index];
-          return (
-            ($isElementNode(resolvedNode) &&
-              resolvedNode.getFirstDescendant()) ||
-            resolvedNode ||
-            null
-          );
-        },
-      },
-      {
-        key: "getFirstChild",
-        value: function getFirstChild() {
-          var self = this.getLatest();
-          var firstKey = self.__first;
-          return firstKey === null ? null : $getNodeByKey(firstKey);
-        },
-      },
-      {
-        key: "getFirstChildOrThrow",
-        value: function getFirstChildOrThrow() {
-          var firstChild = this.getFirstChild();
-          if (firstChild === null) {
-            {
-              throw Error(
-                "Expected node ".concat(this.__key, " to have a first child.")
-              );
-            }
-          }
-          return firstChild;
-        },
-      },
-      {
-        key: "getLastChild",
-        value: function getLastChild() {
-          var self = this.getLatest();
-          var lastKey = self.__last;
-          return lastKey === null ? null : $getNodeByKey(lastKey);
-        },
-      },
-      {
-        key: "getLastChildOrThrow",
-        value: function getLastChildOrThrow() {
-          var lastChild = this.getLastChild();
-          if (lastChild === null) {
-            {
-              throw Error(
-                "Expected node ".concat(this.__key, " to have a last child.")
-              );
-            }
-          }
-          return lastChild;
-        },
-      },
-      {
-        key: "getChildAtIndex",
-        value: function getChildAtIndex(index) {
-          var size = this.getChildrenSize();
-          var node;
-          var i;
-          if (index < size / 2) {
-            node = this.getFirstChild();
-            i = 0;
-            while (node !== null && i <= index) {
-              if (i === index) {
-                return node;
-              }
-              node = node.getNextSibling();
-              i++;
-            }
-            return null;
-          }
-          node = this.getLastChild();
-          i = size - 1;
-          while (node !== null && i >= index) {
+        }
+        return lastChild;
+      }
+    }, {
+      key: "getChildAtIndex",
+      value: function getChildAtIndex(index) {
+        var size = this.getChildrenSize();
+        var node;
+        var i;
+        if (index < size / 2) {
+          node = this.getFirstChild();
+          i = 0;
+          while (node !== null && i <= index) {
             if (i === index) {
               return node;
             }
-            node = node.getPreviousSibling();
-            i--;
+            node = node.getNextSibling();
+            i++;
           }
           return null;
-        },
-      },
-      {
-        key: "getTextContent",
-        value: function getTextContent() {
-          var textContent = "";
-          var children = this.getChildren();
-          var childrenLength = children.length;
-          for (var i = 0; i < childrenLength; i++) {
-            var child = children[i];
-            textContent += child.getTextContent();
-            if (
-              $isElementNode(child) &&
-              i !== childrenLength - 1 &&
-              !child.isInline()
-            ) {
-              textContent += DOUBLE_LINE_BREAK;
-            }
+        }
+        node = this.getLastChild();
+        i = size - 1;
+        while (node !== null && i >= index) {
+          if (i === index) {
+            return node;
           }
-          return textContent;
-        },
-      },
-      {
-        key: "getTextContentSize",
-        value: function getTextContentSize() {
-          var textContentSize = 0;
-          var children = this.getChildren();
-          var childrenLength = children.length;
-          for (var i = 0; i < childrenLength; i++) {
-            var child = children[i];
-            textContentSize += child.getTextContentSize();
-            if (
-              $isElementNode(child) &&
-              i !== childrenLength - 1 &&
-              !child.isInline()
-            ) {
-              textContentSize += DOUBLE_LINE_BREAK.length;
-            }
+          node = node.getPreviousSibling();
+          i--;
+        }
+        return null;
+      }
+    }, {
+      key: "getTextContent",
+      value: function getTextContent() {
+        var textContent = '';
+        var children = this.getChildren();
+        var childrenLength = children.length;
+        for (var i = 0; i < childrenLength; i++) {
+          var child = children[i];
+          textContent += child.getTextContent();
+          if ($isElementNode(child) && i !== childrenLength - 1 && !child.isInline()) {
+            textContent += DOUBLE_LINE_BREAK;
           }
-          return textContentSize;
-        },
-      },
-      {
-        key: "getDirection",
-        value: function getDirection() {
-          var self = this.getLatest();
-          return self.__dir;
-        },
-      },
-      {
-        key: "hasFormat",
-        value: function hasFormat(type) {
-          if (type !== "") {
-            var formatFlag = ELEMENT_TYPE_TO_FORMAT[type];
-            return (this.getFormat() & formatFlag) !== 0;
+        }
+        return textContent;
+      }
+    }, {
+      key: "getTextContentSize",
+      value: function getTextContentSize() {
+        var textContentSize = 0;
+        var children = this.getChildren();
+        var childrenLength = children.length;
+        for (var i = 0; i < childrenLength; i++) {
+          var child = children[i];
+          textContentSize += child.getTextContentSize();
+          if ($isElementNode(child) && i !== childrenLength - 1 && !child.isInline()) {
+            textContentSize += DOUBLE_LINE_BREAK.length;
           }
-          return false;
-        },
+        }
+        return textContentSize;
+      }
+    }, {
+      key: "getDirection",
+      value: function getDirection() {
+        var self = this.getLatest();
+        return self.__dir;
+      }
+    }, {
+      key: "hasFormat",
+      value: function hasFormat(type) {
+        if (type !== '') {
+          var formatFlag = ELEMENT_TYPE_TO_FORMAT[type];
+          return (this.getFormat() & formatFlag) !== 0;
+        }
+        return false;
+      }
 
-        // Mutators
-      },
-      {
-        key: "select",
-        value: function select(_anchorOffset, _focusOffset) {
-          errorOnReadOnly();
-          var selection = $getSelection();
-          var anchorOffset = _anchorOffset;
-          var focusOffset = _focusOffset;
-          var childrenCount = this.getChildrenSize();
-          if (!this.canBeEmpty()) {
-            if (_anchorOffset === 0 && _focusOffset === 0) {
-              var firstChild = this.getFirstChild();
-              if ($isTextNode(firstChild) || $isElementNode(firstChild)) {
-                return firstChild.select(0, 0);
-              }
-            } else if (
-              (_anchorOffset === undefined ||
-                _anchorOffset === childrenCount) &&
-              (_focusOffset === undefined || _focusOffset === childrenCount)
-            ) {
-              var lastChild = this.getLastChild();
-              if ($isTextNode(lastChild) || $isElementNode(lastChild)) {
-                return lastChild.select();
-              }
+      // Mutators
+    }, {
+      key: "select",
+      value: function select(_anchorOffset, _focusOffset) {
+        errorOnReadOnly();
+        var selection = $getSelection();
+        var anchorOffset = _anchorOffset;
+        var focusOffset = _focusOffset;
+        var childrenCount = this.getChildrenSize();
+        if (!this.canBeEmpty()) {
+          if (_anchorOffset === 0 && _focusOffset === 0) {
+            var firstChild = this.getFirstChild();
+            if ($isTextNode(firstChild) || $isElementNode(firstChild)) {
+              return firstChild.select(0, 0);
+            }
+          } else if ((_anchorOffset === undefined || _anchorOffset === childrenCount) && (_focusOffset === undefined || _focusOffset === childrenCount)) {
+            var lastChild = this.getLastChild();
+            if ($isTextNode(lastChild) || $isElementNode(lastChild)) {
+              return lastChild.select();
             }
           }
-          if (anchorOffset === undefined) {
-            anchorOffset = childrenCount;
-          }
-          if (focusOffset === undefined) {
-            focusOffset = childrenCount;
-          }
-          var key = this.__key;
-          if (!$isRangeSelection(selection)) {
-            return $internalMakeRangeSelection(
-              key,
-              anchorOffset,
-              key,
-              focusOffset,
-              "element",
-              "element"
-            );
+        }
+        if (anchorOffset === undefined) {
+          anchorOffset = childrenCount;
+        }
+        if (focusOffset === undefined) {
+          focusOffset = childrenCount;
+        }
+        var key = this.__key;
+        if (!$isRangeSelection(selection)) {
+          return $internalMakeRangeSelection(key, anchorOffset, key, focusOffset, 'element', 'element');
+        } else {
+          selection.anchor.set(key, anchorOffset, 'element');
+          selection.focus.set(key, focusOffset, 'element');
+          selection.dirty = true;
+        }
+        return selection;
+      }
+    }, {
+      key: "selectStart",
+      value: function selectStart() {
+        var firstNode = this.getFirstDescendant();
+        return firstNode ? firstNode.selectStart() : this.select();
+      }
+    }, {
+      key: "selectEnd",
+      value: function selectEnd() {
+        var lastNode = this.getLastDescendant();
+        return lastNode ? lastNode.selectEnd() : this.select();
+      }
+    }, {
+      key: "clear",
+      value: function clear() {
+        var writableSelf = this.getWritable();
+        var children = this.getChildren();
+        children.forEach(function (child) {
+          return child.remove();
+        });
+        return writableSelf;
+      }
+    }, {
+      key: "append",
+      value: function append() {
+        for (var _len4 = arguments.length, nodesToAppend = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+          nodesToAppend[_key4] = arguments[_key4];
+        }
+        return this.splice(this.getChildrenSize(), 0, nodesToAppend);
+      }
+    }, {
+      key: "setDirection",
+      value: function setDirection(direction) {
+        var self = this.getWritable();
+        self.__dir = direction;
+        return self;
+      }
+    }, {
+      key: "setFormat",
+      value: function setFormat(type) {
+        var self = this.getWritable();
+        self.__format = type !== '' ? ELEMENT_TYPE_TO_FORMAT[type] : 0;
+        return this;
+      }
+    }, {
+      key: "setIndent",
+      value: function setIndent(indentLevel) {
+        var self = this.getWritable();
+        self.__indent = indentLevel;
+        return this;
+      }
+    }, {
+      key: "splice",
+      value: function splice(start, deleteCount, nodesToInsert) {
+        var nodesToInsertLength = nodesToInsert.length;
+        var oldSize = this.getChildrenSize();
+        var writableSelf = this.getWritable();
+        var writableSelfKey = writableSelf.__key;
+        var nodesToInsertKeys = [];
+        var nodesToRemoveKeys = [];
+        var nodeAfterRange = this.getChildAtIndex(start + deleteCount);
+        var nodeBeforeRange = null;
+        var newSize = oldSize - deleteCount + nodesToInsertLength;
+        if (start !== 0) {
+          if (start === oldSize) {
+            nodeBeforeRange = this.getLastChild();
           } else {
-            selection.anchor.set(key, anchorOffset, "element");
-            selection.focus.set(key, focusOffset, "element");
-            selection.dirty = true;
-          }
-          return selection;
-        },
-      },
-      {
-        key: "selectStart",
-        value: function selectStart() {
-          var firstNode = this.getFirstDescendant();
-          return firstNode ? firstNode.selectStart() : this.select();
-        },
-      },
-      {
-        key: "selectEnd",
-        value: function selectEnd() {
-          var lastNode = this.getLastDescendant();
-          return lastNode ? lastNode.selectEnd() : this.select();
-        },
-      },
-      {
-        key: "clear",
-        value: function clear() {
-          var writableSelf = this.getWritable();
-          var children = this.getChildren();
-          children.forEach(function (child) {
-            return child.remove();
-          });
-          return writableSelf;
-        },
-      },
-      {
-        key: "append",
-        value: function append() {
-          for (
-            var _len4 = arguments.length,
-              nodesToAppend = new Array(_len4),
-              _key4 = 0;
-            _key4 < _len4;
-            _key4++
-          ) {
-            nodesToAppend[_key4] = arguments[_key4];
-          }
-          return this.splice(this.getChildrenSize(), 0, nodesToAppend);
-        },
-      },
-      {
-        key: "setDirection",
-        value: function setDirection(direction) {
-          var self = this.getWritable();
-          self.__dir = direction;
-          return self;
-        },
-      },
-      {
-        key: "setFormat",
-        value: function setFormat(type) {
-          var self = this.getWritable();
-          self.__format = type !== "" ? ELEMENT_TYPE_TO_FORMAT[type] : 0;
-          return this;
-        },
-      },
-      {
-        key: "setIndent",
-        value: function setIndent(indentLevel) {
-          var self = this.getWritable();
-          self.__indent = indentLevel;
-          return this;
-        },
-      },
-      {
-        key: "splice",
-        value: function splice(start, deleteCount, nodesToInsert) {
-          var nodesToInsertLength = nodesToInsert.length;
-          var oldSize = this.getChildrenSize();
-          var writableSelf = this.getWritable();
-          var writableSelfKey = writableSelf.__key;
-          var nodesToInsertKeys = [];
-          var nodesToRemoveKeys = [];
-          var nodeAfterRange = this.getChildAtIndex(start + deleteCount);
-          var nodeBeforeRange = null;
-          var newSize = oldSize - deleteCount + nodesToInsertLength;
-          if (start !== 0) {
-            if (start === oldSize) {
-              nodeBeforeRange = this.getLastChild();
-            } else {
-              var node = this.getChildAtIndex(start);
-              if (node !== null) {
-                nodeBeforeRange = node.getPreviousSibling();
-              }
+            var node = this.getChildAtIndex(start);
+            if (node !== null) {
+              nodeBeforeRange = node.getPreviousSibling();
             }
           }
-          if (deleteCount > 0) {
-            var nodeToDelete =
-              nodeBeforeRange === null
-                ? this.getFirstChild()
-                : nodeBeforeRange.getNextSibling();
-            for (var i = 0; i < deleteCount; i++) {
-              if (nodeToDelete === null) {
-                {
-                  throw Error("splice: sibling not found");
-                }
-              }
-              var nextSibling = nodeToDelete.getNextSibling();
-              var nodeKeyToDelete = nodeToDelete.__key;
-              var writableNodeToDelete = nodeToDelete.getWritable();
-              removeFromParent(writableNodeToDelete);
-              nodesToRemoveKeys.push(nodeKeyToDelete);
-              nodeToDelete = nextSibling;
-            }
-          }
-          var prevNode = nodeBeforeRange;
-          for (var _i7 = 0; _i7 < nodesToInsertLength; _i7++) {
-            var nodeToInsert = nodesToInsert[_i7];
-            if (prevNode !== null && nodeToInsert.is(prevNode)) {
-              nodeBeforeRange = prevNode = prevNode.getPreviousSibling();
-            }
-            var writableNodeToInsert = nodeToInsert.getWritable();
-            if (writableNodeToInsert.__parent === writableSelfKey) {
-              newSize--;
-            }
-            removeFromParent(writableNodeToInsert);
-            var nodeKeyToInsert = nodeToInsert.__key;
-            if (prevNode === null) {
-              writableSelf.__first = nodeKeyToInsert;
-              writableNodeToInsert.__prev = null;
-            } else {
-              var writablePrevNode = prevNode.getWritable();
-              writablePrevNode.__next = nodeKeyToInsert;
-              writableNodeToInsert.__prev = writablePrevNode.__key;
-            }
-            if (nodeToInsert.__key === writableSelfKey) {
+        }
+        if (deleteCount > 0) {
+          var nodeToDelete = nodeBeforeRange === null ? this.getFirstChild() : nodeBeforeRange.getNextSibling();
+          for (var i = 0; i < deleteCount; i++) {
+            if (nodeToDelete === null) {
               {
-                throw Error("append: attempting to append self");
+                throw Error("splice: sibling not found");
               }
             }
-            // Set child parent to self
-            writableNodeToInsert.__parent = writableSelfKey;
-            nodesToInsertKeys.push(nodeKeyToInsert);
-            prevNode = nodeToInsert;
+            var nextSibling = nodeToDelete.getNextSibling();
+            var nodeKeyToDelete = nodeToDelete.__key;
+            var writableNodeToDelete = nodeToDelete.getWritable();
+            removeFromParent(writableNodeToDelete);
+            nodesToRemoveKeys.push(nodeKeyToDelete);
+            nodeToDelete = nextSibling;
           }
-          if (start + deleteCount === oldSize) {
-            if (prevNode !== null) {
-              var _writablePrevNode = prevNode.getWritable();
-              _writablePrevNode.__next = null;
-              writableSelf.__last = prevNode.__key;
-            }
-          } else if (nodeAfterRange !== null) {
-            var writableNodeAfterRange = nodeAfterRange.getWritable();
-            if (prevNode !== null) {
-              var _writablePrevNode2 = prevNode.getWritable();
-              writableNodeAfterRange.__prev = prevNode.__key;
-              _writablePrevNode2.__next = nodeAfterRange.__key;
-            } else {
-              writableNodeAfterRange.__prev = null;
+        }
+        var prevNode = nodeBeforeRange;
+        for (var _i7 = 0; _i7 < nodesToInsertLength; _i7++) {
+          var nodeToInsert = nodesToInsert[_i7];
+          if (prevNode !== null && nodeToInsert.is(prevNode)) {
+            nodeBeforeRange = prevNode = prevNode.getPreviousSibling();
+          }
+          var writableNodeToInsert = nodeToInsert.getWritable();
+          if (writableNodeToInsert.__parent === writableSelfKey) {
+            newSize--;
+          }
+          removeFromParent(writableNodeToInsert);
+          var nodeKeyToInsert = nodeToInsert.__key;
+          if (prevNode === null) {
+            writableSelf.__first = nodeKeyToInsert;
+            writableNodeToInsert.__prev = null;
+          } else {
+            var writablePrevNode = prevNode.getWritable();
+            writablePrevNode.__next = nodeKeyToInsert;
+            writableNodeToInsert.__prev = writablePrevNode.__key;
+          }
+          if (nodeToInsert.__key === writableSelfKey) {
+            {
+              throw Error("append: attempting to append self");
             }
           }
-          writableSelf.__size = newSize;
+          // Set child parent to self
+          writableNodeToInsert.__parent = writableSelfKey;
+          nodesToInsertKeys.push(nodeKeyToInsert);
+          prevNode = nodeToInsert;
+        }
+        if (start + deleteCount === oldSize) {
+          if (prevNode !== null) {
+            var _writablePrevNode = prevNode.getWritable();
+            _writablePrevNode.__next = null;
+            writableSelf.__last = prevNode.__key;
+          }
+        } else if (nodeAfterRange !== null) {
+          var writableNodeAfterRange = nodeAfterRange.getWritable();
+          if (prevNode !== null) {
+            var _writablePrevNode2 = prevNode.getWritable();
+            writableNodeAfterRange.__prev = prevNode.__key;
+            _writablePrevNode2.__next = nodeAfterRange.__key;
+          } else {
+            writableNodeAfterRange.__prev = null;
+          }
+        }
+        writableSelf.__size = newSize;
 
-          // In case of deletion we need to adjust selection, unlink removed nodes
-          // and clean up node itself if it becomes empty. None of these needed
-          // for insertion-only cases
-          if (nodesToRemoveKeys.length) {
-            // Adjusting selection, in case node that was anchor/focus will be deleted
-            var selection = $getSelection();
-            if ($isRangeSelection(selection)) {
-              var nodesToRemoveKeySet = new Set(nodesToRemoveKeys);
-              var nodesToInsertKeySet = new Set(nodesToInsertKeys);
-              var anchor = selection.anchor,
-                focus = selection.focus;
-              if (
-                isPointRemoved(anchor, nodesToRemoveKeySet, nodesToInsertKeySet)
-              ) {
-                moveSelectionPointToSibling(
-                  anchor,
-                  anchor.getNode(),
-                  this,
-                  nodeBeforeRange,
-                  nodeAfterRange
-                );
-              }
-              if (
-                isPointRemoved(focus, nodesToRemoveKeySet, nodesToInsertKeySet)
-              ) {
-                moveSelectionPointToSibling(
-                  focus,
-                  focus.getNode(),
-                  this,
-                  nodeBeforeRange,
-                  nodeAfterRange
-                );
-              }
-              // Cleanup if node can't be empty
-              if (
-                newSize === 0 &&
-                !this.canBeEmpty() &&
-                !$isRootOrShadowRoot(this)
-              ) {
-                this.remove();
-              }
+        // In case of deletion we need to adjust selection, unlink removed nodes
+        // and clean up node itself if it becomes empty. None of these needed
+        // for insertion-only cases
+        if (nodesToRemoveKeys.length) {
+          // Adjusting selection, in case node that was anchor/focus will be deleted
+          var selection = $getSelection();
+          if ($isRangeSelection(selection)) {
+            var nodesToRemoveKeySet = new Set(nodesToRemoveKeys);
+            var nodesToInsertKeySet = new Set(nodesToInsertKeys);
+            var anchor = selection.anchor,
+              focus = selection.focus;
+            if (isPointRemoved(anchor, nodesToRemoveKeySet, nodesToInsertKeySet)) {
+              moveSelectionPointToSibling(anchor, anchor.getNode(), this, nodeBeforeRange, nodeAfterRange);
+            }
+            if (isPointRemoved(focus, nodesToRemoveKeySet, nodesToInsertKeySet)) {
+              moveSelectionPointToSibling(focus, focus.getNode(), this, nodeBeforeRange, nodeAfterRange);
+            }
+            // Cleanup if node can't be empty
+            if (newSize === 0 && !this.canBeEmpty() && !$isRootOrShadowRoot(this)) {
+              this.remove();
             }
           }
-          return writableSelf;
-        },
-        // JSON serialization
-      },
-      {
-        key: "exportJSON",
-        value: function exportJSON() {
-          return {
-            children: [],
-            direction: this.getDirection(),
-            format: this.getFormatType(),
-            indent: this.getIndent(),
-            type: "element",
-            version: 1,
-          };
-        },
-        // These are intended to be extends for specific element heuristics.
-      },
-      {
-        key: "insertNewAfter",
-        value: function insertNewAfter(selection, restoreSelection) {
-          return null;
-        },
-      },
-      {
-        key: "canIndent",
-        value: function canIndent() {
-          return true;
-        },
-        /*
-         * This method controls the behavior of a the node during backwards
-         * deletion (i.e., backspace) when selection is at the beginning of
-         * the node (offset 0)
-         */
-      },
-      {
-        key: "collapseAtStart",
-        value: function collapseAtStart(selection) {
-          return false;
-        },
-      },
-      {
-        key: "excludeFromCopy",
-        value: function excludeFromCopy(destination) {
-          return false;
-        },
-        /** @deprecated @internal */
-      },
-      {
-        key: "canReplaceWith",
-        value: function canReplaceWith(replacement) {
-          return true;
-        },
-        /** @deprecated @internal */
-      },
-      {
-        key: "canInsertAfter",
-        value: function canInsertAfter(node) {
-          return true;
-        },
-      },
-      {
-        key: "canBeEmpty",
-        value: function canBeEmpty() {
-          return true;
-        },
-      },
-      {
-        key: "canInsertTextBefore",
-        value: function canInsertTextBefore() {
-          return true;
-        },
-      },
-      {
-        key: "canInsertTextAfter",
-        value: function canInsertTextAfter() {
-          return true;
-        },
-      },
-      {
-        key: "isInline",
-        value: function isInline() {
-          return false;
-        },
-        // A shadow root is a Node that behaves like RootNode. The shadow root (and RootNode) mark the
-        // end of the hiercharchy, most implementations should treat it as there's nothing (upwards)
-        // beyond this point. For example, node.getTopLevelElement(), when performed inside a TableCellNode
-        // will return the immediate first child underneath TableCellNode instead of RootNode.
-      },
-      {
-        key: "isShadowRoot",
-        value: function isShadowRoot() {
-          return false;
-        },
-        /** @deprecated @internal */
-      },
-      {
-        key: "canMergeWith",
-        value: function canMergeWith(node) {
-          return false;
-        },
-      },
-      {
-        key: "extractWithChild",
-        value: function extractWithChild(child, selection, destination) {
-          return false;
-        },
-      },
-    ]);
-  })(LexicalNode);
+        }
+        return writableSelf;
+      }
+      // JSON serialization
+    }, {
+      key: "exportJSON",
+      value: function exportJSON() {
+        return {
+          children: [],
+          direction: this.getDirection(),
+          format: this.getFormatType(),
+          indent: this.getIndent(),
+          type: 'element',
+          version: 1
+        };
+      }
+      // These are intended to be extends for specific element heuristics.
+    }, {
+      key: "insertNewAfter",
+      value: function insertNewAfter(selection, restoreSelection) {
+        return null;
+      }
+    }, {
+      key: "canIndent",
+      value: function canIndent() {
+        return true;
+      }
+      /*
+       * This method controls the behavior of a the node during backwards
+       * deletion (i.e., backspace) when selection is at the beginning of
+       * the node (offset 0)
+       */
+    }, {
+      key: "collapseAtStart",
+      value: function collapseAtStart(selection) {
+        return false;
+      }
+    }, {
+      key: "excludeFromCopy",
+      value: function excludeFromCopy(destination) {
+        return false;
+      }
+      /** @deprecated @internal */
+    }, {
+      key: "canReplaceWith",
+      value: function canReplaceWith(replacement) {
+        return true;
+      }
+      /** @deprecated @internal */
+    }, {
+      key: "canInsertAfter",
+      value: function canInsertAfter(node) {
+        return true;
+      }
+    }, {
+      key: "canBeEmpty",
+      value: function canBeEmpty() {
+        return true;
+      }
+    }, {
+      key: "canInsertTextBefore",
+      value: function canInsertTextBefore() {
+        return true;
+      }
+    }, {
+      key: "canInsertTextAfter",
+      value: function canInsertTextAfter() {
+        return true;
+      }
+    }, {
+      key: "isInline",
+      value: function isInline() {
+        return false;
+      }
+      // A shadow root is a Node that behaves like RootNode. The shadow root (and RootNode) mark the
+      // end of the hiercharchy, most implementations should treat it as there's nothing (upwards)
+      // beyond this point. For example, node.getTopLevelElement(), when performed inside a TableCellNode
+      // will return the immediate first child underneath TableCellNode instead of RootNode.
+    }, {
+      key: "isShadowRoot",
+      value: function isShadowRoot() {
+        return false;
+      }
+      /** @deprecated @internal */
+    }, {
+      key: "canMergeWith",
+      value: function canMergeWith(node) {
+        return false;
+      }
+    }, {
+      key: "extractWithChild",
+      value: function extractWithChild(child, selection, destination) {
+        return false;
+      }
+    }]);
+  }(LexicalNode);
   function $isElementNode(node) {
     return node instanceof ElementNode;
   }
@@ -11446,10 +9278,7 @@ define([], function () {
     var node = point.getNode();
     while (node) {
       var nodeKey = node.__key;
-      if (
-        nodesToRemoveKeySet.has(nodeKey) &&
-        !nodesToInsertKeySet.has(nodeKey)
-      ) {
+      if (nodesToRemoveKeySet.has(nodeKey) && !nodesToInsertKeySet.has(nodeKey)) {
         return true;
       }
       node = node.getParent();
@@ -11466,7 +9295,7 @@ define([], function () {
    */
 
   /** @noInheritDoc */
-  var DecoratorNode = /*#__PURE__*/ (function (_LexicalNode4) {
+  var DecoratorNode = /*#__PURE__*/function (_LexicalNode4) {
     function DecoratorNode(key) {
       _classCallCheck(this, DecoratorNode);
       return _callSuper(this, DecoratorNode, [key]);
@@ -11476,35 +9305,30 @@ define([], function () {
      * The returned value is added to the LexicalEditor._decorators
      */
     _inherits(DecoratorNode, _LexicalNode4);
-    return _createClass(DecoratorNode, [
-      {
-        key: "decorate",
-        value: function decorate(editor, config) {
-          {
-            throw Error("decorate: base method not extended");
-          }
-        },
-      },
-      {
-        key: "isIsolated",
-        value: function isIsolated() {
-          return false;
-        },
-      },
-      {
-        key: "isInline",
-        value: function isInline() {
-          return true;
-        },
-      },
-      {
-        key: "isKeyboardSelectable",
-        value: function isKeyboardSelectable() {
-          return true;
-        },
-      },
-    ]);
-  })(LexicalNode);
+    return _createClass(DecoratorNode, [{
+      key: "decorate",
+      value: function decorate(editor, config) {
+        {
+          throw Error("decorate: base method not extended");
+        }
+      }
+    }, {
+      key: "isIsolated",
+      value: function isIsolated() {
+        return false;
+      }
+    }, {
+      key: "isInline",
+      value: function isInline() {
+        return true;
+      }
+    }, {
+      key: "isKeyboardSelectable",
+      value: function isKeyboardSelectable() {
+        return true;
+      }
+    }]);
+  }(LexicalNode);
   function $isDecoratorNode(node) {
     return node instanceof DecoratorNode;
   }
@@ -11518,168 +9342,128 @@ define([], function () {
    */
 
   /** @noInheritDoc */
-  var RootNode = /*#__PURE__*/ (function (_ElementNode) {
+  var RootNode = /*#__PURE__*/function (_ElementNode) {
     function RootNode() {
       var _this5;
       _classCallCheck(this, RootNode);
-      _this5 = _callSuper(this, RootNode, ["root"]);
+      _this5 = _callSuper(this, RootNode, ['root']);
       _this5.__cachedText = null;
       return _this5;
     }
     _inherits(RootNode, _ElementNode);
-    return _createClass(
-      RootNode,
-      [
+    return _createClass(RootNode, [{
+      key: "getTopLevelElementOrThrow",
+      value: function getTopLevelElementOrThrow() {
         {
-          key: "getTopLevelElementOrThrow",
-          value: function getTopLevelElementOrThrow() {
-            {
-              throw Error(
-                "getTopLevelElementOrThrow: root nodes are not top level elements"
-              );
-            }
-          },
-        },
+          throw Error("getTopLevelElementOrThrow: root nodes are not top level elements");
+        }
+      }
+    }, {
+      key: "getTextContent",
+      value: function getTextContent() {
+        var cachedText = this.__cachedText;
+        if (isCurrentlyReadOnlyMode() || getActiveEditor()._dirtyType === NO_DIRTY_NODES) {
+          if (cachedText !== null) {
+            return cachedText;
+          }
+        }
+        return _get(_getPrototypeOf(RootNode.prototype), "getTextContent", this).call(this);
+      }
+    }, {
+      key: "remove",
+      value: function remove() {
         {
-          key: "getTextContent",
-          value: function getTextContent() {
-            var cachedText = this.__cachedText;
-            if (
-              isCurrentlyReadOnlyMode() ||
-              getActiveEditor()._dirtyType === NO_DIRTY_NODES
-            ) {
-              if (cachedText !== null) {
-                return cachedText;
-              }
-            }
-            return _get(
-              _getPrototypeOf(RootNode.prototype),
-              "getTextContent",
-              this
-            ).call(this);
-          },
-        },
+          throw Error("remove: cannot be called on root nodes");
+        }
+      }
+    }, {
+      key: "replace",
+      value: function replace(node) {
         {
-          key: "remove",
-          value: function remove() {
-            {
-              throw Error("remove: cannot be called on root nodes");
-            }
-          },
-        },
+          throw Error("replace: cannot be called on root nodes");
+        }
+      }
+    }, {
+      key: "insertBefore",
+      value: function insertBefore(nodeToInsert) {
         {
-          key: "replace",
-          value: function replace(node) {
-            {
-              throw Error("replace: cannot be called on root nodes");
-            }
-          },
-        },
+          throw Error("insertBefore: cannot be called on root nodes");
+        }
+      }
+    }, {
+      key: "insertAfter",
+      value: function insertAfter(nodeToInsert) {
         {
-          key: "insertBefore",
-          value: function insertBefore(nodeToInsert) {
-            {
-              throw Error("insertBefore: cannot be called on root nodes");
-            }
-          },
-        },
-        {
-          key: "insertAfter",
-          value: function insertAfter(nodeToInsert) {
-            {
-              throw Error("insertAfter: cannot be called on root nodes");
-            }
-          },
+          throw Error("insertAfter: cannot be called on root nodes");
+        }
+      }
 
-          // View
-        },
-        {
-          key: "updateDOM",
-          value: function updateDOM(prevNode, dom) {
-            return false;
-          },
+      // View
+    }, {
+      key: "updateDOM",
+      value: function updateDOM(prevNode, dom) {
+        return false;
+      }
 
-          // Mutate
-        },
-        {
-          key: "append",
-          value: function append() {
-            var _get2;
-            for (
-              var _len5 = arguments.length,
-                nodesToAppend = new Array(_len5),
-                _key5 = 0;
-              _key5 < _len5;
-              _key5++
-            ) {
-              nodesToAppend[_key5] = arguments[_key5];
+      // Mutate
+    }, {
+      key: "append",
+      value: function append() {
+        var _get2;
+        for (var _len5 = arguments.length, nodesToAppend = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+          nodesToAppend[_key5] = arguments[_key5];
+        }
+        for (var i = 0; i < nodesToAppend.length; i++) {
+          var node = nodesToAppend[i];
+          if (!$isElementNode(node) && !$isDecoratorNode(node)) {
+            {
+              throw Error("rootNode.append: Only element or decorator nodes can be appended to the root node");
             }
-            for (var i = 0; i < nodesToAppend.length; i++) {
-              var node = nodesToAppend[i];
-              if (!$isElementNode(node) && !$isDecoratorNode(node)) {
-                {
-                  throw Error(
-                    "rootNode.append: Only element or decorator nodes can be appended to the root node"
-                  );
-                }
-              }
-            }
-            return (_get2 = _get(
-              _getPrototypeOf(RootNode.prototype),
-              "append",
-              this
-            )).call.apply(_get2, [this].concat(nodesToAppend));
-          },
-        },
-        {
-          key: "exportJSON",
-          value: function exportJSON() {
-            return {
-              children: [],
-              direction: this.getDirection(),
-              format: this.getFormatType(),
-              indent: this.getIndent(),
-              type: "root",
-              version: 1,
-            };
-          },
-        },
-        {
-          key: "collapseAtStart",
-          value: function collapseAtStart() {
-            return true;
-          },
-        },
-      ],
-      [
-        {
-          key: "getType",
-          /** @internal */
+          }
+        }
+        return (_get2 = _get(_getPrototypeOf(RootNode.prototype), "append", this)).call.apply(_get2, [this].concat(nodesToAppend));
+      }
+    }, {
+      key: "exportJSON",
+      value: function exportJSON() {
+        return {
+          children: [],
+          direction: this.getDirection(),
+          format: this.getFormatType(),
+          indent: this.getIndent(),
+          type: 'root',
+          version: 1
+        };
+      }
+    }, {
+      key: "collapseAtStart",
+      value: function collapseAtStart() {
+        return true;
+      }
+    }], [{
+      key: "getType",
+      value: /** @internal */
 
-          value: function getType() {
-            return "root";
-          },
-        },
-        {
-          key: "clone",
-          value: function clone() {
-            return new RootNode();
-          },
-        },
-        {
-          key: "importJSON",
-          value: function importJSON(serializedNode) {
-            // We don't create a root, and instead use the existing root.
-            var node = $getRoot();
-            node.setFormat(serializedNode.format);
-            node.setIndent(serializedNode.indent);
-            node.setDirection(serializedNode.direction);
-            return node;
-          },
-        },
-      ]
-    );
-  })(ElementNode);
+      function getType() {
+        return 'root';
+      }
+    }, {
+      key: "clone",
+      value: function clone() {
+        return new RootNode();
+      }
+    }, {
+      key: "importJSON",
+      value: function importJSON(serializedNode) {
+        // We don't create a root, and instead use the existing root.
+        var node = $getRoot();
+        node.setFormat(serializedNode.format);
+        node.setIndent(serializedNode.indent);
+        node.setDirection(serializedNode.direction);
+        return node;
+      }
+    }]);
+  }(ElementNode);
   function $createRootNode() {
     return new RootNode();
   }
@@ -11713,31 +9497,21 @@ define([], function () {
     return new EditorState(new Map(current._nodeMap));
   }
   function createEmptyEditorState() {
-    return new EditorState(new Map([["root", $createRootNode()]]));
+    return new EditorState(new Map([['root', $createRootNode()]]));
   }
   function exportNodeToJSON(node) {
     var serializedNode = node.exportJSON();
     var nodeClass = node.constructor;
     if (serializedNode.type !== nodeClass.getType()) {
       {
-        throw Error(
-          "LexicalNode: Node ".concat(
-            nodeClass.name,
-            " does not match the serialized type. Check if .exportJSON() is implemented and it is returning the correct type."
-          )
-        );
+        throw Error("LexicalNode: Node ".concat(nodeClass.name, " does not match the serialized type. Check if .exportJSON() is implemented and it is returning the correct type."));
       }
     }
     if ($isElementNode(node)) {
       var serializedChildren = serializedNode.children;
       if (!Array.isArray(serializedChildren)) {
         {
-          throw Error(
-            "LexicalNode: Node ".concat(
-              nodeClass.name,
-              " is an element but .exportJSON() does not have a children array."
-            )
-          );
+          throw Error("LexicalNode: Node ".concat(nodeClass.name, " is an element but .exportJSON() does not have a children array."));
         }
       }
       var children = node.getChildren();
@@ -11751,7 +9525,7 @@ define([], function () {
     // @ts-expect-error
     return serializedNode;
   }
-  var EditorState = /*#__PURE__*/ (function () {
+  var EditorState = /*#__PURE__*/function () {
     function EditorState(nodeMap, selection) {
       _classCallCheck(this, EditorState);
       this._nodeMap = nodeMap;
@@ -11759,42 +9533,34 @@ define([], function () {
       this._flushSync = false;
       this._readOnly = false;
     }
-    return _createClass(EditorState, [
-      {
-        key: "isEmpty",
-        value: function isEmpty() {
-          return this._nodeMap.size === 1 && this._selection === null;
-        },
-      },
-      {
-        key: "read",
-        value: function read(callbackFn) {
-          return readEditorState(this, callbackFn);
-        },
-      },
-      {
-        key: "clone",
-        value: function clone(selection) {
-          var editorState = new EditorState(
-            this._nodeMap,
-            selection === undefined ? this._selection : selection
-          );
-          editorState._readOnly = true;
-          return editorState;
-        },
-      },
-      {
-        key: "toJSON",
-        value: function toJSON() {
-          return readEditorState(this, function () {
-            return {
-              root: exportNodeToJSON($getRoot()),
-            };
-          });
-        },
-      },
-    ]);
-  })();
+    return _createClass(EditorState, [{
+      key: "isEmpty",
+      value: function isEmpty() {
+        return this._nodeMap.size === 1 && this._selection === null;
+      }
+    }, {
+      key: "read",
+      value: function read(callbackFn) {
+        return readEditorState(this, callbackFn);
+      }
+    }, {
+      key: "clone",
+      value: function clone(selection) {
+        var editorState = new EditorState(this._nodeMap, selection === undefined ? this._selection : selection);
+        editorState._readOnly = true;
+        return editorState;
+      }
+    }, {
+      key: "toJSON",
+      value: function toJSON() {
+        return readEditorState(this, function () {
+          return {
+            root: exportNodeToJSON($getRoot())
+          };
+        });
+      }
+    }]);
+  }();
   /**
    * Copyright (c) Meta Platforms, Inc. and affiliates.
    *
@@ -11803,34 +9569,26 @@ define([], function () {
    *
    */
   // TODO: Cleanup ArtificialNode__DO_NOT_USE #5966
-  var ArtificialNode__DO_NOT_USE = /*#__PURE__*/ (function (_ElementNode2) {
+  var ArtificialNode__DO_NOT_USE = /*#__PURE__*/function (_ElementNode2) {
     function ArtificialNode__DO_NOT_USE() {
       _classCallCheck(this, ArtificialNode__DO_NOT_USE);
       return _callSuper(this, ArtificialNode__DO_NOT_USE, arguments);
     }
     _inherits(ArtificialNode__DO_NOT_USE, _ElementNode2);
-    return _createClass(
-      ArtificialNode__DO_NOT_USE,
-      [
-        {
-          key: "createDOM",
-          value: function createDOM(config) {
-            // this isnt supposed to be used and is not used anywhere but defining it to appease the API
-            var dom = document.createElement("div");
-            return dom;
-          },
-        },
-      ],
-      [
-        {
-          key: "getType",
-          value: function getType() {
-            return "artificial";
-          },
-        },
-      ]
-    );
-  })(ElementNode);
+    return _createClass(ArtificialNode__DO_NOT_USE, [{
+      key: "createDOM",
+      value: function createDOM(config) {
+        // this isnt supposed to be used and is not used anywhere but defining it to appease the API
+        var dom = document.createElement('div');
+        return dom;
+      }
+    }], [{
+      key: "getType",
+      value: function getType() {
+        return 'artificial';
+      }
+    }]);
+  }(ElementNode);
   /**
    * Copyright (c) Meta Platforms, Inc. and affiliates.
    *
@@ -11839,7 +9597,7 @@ define([], function () {
    *
    */
   /** @noInheritDoc */
-  var ParagraphNode = /*#__PURE__*/ (function (_ElementNode3) {
+  var ParagraphNode = /*#__PURE__*/function (_ElementNode3) {
     /** @internal */
 
     function ParagraphNode(key) {
@@ -11850,192 +9608,148 @@ define([], function () {
       return _this6;
     }
     _inherits(ParagraphNode, _ElementNode3);
-    return _createClass(
-      ParagraphNode,
-      [
-        {
-          key: "getTextFormat",
-          value: function getTextFormat() {
-            var self = this.getLatest();
-            return self.__textFormat;
-          },
-        },
-        {
-          key: "setTextFormat",
-          value: function setTextFormat(type) {
-            var self = this.getWritable();
-            self.__textFormat = type;
-            return self;
-          },
-        },
-        {
-          key: "hasTextFormat",
-          value: function hasTextFormat(type) {
-            var formatFlag = TEXT_TYPE_TO_FORMAT[type];
-            return (this.getTextFormat() & formatFlag) !== 0;
-          },
-        },
-        {
-          key: "createDOM",
-          value:
-            // View
+    return _createClass(ParagraphNode, [{
+      key: "getTextFormat",
+      value: function getTextFormat() {
+        var self = this.getLatest();
+        return self.__textFormat;
+      }
+    }, {
+      key: "setTextFormat",
+      value: function setTextFormat(type) {
+        var self = this.getWritable();
+        self.__textFormat = type;
+        return self;
+      }
+    }, {
+      key: "hasTextFormat",
+      value: function hasTextFormat(type) {
+        var formatFlag = TEXT_TYPE_TO_FORMAT[type];
+        return (this.getTextFormat() & formatFlag) !== 0;
+      }
+    }, {
+      key: "createDOM",
+      value:
+      // View
 
-            function createDOM(config) {
-              var dom = document.createElement("p");
-              var classNames = getCachedClassNameArray(
-                config.theme,
-                "paragraph"
-              );
-              if (classNames !== undefined) {
-                var domClassList = dom.classList;
-                domClassList.add.apply(
-                  domClassList,
-                  _toConsumableArray(classNames)
-                );
-              }
-              return dom;
-            },
-        },
-        {
-          key: "updateDOM",
-          value: function updateDOM(prevNode, dom, config) {
-            return false;
-          },
-        },
-        {
-          key: "exportDOM",
-          value: function exportDOM(editor) {
-            var _get$call2 = _get(
-                _getPrototypeOf(ParagraphNode.prototype),
-                "exportDOM",
-                this
-              ).call(this, editor),
-              element = _get$call2.element;
-            if (element && isHTMLElement(element)) {
-              if (this.isEmpty()) {
-                element.append(document.createElement("br"));
-              }
-              var formatType = this.getFormatType();
-              element.style.textAlign = formatType;
-              var direction = this.getDirection();
-              if (direction) {
-                element.dir = direction;
-              }
-              var indent = this.getIndent();
-              if (indent > 0) {
-                // padding-inline-start is not widely supported in email HTML, but
-                // Lexical Reconciler uses padding-inline-start. Using text-indent instead.
-                element.style.textIndent = "".concat(indent * 20, "px");
-              }
-            }
-            return {
-              element: element,
-            };
-          },
-        },
-        {
-          key: "exportJSON",
-          value: function exportJSON() {
-            return _objectSpread(
-              _objectSpread(
-                {},
-                _get(
-                  _getPrototypeOf(ParagraphNode.prototype),
-                  "exportJSON",
-                  this
-                ).call(this)
-              ),
-              {},
-              {
-                textFormat: this.getTextFormat(),
-                type: "paragraph",
-                version: 1,
-              }
-            );
-          },
+      function createDOM(config) {
+        var dom = document.createElement('p');
+        var classNames = getCachedClassNameArray(config.theme, 'paragraph');
+        if (classNames !== undefined) {
+          var domClassList = dom.classList;
+          domClassList.add.apply(domClassList, _toConsumableArray(classNames));
+        }
+        return dom;
+      }
+    }, {
+      key: "updateDOM",
+      value: function updateDOM(prevNode, dom, config) {
+        return false;
+      }
+    }, {
+      key: "exportDOM",
+      value: function exportDOM(editor) {
+        var _get$call2 = _get(_getPrototypeOf(ParagraphNode.prototype), "exportDOM", this).call(this, editor),
+          element = _get$call2.element;
+        if (element && isHTMLElement(element)) {
+          if (this.isEmpty()) {
+            element.append(document.createElement('br'));
+          }
+          var formatType = this.getFormatType();
+          element.style.textAlign = formatType;
+          var direction = this.getDirection();
+          if (direction) {
+            element.dir = direction;
+          }
+          var indent = this.getIndent();
+          if (indent > 0) {
+            // padding-inline-start is not widely supported in email HTML, but
+            // Lexical Reconciler uses padding-inline-start. Using text-indent instead.
+            element.style.textIndent = "".concat(indent * 20, "px");
+          }
+        }
+        return {
+          element: element
+        };
+      }
+    }, {
+      key: "exportJSON",
+      value: function exportJSON() {
+        return _objectSpread(_objectSpread({}, _get(_getPrototypeOf(ParagraphNode.prototype), "exportJSON", this).call(this)), {}, {
+          textFormat: this.getTextFormat(),
+          type: 'paragraph',
+          version: 1
+        });
+      }
 
-          // Mutation
-        },
-        {
-          key: "insertNewAfter",
-          value: function insertNewAfter(rangeSelection, restoreSelection) {
-            var newElement = $createParagraphNode();
-            newElement.setTextFormat(rangeSelection.format);
-            var direction = this.getDirection();
-            newElement.setDirection(direction);
-            newElement.setFormat(this.getFormatType());
-            this.insertAfter(newElement, restoreSelection);
-            return newElement;
-          },
-        },
-        {
-          key: "collapseAtStart",
-          value: function collapseAtStart() {
-            var children = this.getChildren();
-            // If we have an empty (trimmed) first paragraph and try and remove it,
-            // delete the paragraph as long as we have another sibling to go to
-            if (
-              children.length === 0 ||
-              ($isTextNode(children[0]) &&
-                children[0].getTextContent().trim() === "")
-            ) {
-              var nextSibling = this.getNextSibling();
-              if (nextSibling !== null) {
-                this.selectNext();
-                this.remove();
-                return true;
-              }
-              var prevSibling = this.getPreviousSibling();
-              if (prevSibling !== null) {
-                this.selectPrevious();
-                this.remove();
-                return true;
-              }
-            }
-            return false;
-          },
-        },
-      ],
-      [
-        {
-          key: "getType",
-          value: function getType() {
-            return "paragraph";
-          },
-        },
-        {
-          key: "clone",
-          value: function clone(node) {
-            return new ParagraphNode(node.__key);
-          },
-        },
-        {
-          key: "importDOM",
-          value: function importDOM() {
+      // Mutation
+    }, {
+      key: "insertNewAfter",
+      value: function insertNewAfter(rangeSelection, restoreSelection) {
+        var newElement = $createParagraphNode();
+        newElement.setTextFormat(rangeSelection.format);
+        var direction = this.getDirection();
+        newElement.setDirection(direction);
+        newElement.setFormat(this.getFormatType());
+        this.insertAfter(newElement, restoreSelection);
+        return newElement;
+      }
+    }, {
+      key: "collapseAtStart",
+      value: function collapseAtStart() {
+        var children = this.getChildren();
+        // If we have an empty (trimmed) first paragraph and try and remove it,
+        // delete the paragraph as long as we have another sibling to go to
+        if (children.length === 0 || $isTextNode(children[0]) && children[0].getTextContent().trim() === '') {
+          var nextSibling = this.getNextSibling();
+          if (nextSibling !== null) {
+            this.selectNext();
+            this.remove();
+            return true;
+          }
+          var prevSibling = this.getPreviousSibling();
+          if (prevSibling !== null) {
+            this.selectPrevious();
+            this.remove();
+            return true;
+          }
+        }
+        return false;
+      }
+    }], [{
+      key: "getType",
+      value: function getType() {
+        return 'paragraph';
+      }
+    }, {
+      key: "clone",
+      value: function clone(node) {
+        return new ParagraphNode(node.__key);
+      }
+    }, {
+      key: "importDOM",
+      value: function importDOM() {
+        return {
+          p: function p(node) {
             return {
-              p: function p(node) {
-                return {
-                  conversion: $convertParagraphElement,
-                  priority: 0,
-                };
-              },
+              conversion: $convertParagraphElement,
+              priority: 0
             };
-          },
-        },
-        {
-          key: "importJSON",
-          value: function importJSON(serializedNode) {
-            var node = $createParagraphNode();
-            node.setFormat(serializedNode.format);
-            node.setIndent(serializedNode.indent);
-            node.setDirection(serializedNode.direction);
-            node.setTextFormat(serializedNode.textFormat);
-            return node;
-          },
-        },
-      ]
-    );
-  })(ElementNode);
+          }
+        };
+      }
+    }, {
+      key: "importJSON",
+      value: function importJSON(serializedNode) {
+        var node = $createParagraphNode();
+        node.setFormat(serializedNode.format);
+        node.setIndent(serializedNode.indent);
+        node.setDirection(serializedNode.direction);
+        node.setTextFormat(serializedNode.textFormat);
+        return node;
+      }
+    }]);
+  }(ElementNode);
   function $convertParagraphElement(element) {
     var node = $createParagraphNode();
     if (element.style) {
@@ -12046,7 +9760,7 @@ define([], function () {
       }
     }
     return {
-      node: node,
+      node: node
     };
   }
   function $createParagraphNode() {
@@ -12098,12 +9812,7 @@ define([], function () {
    * ```
    */
 
-  function resetEditor(
-    editor,
-    prevRootElement,
-    nextRootElement,
-    pendingEditorState
-  ) {
+  function resetEditor(editor, prevRootElement, nextRootElement, pendingEditorState) {
     var keyNodeMap = editor._keyToDOMMap;
     keyNodeMap.clear();
     editor._editorState = createEmptyEditorState();
@@ -12125,11 +9834,11 @@ define([], function () {
 
     // Remove all the DOM nodes from the root element
     if (prevRootElement !== null) {
-      prevRootElement.textContent = "";
+      prevRootElement.textContent = '';
     }
     if (nextRootElement !== null) {
-      nextRootElement.textContent = "";
-      keyNodeMap.set("root", nextRootElement);
+      nextRootElement.textContent = '';
+      keyNodeMap.set('root', nextRootElement);
     }
   }
   function initializeConversionCache(nodes, additionalConversions) {
@@ -12173,22 +9882,12 @@ define([], function () {
     var config = editorConfig || {};
     var activeEditor = internalGetActiveEditor();
     var theme = config.theme || {};
-    var parentEditor =
-      editorConfig === undefined ? activeEditor : config.parentEditor || null;
+    var parentEditor = editorConfig === undefined ? activeEditor : config.parentEditor || null;
     var disableEvents = config.disableEvents || false;
     var editorState = createEmptyEditorState();
-    var namespace =
-      config.namespace ||
-      (parentEditor !== null ? parentEditor._config.namespace : createUID());
+    var namespace = config.namespace || (parentEditor !== null ? parentEditor._config.namespace : createUID());
     var initialEditorState = config.editorState;
-    var nodes = [
-      RootNode,
-      TextNode,
-      LineBreakNode,
-      TabNode,
-      ParagraphNode,
-      ArtificialNode__DO_NOT_USE,
-    ].concat(_toConsumableArray(config.nodes || []));
+    var nodes = [RootNode, TextNode, LineBreakNode, TabNode, ParagraphNode, ArtificialNode__DO_NOT_USE].concat(_toConsumableArray(config.nodes || []));
     var onError = config.onError,
       html = config.html;
     var isEditable = config.editable !== undefined ? config.editable : true;
@@ -12201,7 +9900,7 @@ define([], function () {
         var klass = nodes[i];
         var replace = null;
         var replaceWithKlass = null;
-        if (typeof klass !== "function") {
+        if (typeof klass !== 'function') {
           var options = klass;
           klass = options.replace;
           replace = options["with"];
@@ -12210,80 +9909,43 @@ define([], function () {
         // Ensure custom nodes implement required methods and replaceWithKlass is instance of base klass.
         {
           // ArtificialNode__DO_NOT_USE can get renamed, so we use the type
-          var nodeType =
-            Object.prototype.hasOwnProperty.call(klass, "getType") &&
-            klass.getType();
+          var nodeType = Object.prototype.hasOwnProperty.call(klass, 'getType') && klass.getType();
           var name = klass.name;
           if (replaceWithKlass) {
             if (!(replaceWithKlass.prototype instanceof klass)) {
-              throw Error(
-                ""
-                  .concat(replaceWithKlass.name, " doesn't extend the ")
-                  .concat(name)
-              );
+              throw Error("".concat(replaceWithKlass.name, " doesn't extend the ").concat(name));
             }
           }
-          if (
-            name !== "RootNode" &&
-            nodeType !== "root" &&
-            nodeType !== "artificial"
-          ) {
+          if (name !== 'RootNode' && nodeType !== 'root' && nodeType !== 'artificial') {
             var proto = klass.prototype;
-            ["getType", "clone"].forEach(function (method) {
+            ['getType', 'clone'].forEach(function (method) {
               // eslint-disable-next-line no-prototype-builtins
               if (!klass.hasOwnProperty(method)) {
-                console.warn(
-                  ""
-                    .concat(name, ' must implement static "')
-                    .concat(method, '" method')
-                );
+                console.warn("".concat(name, " must implement static \"").concat(method, "\" method"));
               }
             });
             if (
-              // eslint-disable-next-line no-prototype-builtins
-              !klass.hasOwnProperty("importDOM") &&
-              // eslint-disable-next-line no-prototype-builtins
-              klass.hasOwnProperty("exportDOM")
-            ) {
-              console.warn(
-                "".concat(
-                  name,
-                  ' should implement "importDOM" if using a custom "exportDOM" method to ensure HTML serialization (important for copy & paste) works as expected'
-                )
-              );
+            // eslint-disable-next-line no-prototype-builtins
+            !klass.hasOwnProperty('importDOM') &&
+            // eslint-disable-next-line no-prototype-builtins
+            klass.hasOwnProperty('exportDOM')) {
+              console.warn("".concat(name, " should implement \"importDOM\" if using a custom \"exportDOM\" method to ensure HTML serialization (important for copy & paste) works as expected"));
             }
             if (proto instanceof DecoratorNode) {
               // eslint-disable-next-line no-prototype-builtins
-              if (!proto.hasOwnProperty("decorate")) {
-                console.warn(
-                  "".concat(
-                    proto.constructor.name,
-                    ' must implement "decorate" method'
-                  )
-                );
+              if (!proto.hasOwnProperty('decorate')) {
+                console.warn("".concat(proto.constructor.name, " must implement \"decorate\" method"));
               }
             }
             if (
-              // eslint-disable-next-line no-prototype-builtins
-              !klass.hasOwnProperty("importJSON")
-            ) {
-              console.warn(
-                "".concat(
-                  name,
-                  ' should implement "importJSON" method to ensure JSON and default HTML serialization works as expected'
-                )
-              );
+            // eslint-disable-next-line no-prototype-builtins
+            !klass.hasOwnProperty('importJSON')) {
+              console.warn("".concat(name, " should implement \"importJSON\" method to ensure JSON and default HTML serialization works as expected"));
             }
             if (
-              // eslint-disable-next-line no-prototype-builtins
-              !proto.hasOwnProperty("exportJSON")
-            ) {
-              console.warn(
-                "".concat(
-                  name,
-                  ' should implement "exportJSON" method to ensure JSON and default HTML serialization works as expected'
-                )
-              );
+            // eslint-disable-next-line no-prototype-builtins
+            !proto.hasOwnProperty('exportJSON')) {
+              console.warn("".concat(name, " should implement \"exportJSON\" method to ensure JSON and default HTML serialization works as expected"));
             }
           }
         }
@@ -12294,41 +9956,29 @@ define([], function () {
           transforms.add(transform);
         }
         registeredNodes.set(type, {
-          exportDOM:
-            html && html["export"] ? html["export"].get(klass) : undefined,
+          exportDOM: html && html["export"] ? html["export"].get(klass) : undefined,
           klass: klass,
           replace: replace,
           replaceWithKlass: replaceWithKlass,
-          transforms: transforms,
+          transforms: transforms
         });
       };
       for (var i = 0; i < nodes.length; i++) {
         _loop2();
       }
     }
-    var editor = new LexicalEditor(
-      editorState,
-      parentEditor,
-      registeredNodes,
-      {
-        disableEvents: disableEvents,
-        namespace: namespace,
-        theme: theme,
-      },
-      onError ? onError : console.error,
-      initializeConversionCache(
-        registeredNodes,
-        html ? html["import"] : undefined
-      ),
-      isEditable
-    );
+    var editor = new LexicalEditor(editorState, parentEditor, registeredNodes, {
+      disableEvents: disableEvents,
+      namespace: namespace,
+      theme: theme
+    }, onError ? onError : console.error, initializeConversionCache(registeredNodes, html ? html["import"] : undefined), isEditable);
     if (initialEditorState !== undefined) {
       editor._pendingEditorState = initialEditorState;
       editor._dirtyType = FULL_RECONCILE;
     }
     return editor;
   }
-  var LexicalEditor = /*#__PURE__*/ (function () {
+  var LexicalEditor = /*#__PURE__*/function () {
     /** @internal */
 
     /** @internal */
@@ -12388,15 +10038,7 @@ define([], function () {
     /** @internal */
 
     /** @internal */
-    function LexicalEditor(
-      editorState,
-      parentEditor,
-      nodes,
-      config,
-      onError,
-      htmlConversions,
-      editable
-    ) {
+    function LexicalEditor(editorState, parentEditor, nodes, config, onError, htmlConversions, editable) {
       _classCallCheck(this, LexicalEditor);
       this._parentEditor = parentEditor;
       // The root element associated with this editor
@@ -12419,7 +10061,7 @@ define([], function () {
         mutation: new Map(),
         root: new Set(),
         textcontent: new Set(),
-        update: new Set(),
+        update: new Set()
       };
       // Commands
       this._commands = new Map();
@@ -12454,639 +10096,539 @@ define([], function () {
      * @returns true if the editor is currently in "composition" mode due to receiving input
      * through an IME, or 3P extension, for example. Returns false otherwise.
      */
-    return _createClass(LexicalEditor, [
-      {
-        key: "isComposing",
-        value: function isComposing() {
-          return this._compositionKey != null;
-        },
-        /**
-         * Registers a listener for Editor update event. Will trigger the provided callback
-         * each time the editor goes through an update (via {@link LexicalEditor.update}) until the
-         * teardown function is called.
-         *
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerUpdateListener",
-        value: function registerUpdateListener(listener) {
-          var listenerSetOrMap = this._listeners.update;
-          listenerSetOrMap.add(listener);
-          return function () {
-            listenerSetOrMap["delete"](listener);
-          };
-        },
-        /**
-         * Registers a listener for for when the editor changes between editable and non-editable states.
-         * Will trigger the provided callback each time the editor transitions between these states until the
-         * teardown function is called.
-         *
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerEditableListener",
-        value: function registerEditableListener(listener) {
-          var listenerSetOrMap = this._listeners.editable;
-          listenerSetOrMap.add(listener);
-          return function () {
-            listenerSetOrMap["delete"](listener);
-          };
-        },
-        /**
-         * Registers a listener for when the editor's decorator object changes. The decorator object contains
-         * all DecoratorNode keys -> their decorated value. This is primarily used with external UI frameworks.
-         *
-         * Will trigger the provided callback each time the editor transitions between these states until the
-         * teardown function is called.
-         *
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerDecoratorListener",
-        value: function registerDecoratorListener(listener) {
-          var listenerSetOrMap = this._listeners.decorator;
-          listenerSetOrMap.add(listener);
-          return function () {
-            listenerSetOrMap["delete"](listener);
-          };
-        },
-        /**
-         * Registers a listener for when Lexical commits an update to the DOM and the text content of
-         * the editor changes from the previous state of the editor. If the text content is the
-         * same between updates, no notifications to the listeners will happen.
-         *
-         * Will trigger the provided callback each time the editor transitions between these states until the
-         * teardown function is called.
-         *
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerTextContentListener",
-        value: function registerTextContentListener(listener) {
-          var listenerSetOrMap = this._listeners.textcontent;
-          listenerSetOrMap.add(listener);
-          return function () {
-            listenerSetOrMap["delete"](listener);
-          };
-        },
-        /**
-         * Registers a listener for when the editor's root DOM element (the content editable
-         * Lexical attaches to) changes. This is primarily used to attach event listeners to the root
-         *  element. The root listener function is executed directly upon registration and then on
-         * any subsequent update.
-         *
-         * Will trigger the provided callback each time the editor transitions between these states until the
-         * teardown function is called.
-         *
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerRootListener",
-        value: function registerRootListener(listener) {
-          var _this7 = this;
-          var listenerSetOrMap = this._listeners.root;
-          listener(this._rootElement, null);
-          listenerSetOrMap.add(listener);
-          return function () {
-            listener(null, _this7._rootElement);
-            listenerSetOrMap["delete"](listener);
-          };
-        },
-        /**
-         * Registers a listener that will trigger anytime the provided command
-         * is dispatched, subject to priority. Listeners that run at a higher priority can "intercept"
-         * commands and prevent them from propagating to other handlers by returning true.
-         *
-         * Listeners registered at the same priority level will run deterministically in the order of registration.
-         *
-         * @param command - the command that will trigger the callback.
-         * @param listener - the function that will execute when the command is dispatched.
-         * @param priority - the relative priority of the listener. 0 | 1 | 2 | 3 | 4
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerCommand",
-        value: function registerCommand(command, listener, priority) {
-          if (priority === undefined) {
-            {
-              throw Error('Listener for type "command" requires a "priority".');
-            }
+    return _createClass(LexicalEditor, [{
+      key: "isComposing",
+      value: function isComposing() {
+        return this._compositionKey != null;
+      }
+      /**
+       * Registers a listener for Editor update event. Will trigger the provided callback
+       * each time the editor goes through an update (via {@link LexicalEditor.update}) until the
+       * teardown function is called.
+       *
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerUpdateListener",
+      value: function registerUpdateListener(listener) {
+        var listenerSetOrMap = this._listeners.update;
+        listenerSetOrMap.add(listener);
+        return function () {
+          listenerSetOrMap["delete"](listener);
+        };
+      }
+      /**
+       * Registers a listener for for when the editor changes between editable and non-editable states.
+       * Will trigger the provided callback each time the editor transitions between these states until the
+       * teardown function is called.
+       *
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerEditableListener",
+      value: function registerEditableListener(listener) {
+        var listenerSetOrMap = this._listeners.editable;
+        listenerSetOrMap.add(listener);
+        return function () {
+          listenerSetOrMap["delete"](listener);
+        };
+      }
+      /**
+       * Registers a listener for when the editor's decorator object changes. The decorator object contains
+       * all DecoratorNode keys -> their decorated value. This is primarily used with external UI frameworks.
+       *
+       * Will trigger the provided callback each time the editor transitions between these states until the
+       * teardown function is called.
+       *
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerDecoratorListener",
+      value: function registerDecoratorListener(listener) {
+        var listenerSetOrMap = this._listeners.decorator;
+        listenerSetOrMap.add(listener);
+        return function () {
+          listenerSetOrMap["delete"](listener);
+        };
+      }
+      /**
+       * Registers a listener for when Lexical commits an update to the DOM and the text content of
+       * the editor changes from the previous state of the editor. If the text content is the
+       * same between updates, no notifications to the listeners will happen.
+       *
+       * Will trigger the provided callback each time the editor transitions between these states until the
+       * teardown function is called.
+       *
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerTextContentListener",
+      value: function registerTextContentListener(listener) {
+        var listenerSetOrMap = this._listeners.textcontent;
+        listenerSetOrMap.add(listener);
+        return function () {
+          listenerSetOrMap["delete"](listener);
+        };
+      }
+      /**
+       * Registers a listener for when the editor's root DOM element (the content editable
+       * Lexical attaches to) changes. This is primarily used to attach event listeners to the root
+       *  element. The root listener function is executed directly upon registration and then on
+       * any subsequent update.
+       *
+       * Will trigger the provided callback each time the editor transitions between these states until the
+       * teardown function is called.
+       *
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerRootListener",
+      value: function registerRootListener(listener) {
+        var _this7 = this;
+        var listenerSetOrMap = this._listeners.root;
+        listener(this._rootElement, null);
+        listenerSetOrMap.add(listener);
+        return function () {
+          listener(null, _this7._rootElement);
+          listenerSetOrMap["delete"](listener);
+        };
+      }
+      /**
+       * Registers a listener that will trigger anytime the provided command
+       * is dispatched, subject to priority. Listeners that run at a higher priority can "intercept"
+       * commands and prevent them from propagating to other handlers by returning true.
+       *
+       * Listeners registered at the same priority level will run deterministically in the order of registration.
+       *
+       * @param command - the command that will trigger the callback.
+       * @param listener - the function that will execute when the command is dispatched.
+       * @param priority - the relative priority of the listener. 0 | 1 | 2 | 3 | 4
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerCommand",
+      value: function registerCommand(command, listener, priority) {
+        if (priority === undefined) {
+          {
+            throw Error("Listener for type \"command\" requires a \"priority\".");
           }
-          var commandsMap = this._commands;
-          if (!commandsMap.has(command)) {
-            commandsMap.set(command, [
-              new Set(),
-              new Set(),
-              new Set(),
-              new Set(),
-              new Set(),
-            ]);
+        }
+        var commandsMap = this._commands;
+        if (!commandsMap.has(command)) {
+          commandsMap.set(command, [new Set(), new Set(), new Set(), new Set(), new Set()]);
+        }
+        var listenersInPriorityOrder = commandsMap.get(command);
+        if (listenersInPriorityOrder === undefined) {
+          {
+            throw Error("registerCommand: Command ".concat(String(command), " not found in command map"));
           }
-          var listenersInPriorityOrder = commandsMap.get(command);
-          if (listenersInPriorityOrder === undefined) {
-            {
-              throw Error(
-                "registerCommand: Command ".concat(
-                  String(command),
-                  " not found in command map"
-                )
-              );
-            }
+        }
+        var listeners = listenersInPriorityOrder[priority];
+        listeners.add(listener);
+        return function () {
+          listeners["delete"](listener);
+          if (listenersInPriorityOrder.every(function (listenersSet) {
+            return listenersSet.size === 0;
+          })) {
+            commandsMap["delete"](command);
           }
-          var listeners = listenersInPriorityOrder[priority];
-          listeners.add(listener);
-          return function () {
-            listeners["delete"](listener);
-            if (
-              listenersInPriorityOrder.every(function (listenersSet) {
-                return listenersSet.size === 0;
-              })
-            ) {
-              commandsMap["delete"](command);
-            }
-          };
-        },
+        };
+      }
 
-        /**
-         * Registers a listener that will run when a Lexical node of the provided class is
-         * mutated. The listener will receive a list of nodes along with the type of mutation
-         * that was performed on each: created, destroyed, or updated.
-         *
-         * One common use case for this is to attach DOM event listeners to the underlying DOM nodes as Lexical nodes are created.
-         * {@link LexicalEditor.getElementByKey} can be used for this.
-         *
-         * @param klass - The class of the node that you want to listen to mutations on.
-         * @param listener - The logic you want to run when the node is mutated.
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerMutationListener",
-        value: function registerMutationListener(klass, listener) {
-          var registeredNode = this._nodes.get(klass.getType());
+      /**
+       * Registers a listener that will run when a Lexical node of the provided class is
+       * mutated. The listener will receive a list of nodes along with the type of mutation
+       * that was performed on each: created, destroyed, or updated.
+       *
+       * One common use case for this is to attach DOM event listeners to the underlying DOM nodes as Lexical nodes are created.
+       * {@link LexicalEditor.getElementByKey} can be used for this.
+       *
+       * @param klass - The class of the node that you want to listen to mutations on.
+       * @param listener - The logic you want to run when the node is mutated.
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerMutationListener",
+      value: function registerMutationListener(klass, listener) {
+        var registeredNode = this._nodes.get(klass.getType());
+        if (registeredNode === undefined) {
+          {
+            throw Error("Node ".concat(klass.name, " has not been registered. Ensure node has been passed to createEditor."));
+          }
+        }
+        var klassToMutate = klass;
+        var replaceKlass = null;
+        while (replaceKlass = registeredNode.replaceWithKlass) {
+          klassToMutate = replaceKlass;
+          registeredNode = this._nodes.get(replaceKlass.getType());
           if (registeredNode === undefined) {
             {
-              throw Error(
-                "Node ".concat(
-                  klass.name,
-                  " has not been registered. Ensure node has been passed to createEditor."
-                )
-              );
+              throw Error("Node ".concat(replaceKlass.name, " has not been registered. Ensure node has been passed to createEditor."));
             }
           }
-          var klassToMutate = klass;
-          var replaceKlass = null;
-          while ((replaceKlass = registeredNode.replaceWithKlass)) {
-            klassToMutate = replaceKlass;
-            registeredNode = this._nodes.get(replaceKlass.getType());
-            if (registeredNode === undefined) {
-              {
-                throw Error(
-                  "Node ".concat(
-                    replaceKlass.name,
-                    " has not been registered. Ensure node has been passed to createEditor."
-                  )
-                );
-              }
+        }
+        var mutations = this._listeners.mutation;
+        mutations.set(listener, klassToMutate);
+        return function () {
+          mutations["delete"](listener);
+        };
+      }
+
+      /** @internal */
+    }, {
+      key: "registerNodeTransformToKlass",
+      value: function registerNodeTransformToKlass(klass, listener) {
+        var type = klass.getType();
+        var registeredNode = this._nodes.get(type);
+        if (registeredNode === undefined) {
+          {
+            throw Error("Node ".concat(klass.name, " has not been registered. Ensure node has been passed to createEditor."));
+          }
+        }
+        var transforms = registeredNode.transforms;
+        transforms.add(listener);
+        return registeredNode;
+      }
+
+      /**
+       * Registers a listener that will run when a Lexical node of the provided class is
+       * marked dirty during an update. The listener will continue to run as long as the node
+       * is marked dirty. There are no guarantees around the order of transform execution!
+       *
+       * Watch out for infinite loops. See [Node Transforms](https://lexical.dev/docs/concepts/transforms)
+       * @param klass - The class of the node that you want to run transforms on.
+       * @param listener - The logic you want to run when the node is updated.
+       * @returns a teardown function that can be used to cleanup the listener.
+       */
+    }, {
+      key: "registerNodeTransform",
+      value: function registerNodeTransform(klass, listener) {
+        var registeredNode = this.registerNodeTransformToKlass(klass, listener);
+        var registeredNodes = [registeredNode];
+        var replaceWithKlass = registeredNode.replaceWithKlass;
+        if (replaceWithKlass != null) {
+          var registeredReplaceWithNode = this.registerNodeTransformToKlass(replaceWithKlass, listener);
+          registeredNodes.push(registeredReplaceWithNode);
+        }
+        markAllNodesAsDirty(this, klass.getType());
+        return function () {
+          registeredNodes.forEach(function (node) {
+            return node.transforms["delete"](listener);
+          });
+        };
+      }
+
+      /**
+       * Used to assert that a certain node is registered, usually by plugins to ensure nodes that they
+       * depend on have been registered.
+       * @returns True if the editor has registered the provided node type, false otherwise.
+       */
+    }, {
+      key: "hasNode",
+      value: function hasNode(node) {
+        return this._nodes.has(node.getType());
+      }
+
+      /**
+       * Used to assert that certain nodes are registered, usually by plugins to ensure nodes that they
+       * depend on have been registered.
+       * @returns True if the editor has registered all of the provided node types, false otherwise.
+       */
+    }, {
+      key: "hasNodes",
+      value: function hasNodes(nodes) {
+        return nodes.every(this.hasNode.bind(this));
+      }
+
+      /**
+       * Dispatches a command of the specified type with the specified payload.
+       * This triggers all command listeners (set by {@link LexicalEditor.registerCommand})
+       * for this type, passing them the provided payload.
+       * @param type - the type of command listeners to trigger.
+       * @param payload - the data to pass as an argument to the command listeners.
+       */
+    }, {
+      key: "dispatchCommand",
+      value: function dispatchCommand(type, payload) {
+        return _dispatchCommand(this, type, payload);
+      }
+
+      /**
+       * Gets a map of all decorators in the editor.
+       * @returns A mapping of call decorator keys to their decorated content
+       */
+    }, {
+      key: "getDecorators",
+      value: function getDecorators() {
+        return this._decorators;
+      }
+
+      /**
+       *
+       * @returns the current root element of the editor. If you want to register
+       * an event listener, do it via {@link LexicalEditor.registerRootListener}, since
+       * this reference may not be stable.
+       */
+    }, {
+      key: "getRootElement",
+      value: function getRootElement() {
+        return this._rootElement;
+      }
+
+      /**
+       * Gets the key of the editor
+       * @returns The editor key
+       */
+    }, {
+      key: "getKey",
+      value: function getKey() {
+        return this._key;
+      }
+
+      /**
+       * Imperatively set the root contenteditable element that Lexical listens
+       * for events on.
+       */
+    }, {
+      key: "setRootElement",
+      value: function setRootElement(nextRootElement) {
+        var prevRootElement = this._rootElement;
+        if (nextRootElement !== prevRootElement) {
+          var classNames = getCachedClassNameArray(this._config.theme, 'root');
+          var pendingEditorState = this._pendingEditorState || this._editorState;
+          this._rootElement = nextRootElement;
+          resetEditor(this, prevRootElement, nextRootElement, pendingEditorState);
+          if (prevRootElement !== null) {
+            // TODO: remove this flag once we no longer use UEv2 internally
+            if (!this._config.disableEvents) {
+              removeRootElementEvents(prevRootElement);
+            }
+            if (classNames != null) {
+              var _prevRootElement$clas;
+              (_prevRootElement$clas = prevRootElement.classList).remove.apply(_prevRootElement$clas, _toConsumableArray(classNames));
             }
           }
-          var mutations = this._listeners.mutation;
-          mutations.set(listener, klassToMutate);
-          return function () {
-            mutations["delete"](listener);
-          };
-        },
-
-        /** @internal */
-      },
-      {
-        key: "registerNodeTransformToKlass",
-        value: function registerNodeTransformToKlass(klass, listener) {
-          var type = klass.getType();
-          var registeredNode = this._nodes.get(type);
-          if (registeredNode === undefined) {
-            {
-              throw Error(
-                "Node ".concat(
-                  klass.name,
-                  " has not been registered. Ensure node has been passed to createEditor."
-                )
-              );
-            }
-          }
-          var transforms = registeredNode.transforms;
-          transforms.add(listener);
-          return registeredNode;
-        },
-
-        /**
-         * Registers a listener that will run when a Lexical node of the provided class is
-         * marked dirty during an update. The listener will continue to run as long as the node
-         * is marked dirty. There are no guarantees around the order of transform execution!
-         *
-         * Watch out for infinite loops. See [Node Transforms](https://lexical.dev/docs/concepts/transforms)
-         * @param klass - The class of the node that you want to run transforms on.
-         * @param listener - The logic you want to run when the node is updated.
-         * @returns a teardown function that can be used to cleanup the listener.
-         */
-      },
-      {
-        key: "registerNodeTransform",
-        value: function registerNodeTransform(klass, listener) {
-          var registeredNode = this.registerNodeTransformToKlass(
-            klass,
-            listener
-          );
-          var registeredNodes = [registeredNode];
-          var replaceWithKlass = registeredNode.replaceWithKlass;
-          if (replaceWithKlass != null) {
-            var registeredReplaceWithNode = this.registerNodeTransformToKlass(
-              replaceWithKlass,
-              listener
-            );
-            registeredNodes.push(registeredReplaceWithNode);
-          }
-          markAllNodesAsDirty(this, klass.getType());
-          return function () {
-            registeredNodes.forEach(function (node) {
-              return node.transforms["delete"](listener);
-            });
-          };
-        },
-
-        /**
-         * Used to assert that a certain node is registered, usually by plugins to ensure nodes that they
-         * depend on have been registered.
-         * @returns True if the editor has registered the provided node type, false otherwise.
-         */
-      },
-      {
-        key: "hasNode",
-        value: function hasNode(node) {
-          return this._nodes.has(node.getType());
-        },
-
-        /**
-         * Used to assert that certain nodes are registered, usually by plugins to ensure nodes that they
-         * depend on have been registered.
-         * @returns True if the editor has registered all of the provided node types, false otherwise.
-         */
-      },
-      {
-        key: "hasNodes",
-        value: function hasNodes(nodes) {
-          return nodes.every(this.hasNode.bind(this));
-        },
-
-        /**
-         * Dispatches a command of the specified type with the specified payload.
-         * This triggers all command listeners (set by {@link LexicalEditor.registerCommand})
-         * for this type, passing them the provided payload.
-         * @param type - the type of command listeners to trigger.
-         * @param payload - the data to pass as an argument to the command listeners.
-         */
-      },
-      {
-        key: "dispatchCommand",
-        value: function dispatchCommand(type, payload) {
-          return _dispatchCommand(this, type, payload);
-        },
-
-        /**
-         * Gets a map of all decorators in the editor.
-         * @returns A mapping of call decorator keys to their decorated content
-         */
-      },
-      {
-        key: "getDecorators",
-        value: function getDecorators() {
-          return this._decorators;
-        },
-
-        /**
-         *
-         * @returns the current root element of the editor. If you want to register
-         * an event listener, do it via {@link LexicalEditor.registerRootListener}, since
-         * this reference may not be stable.
-         */
-      },
-      {
-        key: "getRootElement",
-        value: function getRootElement() {
-          return this._rootElement;
-        },
-
-        /**
-         * Gets the key of the editor
-         * @returns The editor key
-         */
-      },
-      {
-        key: "getKey",
-        value: function getKey() {
-          return this._key;
-        },
-
-        /**
-         * Imperatively set the root contenteditable element that Lexical listens
-         * for events on.
-         */
-      },
-      {
-        key: "setRootElement",
-        value: function setRootElement(nextRootElement) {
-          var prevRootElement = this._rootElement;
-          if (nextRootElement !== prevRootElement) {
-            var classNames = getCachedClassNameArray(
-              this._config.theme,
-              "root"
-            );
-            var pendingEditorState =
-              this._pendingEditorState || this._editorState;
-            this._rootElement = nextRootElement;
-            resetEditor(
-              this,
-              prevRootElement,
-              nextRootElement,
-              pendingEditorState
-            );
-            if (prevRootElement !== null) {
-              // TODO: remove this flag once we no longer use UEv2 internally
-              if (!this._config.disableEvents) {
-                removeRootElementEvents(prevRootElement);
-              }
-              if (classNames != null) {
-                var _prevRootElement$clas;
-                (_prevRootElement$clas =
-                  prevRootElement.classList).remove.apply(
-                  _prevRootElement$clas,
-                  _toConsumableArray(classNames)
-                );
-              }
-            }
-            if (nextRootElement !== null) {
-              var windowObj = getDefaultView(nextRootElement);
-              var style = nextRootElement.style;
-              style.userSelect = "text";
-              style.whiteSpace = "pre-wrap";
-              style.wordBreak = "break-word";
-              nextRootElement.setAttribute("data-lexical-editor", "true");
-              this._window = windowObj;
-              this._dirtyType = FULL_RECONCILE;
-              initMutationObserver(this);
-              this._updateTags.add("history-merge");
-              $commitPendingUpdates(this);
-
-              // TODO: remove this flag once we no longer use UEv2 internally
-              if (!this._config.disableEvents) {
-                addRootElementEvents(nextRootElement, this);
-              }
-              if (classNames != null) {
-                var _nextRootElement$clas;
-                (_nextRootElement$clas = nextRootElement.classList).add.apply(
-                  _nextRootElement$clas,
-                  _toConsumableArray(classNames)
-                );
-              }
-            } else {
-              // If content editable is unmounted we'll reset editor state back to original
-              // (or pending) editor state since there will be no reconciliation
-              this._editorState = pendingEditorState;
-              this._pendingEditorState = null;
-              this._window = null;
-            }
-            triggerListeners(
-              "root",
-              this,
-              false,
-              nextRootElement,
-              prevRootElement
-            );
-          }
-        },
-
-        /**
-         * Gets the underlying HTMLElement associated with the LexicalNode for the given key.
-         * @returns the HTMLElement rendered by the LexicalNode associated with the key.
-         * @param key - the key of the LexicalNode.
-         */
-      },
-      {
-        key: "getElementByKey",
-        value: function getElementByKey(key) {
-          return this._keyToDOMMap.get(key) || null;
-        },
-
-        /**
-         * Gets the active editor state.
-         * @returns The editor state
-         */
-      },
-      {
-        key: "getEditorState",
-        value: function getEditorState() {
-          return this._editorState;
-        },
-
-        /**
-         * Imperatively set the EditorState. Triggers reconciliation like an update.
-         * @param editorState - the state to set the editor
-         * @param options - options for the update.
-         */
-      },
-      {
-        key: "setEditorState",
-        value: function setEditorState(editorState, options) {
-          if (editorState.isEmpty()) {
-            {
-              throw Error(
-                "setEditorState: the editor state is empty. Ensure the editor state's root node never becomes empty."
-              );
-            }
-          }
-          $flushRootMutations(this);
-          var pendingEditorState = this._pendingEditorState;
-          var tags = this._updateTags;
-          var tag = options !== undefined ? options.tag : null;
-          if (pendingEditorState !== null && !pendingEditorState.isEmpty()) {
-            if (tag != null) {
-              tags.add(tag);
-            }
+          if (nextRootElement !== null) {
+            var windowObj = getDefaultView(nextRootElement);
+            var style = nextRootElement.style;
+            style.userSelect = 'text';
+            style.whiteSpace = 'pre-wrap';
+            style.wordBreak = 'break-word';
+            nextRootElement.setAttribute('data-lexical-editor', 'true');
+            this._window = windowObj;
+            this._dirtyType = FULL_RECONCILE;
+            initMutationObserver(this);
+            this._updateTags.add('history-merge');
             $commitPendingUpdates(this);
+
+            // TODO: remove this flag once we no longer use UEv2 internally
+            if (!this._config.disableEvents) {
+              addRootElementEvents(nextRootElement, this);
+            }
+            if (classNames != null) {
+              var _nextRootElement$clas;
+              (_nextRootElement$clas = nextRootElement.classList).add.apply(_nextRootElement$clas, _toConsumableArray(classNames));
+            }
+          } else {
+            // If content editable is unmounted we'll reset editor state back to original
+            // (or pending) editor state since there will be no reconciliation
+            this._editorState = pendingEditorState;
+            this._pendingEditorState = null;
+            this._window = null;
           }
-          this._pendingEditorState = editorState;
-          this._dirtyType = FULL_RECONCILE;
-          this._dirtyElements.set("root", false);
-          this._compositionKey = null;
+          triggerListeners('root', this, false, nextRootElement, prevRootElement);
+        }
+      }
+
+      /**
+       * Gets the underlying HTMLElement associated with the LexicalNode for the given key.
+       * @returns the HTMLElement rendered by the LexicalNode associated with the key.
+       * @param key - the key of the LexicalNode.
+       */
+    }, {
+      key: "getElementByKey",
+      value: function getElementByKey(key) {
+        return this._keyToDOMMap.get(key) || null;
+      }
+
+      /**
+       * Gets the active editor state.
+       * @returns The editor state
+       */
+    }, {
+      key: "getEditorState",
+      value: function getEditorState() {
+        return this._editorState;
+      }
+
+      /**
+       * Imperatively set the EditorState. Triggers reconciliation like an update.
+       * @param editorState - the state to set the editor
+       * @param options - options for the update.
+       */
+    }, {
+      key: "setEditorState",
+      value: function setEditorState(editorState, options) {
+        if (editorState.isEmpty()) {
+          {
+            throw Error("setEditorState: the editor state is empty. Ensure the editor state's root node never becomes empty.");
+          }
+        }
+        $flushRootMutations(this);
+        var pendingEditorState = this._pendingEditorState;
+        var tags = this._updateTags;
+        var tag = options !== undefined ? options.tag : null;
+        if (pendingEditorState !== null && !pendingEditorState.isEmpty()) {
           if (tag != null) {
             tags.add(tag);
           }
           $commitPendingUpdates(this);
-        },
+        }
+        this._pendingEditorState = editorState;
+        this._dirtyType = FULL_RECONCILE;
+        this._dirtyElements.set('root', false);
+        this._compositionKey = null;
+        if (tag != null) {
+          tags.add(tag);
+        }
+        $commitPendingUpdates(this);
+      }
 
-        /**
-         * Parses a SerializedEditorState (usually produced by {@link EditorState.toJSON}) and returns
-         * and EditorState object that can be, for example, passed to {@link LexicalEditor.setEditorState}. Typically,
-         * deserliazation from JSON stored in a database uses this method.
-         * @param maybeStringifiedEditorState
-         * @param updateFn
-         * @returns
-         */
-      },
-      {
-        key: "parseEditorState",
-        value: function parseEditorState(
-          maybeStringifiedEditorState,
-          updateFn
-        ) {
-          var serializedEditorState =
-            typeof maybeStringifiedEditorState === "string"
-              ? JSON.parse(maybeStringifiedEditorState)
-              : maybeStringifiedEditorState;
-          return _parseEditorState(serializedEditorState, this, updateFn);
-        },
+      /**
+       * Parses a SerializedEditorState (usually produced by {@link EditorState.toJSON}) and returns
+       * and EditorState object that can be, for example, passed to {@link LexicalEditor.setEditorState}. Typically,
+       * deserliazation from JSON stored in a database uses this method.
+       * @param maybeStringifiedEditorState
+       * @param updateFn
+       * @returns
+       */
+    }, {
+      key: "parseEditorState",
+      value: function parseEditorState(maybeStringifiedEditorState, updateFn) {
+        var serializedEditorState = typeof maybeStringifiedEditorState === 'string' ? JSON.parse(maybeStringifiedEditorState) : maybeStringifiedEditorState;
+        return _parseEditorState(serializedEditorState, this, updateFn);
+      }
 
-        /**
-         * Executes an update to the editor state. The updateFn callback is the ONLY place
-         * where Lexical editor state can be safely mutated.
-         * @param updateFn - A function that has access to writable editor state.
-         * @param options - A bag of options to control the behavior of the update.
-         * @param options.onUpdate - A function to run once the update is complete.
-         * Useful for synchronizing updates in some cases.
-         * @param options.skipTransforms - Setting this to true will suppress all node
-         * transforms for this update cycle.
-         * @param options.tag - A tag to identify this update, in an update listener, for instance.
-         * Some tags are reserved by the core and control update behavior in different ways.
-         * @param options.discrete - If true, prevents this update from being batched, forcing it to
-         * run synchronously.
-         */
-      },
-      {
-        key: "update",
-        value: function update(updateFn, options) {
-          updateEditor(this, updateFn, options);
-        },
+      /**
+       * Executes an update to the editor state. The updateFn callback is the ONLY place
+       * where Lexical editor state can be safely mutated.
+       * @param updateFn - A function that has access to writable editor state.
+       * @param options - A bag of options to control the behavior of the update.
+       * @param options.onUpdate - A function to run once the update is complete.
+       * Useful for synchronizing updates in some cases.
+       * @param options.skipTransforms - Setting this to true will suppress all node
+       * transforms for this update cycle.
+       * @param options.tag - A tag to identify this update, in an update listener, for instance.
+       * Some tags are reserved by the core and control update behavior in different ways.
+       * @param options.discrete - If true, prevents this update from being batched, forcing it to
+       * run synchronously.
+       */
+    }, {
+      key: "update",
+      value: function update(updateFn, options) {
+        updateEditor(this, updateFn, options);
+      }
 
-        /**
-         * Focuses the editor
-         * @param callbackFn - A function to run after the editor is focused.
-         * @param options - A bag of options
-         * @param options.defaultSelection - Where to move selection when the editor is
-         * focused. Can be rootStart, rootEnd, or undefined. Defaults to rootEnd.
-         */
-      },
-      {
-        key: "focus",
-        value: function focus(callbackFn) {
-          var options =
-            arguments.length > 1 && arguments[1] !== undefined
-              ? arguments[1]
-              : {};
-          var rootElement = this._rootElement;
-          if (rootElement !== null) {
-            // This ensures that iOS does not trigger caps lock upon focus
-            rootElement.setAttribute("autocapitalize", "off");
-            updateEditor(
-              this,
-              function () {
-                var selection = $getSelection();
-                var root = $getRoot();
-                if (selection !== null) {
-                  // Marking the selection dirty will force the selection back to it
-                  selection.dirty = true;
-                } else if (root.getChildrenSize() !== 0) {
-                  if (options.defaultSelection === "rootStart") {
-                    root.selectStart();
-                  } else {
-                    root.selectEnd();
-                  }
-                }
-              },
-              {
-                onUpdate: function onUpdate() {
-                  rootElement.removeAttribute("autocapitalize");
-                  if (callbackFn) {
-                    callbackFn();
-                  }
-                },
-                tag: "focus",
+      /**
+       * Focuses the editor
+       * @param callbackFn - A function to run after the editor is focused.
+       * @param options - A bag of options
+       * @param options.defaultSelection - Where to move selection when the editor is
+       * focused. Can be rootStart, rootEnd, or undefined. Defaults to rootEnd.
+       */
+    }, {
+      key: "focus",
+      value: function focus(callbackFn) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+        var rootElement = this._rootElement;
+        if (rootElement !== null) {
+          // This ensures that iOS does not trigger caps lock upon focus
+          rootElement.setAttribute('autocapitalize', 'off');
+          updateEditor(this, function () {
+            var selection = $getSelection();
+            var root = $getRoot();
+            if (selection !== null) {
+              // Marking the selection dirty will force the selection back to it
+              selection.dirty = true;
+            } else if (root.getChildrenSize() !== 0) {
+              if (options.defaultSelection === 'rootStart') {
+                root.selectStart();
+              } else {
+                root.selectEnd();
               }
-            );
-            // In the case where onUpdate doesn't fire (due to the focus update not
-            // occuring).
-            if (this._pendingEditorState === null) {
-              rootElement.removeAttribute("autocapitalize");
             }
+          }, {
+            onUpdate: function onUpdate() {
+              rootElement.removeAttribute('autocapitalize');
+              if (callbackFn) {
+                callbackFn();
+              }
+            },
+            tag: 'focus'
+          });
+          // In the case where onUpdate doesn't fire (due to the focus update not
+          // occuring).
+          if (this._pendingEditorState === null) {
+            rootElement.removeAttribute('autocapitalize');
           }
-        },
+        }
+      }
 
-        /**
-         * Removes focus from the editor.
-         */
-      },
-      {
-        key: "blur",
-        value: function blur() {
-          var rootElement = this._rootElement;
-          if (rootElement !== null) {
-            rootElement.blur();
-          }
-          var domSelection = getDOMSelection(this._window);
-          if (domSelection !== null) {
-            domSelection.removeAllRanges();
-          }
-        },
-        /**
-         * Returns true if the editor is editable, false otherwise.
-         * @returns True if the editor is editable, false otherwise.
-         */
-      },
-      {
-        key: "isEditable",
-        value: function isEditable() {
-          return this._editable;
-        },
-        /**
-         * Sets the editable property of the editor. When false, the
-         * editor will not listen for user events on the underling contenteditable.
-         * @param editable - the value to set the editable mode to.
-         */
-      },
-      {
-        key: "setEditable",
-        value: function setEditable(editable) {
-          if (this._editable !== editable) {
-            this._editable = editable;
-            triggerListeners("editable", this, true, editable);
-          }
-        },
-        /**
-         * Returns a JSON-serializable javascript object NOT a JSON string.
-         * You still must call JSON.stringify (or something else) to turn the
-         * state into a string you can transfer over the wire and store in a database.
-         *
-         * See {@link LexicalNode.exportJSON}
-         *
-         * @returns A JSON-serializable javascript object
-         */
-      },
-      {
-        key: "toJSON",
-        value: function toJSON() {
-          return {
-            editorState: this._editorState.toJSON(),
-          };
-        },
-      },
-    ]);
-  })();
-  
+      /**
+       * Removes focus from the editor.
+       */
+    }, {
+      key: "blur",
+      value: function blur() {
+        var rootElement = this._rootElement;
+        if (rootElement !== null) {
+          rootElement.blur();
+        }
+        var domSelection = getDOMSelection(this._window);
+        if (domSelection !== null) {
+          domSelection.removeAllRanges();
+        }
+      }
+      /**
+       * Returns true if the editor is editable, false otherwise.
+       * @returns True if the editor is editable, false otherwise.
+       */
+    }, {
+      key: "isEditable",
+      value: function isEditable() {
+        return this._editable;
+      }
+      /**
+       * Sets the editable property of the editor. When false, the
+       * editor will not listen for user events on the underling contenteditable.
+       * @param editable - the value to set the editable mode to.
+       */
+    }, {
+      key: "setEditable",
+      value: function setEditable(editable) {
+        if (this._editable !== editable) {
+          this._editable = editable;
+          triggerListeners('editable', this, true, editable);
+        }
+      }
+      /**
+       * Returns a JSON-serializable javascript object NOT a JSON string.
+       * You still must call JSON.stringify (or something else) to turn the
+       * state into a string you can transfer over the wire and store in a database.
+       *
+       * See {@link LexicalNode.exportJSON}
+       *
+       * @returns A JSON-serializable javascript object
+       */
+    }, {
+      key: "toJSON",
+      value: function toJSON() {
+        return {
+          editorState: this._editorState.toJSON()
+        };
+      }
+    }]);
+  }();
   exports.$addUpdateTag = $addUpdateTag;
   exports.$applyNodeReplacement = $applyNodeReplacement;
   exports.$copyNode = $copyNode;
@@ -13194,8 +10736,7 @@ define([], function () {
   exports.REMOVE_TEXT_COMMAND = REMOVE_TEXT_COMMAND;
   exports.RootNode = RootNode;
   exports.SELECTION_CHANGE_COMMAND = SELECTION_CHANGE_COMMAND;
-  exports.SELECTION_INSERT_CLIPBOARD_NODES_COMMAND =
-    SELECTION_INSERT_CLIPBOARD_NODES_COMMAND;
+  exports.SELECTION_INSERT_CLIPBOARD_NODES_COMMAND = SELECTION_INSERT_CLIPBOARD_NODES_COMMAND;
   exports.SELECT_ALL_COMMAND = SELECT_ALL_COMMAND;
   exports.TEXT_TYPE_TO_FORMAT = TEXT_TYPE_TO_FORMAT;
   exports.TabNode = TabNode;
@@ -13209,8 +10750,7 @@ define([], function () {
   exports.isHTMLAnchorElement = isHTMLAnchorElement;
   exports.isHTMLElement = isHTMLElement;
   exports.isInlineDomNode = isInlineDomNode;
-  exports.isSelectionCapturedInDecoratorInput =
-    isSelectionCapturedInDecoratorInput;
+  exports.isSelectionCapturedInDecoratorInput = isSelectionCapturedInDecoratorInput;
   exports.isSelectionWithinEditor = isSelectionWithinEditor;
   exports.resetRandomKey = resetRandomKey;
 });
