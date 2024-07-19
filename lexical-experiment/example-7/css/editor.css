@@ -1,4 +1,3 @@
-/* General body styling */
 body {
   margin: 0;
   background: #eee;
@@ -67,55 +66,195 @@ body {
 
 /* Specific icon styles */
 i.bold {
-  background-image: url(icons/type-bold.svg);
+  background-image: url(images/icons/type-bold.svg);
+}
+
+i.background-color {
+  background-image: url(images/icons/paint-bucket.svg);
 }
 
 i.italic {
-  background-image: url(icons/type-italic.svg);
+  background-image: url(images/icons/type-italic.svg);
 }
 
 i.underline {
-  background-image: url(icons/type-underline.svg);
+  background-image: url(images/icons/type-underline.svg);
 }
 
 i.strikethrough {
-  background-image: url(icons/type-strikethrough.svg);
+  background-image: url(images/icons/type-strikethrough.svg);
 }
 
 i.left-align {
-  background-image: url(icons/text-left.svg);
+  background-image: url(images/icons/text-left.svg);
 }
 
 i.center-align {
-  background-image: url(icons/text-center.svg);
+  background-image: url(images/icons/text-center.svg);
 }
 
 i.right-align {
-  background-image: url(icons/text-right.svg);
+  background-image: url(images/icons/text-right.svg);
 }
 
 i.justify-align {
-  background-image: url(icons/justify.svg);
+  background-image: url(images/icons/justify.svg);
 }
 
 i.code {
-  background-image: url(icons/code.svg);
+  background-image: url(images/icons/code.svg);
 }
 
 i.quote {
-  background-image: url(icons/chat-square-quote.svg);
+  background-image: url(images/icons/chat-square-quote.svg);
 }
 
 i.bullet-list {
-  background-image: url(icons/list-ul.svg);
+  background-image: url(images/icons/list-ul.svg);
 }
 
 i.numbered-list {
-  background-image: url(icons/list-ol.svg);
+  background-image: url(images/icons/list-ol.svg);
 }
 
 i.link {
-  background-image: url(icons/link.svg);
+  background-image: url(images/icons/link.svg);
+}
+
+i.image {
+  background-image: url(images/icons/file-image.svg);
+}
+
+i.table {
+  background-image: url(images/icons/table.svg);
+}
+
+i.horizontal-rule {
+  background-image: url(images/icons/horizontal-rule.svg);
+}
+
+i.emoticon {
+  background-image: url(images/icons/emoticon.svg);
+}
+
+i.hashtag {
+  background-image: url(images/icons/hashtag.svg);
+}
+
+i.collapsible {
+  background-image: url(images/icons/collapsible.svg);
+}
+
+i.text-color {
+  background-image: url(images/icons/font-color.svg);
+}
+
+i.clear-formatting {
+  background-image: url(images/icons/trash.svg);
+}
+
+i.undo {
+  background-image: url(images/icons/arrow-counterclockwise.svg);
+}
+
+i.redo {
+  background-image: url(images/icons/arrow-clockwise.svg);
+}
+
+i.h1 {
+  background-image: url(images/icons/type-h1.svg);
+}
+
+i.h2 {
+  background-image: url(images/icons/type-h2.svg);
+}
+
+i.h3 {
+  background-image: url(images/icons/type-h3.svg);
+}
+
+i.h4 {
+  background-image: url(images/icons/type-h4.svg);
+}
+
+i.h5 {
+  background-image: url(images/icons/type-h5.svg);
+}
+
+i.h6 {
+  background-image: url(images/icons/type-h6.svg);
+}
+
+.icon.check {
+  background-image: url(images/icons/square-check.svg);
+}
+
+i.indent {
+  background-image: url(images/icons/indent.svg);
+}
+
+i.outdent {
+  background-image: url(images/icons/outdent.svg);
+}
+
+i.markdown {
+  background-image: url(images/icons/markdown.svg);
+}
+
+i.sticky {
+  background-image: url(images/icons/sticky.svg);
+}
+
+i.mic {
+  background-image: url(images/icons/mic.svg);
+}
+
+i.import {
+  background-image: url(images/icons/upload.svg);
+}
+
+i.export {
+  background-image: url(images/icons/download.svg);
+}
+
+i.share {
+  background-image: url(images/icons/send.svg);
+}
+
+i.diagram-2 {
+  background-image: url(images/icons/diagram-2.svg);
+}
+
+i.user {
+  background-image: url(images/icons/user.svg);
+}
+
+i.equation {
+  background-image: url(images/icons/plus-slash-minus.svg);
+}
+
+i.gif {
+  background-image: url(images/icons/filetype-gif.svg);
+}
+
+i.copy {
+  background-image: url(images/icons/copy.svg);
+}
+
+i.success {
+  background-image: url(images/icons/success.svg);
+}
+
+i.prettier {
+  background-image: url(images/icons/prettier.svg);
+}
+
+i.prettier-error {
+  background-image: url(images/icons/prettier-error.svg);
+}
+
+i.page-break {
+  background-image: url(images/icons/scissors.svg);
 }
 
 /* Editor container styling */
