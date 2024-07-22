@@ -6,27 +6,32 @@ body {
   font-weight: 500;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  height: 100vh;
 }
 
 /* Toolbar styling */
 .toolbar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1px;
   background: #fff;
-  padding: 4px;
+  padding: 8px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  vertical-align: middle;
+  max-width: 800px;
+  flex-wrap: wrap;
 }
 
 .toolbar button.toolbar-item {
   border: 0;
   display: flex;
+  align-items: center;
   background: none;
   border-radius: 10px;
   padding: 8px;
   cursor: pointer;
-  vertical-align: middle;
 }
 
 .toolbar button.toolbar-item:disabled {
@@ -34,7 +39,7 @@ body {
 }
 
 .toolbar button.toolbar-item.spaced {
-  margin-right: 2px;
+  margin-right: 4px;
 }
 
 .toolbar button.toolbar-item i.format {
@@ -43,8 +48,6 @@ body {
   height: 18px;
   width: 18px;
   margin-top: 2px;
-  vertical-align: -0.25em;
-  display: flex;
   opacity: 0.6;
 }
 
@@ -60,7 +63,7 @@ body {
   opacity: 1;
 }
 
-.toolbar .toolbar-item:hover:not([disabled]) {
+.toolbar button.toolbar-item:hover:not([disabled]) {
   background-color: #eee;
 }
 
@@ -257,16 +260,16 @@ i.page-break {
   background-image: url(images/icons/scissors.svg);
 }
 
+#editor{
+  width: 100%;
+}
+
 /* Editor container styling */
-.editor-container {
-  margin: 20px auto 20px auto;
+#editor-container {
+  margin: 10px auto;
   border-radius: 2px;
-  max-width: 600px;
+  max-width: 800px;
   color: #000;
-  position: relative;
-  line-height: 20px;
-  font-weight: 400;
-  text-align: left;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }

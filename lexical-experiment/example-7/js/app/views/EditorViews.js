@@ -290,38 +290,36 @@ define([
       this.updateToolbarButtons();
     },
     updateToolbarButtons: function () {
-      this.toggleButtonActiveState("#bold-button", "bold");
-      this.toggleButtonActiveState("#italic-button", "italic");
-      this.toggleButtonActiveState("#underline-button", "underline");
-      this.toggleButtonActiveState("#strikethrough-button", "strikethrough");
-      this.toggleButtonActiveState("#left-align-button", "justifyLeft");
-      this.toggleButtonActiveState("#center-align-button", "justifyCenter");
-      this.toggleButtonActiveState("#right-align-button", "justifyRight");
-      this.toggleButtonActiveState("#justify-align-button", "justifyFull");
-      this.toggleButtonActiveState("#code-button", "formatBlock", "<pre>");
-      this.toggleButtonActiveState(
-        "#quote-button",
-        "formatBlock",
-        "<blockquote>"
-      );
-      this.toggleButtonActiveState(
-        "#bullet-list-button",
-        "insertUnorderedList"
-      );
-      this.toggleButtonActiveState(
-        "#numbered-list-button",
-        "insertOrderedList"
-      );
-    },
-    toggleButtonActiveState: function (buttonSelector, command, value) {
-      const isActive = document.queryCommandState(command, value);
-      this.$(buttonSelector).toggleClass("active", isActive);
+      this.editor.update(() => {
+        const selection = lexical.$getSelection();
+        if (selection && lexical.$isRangeSelection(selection)) {
+          const state = this.editor.getEditorState();
+          const updateButtonState = (command, buttonSelector) => {
+            const isActive = state.read(() => {
+              const nodes = selection.getNodes();
+              for (const node of nodes) {
+                if (node.hasFormat(command)) {
+                  return true;
+                }
+              }
+              return false;
+            });
+            this.$(buttonSelector).toggleClass("active", isActive);
+          };
+
+          updateButtonState("bold", "#bold-button");
+          updateButtonState("italic", "#italic-button");
+          updateButtonState("underline", "#underline-button");
+          updateButtonState("strikethrough", "#strikethrough-button");
+          updateButtonState("subscript", "#subscript-button");
+          updateButtonState("superscript", "#superscript-button");
+        }
+      });
     },
     initSelectionChangeListener: function () {
-      document.addEventListener(
-        "selectionchange",
-        this.updateToolbarButtons.bind(this)
-      );
+      this.editor.registerUpdateListener(() => {
+        this.updateToolbarButtons();
+      });
     },
   });
 });
