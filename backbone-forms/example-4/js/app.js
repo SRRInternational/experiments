@@ -13,7 +13,7 @@ define([
   "LexicalAutoLinkPlugin",
   "LexicalLinkPlugin",
   "LexicalTablePlugin",
-  // "LexicalCodeHighlightPlugin",
+  // 'LexicalCodeHighlightPlugin',
 ], function (
   $,
   _,
@@ -28,17 +28,9 @@ define([
   LexicalMarkdownShortcutPlugin,
   LexicalAutoLinkPlugin,
   LexicalLinkPlugin,
-  LexicalTablePlugin,
+  LexicalTablePlugin
   // LexicalCodeHighlightPlugin
 ) {
-  // Ensure Backbone.Form is loaded correctly
-  // if (!Backbone.Form) {
-  //   console.error(
-  //     "Backbone.Form is not defined. Make sure backbone-forms is loaded correctly."
-  //   );
-  //   return;
-  // }
-
   var textAreaRender = Backbone.Form.editors.TextArea.prototype.render;
 
   Backbone.Form.editors.TextArea.prototype.render = function () {
@@ -47,7 +39,9 @@ define([
     _.defer(
       function () {
         var $textarea = this.$el;
-        $textarea.replaceWith('<div id="lexical-editor">cvdvsvsfv</div>');
+        $textarea.replaceWith(
+          '<div id="lexical-editor" contentEditable>cvdvsvsfv</div>'
+        );
         new LexicalComposer({
           element: document.getElementById("lexical-editor"),
           plugins: [
@@ -58,7 +52,7 @@ define([
             LexicalAutoLinkPlugin(),
             LexicalLinkPlugin(),
             LexicalTablePlugin(),
-            LexicalCodeHighlightPlugin(),
+            // LexicalCodeHighlightPlugin(),
           ],
           initialEditorState: null,
         });
@@ -70,7 +64,7 @@ define([
 
   var FormModel = Backbone.Model.extend({
     schema: {
-      textarea: "TextArea",
+      textarea: { type: "TextArea", title: "" }, // Remove the label by setting title to an empty string
     },
   });
 
