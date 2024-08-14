@@ -1,0 +1,21 @@
+{
+  "name": "exmaple-2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "grunt",
+    "serve": "grunt serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "grunt": "^1.6.1",
+    "grunt-contrib-concat": "^2.1.0",
+    "grunt-contrib-connect": "^5.0.0",
+    "grunt-contrib-sass": "^2.0.0",
+    "grunt-contrib-uglify": "^5.2.2",
+    "grunt-contrib-watch": "^1.1.0"
+  }
+}
