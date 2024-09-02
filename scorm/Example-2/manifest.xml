@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest xmlns="http://www.imsproject.org/xsd/imsmanifest_root.xsd" 
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.imsproject.org/xsd/imsmanifest_root.xsd 
+                              http://www.imsproject.org/xsd/imsmanifest_root.xsd">
+    <metadata>
+        <schema>ADL SCORM</schema>
+        <schemaversion>1.2</schemaversion>
+    </metadata>
+    <organizations default="org0">
+        <organization identifier="org0">
+            <title>SCORM Course</title>
+            <item identifier="item0" identifierref="resource0">
+                <title>SCORM Course</title>
+            </item>
+        </organization>
+    </organizations>
+    <resources>
+        <resource identifier="resource0" type="webcontent" href="index.html">
+            <file href="index.html"/>
+            <file href="scorm.js"/>
+            <file href="scorm-api-wrapper/pipwerks-scorm-api-wrapper.js"/>
+        </resource>
+    </resources>
+</manifest>
