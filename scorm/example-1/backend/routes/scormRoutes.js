@@ -8,9 +8,9 @@ const {
 } = require("../controllers/scormController");
 const router = express.Router();
 
-router.post("/initialize", LMSInitialize);
-router.post("/setvalue", LMSSetValue);
-router.post("/commit", LMSCommit);
-router.post("/finish", LMSFinish);
+router.post("/:courseId/:learnerId/LMSInitialize", LMSInitialize);
+router.post("/:courseId/:learnerId/LMSSetValue", LMSSetValue);
+router.post("/:courseId/:learnerId/LMSCommit", LMSCommit);
+router.post("/:courseId/:learnerId/LMSFinish", LMSFinish);
 
 module.exports = router;

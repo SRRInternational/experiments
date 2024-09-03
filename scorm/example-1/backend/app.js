@@ -5,7 +5,6 @@ const courseRoutes = require("./routes/courseRoutes");
 const cors = require("cors");
 const path = require("path");
 const fs = require("fs").promises;
-const Course = require("./models/Course");
 require("dotenv").config();
 
 const app = express();
@@ -19,52 +18,22 @@ app.use("/api/scorm", scormRoutes);
 app.use("/api/courses", courseRoutes);
 app.use("/uploads", express.static("uploads"));
 
-app.get("/api/courses/:identifier/preview", async (req, res) => {
+app.use("/api/courses/:identifier/preview", async (req, res, next) => {
   const { identifier } = req.params;
+  const courseDir = path.join(__dirname, "public", "uploads", identifier);
 
   try {
-    const filePath = path.join(
-      __dirname,
-      "public",
-      "uploads",
-      identifier,
-      "index.html"
-    );
-    // res.sendFile(filePath);
-    const stat = await fs.stat(filePath);
+    const stat = await fs.stat(courseDir);
 
-    if (stat.isDirectory()) {
-      return res.status(403).json({ error: "Directory access is forbidden" });
+    if (!stat.isDirectory()) {
+      return res.status(404).json({ error: "Course not found" });
     }
 
-    const fileContents = await fs.readFile(filePath);
-    const contentType = getContentType(filePath);
-
-    console.log(contentType);
-
-    res.status(200).set("Content-Type", contentType).send(fileContents);
+    // Serve static files from the course directory
+    express.static(courseDir)(req, res, next);
   } catch (error) {
-    res.status(404).json({ error: "File not found" });
+    res.status(404).json({ error: "Course not found" });
   }
 });
-
-function getContentType(filePath) {
-  const ext = path.extname(filePath).toLowerCase();
-  const mimeTypes = {
-    ".html": "text/html",
-    ".css": "text/css",
-    ".js": "application/javascript",
-    ".json": "application/json",
-    ".png": "image/png",
-    ".jpg": "image/jpeg",
-    ".gif": "image/gif",
-    ".svg": "image/svg+xml",
-    ".mp4": "video/mp4",
-    ".webm": "video/webm",
-    ".mp3": "audio/mpeg",
-    ".wav": "audio/wav",
-  };
-  return mimeTypes[ext] || "application/octet-stream";
-}
 
 module.exports = app;
