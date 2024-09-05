@@ -1,0 +1,18 @@
+[
+    {
+        "title": "New Block Title",
+        "displayTitle": "New Block Title",
+        "body": "",
+        "_classes": "",
+        "_trackingId": 1,
+        "instruction": "",
+        "_isOptional": false,
+        "_isAvailable": true,
+        "_isHidden": false,
+        "_isVisible": true,
+        "_ariaLevel": 0,
+        "_id": "66cdc40194cc1c8400904159",
+        "_parentId": "66cdc40194cc1c8400904158",
+        "_type": "block"
+    }
+]

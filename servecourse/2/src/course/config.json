@@ -1,0 +1,90 @@
+{
+  "_defaultLanguage": "en",
+  "_defaultDirection": "ltr",
+  "_questionWeight": 1,
+  "_generateSourcemap": false,
+  "_forceRouteLocking": true,
+  "_disableAnimationFor": [],
+  "_id": "66cdc40194cc1c8400904156",
+  "_courseId": "66cdc40194cc1c8400904154",
+  "_drawer": {
+    "_showEasing": "easeOutQuart",
+    "_hideEasing": "easeInQuart",
+    "_duration": 400
+  },
+  "_accessibility": {
+    "_isEnabled": true,
+    "_isTextProcessorEnabled": true,
+    "_isSkipNavigationEnabled": true,
+    "_ariaLevels": {
+      "_menu": 1,
+      "_menuItem": 2,
+      "_page": 1,
+      "_article": 2,
+      "_block": 3,
+      "_component": 4,
+      "_componentItem": 5,
+      "_notify": 1
+    },
+    "_options": {
+      "_isFocusOutlineKeyboardOnlyEnabled": true,
+      "_isFocusOutlineDisabled": false,
+      "_isFocusAssignmentEnabled": true,
+      "_isFocusOnClickEnabled": true,
+      "_isFocusNextOnDisabled": true,
+      "_isScrollDisableEnabled": true,
+      "_isAriaHiddenManagementEnabled": true,
+      "_isPopupManagementEnabled": true,
+      "_isPopupWrapFocusEnabled": true,
+      "_isPopupAriaHiddenManagementEnabled": true,
+      "_isPopupTabIndexManagementEnabled": true,
+      "_warn": true,
+      "_warnFirstOnly": true
+    }
+  },
+  "__v": 0,
+  "_completionCriteria": {
+    "_requireContentCompleted": true,
+    "_requireAssessmentCompleted": false
+  },
+  "_logging": {
+    "_isEnabled": true,
+    "_level": "info",
+    "_console": true
+  },
+  "_scrollingContainer": {
+    "_isEnabled": false,
+    "_limitToSelector": ""
+  },
+  "screenSize": {
+    "small": 520,
+    "medium": 760,
+    "large": 900
+  },
+  "_spoor": {
+    "_isEnabled": true,
+    "_tracking": {
+      "_shouldSubmitScore": false,
+      "_shouldStoreResponses": true,
+      "_shouldRecordInteractions": true
+    },
+    "_reporting": {
+      "_onTrackingCriteriaMet": "completed",
+      "_onAssessmentFailure": "incomplete",
+      "_resetStatusOnLanguageChange": false
+    },
+    "_advancedSettings": {
+      "_scormVersion": "1.2",
+      "_showDebugWindow": false,
+      "_commitOnStatusChange": true,
+      "_timedCommitFrequency": 10,
+      "_maxCommitRetries": 5,
+      "_commitRetryDelay": 2000,
+      "_suppressErrors": false,
+      "_commitOnVisibilityChangeHidden": true,
+      "_manifestIdentifier": "adapt_manifest",
+      "_exitStateIfIncomplete": "auto",
+      "_exitStateIfComplete": "auto"
+    }
+  }
+}
