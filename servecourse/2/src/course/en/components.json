@@ -1,0 +1,19 @@
+[
+  {
+    "_component": "text",
+    "_classes": "",
+    "_isOptional": false,
+    "_isAvailable": true,
+    "_isHidden": false,
+    "_isVisible": true,
+    "_ariaLevel": 0,
+    "_disableAccessibilityState": false,
+    "title": "New Component Title",
+    "displayTitle": "New Component Title",
+    "body": "This is a text component",
+    "_id": "66cdc40194cc1c840090415a",
+    "_parentId": "66cdc40194cc1c8400904159",
+    "_type": "component",
+    "_layout": "full"
+  }
+]
