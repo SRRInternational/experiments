@@ -20,7 +20,7 @@ if (!LICENSE_KEY) {
 // https://ckeditor.com/docs/ckbox/latest/guides/configuration/authentication.html#token-endpoint
 const CKBOX_TOKEN_URL = "";
 
-// import CustomDialogButton from '/src/plugins/custom-dialog/customdialog.js';
+import LogButtonPlugin from "/src/plugins/custom-dialog/customdialog.js";
 
 import {
   ClassicEditor,
@@ -55,10 +55,12 @@ import {
   TextTransformation,
 } from "ckeditor5";
 
-// import { SlashCommand } from "ckeditor5-premium-features";
+// import {
+// 	SlashCommand
+// } from 'ckeditor5-premium-features';
 
-// import "ckeditor5/ckeditor5.css";
-// import "ckeditor5-premium-features/ckeditor5-premium-features.css";
+import "ckeditor5/ckeditor5.css";
+// import 'ckeditor5-premium-features/ckeditor5-premium-features.css';
 
 ClassicEditor.create(
   document.querySelector("#cke5-user-interface-classic-demo"),
@@ -67,8 +69,8 @@ ClassicEditor.create(
       Autoformat,
       BlockQuote,
       Bold,
-      CloudServices,
-      ...(CKBOX_TOKEN_URL ? [CKBox] : []),
+      // CloudServices,
+      // ...(CKBOX_TOKEN_URL ? [CKBox] : []),
       Essentials,
       Heading,
       Image,
@@ -93,8 +95,8 @@ ClassicEditor.create(
       TableToolbar,
       TextTransformation,
       Underline,
-      ...(LICENSE_KEY ? [SlashCommand] : []),
-      // CustomDialogButton,
+      LogButtonPlugin,
+      // ...(LICENSE_KEY ? [SlashCommand] : []),
     ],
     licenseKey: LICENSE_KEY,
     toolbar: [
@@ -109,7 +111,7 @@ ClassicEditor.create(
       "|",
       "link",
       "uploadImage",
-      "ckbox",
+      // 'ckbox',
       "insertTable",
       "blockQuote",
       "mediaEmbed",
@@ -119,7 +121,7 @@ ClassicEditor.create(
       "|",
       "outdent",
       "indent",
-      // 'CustomDialogButton',
+      "LogButtonPlugin",
     ],
     heading: {
       options: [
@@ -190,9 +192,9 @@ ClassicEditor.create(
     table: {
       contentToolbar: ["tableColumn", "tableRow", "mergeTableCells"],
     },
-    ckbox: {
-      tokenUrl: CKBOX_TOKEN_URL,
-    },
+    // ckbox: {
+    // 	tokenUrl: CKBOX_TOKEN_URL,
+    // },
   }
 )
   .then((editor) => {
