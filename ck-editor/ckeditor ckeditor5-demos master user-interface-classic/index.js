@@ -9,10 +9,7 @@
 const LICENSE_KEY = "";
 
 if (!LICENSE_KEY) {
-  alert(
-    "CKEditor Commercial Features included in this demo require a license key.\n" +
-      "Check the index.js file for more information."
-  );
+  console.log("hello");
 }
 
 // CKBox plugin requires a valid token URL in order to use the CKBox application.
@@ -20,7 +17,7 @@ if (!LICENSE_KEY) {
 // https://ckeditor.com/docs/ckbox/latest/guides/configuration/authentication.html#token-endpoint
 const CKBOX_TOKEN_URL = "";
 
-import LogButtonPlugin from "/src/plugins/custom-dialog/customdialog.js";
+// import LogButtonPlugin from "/src/plugins/custom-dialog/customdialog.js";
 
 import {
   ClassicEditor,
@@ -53,6 +50,7 @@ import {
   TableColumnResize,
   TableToolbar,
   TextTransformation,
+  SourceEditing,
 } from "ckeditor5";
 
 // import {
@@ -95,11 +93,13 @@ ClassicEditor.create(
       TableToolbar,
       TextTransformation,
       Underline,
-      LogButtonPlugin,
+      SourceEditing,
+      // LogButtonPlugin,
       // ...(LICENSE_KEY ? [SlashCommand] : []),
     ],
     licenseKey: LICENSE_KEY,
     toolbar: [
+      "sourceEditing",
       "undo",
       "redo",
       "|",
@@ -121,7 +121,7 @@ ClassicEditor.create(
       "|",
       "outdent",
       "indent",
-      "LogButtonPlugin",
+      // "LogButtonPlugin",
     ],
     heading: {
       options: [
