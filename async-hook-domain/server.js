@@ -11,6 +11,10 @@ const { getCurrentUser } = require("./usermanager");
 
 const app = express();
 
+// Set EJS as the template engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 // Middleware to serve static files
 app.use("/public", express.static(path.join(__dirname, "public")));
 
@@ -50,6 +54,7 @@ app.use((req, res, next) => {
 
   next();
 });
+
 // Routes
 app.get("/", (req, res) => {
   res.redirect("/login");
@@ -74,7 +79,17 @@ app.get("/dashboard", (req, res) => {
 
   const user = getCurrentUser();
   console.log("User authenticated:", user);
-  res.sendFile(path.join(__dirname, "views", "dashboard.html"));
+  res.render("dashboard", { user });
+});
+
+app.get("/main", (req, res) => {
+  if (!req.isAuthenticated()) {
+    return res.redirect("/login");
+  }
+
+  const user = getCurrentUser();
+  console.log("User authenticated:", user);
+  res.render("main", { user });
 });
 
 app.get("/logout", (req, res) => {
