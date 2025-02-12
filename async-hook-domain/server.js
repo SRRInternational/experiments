@@ -101,6 +101,28 @@ app.get("/logout", (req, res) => {
   });
 });
 
+// Route 2: Fails because of setTimeout (async context changes)
+app.get("/timeout", (req, res) => {
+  setTimeout(() => {
+    const domain = getCurrentUser();
+    res.json({ message: "setTimeout", domain });
+  }, 100);
+});
+
+// Route 3: Fails because of `await`
+app.get("/await", async (req, res) => {
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  const domain = getCurrentUser();
+  res.json({ message: "Await", domain });
+});
+
+// Route 4: Fails because of `Promise.then`
+app.get("/promise", (req, res) => {
+  Promise.resolve().then(() => {
+    const domain = getCurrentUser();
+    res.json({ message: "Promise.then", domain });
+  });
+});
 // Start the server
 const PORT = 3000;
 app.listen(PORT, () => {

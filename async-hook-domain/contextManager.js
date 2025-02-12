@@ -8,7 +8,15 @@ module.exports = {
   },
 
   getCurrentDomain: () => {
-    return domains.get(executionAsyncId());
+    var id = executionAsyncId();
+
+    console.log("Current execution Id: ", id);
+    console.log("Domains: ", domains);
+    const data = {
+      domains: domains.get(id),
+      executionId: id,
+    }
+    return data;
   },
 
   clearDomain: (asyncId) => {
