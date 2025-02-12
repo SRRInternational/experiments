@@ -1,0 +1,67 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/system/tenantObject.schema",
+  "properties": {
+    "idNumber": {
+      "type": "string", 
+      "default": ""
+    },
+    "secId": {
+      "type": "string", 
+      "default": "",
+      "index": {
+        "unique": true
+      }
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "required": true,
+      "index": {
+        "unique": true
+      }
+    },
+    "auth": {
+      "type": "string",
+      "default": ""
+    },
+    "password": {
+      "type": "string",
+      "protect": true
+    },
+    "roles": {
+      "type": "array",
+      "items": { "type": "objectid", "ref":"role" }
+    },
+    "firstAccess": {
+      "type": "date",
+      "required": false
+    },
+    "lastAccess": {
+      "type": "date",
+      "required": false
+    },
+    "failedLoginCount": {
+      "type" : "number",
+      "required": true,
+      "default": 0
+    },
+    "_accessibleTenants": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "_defaultTenantId": {
+      "type": "objectid"
+    },
+     "metadata": {
+      "type" : "object"
+    }
+  }
+}
