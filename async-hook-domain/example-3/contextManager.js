@@ -4,16 +4,20 @@ const asyncLocalStorage = new AsyncLocalStorage();
 
 module.exports = {
   runWithContext: (req, callback) => {
-    asyncLocalStorage.run(new Map(), () => {
-      const store = asyncLocalStorage.getStore();
-      store.set("request", req); // Store the request inside the map
+    const context = {
+      req,
+      session: req.session,
+    };
+    asyncLocalStorage.run(context, () => {
+      // const store = asyncLocalStorage.getStore();
+      // store.set("request", req); // Store the request inside the map
       callback();
     });
   },
 
   getCurrentRequest: () => {
     const store = asyncLocalStorage.getStore();
-    return store ? store.get("request") : undefined;
+    return store ? store : undefined;
   },
 
   getCurrentDomain: () => {
