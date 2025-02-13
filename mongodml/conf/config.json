@@ -1,0 +1,46 @@
+{
+  "outputPlugin": "adapt",
+  "dbType": "mongoose",
+  "auth": "local",
+  "root": "D:\\srr\\cloudlcms",
+  "sessionSecret": "96b76cb585b28e09f854fc1148ff525e1da03a9cacc437dd0d5734daa8ce9c3252cab64f8b7061380b576d352ae743d64548e77dbbfced50f919a8eddbac0a11",
+  "serverPort": 9080,
+  "serverName": "localhost",
+  "dataRoot": "data",
+  "authoringToolRepository": "https://github.com/adaptlearning/adapt_authoring.git",
+  "frameworkRepository": "https://github.com/adaptlearning/adapt_framework.git",
+  "frameworkRevision": "tags/v5.2.0",
+  "dbName": "august-2024",
+  "shouldDatabaseUseSSL": false,
+  "useConnectionUri": false,
+  "dbHost": "localhost",
+  "dbPort": 27017,
+  "dbUser": "",
+  "dbPass": "",
+  "dbAuthSource": "",
+  "useSmtp": false,
+  "maxLoginAttempts": 3,
+  "ckEditorHtmlSupport": {
+    "allow": [
+      {
+        "name": "^(blockquote|ul|ol|span)$"
+      },
+      {
+        "name": ".*",
+        "classes": true,
+        "styles": true
+      },
+      {
+        "name": "^a$",
+        "attributes": {
+          "target": true
+        }
+      }
+    ]
+  },
+  "maxFileUploadSize": "200MB",
+  "ckEditorEnterMode": "ENTER_P",
+  "masterTenantName": "master",
+  "masterTenantID": "679c693d2ed8c85d08d43929",
+  "isProduction": true
+}

@@ -4,7 +4,7 @@ const configuration = require("./configuration");
 const EventEmitter = require("events").EventEmitter;
 const fs = require("fs");
 const { Schema } = require("mongoose");
-const logger = require("./logger");
+// const console = require("./console");
 const path = require("path");
 const util = require("util");
 
@@ -73,7 +73,7 @@ util.inherits(Database, EventEmitter);
  * @abstract
  */
 Database.prototype.connect = function () {
-  logger.log("warn", "Database.connect must be implemented by extending object!");
+  console.log("warn", "Database.connect must be implemented by extending object!");
   throw new Error("Database.connect must be implemented by extending object!");
 };
 
@@ -84,7 +84,7 @@ Database.prototype.connect = function () {
  * @abstract
  */
 Database.prototype.disconnect = function (next) {
-  logger.log("warn", "Database.disconnect must be implemented by extending object!");
+  console.log("warn", "Database.disconnect must be implemented by extending object!");
   throw new Error("Database.disconnect must be implemented by extending object!");
 };
 
@@ -94,12 +94,12 @@ Database.prototype.disconnect = function (next) {
  * @abstract
  */
 Database.prototype.isStale = function (tenant) {
-  logger.log("warn", "Database.isStale must be implemented by extending object!");
+  console.log("warn", "Database.isStale must be implemented by extending object!");
   throw new Error("Database.isStale must be implemented by extending object!");
 };
 
 Database.prototype.isValidIdentifier = function (id) {
-  logger.log("warn", "Database.isValidIdentifier must be implemented by extending object!");
+  console.log("warn", "Database.isValidIdentifier must be implemented by extending object!");
   throw new Error("Database.isValidIdentifier must be implemented by extending object!");
 };
 
@@ -111,7 +111,7 @@ Database.prototype.isValidIdentifier = function (id) {
  * @param {function} callback - Callback function to be called once all schemas are loaded
  */
 Database.prototype.loadSchemas = function (schemaDirectory, callback) {
-  logger.log("warn", "Database.loadSchemas must be implemented by extending object!");
+  console.log("warn", "Database.loadSchemas must be implemented by extending object!");
   throw new Error("Database.loadSchemas must be implemented by extending object!");
 };
 
@@ -154,7 +154,7 @@ Database.prototype.addModel = function (modelName, schema, next) {
  */
 
 Database.prototype.addSchema = function (modelName, schema) {
-  logger.log("warn", "Database#addSchema must be implemented by extending object!");
+  console.log("warn", "Database#addSchema must be implemented by extending object!");
   throw new Error("Database#addSchema must be implemented by extending object!");
 };
 
@@ -166,7 +166,7 @@ Database.prototype.addSchema = function (modelName, schema) {
  */
 
 Database.prototype.getModel = function (modelName) {
-  logger.log("warn", "Database#getModel must be implemented by extending object!");
+  console.log("warn", "Database#getModel must be implemented by extending object!");
   throw new Error("Database#getModel must be implemented by extending object!");
 };
 
@@ -178,7 +178,7 @@ Database.prototype.getModel = function (modelName) {
  */
 
 Database.prototype.getModelNames = function () {
-  logger.log("warn", "Database#getModelNames must be implemented by extending object!");
+  console.log("warn", "Database#getModelNames must be implemented by extending object!");
   throw new Error("Database#getModelNames must be implemented by extending object!");
 };
 
@@ -189,7 +189,7 @@ Database.prototype.getModelNames = function () {
  * @return {object} populate object that can be passed to Database#retrieve
  */
 Database.prototype.buildPopulator = function (options) {
-  logger.log("warn", "Database#buildPopulator must be implemented by extending object!");
+  console.log("warn", "Database#buildPopulator must be implemented by extending object!");
   throw new Error("Database#buildPopulator must be implemented by extending object!");
 };
 
@@ -200,7 +200,7 @@ Database.prototype.buildPopulator = function (options) {
  * @return {object} query object that can be passed to Database#retrieve
  */
 Database.prototype.buildQuery = function (options) {
-  logger.log("warn", "Database#buildQuery must be implemented by extending object!");
+  console.log("warn", "Database#buildQuery must be implemented by extending object!");
   throw new Error("Database#buildQuery must be implemented by extending object!");
 };
 
@@ -212,7 +212,7 @@ Database.prototype.buildQuery = function (options) {
  * @param {function} callback - of the form function (error, results) ...
  */
 Database.prototype.create = function (objectType, objectData, callback) {
-  logger.log("warn", "Database#create must be implemented by extending object!");
+  console.log("warn", "Database#create must be implemented by extending object!");
   callback(new Error("Database#create not implemented"));
 };
 
@@ -225,7 +225,7 @@ Database.prototype.create = function (objectType, objectData, callback) {
  * @param {function} callback - of the form function (error, results) ...
  */
 Database.prototype.retrieve = function (objectType, search, options, callback) {
-  logger.log("warn", "Database#retrieve must be implemented by extending object!");
+  console.log("warn", "Database#retrieve must be implemented by extending object!");
   callback(new Error("Database#retrieve not implemented"));
 };
 
@@ -238,7 +238,7 @@ Database.prototype.retrieve = function (objectType, search, options, callback) {
  * @param {function} callback - of the form function (error, results) ...
  */
 Database.prototype.retrieveOne = function (objectType, search, options, callback) {
-  logger.log("warn", "Database#retrieve must be implemented by extending object!");
+  console.log("warn", "Database#retrieve must be implemented by extending object!");
   callback(new Error("Database#retrieve not implemented"));
 };
 
@@ -251,7 +251,7 @@ Database.prototype.retrieveOne = function (objectType, search, options, callback
  * @param {function} callback - of the form function (error, results) ...
  */
 Database.prototype.update = function (objectType, conditions, updateData, callback) {
-  logger.log("warn", "Database#update must be implemented by extending object!");
+  console.log("warn", "Database#update must be implemented by extending object!");
   callback(new Error("Database#update not implemented"));
 };
 
@@ -263,7 +263,7 @@ Database.prototype.update = function (objectType, conditions, updateData, callba
  * @param {function} callback - of the form function (error) ...
  */
 Database.prototype.destroy = function (objectType, conditions, callback) {
-  logger.log("warn", "Database#destroy must be implemented by extending object!");
+  console.log("warn", "Database#destroy must be implemented by extending object!");
   callback(new Error("Database#destroy not implemented"));
 };
 
@@ -276,7 +276,7 @@ Database.prototype.destroy = function (objectType, conditions, callback) {
  * @param {callback} next
  */
 Database.prototype.importSchema = function (uri, schema, next) {
-  logger.log("warn", "Database#importSchema must be implemented by extending object!");
+  console.log("warn", "Database#importSchema must be implemented by extending object!");
   throw new Error("Database#importSchema not implemented");
 };
 
@@ -287,7 +287,7 @@ Database.prototype.importSchema = function (uri, schema, next) {
  * @param {object|array} results
  */
 Database.prototype.exportResults = function (results, next) {
-  logger.log("warn", "Database#exportResults must be implemented by extending object!");
+  console.log("warn", "Database#exportResults must be implemented by extending object!");
   throw new Error("Database#exportResults not implemented");
 };
 
@@ -314,7 +314,7 @@ function resolveSchemaPath(uri) {
   }
 
   // could not resolve
-  logger.log("info", "could not resolve uri to local path: " + uri);
+  console.log("info", "could not resolve uri to local path: " + uri);
   return false;
 }
 
@@ -363,10 +363,10 @@ function processDatabaseHooks(eventType, dbInstance, next) {
 function createDatabaseInstance(type, dbConfig, next) {
   const dbPath = path.join(getDriverPath(), type);
   let clsDB;
-  try {
+  try { 
     clsDB = require(dbPath);
   } catch (error) {
-    logger.log("error", error);
+    console.log("error", error);
     return next(new errors.notthere(dbPath));
   }
   _databases[type][dbConfig.dbName] = {
@@ -375,7 +375,7 @@ function createDatabaseInstance(type, dbConfig, next) {
   const dbInstance = new clsDB();
 
   dbInstance.connect(dbConfig).then(function () {
-    logger.log("info", "Connection established: " + dbConfig.dbName);
+    console.log("info", "Connection established: " + dbConfig.dbName);
 
     dbInstance.loadSchemas(path.join(getSchemaPath(), "system"), function (error) {
       processDatabaseHooks("create", dbInstance, function (err) {
@@ -386,7 +386,7 @@ function createDatabaseInstance(type, dbConfig, next) {
         }
         dbInstance.readyState = ReadyStates.READY;
         _databases[type][dbConfig.dbName] = dbInstance;
-        app.emit("create:database", dbInstance);
+        // app.emit("create:database", dbInstance);
         next(null, dbInstance);
       });
     });
@@ -401,17 +401,22 @@ function createDatabaseInstance(type, dbConfig, next) {
  * @param {string} type - (optional) the type of database connector to use (e.g 'mongoose')
  */
 function getDatabase(next, tenantId, type) {
-  const { dbName, dbType, masterTenantID } = configuration.getConfig();
+  // const { dbName, dbType, masterTenantID } = configuration.getConfig();
+
+  const dbName = 'august-2024'
+  const dbType = 'mongoose'
+  const masterTenantID = '679c693d2ed8c85d08d43929'
+
 
   if ("function" !== typeof next) {
-    logger.log("error", "getDatabase called without callback function");
+    console.log("error", "getDatabase called without callback function");
     return next(new errors.nocallback("getDatabase"));
   }
   if (!tenantId) {
     try {
-      tenantId = app.usermanager.getCurrentUser().tenant._id;
+      tenantId = "679c693d2ed8c85d08d43929";
     } catch (e) {
-      logger.audit("error", { event: "database", message: e.message, error: e.stack.replace(/\n/g, "") });
+      console.log("error", { event: "database", message: e.message, error: e.stack.replace(/\n/g, "") });
       return next(new Error("Failed to determine user's tenant!"));
     }
   }
@@ -429,7 +434,13 @@ function getDatabase(next, tenantId, type) {
 }
 
 function _handleMasterDB(type, next) {
-  const { dbName, dbHost, dbUser, dbPass, dbPort } = configuration.getConfig();
+  // const { dbName, dbHost, dbUser, dbPass, dbPort } = configuration.getConfig();
+  var dbName = 'august-2024'
+  var dbHost = 'localhost'
+  var dbUser = ''
+  var dbPass = ''
+  var dbPort = '27017'
+
   const db = _databases[type][dbName];
 
   if (db) {
@@ -443,7 +454,7 @@ function _handleMasterDB(type, next) {
   }
   createDatabaseInstance(type, { dbName, dbHost, dbUser, dbPass, dbPort }, (err, db) => {
     if (err) {
-      logger.log("error", err);
+      console.log("error", err);
       return next(err);
     }
     if (!db) {
@@ -473,9 +484,9 @@ function _handleMasterDB(type, next) {
       },
       function (err, fullSchema) {
         if (err) {
-          logger.log("error", "Error creating review schema: " + err.message, err);
+          console.log("error", "Error creating review schema: " + err.message, err);
         } else {
-          logger.log("info", "Review model created successfully!");
+          console.log("info", "Review model created successfully!");
         }
       },
     );
@@ -505,9 +516,9 @@ function _handleMasterDB(type, next) {
       },
       function (err, fullSchema) {
         if (err) {
-          logger.log("error", "Error creating backup schema: " + err.message, err);
+          console.log("error", "Error creating backup schema: " + err.message, err);
         } else {
-          logger.log("info", "Backup model created successfully!");
+          console.log("info", "Backup model created successfully!");
         }
       },
     );
@@ -535,32 +546,60 @@ function _handleMasterDB(type, next) {
       },
       function (err, fullSchema) {
         if (err) {
-          logger.log("error", "Error creating session schema: " + err.message, err);
+          console.log("error", "Error creating session schema: " + err.message, err);
         } else {
-          logger.log("info", "Session model created successfully!");
+          console.log("info", "Session model created successfully!");
         }
       },
     );
     // db.addModel("userotp", userotpSchema, function (err, fullSchema) {
     //   if (err) {
-    //     logger.log("error", "Error creating otp schema: " + err.message, err);
+    //     console.log("error", "Error creating otp schema: " + err.message, err);
     //   } else {
-    //     logger.log("info", "userotp model created successfully!");
+    //     console.log("info", "userotp model created successfully!");
     //   }
     // });
 
     // broadcast that connection to the master database has been established.
-    app.emit("create:masterdatabase", db);
+    // app.emit("create:masterdatabase", db);
     next(null, db);
   });
 }
 
-function _handleSlaveDB(type, tenantId, next) {
-  // need to fetch tenant info to ensure that db connection is not stale
-  app.tenantmanager.retrieveTenant({ _id: tenantId }, function (err, tenant) {
-    if (!tenant && !err) err = "Error: Tenant not found in database, Not able to retrive tenant from database.";
+function retrieveTenant (search, options, callback) {
+  // shuffle params
+  if ("function" === typeof options) {
+    callback = options;
+    options = {};
+  }
+
+ getDatabase(function (err, db) {
     if (err) {
       logger.log("error", err);
+      return callback(err);
+    }
+
+    db.retrieve("tenant", search, options, function (error, results) {
+      if (error) {
+        return callback(error);
+      }
+
+      if (results && results.length === 1) {
+        // we only want to retrieve a single tenant, so we send an error if we get multiples
+        return callback(null, results[0]);
+      }
+
+      return callback(null, false);
+    });
+  }, configuration.getConfig("dbName"));
+}
+
+function _handleSlaveDB(type, tenantId, next) {
+  // need to fetch tenant info to ensure that db connection is not stale
+retrieveTenant({ _id: tenantId }, function (err, tenant) {
+    if (!tenant && !err) err = "Error: Tenant not found in database, Not able to retrive tenant from database.";
+    if (err) {
+      console.log("error", err);
       return next(err);
     }
     const dbInstance = _databases[type][tenant.database.dbName];
@@ -589,7 +628,7 @@ function _handleSlaveDB(type, tenantId, next) {
     }
     createDatabaseInstance(type, tenant.database, (err, db) => {
       if (err) {
-        logger.log("error", err);
+        console.log("error", err);
         return next(err);
       }
       if (!db) return next(new Error("Failed to create master database"));
@@ -718,7 +757,7 @@ function preloadHandle(app, instance) {
       }
       instance.getDatabase(function (err, db) {
         if (err) {
-          return logger.log("error", "failed to set app.db", err);
+          return console.log("error", "failed to set app.db", err);
         }
         app.db = db;
       }, configuration.getConfig("dbName"));

@@ -1,0 +1,5 @@
+{
+  "migrationsDir": "migrations/lib",
+  "es6": false,
+  "dbConnectionUri": "mongodb://localhost:27017/august-2024"
+}

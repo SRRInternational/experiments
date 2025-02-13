@@ -3,7 +3,7 @@ var async = require('async'),
     Database = require('../../database').Database,
     configuration = require('../../configuration'),
     MongooseImporter = require('./importer').ImportManager,
-    logger = require('../../logger'),
+    // console = require('../../console'),
     util = require('util'),
     fs = require('fs'),
     path = require('path'),
@@ -118,13 +118,13 @@ MongooseDB.prototype.connect = function(db) {
   return mongoose.createConnection(connectionString, dbOptions).then(function(conn) {
     this.conn = conn;
     this.conn.connectionUri = connectionString;
-    this.conn.on('error', logger.log.bind(logger, 'error'));
-    this.conn.once('error', function(){ logger.log('error', 'Database Connection failed, please check your database'); }); //added to give console notification of the problem
+    this.conn.on('error', console.log.bind(console, 'error'));
+    this.conn.once('error', function(){ console.log('error', 'Database Connection failed, please check your database'); }); //added to give console notification of the problem
     this.updatedAt = new Date();
     this._models = {};
     this.conn.db.command({ buildInfo: 1 }, (error, info) => {
       if (error) {
-        logger.log('error', error);
+        console.log('error', error);
       } else {
         this.mongoVersion = info.version;
       } 
@@ -174,7 +174,7 @@ MongooseDB.prototype.loadSchemas = function (schemaDirectory, callback) {
 
   fs.readdir(schemaDirectory, function(error,files){
     if (error) {
-      logger.log('error', 'failed to fetch directory listing', error);
+      console.log('error', 'failed to fetch directory listing', error);
       callback(error);
       return false;
     }
@@ -186,12 +186,12 @@ MongooseDB.prototype.loadSchemas = function (schemaDirectory, callback) {
         var schema;
         fs.readFile(fullPath, function (error, data) {
           if (error) {
-            logger.log('error', 'failed to read schema file', error);
+            console.log('error', 'failed to read schema file', error);
           } else {
             try {
               this.addModel(modelName, JSON.parse(data));
             } catch (err) {
-              logger.log('error', 'failed to parse schema file at ' + fullPath, err);
+              console.log('error', 'failed to parse schema file at ' + fullPath, err);
             }
           }
 
@@ -280,10 +280,10 @@ MongooseDB.prototype.create = function(objectType, objectData, callback) {
     instance.save(function (err, result, numAffected) {
       if (err) {
         // log errors, but pass control back to caller
-        logger.log('error', err);
+        console.log('error', err);
       } else {
         //todo: record change in collections
-        logger.audit("info", { event: "database", action: "create", collection: objectType, message: `created a document id '${result._id}'`, metadata: _.keys(objectData) });
+        console.log("info", { event: "database", action: "create", collection: objectType, message: `created a document id '${result._id}'`, metadata: _.keys(objectData) });
       }
 
       return callback(err, result, numAffected);
@@ -452,9 +452,9 @@ MongooseDB.prototype.update = function(objectType, conditions, updateData, callb
 
       doc.save(function (err) {
         if (err) {
-          logger.log('error', err);
+          console.log('error', err);
         } else {
-          logger.audit("info", { event: "database", action: "update", collection: objectType, message: `updated document id '${doc._id}'`, metadata: _.keys(updateData) });
+          console.log("info", { event: "database", action: "update", collection: objectType, message: `updated document id '${doc._id}'`, metadata: _.keys(updateData) });
         }
 
         return callback(err, doc);
@@ -479,13 +479,13 @@ MongooseDB.prototype.findAndUpdate = function (objectType, conditions, updateDat
   if ((Model = this.getModel(objectType))) {
     Model.findOneAndUpdate(conditions, updateData, { useFindAndModify: false }, function (err, doc) {
       if (err) {
-        logger.log("error", err);
+        console.log("error", err);
         return callback(err);
       }
       if (!doc) {
         return callback(null, null, 0);
       }
-      logger.audit("info", {
+      console.log("info", {
         event: "database",
         action: "update",
         collection: objectType,
@@ -549,7 +549,7 @@ MongooseDB.prototype.destroy = function(objectType, conditions, callback) {
   var Model = false;
   //record change in collections
   if (Model = this.getModel(objectType)) {
-    logger.audit("info", { event: "database", action: "delete", collection: objectType, message: `deleted document id '${conditions._id}'`, metadata: conditions  });
+    console.log("info", { event: "database", action: "delete", collection: objectType, message: `deleted document id '${conditions._id}'`, metadata: conditions  });
     Model.deleteMany(conditions, callback);
   } else {
     callback(new Error('MongooseDB#destroy: Failed to retrieve model with name ' + objectType));
@@ -572,7 +572,7 @@ MongooseDB.prototype.addSchema = function (modelName, schema) {
   // lowercase all modelNames
   modelName = modelName.toLowerCase();
   if (this.getModel(modelName)) { // lets not allow overwriting of models
-    logger.log('warn', 'MongooseDB#addModel: can\'t overwrite an existing model', modelName);
+    console.log('warn', 'MongooseDB#addModel: can\'t overwrite an existing model', modelName);
     throw new Error("MongooseDB#addModel - Failed to add the model " + modelName + ": it already exists");
   }
 
@@ -590,7 +590,7 @@ MongooseDB.prototype.addSchema = function (modelName, schema) {
   }
 
   if (!(schema && schema instanceof mongoose.Schema)) { // must be a mongoose schema
-    logger.log('warn', 'MongooseDB#addModel: schema is not a valid mongoose Schema', schema);
+    console.log('warn', 'MongooseDB#addModel: schema is not a valid mongoose Schema', schema);
     throw new Error("MongooseDB#addModel - Failed to add the model " + modelName + ": not a valid schema");
   }
 
@@ -668,7 +668,7 @@ MongooseDB.prototype.exportResults = function (results, next) {
  */
 MongooseDB.prototype.getModel = function(modelName) {
   if (!modelName || 'string' !== typeof modelName) {
-    logger.log('error', 'MongooseDB#getModel: modelName parameter must be a string');
+    console.log('error', 'MongooseDB#getModel: modelName parameter must be a string');
     return false;
   }
 
