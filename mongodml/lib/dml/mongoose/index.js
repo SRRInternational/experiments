@@ -1,24 +1,24 @@
 // LICENCE https://github.com/adaptlearning/adapt_authoring/blob/master/LICENSE
-var async = require('async'),
-    Database = require('../../database').Database,
-    configuration = require('../../configuration'),
-    MongooseImporter = require('./importer').ImportManager,
-    // console = require('../../console'),
-    util = require('util'),
-    fs = require('fs'),
-    path = require('path'),
-    mongoose = require('mongoose'),
-    mongoUri = require('mongodb-uri'),
-    semver = require('semver'),
-    _ = require('underscore');
+var async = require("async"),
+  Database = require("../../database").Database,
+  configuration = require("../../configuration"),
+  MongooseImporter = require("./importer").ImportManager,
+  // console = require('../../console'),
+  util = require("util"),
+  fs = require("fs"),
+  path = require("path"),
+  mongoose = require("mongoose"),
+  mongoUri = require("mongodb-uri"),
+  semver = require("semver"),
+  _ = require("underscore");
 
 mongoose.Promise = global.Promise;
-mongoose.set('useCreateIndex', true);
+mongoose.set("useCreateIndex", true);
 
 // private functions
-function transformArrayAttributes (schema) {
+function transformArrayAttributes(schema) {
   Object.keys(schema).forEach(function (key) {
-    if ('array' === schema[key].type && schema[key].items) {
+    if ("array" === schema[key].type && schema[key].items) {
       schema[key] = [schema[key].items];
     }
     // could recurse into objects here?
@@ -46,17 +46,17 @@ util.inherits(MongooseDB, Database);
  * Implements Database.connect
  *
  */
-MongooseDB.prototype.connect = function(db) {
+MongooseDB.prototype.connect = function (db) {
   var dbHost = false;
   var dbUser = false;
   var dbPass = false;
   var dbPort = false;
   var dbName = false;
   var dbReplicaset = false;
-  var authenticationString = '';
-  var portString = '';
+  var authenticationString = "";
+  var portString = "";
   var options = {};
-  var dbConnectionUri = '';
+  var dbConnectionUri = "";
   var dbOptions = {
     domainsEnabled: true,
     useNewUrlParser: true,
@@ -64,72 +64,90 @@ MongooseDB.prototype.connect = function(db) {
   };
 
   // Retrieve the tenant name.
-  if ('object' === typeof db) {
+  if ("object" === typeof db) {
     // We are using a tenant object.
     dbName = db.dbName;
   } else {
     // We're on the master tenant.
-    dbName = configuration.getConfig('dbName');
+    dbName = configuration.getConfig("dbName");
   }
 
-  if(configuration.getConfig('shouldDatabaseUseSSL')){
+  if (configuration.getConfig("shouldDatabaseUseSSL")) {
     dbOptions.ssl = true;
-    dbOptions.sslValidate = false,
-    dbOptions.sslCA = `${__dirname}/certs/tlsca.pem`,
-    dbOptions.sslKey = fs.readFileSync(`${__dirname}/certs/tlsckf.pem`)
+    (dbOptions.sslValidate = false),
+      (dbOptions.sslCA = `${__dirname}/certs/tlsca.pem`),
+      (dbOptions.sslKey = fs.readFileSync(`${__dirname}/certs/tlsckf.pem`));
   }
 
   // Retrieve the user credentials and options.
-  dbUser = configuration.getConfig('dbUser');
-  dbPass = configuration.getConfig('dbPass');
-  dbReplicaset = configuration.getConfig('dbReplicaset');
-  dbConnectionUri = configuration.getConfig('dbConnectionUri');
-  options = { ...configuration.getConfig('dbOptions'), ...dbOptions};
+  dbUser = configuration.getConfig("dbUser");
+  dbPass = configuration.getConfig("dbPass");
+  dbReplicaset = configuration.getConfig("dbReplicaset");
+  dbConnectionUri = configuration.getConfig("dbConnectionUri");
+  options = { ...configuration.getConfig("dbOptions"), ...dbOptions };
 
   // Construct the authentication part of the connection string.
-  authenticationString = dbUser && dbPass ? dbUser + ':' + dbPass + '@' : '';
+  authenticationString = dbUser && dbPass ? dbUser + ":" + dbPass + "@" : "";
 
-  var connectionString = '';
+  var connectionString = "";
 
   if (dbConnectionUri) {
-      // We should replace `dbName` in the connection string
-      var dbConnectionUriParsed = mongoUri.parse(dbConnectionUri);
-      dbConnectionUriParsed.database = dbName
-      connectionString = mongoUri.format(dbConnectionUriParsed);
-  } else if (dbReplicaset && Array.isArray(dbReplicaset) && dbReplicaset.length !== 0) {
+    // We should replace `dbName` in the connection string
+    var dbConnectionUriParsed = mongoUri.parse(dbConnectionUri);
+    dbConnectionUriParsed.database = dbName;
+    connectionString = mongoUri.format(dbConnectionUriParsed);
+  } else if (
+    dbReplicaset &&
+    Array.isArray(dbReplicaset) &&
+    dbReplicaset.length !== 0
+  ) {
     // The replicaset should contain an array of hosts and ports
-    connectionString = 'mongodb://' + authenticationString + dbReplicaset.join(',') + '/' + dbName
-
+    connectionString =
+      "mongodb://" +
+      authenticationString +
+      dbReplicaset.join(",") +
+      "/" +
+      dbName;
   } else {
     // Get the host and port number from the configuration.
-    dbHost = configuration.getConfig('dbHost');
-    dbPort = configuration.getConfig('dbPort');
+    dbHost = configuration.getConfig("dbHost");
+    dbPort = configuration.getConfig("dbPort");
 
-    portString = dbPort ? ':' + dbPort : '';
+    portString = dbPort ? ":" + dbPort : "";
 
-    connectionString = 'mongodb://' + authenticationString + dbHost + portString + '/' + dbName;
+    connectionString =
+      "mongodb://" + authenticationString + dbHost + portString + "/" + dbName;
   }
 
-  var authSource = configuration.getConfig('dbAuthSource');
-  if(!dbConnectionUri && typeof authSource === 'string' && authSource !== '' ){
-    connectionString += '?authSource=' + authSource
+  var authSource = configuration.getConfig("dbAuthSource");
+  if (!dbConnectionUri && typeof authSource === "string" && authSource !== "") {
+    connectionString += "?authSource=" + authSource;
   }
 
-  return mongoose.createConnection(connectionString, dbOptions).then(function(conn) {
-    this.conn = conn;
-    this.conn.connectionUri = connectionString;
-    this.conn.on('error', console.log.bind(console, 'error'));
-    this.conn.once('error', function(){ console.log('error', 'Database Connection failed, please check your database'); }); //added to give console notification of the problem
-    this.updatedAt = new Date();
-    this._models = {};
-    this.conn.db.command({ buildInfo: 1 }, (error, info) => {
-      if (error) {
-        console.log('error', error);
-      } else {
-        this.mongoVersion = info.version;
-      } 
-    });
-  }.bind(this));
+  return mongoose
+    .createConnection("mongodb://localhost:27017/august-2024", dbOptions)
+    .then(
+      function (conn) {
+        this.conn = conn;
+        this.conn.connectionUri = connectionString;
+        this.conn.on("error", console.log.bind(console, "error"));
+        this.conn.once("error", function () {
+          console.log(
+            "error",
+            "Database Connection failed, please check your database"
+          );
+        }); //added to give console notification of the problem
+        this.updatedAt = new Date();
+        this._models = {};
+        this.conn.db.command({ buildInfo: 1 }, (error, info) => {
+          if (error) {
+            console.log("error", error);
+          } else {
+            this.mongoVersion = info.version;
+          }
+        });
+      }.bind(this)
+    );
 };
 
 /**
@@ -137,9 +155,9 @@ MongooseDB.prototype.connect = function(db) {
  *
  * @param {callback} next
  */
-MongooseDB.prototype.disconnect = function(next) {
+MongooseDB.prototype.disconnect = function (next) {
   if (!this.conn) {
-    return next(new Error('Cannot disconnect: this.conn does not exist!'));
+    return next(new Error("Cannot disconnect: this.conn does not exist!"));
   }
   this.conn.close(next);
 };
@@ -151,7 +169,7 @@ MongooseDB.prototype.disconnect = function(next) {
  * @param {object} tenant
  * @return {boolean}
  */
-MongooseDB.prototype.isStale = function(tenant) {
+MongooseDB.prototype.isStale = function (tenant) {
   if (!tenant.updatedAt) {
     // can't guarantee anything
     return false;
@@ -160,7 +178,7 @@ MongooseDB.prototype.isStale = function(tenant) {
   return this.updatedAt.getTime() < tenant.updatedAt.getTime();
 };
 
-MongooseDB.prototype.isValidIdentifier = function(id) {
+MongooseDB.prototype.isValidIdentifier = function (id) {
   return mongoose.Types.ObjectId.isValid(id);
 };
 
@@ -171,50 +189,59 @@ MongooseDB.prototype.isValidIdentifier = function(id) {
  * @param {function} callback
  */
 MongooseDB.prototype.loadSchemas = function (schemaDirectory, callback) {
+  fs.readdir(
+    schemaDirectory,
+    async function (error, files) {
+      if (error) {
+        console.log("error", "failed to fetch directory listing", error);
+        callback(error);
+        return false;
+      }
 
-  fs.readdir(schemaDirectory, function(error,files){
-    if (error) {
-      console.log('error', 'failed to fetch directory listing', error);
-      callback(error);
-      return false;
-    }
+      var procFile = function (file, callback) {
+        if (".schema" === path.extname(file)) {
+          var modelName = path.basename(file, ".schema");
+          var fullPath = path.join(schemaDirectory, file);
+          var schema;
+          fs.readFile(
+            fullPath,
+            function (error, data) {
+              if (error) {
+                console.log("error", "failed to read schema file", error);
+              } else {
+                try {
+                  this.addModel(modelName, JSON.parse(data));
+                } catch (err) {
+                  console.log(
+                    "error",
+                    "failed to parse schema file at " + fullPath,
+                    err
+                  );
+                }
+              }
 
-    var procFile = function (file, callback) {
-      if ('.schema' === path.extname(file)) {
-        var modelName = path.basename(file, '.schema');
-        var fullPath = path.join(schemaDirectory, file);
-        var schema;
-        fs.readFile(fullPath, function (error, data) {
-          if (error) {
-            console.log('error', 'failed to read schema file', error);
-          } else {
-            try {
-              this.addModel(modelName, JSON.parse(data));
-            } catch (err) {
-              console.log('error', 'failed to parse schema file at ' + fullPath, err);
-            }
-          }
-
+              callback();
+            }.bind(this)
+          );
+        } else {
           callback();
-        }.bind(this));
-      } else {
-       callback();
-      }
-    }.bind(this);
+        }
+      }.bind(this);
 
-    var handle = function() {
-      if (!files || 0 === files.length){
-        //finished
-        callback(null);
-      } else {
-        procFile(files.shift(),handle);
-      }
-    }.bind(this);
+      var handle = function () {
+        if (!files || 0 === files.length) {
+          //finished
+          callback(null);
+        } else {
+          procFile(files.shift(), handle);
+        }
+      }.bind(this);
 
-    //load schema files
-    handle();
-
-  }.bind(this));
+      //load schema files
+      await handle();
+      return;
+    }.bind(this)
+  );
 };
 
 /**
@@ -228,16 +255,15 @@ MongooseDB.prototype.buildPopulator = function (options) {
 
   // might just pass the fields to populate
   if (util.isArray(options)) {
-    populator = options.join(' ');
-
-  } else if ('object' === typeof options) {
+    populator = options.join(" ");
+  } else if ("object" === typeof options) {
     populator = [];
     Object.keys(options).forEach(function (key) {
       // add new populate query
-      var p = {path: key, select: null};
+      var p = { path: key, select: null };
       if (util.isArray(options[key])) {
-        p.select = options[key].join(' ');
-      } else if ('string' === typeof options[key]) {
+        p.select = options[key].join(" ");
+      } else if ("string" === typeof options[key]) {
         p.select = options[key];
       }
       populator.push(p);
@@ -273,23 +299,33 @@ MongooseDB.prototype.buildQuery = function (options) {
  * @param {object} objectData - the data that defines the object
  * @param {function} callback - of the form function (error, results) ...
  */
-MongooseDB.prototype.create = function(objectType, objectData, callback) {
+MongooseDB.prototype.create = function (objectType, objectData, callback) {
   var Model = false;
-  if (Model = this.getModel(objectType)) {
+  if ((Model = this.getModel(objectType))) {
     var instance = Model(objectData);
     instance.save(function (err, result, numAffected) {
       if (err) {
         // log errors, but pass control back to caller
-        console.log('error', err);
+        console.log("error", err);
       } else {
         //todo: record change in collections
-        console.log("info", { event: "database", action: "create", collection: objectType, message: `created a document id '${result._id}'`, metadata: _.keys(objectData) });
+        console.log("info", {
+          event: "database",
+          action: "create",
+          collection: objectType,
+          message: `created a document id '${result._id}'`,
+          metadata: _.keys(objectData),
+        });
       }
 
       return callback(err, result, numAffected);
     });
   } else {
-    callback(new Error('MongooseDB#create: Failed to retrieve model with name ' + objectType));
+    callback(
+      new Error(
+        "MongooseDB#create: Failed to retrieve model with name " + objectType
+      )
+    );
   }
 };
 
@@ -301,20 +337,23 @@ MongooseDB.prototype.create = function(objectType, objectData, callback) {
  * @param {object} [options] -
  * @param {function} callback - of the form function (error, results) ...
  */
-MongooseDB.prototype.retrieve = function(objectType, search, options, callback) {
+MongooseDB.prototype.retrieve = function (
+  objectType,
+  search,
+  options,
+  callback
+) {
   // shuffle params
-  if ('function' === typeof options) {
+  if ("function" === typeof options) {
     callback = options;
     options = {};
   }
 
-  var operators = options.operators
-    ? this.buildQuery(options.operators)
-    : null;
+  var operators = options.operators ? this.buildQuery(options.operators) : null;
   var populator = options.populate
     ? this.buildPopulator(options.populate)
     : null;
-  var fields = options.fields || null;
+  var fields = options.fields || null; 
   var Model = false;
   var sort = false;
   var skip = false;
@@ -322,12 +361,10 @@ MongooseDB.prototype.retrieve = function(objectType, search, options, callback) 
   var distinct = false;
   var elemMatch = false;
   var collation = operators && operators.collation;
-  var jsonOnly = options && options.jsonOnly
-    ? true
-    : false;
+  var jsonOnly = options && options.jsonOnly ? true : false;
 
-  if (operators && 'object' === typeof operators) {
-    if (operators.sort && 'object' === typeof operators.sort) {
+  if (operators && "object" === typeof operators) {
+    if (operators.sort && "object" === typeof operators.sort) {
       sort = operators.sort;
     }
 
@@ -339,18 +376,18 @@ MongooseDB.prototype.retrieve = function(objectType, search, options, callback) 
       limit = parseInt(operators.limit, 10);
     }
 
-    if (operators.distinct && 'string' === typeof operators.distinct) {
+    if (operators.distinct && "string" === typeof operators.distinct) {
       distinct = operators.distinct;
     }
 
-    if (operators.elemMatch && 'object' === typeof operators.elemMatch) {
+    if (operators.elemMatch && "object" === typeof operators.elemMatch) {
       elemMatch = operators.elemMatch;
     }
   }
 
-  if (Model = this.getModel(objectType)) {
+  if ((Model = this.getModel(objectType))) {
     var query = {};
-
+ 
     if (distinct) {
       query = Model.distinct(distinct, search);
     } else if (elemMatch) {
@@ -360,7 +397,7 @@ MongooseDB.prototype.retrieve = function(objectType, search, options, callback) 
     }
 
     // apply any query operators
-    if (collation && semver.satisfies(this.mongoVersion, '>=3.4')) {
+    if (collation && semver.satisfies(this.mongoVersion, ">=3.4")) {
       query.collation(collation);
     }
 
@@ -380,7 +417,7 @@ MongooseDB.prototype.retrieve = function(objectType, search, options, callback) 
 
     // populate subdocuments if requested
     if (populator) {
-      if ('string' === typeof populator) {
+      if ("string" === typeof populator) {
         query.populate(populator);
       } else if (util.isArray(populator)) {
         populator.forEach(function (el) {
@@ -390,12 +427,16 @@ MongooseDB.prototype.retrieve = function(objectType, search, options, callback) 
     }
 
     if (!jsonOnly) {
-        query.exec(callback);
+      query.exec(callback);
     } else {
-        query.lean().exec(callback);
+      query.lean().exec(callback);
     }
   } else {
-    callback(new Error('MongooseDB#retrieve: Failed to retrieve model with name ' + objectType));
+    callback(
+      new Error(
+        "MongooseDB#retrieve: Failed to retrieve model with name " + objectType
+      )
+    );
   }
 };
 
@@ -407,7 +448,12 @@ MongooseDB.prototype.retrieve = function(objectType, search, options, callback) 
  * @param {object} [options] -
  * @param {function} callback - of the form function (error, results) ...
  */
-MongooseDB.prototype.retrieveOne = function(objectType, search, options, callback) {
+MongooseDB.prototype.retrieveOne = function (
+  objectType,
+  search,
+  options,
+  callback
+) {
   this.retrieve(objectType, search, options, function (err, results) {
     if (err) {
       return callback(err);
@@ -431,9 +477,14 @@ MongooseDB.prototype.retrieveOne = function(objectType, search, options, callbac
  * @param {object} updateData - the data to update
  * @param {function} callback - of the form function (error, results) ...
  */
-MongooseDB.prototype.update = function(objectType, conditions, updateData, callback) {
+MongooseDB.prototype.update = function (
+  objectType,
+  conditions,
+  updateData,
+  callback
+) {
   var Model = false;
-  if (Model = this.getModel(objectType)) {
+  if ((Model = this.getModel(objectType))) {
     Model.findOne(conditions, function (err, doc) {
       if (err) {
         return callback(err);
@@ -445,26 +496,35 @@ MongooseDB.prototype.update = function(objectType, conditions, updateData, callb
 
       for (var field in updateData) {
         doc[field] = updateData[field];
-        if (field !== '_id') {
+        if (field !== "_id") {
           doc.markModified(field);
         }
       }
 
       doc.save(function (err) {
         if (err) {
-          console.log('error', err);
+          console.log("error", err);
         } else {
-          console.log("info", { event: "database", action: "update", collection: objectType, message: `updated document id '${doc._id}'`, metadata: _.keys(updateData) });
+          console.log("info", {
+            event: "database",
+            action: "update",
+            collection: objectType,
+            message: `updated document id '${doc._id}'`,
+            metadata: _.keys(updateData),
+          });
         }
 
         return callback(err, doc);
       });
     });
   } else {
-    callback(new Error('MongooseDB#update: Failed to retrieve model with name ' + objectType));
+    callback(
+      new Error(
+        "MongooseDB#update: Failed to retrieve model with name " + objectType
+      )
+    );
   }
 };
-
 
 /**
  * Implements Database.findAndUpdate
@@ -474,28 +534,42 @@ MongooseDB.prototype.update = function(objectType, conditions, updateData, callb
  * @param {object} updateData - the data to update
  * @param {function} callback - of the form function (error, results) ...
  */
-MongooseDB.prototype.findAndUpdate = function (objectType, conditions, updateData, callback) {
+MongooseDB.prototype.findAndUpdate = function (
+  objectType,
+  conditions,
+  updateData,
+  callback
+) {
   var Model = false;
   if ((Model = this.getModel(objectType))) {
-    Model.findOneAndUpdate(conditions, updateData, { useFindAndModify: false }, function (err, doc) {
-      if (err) {
-        console.log("error", err);
-        return callback(err);
+    Model.findOneAndUpdate(
+      conditions,
+      updateData,
+      { useFindAndModify: false },
+      function (err, doc) {
+        if (err) {
+          console.log("error", err);
+          return callback(err);
+        }
+        if (!doc) {
+          return callback(null, null, 0);
+        }
+        console.log("info", {
+          event: "database",
+          action: "update",
+          collection: objectType,
+          message: `updated document id '${doc._id}'`,
+          metadata: analyzeUpdateOperation(updateData, doc),
+        });
+        return callback(err, doc);
       }
-      if (!doc) {
-        return callback(null, null, 0);
-      }
-      console.log("info", {
-        event: "database",
-        action: "update",
-        collection: objectType,
-        message: `updated document id '${doc._id}'`,
-        metadata: analyzeUpdateOperation(updateData, doc),
-      });
-      return callback(err, doc);
-    });
+    );
   } else {
-    callback(new Error("MongooseDB#update: Failed to retrieve model with name " + objectType));
+    callback(
+      new Error(
+        "MongooseDB#update: Failed to retrieve model with name " + objectType
+      )
+    );
   }
 };
 
@@ -545,14 +619,24 @@ function analyzeUpdateOperation(updateData, updatedDoc) {
  * @param {object} conditions - identifies the object in the DB
  * @param {function} callback - of the form function (error) ...
  */
-MongooseDB.prototype.destroy = function(objectType, conditions, callback) {
+MongooseDB.prototype.destroy = function (objectType, conditions, callback) {
   var Model = false;
   //record change in collections
-  if (Model = this.getModel(objectType)) {
-    console.log("info", { event: "database", action: "delete", collection: objectType, message: `deleted document id '${conditions._id}'`, metadata: conditions  });
+  if ((Model = this.getModel(objectType))) {
+    console.log("info", {
+      event: "database",
+      action: "delete",
+      collection: objectType,
+      message: `deleted document id '${conditions._id}'`,
+      metadata: conditions,
+    });
     Model.deleteMany(conditions, callback);
   } else {
-    callback(new Error('MongooseDB#destroy: Failed to retrieve model with name ' + objectType));
+    callback(
+      new Error(
+        "MongooseDB#destroy: Failed to retrieve model with name " + objectType
+      )
+    );
   }
 };
 
@@ -565,42 +649,69 @@ MongooseDB.prototype.destroy = function(objectType, conditions, callback) {
  */
 MongooseDB.prototype.addSchema = function (modelName, schema) {
   var rawSchema = schema;
-  if (!modelName || 'string' !== typeof modelName) {
-    throw new Error("MongooseDB#addModel: modelName parameter must me a string!");
+  if (!modelName || "string" !== typeof modelName) {
+    throw new Error(
+      "MongooseDB#addModel: modelName parameter must me a string!"
+    );
   }
 
   // lowercase all modelNames
   modelName = modelName.toLowerCase();
-  if (this.getModel(modelName)) { // lets not allow overwriting of models
-    console.log('warn', 'MongooseDB#addModel: can\'t overwrite an existing model', modelName);
-    throw new Error("MongooseDB#addModel - Failed to add the model " + modelName + ": it already exists");
+  if (this.getModel(modelName)) {
+    // lets not allow overwriting of models
+    console.log(
+      "warn",
+      "MongooseDB#addModel: can't overwrite an existing model",
+      modelName
+    );
+    throw new Error(
+      "MongooseDB#addModel - Failed to add the model " +
+        modelName +
+        ": it already exists"
+    );
   }
 
   // need to cope with array json-schema syntax
   schema = transformArrayAttributes(schema);
 
-  if (!(schema instanceof mongoose.Schema)) { // might already be a mongoose schema
+  if (!(schema instanceof mongoose.Schema)) {
+    // might already be a mongoose schema
     var options = {
       toObject: {
-        retainKeyOrder: true
-      }
+        retainKeyOrder: true,
+      },
     };
 
     schema = mongoose.Schema(schema, options);
   }
 
-  if (!(schema && schema instanceof mongoose.Schema)) { // must be a mongoose schema
-    console.log('warn', 'MongooseDB#addModel: schema is not a valid mongoose Schema', schema);
-    throw new Error("MongooseDB#addModel - Failed to add the model " + modelName + ": not a valid schema");
+  if (!(schema && schema instanceof mongoose.Schema)) {
+    // must be a mongoose schema
+    console.log(
+      "warn",
+      "MongooseDB#addModel: schema is not a valid mongoose Schema",
+      schema
+    );
+    throw new Error(
+      "MongooseDB#addModel - Failed to add the model " +
+        modelName +
+        ": not a valid schema"
+    );
   }
 
   // handle protected attributes
   schema.options.toJSON = {
     transform: function (doc, json, options) {
       Object.keys(rawSchema).forEach(function (key) {
-        if (options && options.forExport && (rawSchema[key].editorOnly
-          || (Array.isArray(rawSchema[key]) && rawSchema[key].length == 1 && rawSchema[key][0].editorOnly)
-          && json.hasOwnProperty(key))) {
+        if (
+          options &&
+          options.forExport &&
+          (rawSchema[key].editorOnly ||
+            (Array.isArray(rawSchema[key]) &&
+              rawSchema[key].length == 1 &&
+              rawSchema[key][0].editorOnly &&
+              json.hasOwnProperty(key)))
+        ) {
           delete json[key];
         }
 
@@ -608,9 +719,9 @@ MongooseDB.prototype.addSchema = function (modelName, schema) {
           delete json[key];
         }
 
-        json.hasOwnProperty('__v') && delete json['__v'];
+        json.hasOwnProperty("__v") && delete json["__v"];
       });
-    }
+    },
   };
 
   // replaced mongoose.model() with below as suggested by http://www.nodejsnotes.com/2013/05/mongoose-and-multiple-database.html
@@ -652,9 +763,9 @@ MongooseDB.prototype.importSchema = function (uri, schema, next) {
 MongooseDB.prototype.exportResults = function (results, next) {
   if (util.isArray(results)) {
     results.forEach(function (item, index) {
-      results[index] = item.toJSON({transform: true, forExport: true});
+      results[index] = item.toJSON({ transform: true, forExport: true });
     });
-  } else if ('object' === typeof results) {
+  } else if ("object" === typeof results) {
     results = results.toJSON({ transform: true, forExport: true });
   }
   next(results);
@@ -666,9 +777,12 @@ MongooseDB.prototype.exportResults = function (results, next) {
  * @param {string} modelName - the name of the Model to retrieve
  * @return {object|boolean} - A mongoose db schema or false
  */
-MongooseDB.prototype.getModel = function(modelName) {
-  if (!modelName || 'string' !== typeof modelName) {
-    console.log('error', 'MongooseDB#getModel: modelName parameter must be a string');
+MongooseDB.prototype.getModel = function (modelName) {
+  if (!modelName || "string" !== typeof modelName) {
+    console.log(
+      "error",
+      "MongooseDB#getModel: modelName parameter must be a string"
+    );
     return false;
   }
 
@@ -685,7 +799,7 @@ MongooseDB.prototype.getModel = function(modelName) {
  *
  * @return {array} - list of model names
  */
-MongooseDB.prototype.getModelNames = function() {
+MongooseDB.prototype.getModelNames = function () {
   return Object.keys(this._models);
 };
 

@@ -77,7 +77,7 @@ Database.prototype.connect = function () {
   throw new Error("Database.connect must be implemented by extending object!");
 };
 
-/**
+/** 
  * closes the database connection
  *
  * @param {callback} next
