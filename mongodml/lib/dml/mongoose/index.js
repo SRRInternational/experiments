@@ -13,7 +13,7 @@ var async = require("async"),
   _ = require("underscore");
 
 mongoose.Promise = global.Promise;
-mongoose.set("useCreateIndex", true);
+// mongoose.set("useCreateIndex", true);
 
 // private functions
 function transformArrayAttributes(schema) {
@@ -58,7 +58,6 @@ MongooseDB.prototype.connect = function (db) {
   var options = {};
   var dbConnectionUri = "";
   var dbOptions = {
-    domainsEnabled: true,
     useNewUrlParser: true,
     useUnifiedTopology: true,
   };
@@ -124,30 +123,43 @@ MongooseDB.prototype.connect = function (db) {
     connectionString += "?authSource=" + authSource;
   }
 
-  return mongoose
-    .createConnection("mongodb://localhost:27017/august-2024", dbOptions)
-    .then(
-      function (conn) {
-        this.conn = conn;
-        this.conn.connectionUri = connectionString;
-        this.conn.on("error", console.log.bind(console, "error"));
-        this.conn.once("error", function () {
-          console.log(
-            "error",
-            "Database Connection failed, please check your database"
-          );
-        }); //added to give console notification of the problem
-        this.updatedAt = new Date();
-        this._models = {};
-        this.conn.db.command({ buildInfo: 1 }, (error, info) => {
-          if (error) {
-            console.log("error", error);
-          } else {
-            this.mongoVersion = info.version;
-          }
-        });
-      }.bind(this)
-    );
+  return new Promise((resolve, reject) => {
+    const conn = mongoose.createConnection("mongodb://localhost:27017/august-2024", dbOptions);
+  
+    conn.on("connected", () => {
+      console.log("Database connected successfully");
+  
+      this.conn = conn;
+      this.conn.connectionUri = connectionString;
+      this.conn.on("error", console.error.bind(console, "error"));
+  
+      this.conn.once("error", function () {
+        console.log(
+          "error",
+          "Database Connection failed, please check your database"
+        );
+      });
+  
+      this.updatedAt = new Date();
+      this._models = {};
+  
+      this.conn.db.command({ buildInfo: 1 }, (error, info) => {
+        if (error) {
+          console.error("error", error);
+        } else {
+          this.mongoVersion = info.version;
+        }
+      });
+  
+      resolve(this.conn);
+    });
+  
+    conn.on("error", (err) => {
+      console.error("Database connection error:", err);
+      reject(err);
+    });
+  });
+  
 };
 
 /**
@@ -191,7 +203,7 @@ MongooseDB.prototype.isValidIdentifier = function (id) {
 MongooseDB.prototype.loadSchemas = function (schemaDirectory, callback) {
   fs.readdir(
     schemaDirectory,
-    async function (error, files) {
+     function (error, files) {
       if (error) {
         console.log("error", "failed to fetch directory listing", error);
         callback(error);
@@ -238,8 +250,8 @@ MongooseDB.prototype.loadSchemas = function (schemaDirectory, callback) {
       }.bind(this);
 
       //load schema files
-      await handle();
-      return;
+       handle();
+       return;
     }.bind(this)
   );
 };
