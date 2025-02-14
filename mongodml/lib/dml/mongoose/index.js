@@ -349,7 +349,7 @@ MongooseDB.prototype.create = function (objectType, objectData, callback) {
  * @param {object} [options] -
  * @param {function} callback - of the form function (error, results) ...
  */
-MongooseDB.prototype.retrieve = function (
+MongooseDB.prototype.retrieve = async function (
   objectType,
   search,
   options,
@@ -438,11 +438,15 @@ MongooseDB.prototype.retrieve = function (
       }
     }
 
-    if (!jsonOnly) {
-      query.exec(callback);
-    } else {
-      query.lean().exec(callback);
+    query = jsonOnly ? query.lean() : query;
+    
+    const result = await query.exec(); // Await the query execution
+
+    if (callback) {
+      return callback(null, result);
     }
+
+    return result;
   } else {
     callback(
       new Error(
