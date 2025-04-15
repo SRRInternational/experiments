@@ -365,7 +365,7 @@ MongooseDB.prototype.retrieve = async function (
   var populator = options.populate
     ? this.buildPopulator(options.populate)
     : null;
-  var fields = options.fields || null; 
+  var fields = typeof options.fields === "object" && options.fields !== null ? options.fields : {};
   var Model = false;
   var sort = false;
   var skip = false;
@@ -437,6 +437,10 @@ MongooseDB.prototype.retrieve = async function (
         });
       }
     }
+    console.log("objectType",objectType)
+    console.log("search",search)
+    console.log("fields",fields)
+    console.log("Model:", Model ? Model.modelName : "Model not found");
 
     query = jsonOnly ? query.lean() : query;
     
@@ -446,13 +450,60 @@ MongooseDB.prototype.retrieve = async function (
       return callback(null, result);
     }
 
-    return result;
   } else {
     callback(
       new Error(
         "MongooseDB#retrieve: Failed to retrieve model with name " + objectType
       )
     );
+  }
+};
+
+
+MongooseDB.prototype.retrieveSchema = async function(objectType, search, options, callback) {
+  // Ensure options is an object
+  if (typeof options === 'function') {
+    callback = options;
+    options = {};
+  } else {
+    options = options || {};
+  }
+
+  var operators = options.operators
+    ? this.buildQuery(options.operators)
+    : null;
+  var populator = options.populate
+    ? this.buildPopulator(options.populate)
+    : null;
+  var fields = options.fields || {};
+
+  var Model = this.getModel(objectType);
+  if (!Model) {
+    console.error(`Model not found for objectType: ${objectType}`);
+    if (callback) return callback(new Error(`MongooseDB#retrieve: Failed to retrieve model with name ${objectType}`));
+    throw new Error(`MongooseDB#retrieve: Failed to retrieve model with name ${objectType}`);
+  }
+
+  console.log("objectType", objectType);
+  console.log("search", search);
+  console.log("fields", fields);
+
+  try {
+    const result = Model.find(search, fields).then((result) => {
+    if (callback) {
+      return callback(null, result);
+    }
+  }).catch((error) => {
+    console.error("Error retrieving schema:", error);
+    if (callback) return callback(error);
+  }
+  );
+
+    return result;
+  } catch (error) {
+    console.error("Error retrieving schema:", error);
+    if (callback) return callback(error);
+    throw error;
   }
 };
 

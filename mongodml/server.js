@@ -73,7 +73,7 @@ app.get("/", (req, res, next) => {
         memo.pluginTypes,
         function (pluginType, outerCallback) {
           if (err) return callback(err);
-          db.retrieve(
+          db.retrieveSchema(
             pluginType.collectionType,
             { _tenantId: "679c693d2ed8c85d08d43929" },
             function (err, results) {
@@ -166,6 +166,8 @@ app.get("/", (req, res, next) => {
     var pluginType = pPluginType.type;
     try {
       var schemaPluginLocations = schema.properties.pluginLocations.properties;
+      console.log(pluginType,"schemaPluginLocations", schemaPluginLocations);
+      console.log(pluginType,"schema", schema.properties.pluginLocations);
     } catch (e) {
       // handle undefined pluginLocations
       if (!_.isEmpty(schema.properties)) {
@@ -175,6 +177,7 @@ app.get("/", (req, res, next) => {
       }
       return callback();
     }
+    console.log(pluginType,"object keys", Object.keys(schemaPluginLocations));
     async.each(
       Object.keys(schemaPluginLocations),
       function (key, eachCallback) {
